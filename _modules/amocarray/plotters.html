@@ -399,7 +399,6 @@
 
 
 
-
 <div class="viewcode-block" id="plot_amoc_timeseries">
 <a class="viewcode-back" href="../../amocarray.html#amocarray.plotters.plot_amoc_timeseries">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">plot_amoc_timeseries</span><span class="p">(</span>
@@ -511,7 +510,7 @@
     <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Time&quot;</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">ylabel</span> <span class="k">if</span> <span class="n">ylabel</span> <span class="k">else</span> <span class="s2">&quot;Transport [Sv]&quot;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 
     <span class="c1"># Limits</span>
@@ -521,13 +520,13 @@
         <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ylim</span><span class="p">)</span>
 
     <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
+    <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span></div>
+
 
 
 <div class="viewcode-block" id="plot_monthly_anomalies">
 <a class="viewcode-back" href="../../amocarray.html#amocarray.plotters.plot_monthly_anomalies">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">plot_monthly_anomalies</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">plt</span><span class="o">.</span><span class="n">Figure</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="n">plt</span><span class="o">.</span><span class="n">Axes</span><span class="p">]]:</span>
-
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Plot the monthly anomalies for various datasets.</span>
 <span class="sd">    Pass keyword arguments in the form: `label_name_data`, `label_name_label`.</span>
@@ -537,12 +536,18 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">color_cycle</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;purple&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="s2">&quot;darkblue&quot;</span><span class="p">,</span> <span class="s2">&quot;darkred&quot;</span><span class="p">,</span> <span class="s2">&quot;darkgreen&quot;</span>
+        <span class="s2">&quot;blue&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;red&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;green&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;purple&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;orange&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;darkblue&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;darkred&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;darkgreen&quot;</span><span class="p">,</span>
     <span class="p">]</span>
 
     <span class="c1"># Extract and sort data/labels by name to ensure consistent ordering</span>
-    <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;osnap&quot;</span><span class="p">,</span> <span class="s2">&quot;rapid&quot;</span><span class="p">,</span> <span class="s2">&quot;move&quot;</span><span class="p">,</span> <span class="s2">&quot;samba&quot;</span><span class="p">,</span> <span class="s2">&quot;fw2015&quot;</span><span class="p">,</span> <span class="s2">&quot;mocha&quot;</span><span class="p">,</span> <span class="s2">&quot;fortyone&quot;</span><span class="p">,</span> <span class="s2">&quot;dso&quot;</span><span class="p">]</span>
+    <span class="n">names</span> <span class="o">=</span> <span class="p">[</span>  <span class="s2">&quot;dso&quot;</span><span class="p">,</span> <span class="s2">&quot;osnap&quot;</span><span class="p">,</span> <span class="s2">&quot;fortyone&quot;</span><span class="p">,</span> <span class="s2">&quot;rapid&quot;</span><span class="p">,</span> <span class="s2">&quot;fw2015&quot;</span><span class="p">,</span> <span class="s2">&quot;move&quot;</span><span class="p">,</span> <span class="s2">&quot;samba&quot;</span><span class="p">]</span>
     <span class="n">datasets</span> <span class="o">=</span> <span class="p">[</span><span class="n">monthly_resample</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">_data&quot;</span><span class="p">])</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">]</span>
     <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">kwargs</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">_label&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">]</span>
 
@@ -556,8 +561,8 @@
         <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Transport [Sv]&quot;</span><span class="p">)</span>
         <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
         <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-        
-        <span class="c1"># Dynamic ylim </span>
+
+        <span class="c1"># Dynamic ylim</span>
         <span class="n">ymin</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> <span class="o">-</span> <span class="mi">1</span>
         <span class="n">ymax</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">max</span><span class="p">())</span> <span class="o">+</span> <span class="mi">1</span>
         <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">])</span>
