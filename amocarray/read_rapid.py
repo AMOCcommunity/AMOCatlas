@@ -53,6 +53,7 @@ RAPID_FILE_METADATA = {
 # https://rapid.ac.uk/sites/default/files/rapid_data/2d_gridded.nc
 # https://rapid.ac.uk/sites/default/files/rapid_data/meridional_transports.nc
 
+
 @apply_defaults(RAPID_DEFAULT_SOURCE, RAPID_DEFAULT_FILES)
 def read_rapid(
     source: Union[str, Path, None],

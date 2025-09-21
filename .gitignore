@@ -186,3 +186,7 @@ cython_debug/
 .idea/
 notebooks/demo-eleanor.ipynb
 data/meridional_transports.nc
+
+# Claude Code
+CLAUDE.md
+.claude/

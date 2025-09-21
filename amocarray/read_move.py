@@ -11,10 +11,14 @@ from amocarray.utilities import apply_defaults
 log = logger.log  # ✅ use the global logger
 
 # Default source and file list
-MOVE_DEFAULT_SOURCE = "https://dods.ndbc.noaa.gov/thredds/fileServer/oceansites/DATA_GRIDDED/MOVE/"
-MOVE_DEFAULT_FILES = ["OS_MOVE_20000206-20221014_DPR_VOLUMETRANSPORT.nc",
-                      "OS_MOVE_20000101-20221021_GRD_CURRENTS-AT-SITES-MOVE3-MOVE4.nc",
-                      "OS_MOVE_20000101-20221018_GRD_TEMPERATURE-SALINITY-AT-SITES-MOVE1-MOVE3.nc"]
+MOVE_DEFAULT_SOURCE = (
+    "https://dods.ndbc.noaa.gov/thredds/fileServer/oceansites/DATA_GRIDDED/MOVE/"
+)
+MOVE_DEFAULT_FILES = [
+    "OS_MOVE_20000206-20221014_DPR_VOLUMETRANSPORT.nc",
+    "OS_MOVE_20000101-20221021_GRD_CURRENTS-AT-SITES-MOVE3-MOVE4.nc",
+    "OS_MOVE_20000101-20221018_GRD_TEMPERATURE-SALINITY-AT-SITES-MOVE1-MOVE3.nc",
+]
 MOVE_TRANSPORT_FILES = ["OS_MOVE_20000206-20221014_DPR_VOLUMETRANSPORT.nc"]
 
 # Global metadata for MOVE
@@ -111,7 +115,6 @@ def read_move(
             log.error("Failed to open NetCDF file: %s: %s", file_path, e)
             raise FileNotFoundError(f"Failed to open NetCDF file: {file_path}: {e}")
 
-
         # Clean up time variable
         if "TIME" in ds.variables:
             time_raw = ds["TIME"].values
@@ -119,7 +122,9 @@ def read_move(
             n_invalid = (~valid).sum()
 
             if n_invalid > 0:
-                log.info(f"Found {n_invalid} invalid time values in {file_path}; replacing with NaN.")
+                log.info(
+                    f"Found {n_invalid} invalid time values in {file_path}; replacing with NaN."
+                )
 
             clean_time = xr.where(valid, time_raw, np.nan)
             base = np.datetime64("1950-01-01")
@@ -127,23 +132,26 @@ def read_move(
 
             # Replace the time in the dataset
             ds["TIME"] = ("TIME", time_converted)
-            ds["TIME"].attrs.update({
-                "units": "days since 1950-01-01",
-            })
+            ds["TIME"].attrs.update(
+                {
+                    "units": "days since 1950-01-01",
+                }
+            )
             log.debug(f"Converted time using base 1950-01-01 for {file_path}")
         else:
             log.warning(f"No TIME variable found in {file_path}")
 
-        # Filter out NaT time values and corresponding dataset entries
+            # Filter out NaT time values and corresponding dataset entries
             time_pd = pd.to_datetime(ds["TIME"].values)
             valid_time_mask = ~pd.isna(time_pd)
 
             if (~valid_time_mask).any():
                 n_removed = (~valid_time_mask).sum()
-                log.info(f"Removing {n_removed} entries with invalid NaT time values from {file_path}")
+                log.info(
+                    f"Removing {n_removed} entries with invalid NaT time values from {file_path}"
+                )
 
                 ds = ds.isel(TIME=valid_time_mask)
-
 
         # Attach metadata
         file_metadata = MOVE_FILE_METADATA.get(file, {})
