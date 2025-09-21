@@ -19,6 +19,7 @@
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Converting to OceanSITES format" href="format_conversion.html" />
@@ -47,6 +48,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About AMOCarray</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Demo notebook</span></p>
@@ -55,6 +57,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Data format</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="format_overview.html">Data Format Documentation Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="format_orig.html">Array Format (Native / Original)</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">OceanSITES Format for AMOC Arrays</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#file-naming">File naming</a><ul>
@@ -157,7 +160,7 @@
 <ul class="simple">
 <li><p>RAPID (PSPANCode = RAPID):
 - <cite>ts_gridded.nc</cite> has individual locations with timeSeriesProfile.  The <cite>PARTX</cite> for OceanSITES will be <cite>gridded_mooring</cite>, and ContentType = GRD.
-- <cite>moc_vertial.nc</cite> and <cite>moc_transports.nc</cite> have the streamfunction, and time series of component transports at 12-hour intervals.  The <cite>PARTX</cite> for OceanSITES will combine both and this will be <cite>transports_T12H.nc</cite>, and ContentType = DPR.
+- <cite>moc_vertical.nc</cite> and <cite>moc_transports.nc</cite> have the streamfunction, and time series of component transports at 12-hour intervals.  The <cite>PARTX</cite> for OceanSITES will combine both and this will be <cite>transports_T12H.nc</cite>, and ContentType = DPR.
 - <cite>2d_gridded.nc</cite> has the 2D gridded data.  The <cite>PARTX</cite> for OceanSITES will be <cite>sections_T10D</cite> for monthly, and ContentType = GRD.
 - <cite>meridional_transports.nc</cite> has the MOC transport in depth and sigma coordinates, as well as MHT and MFT on a 10-day grid. The <cite>PARTX</cite> for OceanSITES will be <cite>transports_T10D.nc</cite>, and ContentType = DPR.</p></li>
 <li><p>OSNAP (PSPANCode = OSNAP):
@@ -628,8 +631,8 @@ make sense for the data product in question.</p>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">publisher_name</span></code></p></td>
 <td><p>Name of the person responsible for metadata and formatting</p></td>
-<td><p><strong>ex.:</strong> <a class="reference external" href="http://github.com/AMOCcommunity/amocarray">http://github.com/AMOCcommunity/amocarray</a></p></td>
-<td><p><strong>S</strong></p></td>
+<td><p><strong>ex.:</strong> “AMOCarray Development Team”</p></td>
+<td><p><em>S</em></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">publisher_url</span></code></p></td>
 <td><p>Web address of the institution or data publisher</p></td>
@@ -708,7 +711,7 @@ make sense for the data product in question.</p>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">history</span></code></p></td>
 <td><p>Provides an audit trail for modifications to the original data. It should contain a separate line for each modification, with each line beginning with a timestamp, and including user name, modification name, and modification arguments. The time stamp should follow the format outlined in the note on time formats below. (NUG)</p></td>
-<td><p><strong>ex.:</strong> history= “2012-04-11T08:35:00Z data collected, A. Meyer;</p></td>
+<td><p><strong>ex.:</strong> history= “2012-04-11T08:35:00Z data collected, A. Meyer; 2012-04-12T10:15:00Z quality control applied, B. Smith”</p></td>
 <td><p><em>S</em></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">processing_level</span></code></p></td>

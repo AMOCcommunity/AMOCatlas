@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Project Housekeeping Checklist &mdash; amocarray v0.0.0 documentation</title>
+  <title>About AMOCarray &mdash; amocarray v0.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=1078e4cb" />
@@ -19,10 +19,11 @@
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="_static/js/theme.js"></script>
-    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="author" title="About these documents" href="#" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Project Coding Conventions" href="conventions.html" /> 
+    <link rel="next" title="Installation" href="installation.html" />
+    <link rel="prev" title="Welcome to amocarray’s documentation!" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -46,8 +47,16 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="about.html">About AMOCarray</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">About AMOCarray</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-this">What is this?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#why-amoc">Why AMOC?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-arrays-are-included">What arrays are included?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-can-you-do-with-it">What can you do with it?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#need-help">Need help?</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Demo notebook</span></p>
@@ -71,20 +80,12 @@
 <li class="toctree-l1"><a class="reference internal" href="AC1_variables.html">Variable Names</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Developers' guide</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="developer_guide.html">Developer Guide for <code class="docutils literal notranslate"><span class="pre">amocarray</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="gitcollab.html">Collaborating with git: Basic workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="actions.html">Extra GitHub features: Actions &amp; Pages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conventions.html">Project Coding Conventions</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Project Housekeeping Checklist</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#adding-a-new-package">Adding a New Package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#updating-dependencies">Updating Dependencies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#cleaning-or-recreating-the-environment">Cleaning or Recreating the Environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#pre-commit-and-tests">Pre-commit and Tests</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#documentation">Documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#before-merging-a-branch">Before Merging a Branch</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="housekeeping.html">Project Housekeeping Checklist</a></li>
 </ul>
 
         </div>
@@ -101,9 +102,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Project Housekeeping Checklist</li>
+      <li class="breadcrumb-item active">About AMOCarray</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/housekeeping.md.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/about.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -111,65 +112,64 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="project-housekeeping-checklist">
-<h1>Project Housekeeping Checklist<a class="headerlink" href="#project-housekeeping-checklist" title="Link to this heading"></a></h1>
-<p>A quick checklist for maintaining the project environment, development tools, and CI/CD workflows.</p>
-<hr class="docutils" />
-<section id="adding-a-new-package">
-<h2>Adding a New Package<a class="headerlink" href="#adding-a-new-package" title="Link to this heading"></a></h2>
+  <section id="about-amocarray">
+<h1>About AMOCarray<a class="headerlink" href="#about-amocarray" title="Link to this heading"></a></h1>
+<section id="what-is-this">
+<h2>What is this?<a class="headerlink" href="#what-is-this" title="Link to this heading"></a></h2>
+<p>AMOCarray is a Python package for loading data from Atlantic Meridional Overturning Circulation (AMOC) observing arrays. It gives you a simple way to access data from different programmes around the Atlantic.</p>
+</section>
+<section id="why-amoc">
+<h2>Why AMOC?<a class="headerlink" href="#why-amoc" title="Link to this heading"></a></h2>
+<p>The Atlantic Meridional Overturning Circulation moves warm water north and cold water south in the Atlantic Ocean. It’s important for climate - think of it as a giant conveyor belt that helps regulate temperatures in Europe and beyond.</p>
+<p>Scientists monitor this circulation at several locations using moorings and other instruments. AMOCarray makes it easier to work with data from these monitoring arrays.</p>
+</section>
+<section id="what-arrays-are-included">
+<h2>What arrays are included?<a class="headerlink" href="#what-arrays-are-included" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p>✅ Add to <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> if it’s needed at runtime.</p></li>
-<li><p>✅ Add to <code class="docutils literal notranslate"><span class="pre">requirements-dev.txt</span></code> if it’s only for development, testing, or documentation.</p></li>
-<li><p>✅ If CI depends on it, confirm it’s included in GitHub Actions workflows.</p></li>
+<li><p><strong>RAPID (26°N)</strong> - The longest-running basin-wide array, monitoring since 2004</p></li>
+<li><p><strong>MOVE (16°N)</strong> - Tropical Atlantic monitoring, west of the Mid-Atlantic Ridge</p></li>
+<li><p><strong>OSNAP (Subpolar)</strong> - Covers the subpolar North Atlantic</p></li>
+<li><p><strong>SAMBA (34.5°S)</strong> - South Atlantic monitoring</p></li>
+<li><p><strong>41°N</strong> - Uses Argo float data and altimetry</p></li>
+<li><p><strong>DSO</strong> - Denmark Strait overflow</p></li>
+<li><p><strong>RAPID/MOCHA</strong> - Heat transport estimates from 26°N</p></li>
+<li><p><strong>FW2015</strong> - Altimetry-based transport estimates at 26°N</p></li>
 </ul>
 </section>
-<section id="updating-dependencies">
-<h2>Updating Dependencies<a class="headerlink" href="#updating-dependencies" title="Link to this heading"></a></h2>
+<section id="what-can-you-do-with-it">
+<h2>What can you do with it?<a class="headerlink" href="#what-can-you-do-with-it" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p>✅ Specify minimum versions to maintain compatibility across environments.</p></li>
-<li><p>✅ Test the update locally and in GitHub Actions.</p></li>
-<li><p>✅ Optionally recreate your virtual environment for a clean state.</p></li>
+<li><p>Load data from any array of the above arrays (or measurement methods) with just a few lines of code</p></li>
+<li><p>Compare data across different locations</p></li>
+<li><p>Make plots with consistent styling</p></li>
+<li><p>Access both sample datasets (for testing) and full datasets</p></li>
+<li><p>Get detailed logs of what data was downloaded and processed</p></li>
 </ul>
+<p>The package handles downloading, caching, and organizing the data so you can focus on the science.  Note that if the web-based locations of the original datasets change, that links may break.  Please then raise an issue (see below) or try a fix yourself (see developer guide).</p>
 </section>
-<section id="cleaning-or-recreating-the-environment">
-<h2>Cleaning or Recreating the Environment<a class="headerlink" href="#cleaning-or-recreating-the-environment" title="Link to this heading"></a></h2>
-<ul class="simple">
-<li><p>✅ Delete and recreate your virtual environment after major updates.</p></li>
-<li><p>✅ Reinstall with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements-dev.txt</span></code>.</p></li>
-<li><p>✅ Run <code class="docutils literal notranslate"><span class="pre">pre-commit</span> <span class="pre">run</span> <span class="pre">--all-files</span></code> to ensure formatting and linting.</p></li>
-<li><p>✅ Test with <code class="docutils literal notranslate"><span class="pre">pytest</span></code>.</p></li>
-</ul>
+<section id="getting-started">
+<h2>Getting started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h2>
+<p>The quickest way to try it out:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">amocarray</span><span class="w"> </span><span class="kn">import</span> <span class="n">readers</span>
+
+<span class="c1"># Load a sample dataset</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">readers</span><span class="o">.</span><span class="n">load_sample_dataset</span><span class="p">(</span><span class="s2">&quot;rapid&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Check out the demo notebook for more examples.</p>
 </section>
-<section id="pre-commit-and-tests">
-<h2>Pre-commit and Tests<a class="headerlink" href="#pre-commit-and-tests" title="Link to this heading"></a></h2>
+<section id="need-help">
+<h2>Need help?<a class="headerlink" href="#need-help" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p>✅ Add new hooks to <code class="docutils literal notranslate"><span class="pre">.pre-commit-config.yaml</span></code> if needed.</p></li>
-<li><p>✅ Test new hooks locally with <code class="docutils literal notranslate"><span class="pre">pre-commit</span> <span class="pre">run</span> <span class="pre">--all-files</span></code>.</p></li>
-<li><p>✅ Confirm CI passes.</p></li>
+<li><p>Full documentation: <a class="reference external" href="https://amoccommunity.github.io/amocarray">https://amoccommunity.github.io/amocarray</a></p></li>
+<li><p>Issues and questions: <a class="reference external" href="https://github.com/AMOCcommunity/amocarray/issues">https://github.com/AMOCcommunity/amocarray/issues</a></p></li>
+<li><p>Contributing: See our developer guide</p></li>
 </ul>
-</section>
-<section id="documentation">
-<h2>Documentation<a class="headerlink" href="#documentation" title="Link to this heading"></a></h2>
-<ul class="simple">
-<li><p>✅ Ensure any new doc dependencies are in <code class="docutils literal notranslate"><span class="pre">requirements-dev.txt</span></code>.</p></li>
-<li><p>✅ Test docs build locally using <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">clean</span> <span class="pre">html</span></code> in the <code class="docutils literal notranslate"><span class="pre">docs/</span></code> directory.</p></li>
-<li><p>✅ Confirm the GitHub Actions documentation build workflow passes.</p></li>
-</ul>
-</section>
-<section id="before-merging-a-branch">
-<h2>Before Merging a Branch<a class="headerlink" href="#before-merging-a-branch" title="Link to this heading"></a></h2>
-<ul class="simple">
-<li><p>✅ Run <code class="docutils literal notranslate"><span class="pre">pytest</span></code> locally.</p></li>
-<li><p>✅ Run <code class="docutils literal notranslate"><span class="pre">pre-commit</span> <span class="pre">run</span> <span class="pre">--all-files</span></code>.</p></li>
-<li><p>✅ Confirm GitHub Actions CI passes.</p></li>
-<li><p>✅ Optional: squash commits for a clean history.</p>
-<ul>
-<li><p>When merging a pull request, select “Squash and merge” in the GitHub interface. This will combine all commits from the branch into a single, clean commit on main. You can (and should) edit the final commit message to describe the overall change clearly. Use squash for branches with multiple small commits or work-in-progress history. Skip squashing if you have meaningful, separated commits that you want to preserve in history.</p></li>
-</ul>
-</li>
-</ul>
-<hr class="docutils" />
-<p><em>This checklist was drafted with the help of ChatGPT, in collaboration with the project developer.</em></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This project is supported by the Horizon Europe project EPOC - Explaining and Predicting the Ocean Conveyor.</p>
+</div>
 </section>
 </section>
 
@@ -177,7 +177,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="conventions.html" class="btn btn-neutral float-left" title="Project Coding Conventions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to amocarray’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="installation.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

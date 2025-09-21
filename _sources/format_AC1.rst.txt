@@ -3,6 +3,13 @@ AMOCarray Format AC1
 
 This document defines the AC1 standard data format produced by the ``amocarray.convert.to_AC1()`` function.  This format is designed to provide consistency between moored estimates of overturning transport, as from the RAPID, OSNAP, MOVE and SAMBA arrays.
 
+**Relationship to Other Format Documents:**
+
+- :doc:`format_orig` - Documents native data formats from each array
+- :doc:`format_conversion` - Describes conversion strategies from native to standardized formats  
+- :doc:`format_oceanSITES` - Details OceanSITES compliance requirements
+- **This document (format_AC1)** - Specifies the final standardized output format
+
 1. Overview
 -----------
 
@@ -78,7 +85,7 @@ Note that CF-conventions (https://cfconventions.org/cf-conventions/cf-convention
      - S
    * - TRANSPORT
      - (TIME,)
-     - Sv
+     - Sverdrup
      - Overturning transport estimate
      - S
 
@@ -291,6 +298,11 @@ This function:
 ------------------------------
 
 To ensure transparency and appropriate credit to original data providers, the AC1 format includes structured global attributes for data provenance.
+
+**Project Funding:**
+AC1 format development is supported by the Horizon Europe project EPOC - Explaining and Predicting the Ocean Conveyor (Grant Agreement No. 101081012).
+
+*Funded by the European Union. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union. Neither the European Union nor the granting authority can be held responsible for them.*
 
 Required Provenance Fields:
 

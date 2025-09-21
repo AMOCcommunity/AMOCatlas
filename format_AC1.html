@@ -19,6 +19,7 @@
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="amocarray API" href="amocarray.html" />
@@ -47,6 +48,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About AMOCarray</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Demo notebook</span></p>
@@ -55,6 +57,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Data format</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="format_overview.html">Data Format Documentation Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="format_orig.html">Array Format (Native / Original)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="format_oceanSITES.html">OceanSITES Format for AMOC Arrays</a></li>
 <li class="toctree-l1"><a class="reference internal" href="format_conversion.html">Converting to OceanSITES format</a></li>
@@ -117,6 +120,13 @@
   <section id="amocarray-format-ac1">
 <h1>AMOCarray Format AC1<a class="headerlink" href="#amocarray-format-ac1" title="Link to this heading"></a></h1>
 <p>This document defines the AC1 standard data format produced by the <code class="docutils literal notranslate"><span class="pre">amocarray.convert.to_AC1()</span></code> function.  This format is designed to provide consistency between moored estimates of overturning transport, as from the RAPID, OSNAP, MOVE and SAMBA arrays.</p>
+<p><strong>Relationship to Other Format Documents:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="format_orig.html"><span class="doc">Array Format (Native / Original)</span></a> - Documents native data formats from each array</p></li>
+<li><p><a class="reference internal" href="format_conversion.html"><span class="doc">Converting to OceanSITES format</span></a> - Describes conversion strategies from native to standardized formats</p></li>
+<li><p><a class="reference internal" href="format_oceanSITES.html"><span class="doc">OceanSITES Format for AMOC Arrays</span></a> - Details OceanSITES compliance requirements</p></li>
+<li><p><strong>This document (format_AC1)</strong> - Specifies the final standardized output format</p></li>
+</ul>
 <section id="overview">
 <h2>1. Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
 <p>The AC1 format improves the interoperability for Atlantic Meridional Overturning Circulation (AMOC) mooring array datasets.  It uses NetCDF (Network Common Data Format) where the software is based on <code class="docutils literal notranslate"><span class="pre">xarray.Dataset</span></code> objects.  It is derived from the OceanSITES data format [see here](<a class="reference external" href="https://www.ocean-ops.org/oceansites/data/index.html">https://www.ocean-ops.org/oceansites/data/index.html</a>) or [<a class="reference external" href="https://www.ocean-ops.org/oceansites/docs/oceansites_data_format_reference_manual.pdf](oceansites_data_format_reference_manual.pdf">https://www.ocean-ops.org/oceansites/docs/oceansites_data_format_reference_manual.pdf](oceansites_data_format_reference_manual.pdf</a>), but additionally attempts to specify vocabularies.</p>
@@ -202,7 +212,7 @@
 </tr>
 <tr class="row-even"><td><p>TRANSPORT</p></td>
 <td><p>(TIME,)</p></td>
-<td><p>Sv</p></td>
+<td><p>Sverdrup</p></td>
 <td><p>Overturning transport estimate</p></td>
 <td><p>S</p></td>
 </tr>
@@ -454,6 +464,9 @@ global attributes:
 <section id="provenance-and-attribution">
 <h2>11. Provenance and Attribution<a class="headerlink" href="#provenance-and-attribution" title="Link to this heading"></a></h2>
 <p>To ensure transparency and appropriate credit to original data providers, the AC1 format includes structured global attributes for data provenance.</p>
+<p><strong>Project Funding:</strong>
+AC1 format development is supported by the Horizon Europe project EPOC - Explaining and Predicting the Ocean Conveyor (Grant Agreement No. 101081012).</p>
+<p><em>Funded by the European Union. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union. Neither the European Union nor the granting authority can be held responsible for them.</em></p>
 <p>Required Provenance Fields:</p>
 <table class="docutils align-default">
 <colgroup>

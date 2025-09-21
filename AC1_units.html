@@ -19,6 +19,7 @@
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Variable Names" href="AC1_variables.html" />
@@ -47,6 +48,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About AMOCarray</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Demo notebook</span></p>
@@ -55,6 +57,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Data format</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="format_overview.html">Data Format Documentation Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="format_orig.html">Array Format (Native / Original)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="format_oceanSITES.html">OceanSITES Format for AMOC Arrays</a></li>
 <li class="toctree-l1"><a class="reference internal" href="format_conversion.html">Converting to OceanSITES format</a></li>
@@ -124,7 +127,7 @@
 <p>Check out <a class="reference external" href="https://docs.unidata.ucar.edu/udunits/current/">udunits</a>.</p>
 <p>SI base units (XML) are <a class="reference external" href="https://docs.unidata.ucar.edu/udunits/current/udunits2-base.xml">here</a>.</p>
 <p>Derived units (XML) are <a class="reference external" href="https://docs.unidata.ucar.edu/udunits/current/udunits2-derived.xml">here</a>.</p>
-<p>Non-SI units including sverdrup, <strong>where apparently we cannot use Sv because it also means “sievert” in the SI unit-system</strong>.</p>
+<p>Non-SI units including Sverdrup (full spelling used to avoid confusion with “Sv” for sievert in the SI unit system).</p>
 <section id="variables">
 <h2>Variables<a class="headerlink" href="#variables" title="Link to this heading"></a></h2>
 <section id="mass-volume-units">
@@ -311,11 +314,10 @@ cm s-1</p></td>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>sverdrup,
-<strong>Sverdrup</strong></p></td>
-<td><p>Sv*</p></td>
+<tr class="row-even"><td><p><strong>Sverdrup</strong></p></td>
+<td><p>Sverdrup</p></td>
 <td><p>1e6 m³/s
-alias for Sv</p></td>
+(full spelling preferred)</p></td>
 </tr>
 <tr class="row-odd"><td><p>cubic_meter_per_second</p></td>
 <td><p>m³/s,
@@ -324,7 +326,6 @@ alias for Sv</p></td>
 </tr>
 </tbody>
 </table>
-<p><strong>*Not</strong> recommended since it conflicts with SI “sievert”.</p>
 </section>
 <section id="energy-and-power-units">
 <h3>Energy and Power Units<a class="headerlink" href="#energy-and-power-units" title="Link to this heading"></a></h3>
@@ -438,7 +439,7 @@ alias for Sv</p></td>
 <td><p>Density</p></td>
 </tr>
 <tr class="row-even"><td><p>Sverdrup</p></td>
-<td><p>Sv*</p></td>
+<td><p>Sverdrup</p></td>
 <td><p>1</p></td>
 <td><p>Transport</p></td>
 </tr>
@@ -449,7 +450,7 @@ alias for Sv</p></td>
 </tr>
 </tbody>
 </table>
-<p><strong>*Not</strong> recommended since it conflicts with SI “sievert”.</p>
+<p><strong>Note:</strong> Full “Sverdrup” spelling used to avoid confusion with “Sv” (sievert).</p>
 </section>
 <section id="si-unit-prefixes">
 <h2>SI Unit Prefixes<a class="headerlink" href="#si-unit-prefixes" title="Link to this heading"></a></h2>

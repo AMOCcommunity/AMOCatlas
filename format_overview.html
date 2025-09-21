@@ -1,0 +1,236 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Format Documentation Overview &mdash; amocarray v0.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=1078e4cb" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8b92e751"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Array Format (Native / Original)" href="format_orig.html" />
+    <link rel="prev" title="AMOCarray demo" href="demo-output.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            amocarray
+              <img src="_static/logo.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About AMOCarray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Demo notebook</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="demo-output.html">AMOCarray demo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data format</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Data Format Documentation Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#understanding-the-documentation-structure">Understanding the Documentation Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#workflow-overview">Workflow Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#key-concepts">Key Concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#questions-and-contributions">Questions and Contributions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="format_orig.html">Array Format (Native / Original)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="format_oceanSITES.html">OceanSITES Format for AMOC Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="format_conversion.html">Converting to OceanSITES format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="format_AC1.html">AMOCarray Format AC1</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Help and reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocarray">GitHub Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="amocarray.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">amocarray</span> <span class="pre">API</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="AC1_vocabularies.html">Controlled Vocabularies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AC1_units.html">Units Reference: for AC1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AC1_variables.html">Variable Names</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers' guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="developer_guide.html">Developer Guide for <code class="docutils literal notranslate"><span class="pre">amocarray</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="gitcollab.html">Collaborating with git: Basic workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions.html">Extra GitHub features: Actions &amp; Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conventions.html">Project Coding Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="housekeeping.html">Project Housekeeping Checklist</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">amocarray</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Data Format Documentation Overview</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/format_overview.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="data-format-documentation-overview">
+<h1>Data Format Documentation Overview<a class="headerlink" href="#data-format-documentation-overview" title="Link to this heading"></a></h1>
+<p>This section contains documentation about data formats used in AMOCarray. The documentation is organized to follow the data processing workflow from native formats to standardized outputs.</p>
+<section id="understanding-the-documentation-structure">
+<h2>Understanding the Documentation Structure<a class="headerlink" href="#understanding-the-documentation-structure" title="Link to this heading"></a></h2>
+<p>The data format documentation is organized around four key stages of data handling:</p>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text">Documentation Organization</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Document</p></th>
+<th class="head"><p>Purpose</p></th>
+<th class="head"><p>When to Use</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="format_orig.html"><span class="doc">Array Format (Native / Original)</span></a></p></td>
+<td><p><strong>Native formats</strong> from observing arrays</p></td>
+<td><p>Understanding original data structure from each array (RAPID, OSNAP, etc.)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="format_oceanSITES.html"><span class="doc">OceanSITES Format for AMOC Arrays</span></a></p></td>
+<td><p><strong>Standards compliance</strong> requirements</p></td>
+<td><p>Implementing OceanSITES-compliant data formats</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="format_conversion.html"><span class="doc">Converting to OceanSITES format</span></a></p></td>
+<td><p><strong>Conversion strategies</strong> from native to standard</p></td>
+<td><p>Planning how to transform native formats to standardized ones</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="format_AC1.html"><span class="doc">AMOCarray Format AC1</span></a></p></td>
+<td><p><strong>Final standardized format</strong> specification</p></td>
+<td><p>Using <code class="docutils literal notranslate"><span class="pre">amocarray.convert.to_AC1()</span></code> function output</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="workflow-overview">
+<h2>Workflow Overview<a class="headerlink" href="#workflow-overview" title="Link to this heading"></a></h2>
+<p>The typical data processing workflow follows this sequence:</p>
+<ol class="arabic simple">
+<li><p><strong>Original Data</strong> → Each observing array provides data in its own native format</p></li>
+<li><p><strong>Analysis &amp; Planning</strong> → Understand native formats and plan conversions</p></li>
+<li><p><strong>Standardization</strong> → Convert to OceanSITES-compliant intermediate format</p></li>
+<li><p><strong>Final Output</strong> → Produce AC1 standardized format for interoperability</p></li>
+</ol>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Native Formats     Conversion       OceanSITES        AC1 Format
+(format_orig) →  (format_conversion) → (format_oceanSITES) → (format_AC1)
+
+RAPID.nc
+OSNAP.nc        →  Analysis &amp;     →  Standards      →     Standardized
+MOVE.nc            Planning          Compliance            Output
+SAMBA.txt
+</pre></div>
+</div>
+</section>
+<section id="key-concepts">
+<h2>Key Concepts<a class="headerlink" href="#key-concepts" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt><strong>Array Independence</strong></dt><dd><p>Each observing array (RAPID, OSNAP, MOVE, SAMBA, etc.) provides data in different formats, units, and structures. The native format documentation captures these differences.</p>
+</dd>
+<dt><strong>Standards Compliance</strong></dt><dd><p>OceanSITES provides community standards for oceanographic data. We follow these conventions while adapting them for AMOC array requirements.</p>
+</dd>
+<dt><strong>Unified Access</strong></dt><dd><p>The AC1 format provides a consistent interface regardless of which array the data originally came from, enabling cross-array analysis and comparison.</p>
+</dd>
+<dt><strong>Metadata Preservation</strong></dt><dd><p>Throughout the conversion process, we preserve attribution to original data providers and maintain full provenance tracking.</p>
+</dd>
+</dl>
+</section>
+<section id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>New to the project?</strong> Start with <a class="reference internal" href="format_orig.html"><span class="doc">Array Format (Native / Original)</span></a> to understand the data landscape</p></li>
+<li><p><strong>Implementing readers?</strong> Use <a class="reference internal" href="format_conversion.html"><span class="doc">Converting to OceanSITES format</span></a> for conversion strategies</p></li>
+<li><p><strong>Need standards compliance?</strong> Refer to <a class="reference internal" href="format_oceanSITES.html"><span class="doc">OceanSITES Format for AMOC Arrays</span></a> for requirements</p></li>
+<li><p><strong>Using converted data?</strong> See <a class="reference internal" href="format_AC1.html"><span class="doc">AMOCarray Format AC1</span></a> for the final format specification</p></li>
+</ul>
+</section>
+<section id="questions-and-contributions">
+<h2>Questions and Contributions<a class="headerlink" href="#questions-and-contributions" title="Link to this heading"></a></h2>
+<p>If you have questions about data formats or want to contribute to format development:</p>
+<ul class="simple">
+<li><p>Check our <a class="reference external" href="https://github.com/AMOCcommunity/amocarray/issues">GitHub issues</a></p></li>
+<li><p>See the <a class="reference internal" href="developer_guide.html"><span class="doc">Developer Guide for amocarray</span></a> for contribution guidelines</p></li>
+<li><p>Review existing format documentation for similar arrays before proposing new formats</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="demo-output.html" class="btn btn-neutral float-left" title="AMOCarray demo" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="format_orig.html" class="btn btn-neutral float-right" title="Array Format (Native / Original)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Eleanor Frajka-Williams, FirstName LastName.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

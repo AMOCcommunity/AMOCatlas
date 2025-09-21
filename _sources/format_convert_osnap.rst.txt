@@ -17,7 +17,7 @@ Potential reformats:
 - **Overturning:**
   - ``MOC`` and ``MOC_ERR``: time series (dimension: ``TIME``, ``N_LOCATION``=3) where ``N_LOCATION``=3 (e.g. MOC_ALL, MOC_EAST, MOC_WEST)
 
-  - ``STREAMFUNCTION``: (``N_LEVELS``, ``TIME``, ``N_PROF``=3) - This would be from ``OSNAP_Streamfunction_201408_202006_2023.nc``and is the overturning streamfunction in sigma-theta coordinates.
+  - ``STREAMFUNCTION``: (``TIME``, ``N_LEVELS``, ``N_PROF``=3) - This would be from ``OSNAP_Streamfunction_201408_202006_2023.nc`` and is the overturning streamfunction in sigma-theta coordinates.
 
   - ``MHT`` and ``MHT_ERR``: same dimensions as ``MOC``
 

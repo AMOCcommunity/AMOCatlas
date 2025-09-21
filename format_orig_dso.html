@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OSNAP conversion thoughts &mdash; amocarray v0.0.0 documentation</title>
+  <title>DSO Original Data Format &mdash; amocarray v0.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=1078e4cb" />
@@ -92,9 +92,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">OSNAP conversion thoughts</li>
+      <li class="breadcrumb-item active">DSO Original Data Format</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/format_convert_osnap.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/format_orig_dso.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -102,32 +102,49 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="osnap-conversion-thoughts">
-<span id="convert-osnap"></span><h1>OSNAP conversion thoughts<a class="headerlink" href="#osnap-conversion-thoughts" title="Link to this heading"></a></h1>
-<p>At OSNAP, we have variables like MOC_ALL, MOC_EAST and MOC_WEST which are time series (<code class="docutils literal notranslate"><span class="pre">TIME</span></code>), but these could be represented as MOC (<code class="docutils literal notranslate"><span class="pre">N_PROF</span></code>, <code class="docutils literal notranslate"><span class="pre">TIME</span></code>) where instead of the three different variables, N_PROF=3.  This would be somewhat more difficult to communicate to the user, since LATITUDE and LONGITUDE are not single points per N_PROF but instead may represent end points of a section.</p>
-<p>Variables MOC_ALL_ERR are also provided, which could be translated to MOC_ERR (<code class="docutils literal notranslate"><span class="pre">N_PROF</span></code>, <code class="docutils literal notranslate"><span class="pre">TIME</span></code>) with LATITUDE (<code class="docutils literal notranslate"><span class="pre">N_PROF</span></code>) or LATITUDE_BOUND (<code class="docutils literal notranslate"><span class="pre">N_PROF</span></code>, 2).</p>
-<p>Heat fluxes also exist, as MHT_ALL, MHT_EAST and MHT_WEST, so these could be MHT (<code class="docutils literal notranslate"><span class="pre">N_PROF</span></code>, <code class="docutils literal notranslate"><span class="pre">TIME</span></code>).</p>
-<section id="potential-reformats">
-<h2>Potential reformats:<a class="headerlink" href="#potential-reformats" title="Link to this heading"></a></h2>
-<ul class="simple">
-<li><p><strong>Overturning:</strong>
-- <code class="docutils literal notranslate"><span class="pre">MOC</span></code> and <code class="docutils literal notranslate"><span class="pre">MOC_ERR</span></code>: time series (dimension: <code class="docutils literal notranslate"><span class="pre">TIME</span></code>, <a href="#id1"><span class="problematic" id="id2">``</span></a>N_LOCATION``=3) where <a href="#id3"><span class="problematic" id="id4">``</span></a>N_LOCATION``=3 (e.g. MOC_ALL, MOC_EAST, MOC_WEST)</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">STREAMFUNCTION</span></code>: (<code class="docutils literal notranslate"><span class="pre">TIME</span></code>, <code class="docutils literal notranslate"><span class="pre">N_LEVELS</span></code>, <code class="docutils literal notranslate"><span class="pre">N_PROF``=3)</span> <span class="pre">-</span> <span class="pre">This</span> <span class="pre">would</span> <span class="pre">be</span> <span class="pre">from</span> <span class="pre">``OSNAP_Streamfunction_201408_202006_2023.nc</span></code> and is the overturning streamfunction in sigma-theta coordinates.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">MHT</span></code> and <code class="docutils literal notranslate"><span class="pre">MHT_ERR</span></code>: same dimensions as <code class="docutils literal notranslate"><span class="pre">MOC</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">MFT</span></code> and <code class="docutils literal notranslate"><span class="pre">MFT_ERR</span></code>: same dimensions as <code class="docutils literal notranslate"><span class="pre">MOC</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">LATITUDE_BOUND</span></code>: (<code class="docutils literal notranslate"><span class="pre">N_LOCATION</span></code>, 3) - this would be the latitude bounds for the west, east and full.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">LONGITUDE_BOUND</span></code>: (<code class="docutils literal notranslate"><span class="pre">N_LOCATION</span></code>, 3) - this would be the longitude bounds for the west, east and full.</p></li>
-</ul>
-</li>
-<li><p><strong>Gridded sections:</strong> <code class="docutils literal notranslate"><span class="pre">TEMPERATURE</span></code>, <code class="docutils literal notranslate"><span class="pre">SALINITY</span></code>, <code class="docutils literal notranslate"><span class="pre">VELOCITY</span></code></p>
-<ul>
-<li><p>Dimensions: <code class="docutils literal notranslate"><span class="pre">TIME</span></code>, <code class="docutils literal notranslate"><span class="pre">N_PROF</span></code>, <code class="docutils literal notranslate"><span class="pre">N_LEVELS</span></code> (71, depth=199, longitude=256)</p></li>
-<li><p>Coordinates: <code class="docutils literal notranslate"><span class="pre">LATITUDE</span></code>, <code class="docutils literal notranslate"><span class="pre">LONGITUDE</span></code> (<code class="docutils literal notranslate"><span class="pre">N_PROF``=longitude</span> <span class="pre">grid,),</span> <span class="pre">``TIME</span></code> in datetime.  And <code class="docutils literal notranslate"><span class="pre">DEPTH</span></code> (<code class="docutils literal notranslate"><span class="pre">N_LEVELS</span></code>,)</p></li>
-<li><p>Variables: <code class="docutils literal notranslate"><span class="pre">TEMPERATURE</span></code>, <code class="docutils literal notranslate"><span class="pre">SALINITY</span></code>, <code class="docutils literal notranslate"><span class="pre">VELOCITY</span></code> (<code class="docutils literal notranslate"><span class="pre">TIME</span></code>, <code class="docutils literal notranslate"><span class="pre">N_PROF</span></code>, <code class="docutils literal notranslate"><span class="pre">N_LEVELS</span></code>).  Attributes would specify units and the version of temperature/salinity.   and specifying what version of temperature/salinity.   The flags would have an attribute describing what the values mean (e.g. “1=good, 2=bad, etc”).</p></li>
-</ul>
-</li>
-</ul>
+  <section id="dso-original-data-format">
+<span id="array-dso"></span><h1>DSO Original Data Format<a class="headerlink" href="#dso-original-data-format" title="Link to this heading"></a></h1>
+<p>The Denmark Strait Overflow (DSO) monitoring provides continuous time series of dense water overflow transport through Denmark Strait, a critical component of the Atlantic meridional overturning circulation.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Documentation stub</strong>: This section needs to be completed with detailed format specifications.</p>
+<p>See GitHub issue for DSO data format documentation.</p>
+</div>
+<section id="dso-transport-hourly-1996-2021-nc">
+<h2>DSO_transport_hourly_1996_2021.nc<a class="headerlink" href="#dso-transport-hourly-1996-2021-nc" title="Link to this heading"></a></h2>
+<p>This dataset contains hourly time series of Denmark Strait overflow transport from 1996 to 2021.</p>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text">Variables (preliminary)</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 12.9%" />
+<col style="width: 23.7%" />
+<col style="width: 15.1%" />
+<col style="width: 10.8%" />
+<col style="width: 37.6%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Dimensions</p></th>
+<th class="head"><p>Shape</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">time</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">time</span></code></p></td>
+<td><p>(TBD,)</p></td>
+<td><p>datetime</p></td>
+<td><p>Time coordinate (hourly)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">DSO</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">time</span></code></p></td>
+<td><p>(TBD,)</p></td>
+<td><p>Sv</p></td>
+<td><p>Denmark Strait overflow volume transport</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 

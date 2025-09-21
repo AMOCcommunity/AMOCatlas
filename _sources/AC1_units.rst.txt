@@ -11,7 +11,7 @@ SI base units (XML) are `here <https://docs.unidata.ucar.edu/udunits/current/udu
 
 Derived units (XML) are `here <https://docs.unidata.ucar.edu/udunits/current/udunits2-derived.xml>`_.
 
-Non-SI units including sverdrup, **where apparently we cannot use Sv because it also means "sievert" in the SI unit-system**.
+Non-SI units including Sverdrup (full spelling used to avoid confusion with "Sv" for sievert in the SI unit system).
 
 
 Variables
@@ -134,14 +134,12 @@ Transport Units
 +-------------------------+------------+-----------------------------+
 | Name                    | Symbol     | Definition                  |
 +=========================+============+=============================+
-| sverdrup,               | Sv*        | 1e6 m³/s                    |
-| **Sverdrup**            |            | alias for Sv                |
+| **Sverdrup**            | Sverdrup   | 1e6 m³/s                    |
+|                         |            | (full spelling preferred)   |
 +-------------------------+------------+-----------------------------+
 | cubic_meter_per_second  | m³/s,      | Ocean volume transport      |
 |                         | **m3 s-1** |                             |
 +-------------------------+------------+-----------------------------+
-
-***Not** recommended since it conflicts with SI "sievert".
 
 Energy and Power Units
 ~~~~~~~~~~~~~~~~~
@@ -200,12 +198,12 @@ Mapping of Custom Conversions
 +------------------+------------------+------------------+--------------------------+
 | g m-3            | kg m-3           | 0.001            | Density                  |
 +------------------+------------------+------------------+--------------------------+
-| Sverdrup         | Sv*              | 1                | Transport                |
+| Sverdrup         | Sverdrup         | 1                | Transport                |
 +------------------+------------------+------------------+--------------------------+
 | W, J             | watt, joule      | base units       | Energy and Power         |
 +------------------+------------------+------------------+--------------------------+
 
-***Not** recommended since it conflicts with SI "sievert".
+**Note:** Full "Sverdrup" spelling used to avoid confusion with "Sv" (sievert).
 
 
 SI Unit Prefixes

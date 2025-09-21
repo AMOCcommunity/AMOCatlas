@@ -19,6 +19,7 @@
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Units Reference: for AC1" href="AC1_units.html" />
@@ -47,6 +48,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About AMOCarray</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Demo notebook</span></p>
@@ -55,6 +57,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Data format</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="format_overview.html">Data Format Documentation Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="format_orig.html">Array Format (Native / Original)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="format_oceanSITES.html">OceanSITES Format for AMOC Arrays</a></li>
 <li class="toctree-l1"><a class="reference internal" href="format_conversion.html">Converting to OceanSITES format</a></li>
@@ -509,7 +512,7 @@
 <p><strong>Description</strong>: Volume transport across a specified line (e.g., a latitude section).</p>
 <ul class="simple">
 <li><p><strong>CF Standard Name</strong>: <cite>ocean_volume_transport_across_line</cite></p></li>
-<li><p><strong>Suggested Units</strong>: <cite>m³ s⁻¹</cite></p></li>
+<li><p><strong>Suggested Units</strong>: <cite>m3 s-1</cite></p></li>
 <li><p><strong>Vocabulary</strong>: NERC P07 Concept ID W946809H</p></li>
 <li><p><strong>Vocabulary (URI)</strong>: <a class="reference external" href="http://vocab.nerc.ac.uk/collection/P07/current/W946809H/">http://vocab.nerc.ac.uk/collection/P07/current/W946809H/</a></p></li>
 <li><p><strong>SeaDataNet Parameter</strong>: [Insert if applicable]</p></li>
@@ -524,7 +527,7 @@
 <p><strong>Description</strong>: Net vertical and meridional circulation of the ocean, excluding parameterized eddy components.</p>
 <ul class="simple">
 <li><p><strong>CF Standard Name</strong>: <cite>ocean_meridional_overturning_streamfunction</cite></p></li>
-<li><p><strong>Suggested Units</strong>: <cite>m³ s⁻¹</cite></p></li>
+<li><p><strong>Suggested Units</strong>: <cite>m3 s-1</cite></p></li>
 <li><p><strong>Vocabulary</strong>: NERC P07 Concept ID CFSN0466</p></li>
 <li><p><strong>Vocabulary (URI)</strong>: <a class="reference external" href="https://vocab.nerc.ac.uk/collection/P07/current/CFSN0466/">https://vocab.nerc.ac.uk/collection/P07/current/CFSN0466/</a></p></li>
 <li><p><strong>SeaDataNet Parameter</strong>: Not available</p></li>
@@ -540,7 +543,7 @@
 <p><strong>Description</strong>: Overturning streamfunction including all resolved and parameterized mass transport processes.</p>
 <ul class="simple">
 <li><p><strong>CF Standard Name</strong>: <cite>ocean_meridional_overturning_mass_streamfunction</cite></p></li>
-<li><p><strong>Suggested Units</strong>: <cite>kg s⁻¹</cite></p></li>
+<li><p><strong>Suggested Units</strong>: <cite>kg s-1</cite></p></li>
 <li><p><strong>Vocabulary</strong>: NERC P07 Concept ID CF12N554</p></li>
 <li><p><strong>Vocabulary (URI)</strong>: <a class="reference external" href="http://vocab.nerc.ac.uk/collection/P07/current/CF12N554/">http://vocab.nerc.ac.uk/collection/P07/current/CF12N554/</a></p></li>
 <li><p><strong>SeaDataNet Parameter</strong>: [Insert if applicable]</p></li>
@@ -558,7 +561,7 @@
 <p><strong>Description</strong>: Total northward transport of freshwater.</p>
 <ul class="simple">
 <li><p><strong>CF Standard Name</strong>: <cite>northward_ocean_freshwater_transport</cite></p></li>
-<li><p><strong>Suggested Units</strong>: <cite>m³ s⁻¹</cite> (often presented as Sv freshwater equivalents)</p></li>
+<li><p><strong>Suggested Units</strong>: <cite>m3 s-1</cite> (often presented as Sverdrup freshwater equivalents)</p></li>
 <li><p><strong>Vocabulary</strong>: NERC P07 Concept ID CFSN0507</p></li>
 <li><p><strong>Vocabulary (URI)</strong>: <a class="reference external" href="http://vocab.nerc.ac.uk/collection/P07/current/CFSN0507/">http://vocab.nerc.ac.uk/collection/P07/current/CFSN0507/</a></p></li>
 <li><p><strong>SeaDataNet Parameter</strong>: Not available</p></li>
@@ -574,7 +577,7 @@
 <p><strong>Description</strong>: Freshwater transport component associated with the overturning circulation.</p>
 <ul class="simple">
 <li><p><strong>CF Standard Name</strong>: <cite>northward_ocean_freshwater_transport_due_to_overturning</cite></p></li>
-<li><p><strong>Suggested Units</strong>: <cite>m³ s⁻¹</cite> or <cite>Sv freshwater equivalent</cite></p></li>
+<li><p><strong>Suggested Units</strong>: <cite>m3 s-1</cite> or <cite>Sverdrup freshwater equivalent</cite></p></li>
 <li><p><strong>Vocabulary</strong>: NERC P07 Concept ID CFSN0482</p></li>
 <li><p><strong>Vocabulary (URI)</strong>: <a class="reference external" href="http://vocab.nerc.ac.uk/collection/P07/current/CFSN0482/">http://vocab.nerc.ac.uk/collection/P07/current/CFSN0482/</a></p></li>
 <li><p><strong>SeaDataNet Parameter</strong>: Not available</p></li>
@@ -590,7 +593,7 @@
 <p><strong>Description</strong>: Component of freshwater transport from horizontal gyre-scale circulation.</p>
 <ul class="simple">
 <li><p><strong>CF Standard Name</strong>: <cite>northward_ocean_freshwater_transport_due_to_gyre</cite></p></li>
-<li><p><strong>Suggested Units</strong>: <cite>m³ s⁻¹</cite> or <cite>Sv freshwater equivalent</cite></p></li>
+<li><p><strong>Suggested Units</strong>: <cite>m3 s-1</cite> or <cite>Sverdrup freshwater equivalent</cite></p></li>
 <li><p><strong>Vocabulary</strong>: NERC P07 Concept ID CFSN0510</p></li>
 <li><p><strong>Vocabulary (URI)</strong>: <a class="reference external" href="http://vocab.nerc.ac.uk/collection/P07/current/CFSN0510/">http://vocab.nerc.ac.uk/collection/P07/current/CFSN0510/</a></p></li>
 <li><p><strong>SeaDataNet Parameter</strong>: Not available</p></li>
