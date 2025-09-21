@@ -1,0 +1,10 @@
+name: amocarray
+channels:
+  - conda-forge
+dependencies:
+  - python>=3.9
+  - pip
+  - pandoc
+  - pip:
+      - -r requirements.txt
+      - -r requirements-dev.txt

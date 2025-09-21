@@ -1,20 +1,5 @@
-# Core scientific stack
-numpy>=1.23
-pandas>=2.0
-xarray>=2023.12.0
-scipy>=1.10
-netcdf4>=1.6
-
-# Oceanographic tools
-#gsw>=3.6.16
-#cmocean>=2.0  # optional, confirm usage
-#cartopy>=0.22  # optional, confirm usage
-
-# Progress bar (optional)
-#tqdm>=4.66  # optional, confirm usage
-
-# Plotting
-matplotlib>=3.7
+# Pull in the base stack so we don't duplicate pins here
+-r requirements.txt
 
 # Jupyter and notebooks
 jupyterlab>=4.0
@@ -30,7 +15,7 @@ myst-parser>=2.0
 
 # Testing
 pytest>=8.0
-pytest-cov>=4.1  # optional, if you use coverage
+pytest-cov>=4.1  # optional
 
 # Code quality
 black>=24.0
