@@ -1,8 +1,10 @@
 from numbers import Number
-from typing import Union
+from typing import Union, Any, Dict
 
 import numpy as np
 import xarray as xr
+import yaml
+from pathlib import Path
 
 from amocarray import logger
 
@@ -68,3 +70,71 @@ def save_dataset(ds: xr.Dataset, output_file: str = "../test.nc") -> bool:
             ]
             print("Attributes with dtype float64:", float_attrs)
             return False
+
+
+
+def export_attributes_to_yaml(
+        dataset: xr.Dataset,
+        output_path: str | Path = None,
+        file_name: str = "attributes.yaml",
+        indent: int = 2,
+        sort_keys: bool = False
+) -> Dict[str, Any]:
+    """
+    Export global and variable attributes from an xarray Dataset to YAML format.
+
+    Parameters
+    ----------
+    dataset : xr.Dataset
+        Input xarray Dataset containing attributes
+    output_path : str | Paths, default=None
+        Directory path to save the YAML file. If None, returns dict without writing.
+    file_name : str, default="attributes.yaml"
+        Name of the output YAML file
+    indent : int, default=2
+        Indentation level for the YAML file
+    sort_keys : bool, default=False
+        Whether to sort keys alphabetically in the output
+
+    Returns
+    -------
+    Dict[str, Any]
+        Dictionary containing all attributes in hierarchical structure
+
+    Examples
+    --------
+    >>> ds = xr.Dataset(
+    ...     {"temp": ("x", [1, 2], {"units": "K", "long_name": "Temperature"})},
+    ...     attrs={"title": "Example Dataset", "version": "1.0"}
+    ... )
+    >>> export_attributes_to_yaml(ds, "metadata/")
+    """
+
+    attributes_dict = {
+        "global_attributes": dict(dataset.attrs),
+        "variables": {}
+    }
+
+
+    for var_name in dataset.variables:
+        var = dataset[var_name]
+        attributes_dict["variables"][var_name] = dict(var.attrs)
+
+    # Write to YAML file if output path is specified
+    if output_path is not None:
+        output_path = Path(output_path)
+        output_path.mkdir(parents=True, exist_ok=True)
+        output_file = output_path / file_name
+
+        with open(output_file, 'w') as f:
+            yaml.dump(
+                attributes_dict,
+                stream=f,
+                indent=indent,
+                sort_keys=sort_keys,
+                default_flow_style=False,
+                allow_unicode=True
+            )
+
+    return attributes_dict
+

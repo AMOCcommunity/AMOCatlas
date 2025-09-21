@@ -12,6 +12,7 @@ sphinx>=7.2
 sphinx-rtd-theme>=2.0
 pypandoc>=1.11  # optional, confirm usage
 myst-parser>=2.0
+PyYAML>=6.0.2
 
 # Testing
 pytest>=8.0
