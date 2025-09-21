@@ -112,10 +112,14 @@
 <span class="n">log</span> <span class="o">=</span> <span class="n">logger</span><span class="o">.</span><span class="n">log</span>  <span class="c1"># ✅ use the global logger</span>
 
 <span class="c1"># Default source and file list</span>
-<span class="n">MOVE_DEFAULT_SOURCE</span> <span class="o">=</span> <span class="s2">&quot;https://dods.ndbc.noaa.gov/thredds/fileServer/oceansites/DATA_GRIDDED/MOVE/&quot;</span>
-<span class="n">MOVE_DEFAULT_FILES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;OS_MOVE_20000206-20221014_DPR_VOLUMETRANSPORT.nc&quot;</span><span class="p">,</span>
-                      <span class="s2">&quot;OS_MOVE_20000101-20221021_GRD_CURRENTS-AT-SITES-MOVE3-MOVE4.nc&quot;</span><span class="p">,</span>
-                      <span class="s2">&quot;OS_MOVE_20000101-20221018_GRD_TEMPERATURE-SALINITY-AT-SITES-MOVE1-MOVE3.nc&quot;</span><span class="p">]</span>
+<span class="n">MOVE_DEFAULT_SOURCE</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">&quot;https://dods.ndbc.noaa.gov/thredds/fileServer/oceansites/DATA_GRIDDED/MOVE/&quot;</span>
+<span class="p">)</span>
+<span class="n">MOVE_DEFAULT_FILES</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;OS_MOVE_20000206-20221014_DPR_VOLUMETRANSPORT.nc&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;OS_MOVE_20000101-20221021_GRD_CURRENTS-AT-SITES-MOVE3-MOVE4.nc&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;OS_MOVE_20000101-20221018_GRD_TEMPERATURE-SALINITY-AT-SITES-MOVE1-MOVE3.nc&quot;</span><span class="p">,</span>
+<span class="p">]</span>
 <span class="n">MOVE_TRANSPORT_FILES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;OS_MOVE_20000206-20221014_DPR_VOLUMETRANSPORT.nc&quot;</span><span class="p">]</span>
 
 <span class="c1"># Global metadata for MOVE</span>
@@ -214,7 +218,6 @@
             <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Failed to open NetCDF file: </span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
             <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to open NetCDF file: </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-
         <span class="c1"># Clean up time variable</span>
         <span class="k">if</span> <span class="s2">&quot;TIME&quot;</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">variables</span><span class="p">:</span>
             <span class="n">time_raw</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s2">&quot;TIME&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
@@ -222,7 +225,9 @@
             <span class="n">n_invalid</span> <span class="o">=</span> <span class="p">(</span><span class="o">~</span><span class="n">valid</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 
             <span class="k">if</span> <span class="n">n_invalid</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Found </span><span class="si">{</span><span class="n">n_invalid</span><span class="si">}</span><span class="s2"> invalid time values in </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">; replacing with NaN.&quot;</span><span class="p">)</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Found </span><span class="si">{</span><span class="n">n_invalid</span><span class="si">}</span><span class="s2"> invalid time values in </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">; replacing with NaN.&quot;</span>
+                <span class="p">)</span>
 
             <span class="n">clean_time</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">valid</span><span class="p">,</span> <span class="n">time_raw</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
             <span class="n">base</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">datetime64</span><span class="p">(</span><span class="s2">&quot;1950-01-01&quot;</span><span class="p">)</span>
@@ -230,23 +235,26 @@
 
             <span class="c1"># Replace the time in the dataset</span>
             <span class="n">ds</span><span class="p">[</span><span class="s2">&quot;TIME&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;TIME&quot;</span><span class="p">,</span> <span class="n">time_converted</span><span class="p">)</span>
-            <span class="n">ds</span><span class="p">[</span><span class="s2">&quot;TIME&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
-                <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="s2">&quot;days since 1950-01-01&quot;</span><span class="p">,</span>
-            <span class="p">})</span>
+            <span class="n">ds</span><span class="p">[</span><span class="s2">&quot;TIME&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="s2">&quot;days since 1950-01-01&quot;</span><span class="p">,</span>
+                <span class="p">}</span>
+            <span class="p">)</span>
             <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Converted time using base 1950-01-01 for </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No TIME variable found in </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-        <span class="c1"># Filter out NaT time values and corresponding dataset entries</span>
+            <span class="c1"># Filter out NaT time values and corresponding dataset entries</span>
             <span class="n">time_pd</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="s2">&quot;TIME&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
             <span class="n">valid_time_mask</span> <span class="o">=</span> <span class="o">~</span><span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">time_pd</span><span class="p">)</span>
 
             <span class="k">if</span> <span class="p">(</span><span class="o">~</span><span class="n">valid_time_mask</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
                 <span class="n">n_removed</span> <span class="o">=</span> <span class="p">(</span><span class="o">~</span><span class="n">valid_time_mask</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-                <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Removing </span><span class="si">{</span><span class="n">n_removed</span><span class="si">}</span><span class="s2"> entries with invalid NaT time values from </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Removing </span><span class="si">{</span><span class="n">n_removed</span><span class="si">}</span><span class="s2"> entries with invalid NaT time values from </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
 
                 <span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">TIME</span><span class="o">=</span><span class="n">valid_time_mask</span><span class="p">)</span>
-
 
         <span class="c1"># Attach metadata</span>
         <span class="n">file_metadata</span> <span class="o">=</span> <span class="n">MOVE_FILE_METADATA</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="p">{})</span>
