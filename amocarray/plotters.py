@@ -426,7 +426,7 @@ def plot_monthly_anomalies(**kwargs) -> tuple[plt.Figure, list[plt.Axes]]:
     ]
 
     # Extract and sort data/labels by name to ensure consistent ordering
-    names = [  "dso", "osnap", "fortyone", "rapid", "fw2015", "move", "samba"]
+    names = ["dso", "osnap", "fortyone", "rapid", "fw2015", "move", "samba"]
     datasets = [monthly_resample(kwargs[f"{name}_data"]) for name in names]
     labels = [kwargs[f"{name}_label"] for name in names]
 
