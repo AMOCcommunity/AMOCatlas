@@ -365,7 +365,7 @@ ocean_volume_transport_across_line (TRANSPORT)
 **Description**: Volume transport across a specified line (e.g., a latitude section).
 
 - **CF Standard Name**: `ocean_volume_transport_across_line`
-- **Suggested Units**: `m³ s⁻¹`
+- **Suggested Units**: `m3 s-1`
 - **Vocabulary**: NERC P07 Concept ID W946809H
 - **Vocabulary (URI)**: http://vocab.nerc.ac.uk/collection/P07/current/W946809H/
 - **SeaDataNet Parameter**: [Insert if applicable]
@@ -380,7 +380,7 @@ ocean_meridional_overturning_streamfunction (MOC)
 **Description**: Net vertical and meridional circulation of the ocean, excluding parameterized eddy components.
 
 - **CF Standard Name**: `ocean_meridional_overturning_streamfunction`
-- **Suggested Units**: `m³ s⁻¹`
+- **Suggested Units**: `m3 s-1`
 - **Vocabulary**: NERC P07 Concept ID CFSN0466
 - **Vocabulary (URI)**: https://vocab.nerc.ac.uk/collection/P07/current/CFSN0466/
 - **SeaDataNet Parameter**: Not available
@@ -396,7 +396,7 @@ ocean_meridional_overturning_mass_streamfunction
 **Description**: Overturning streamfunction including all resolved and parameterized mass transport processes.
 
 - **CF Standard Name**: `ocean_meridional_overturning_mass_streamfunction`
-- **Suggested Units**: `kg s⁻¹`
+- **Suggested Units**: `kg s-1`
 - **Vocabulary**: NERC P07 Concept ID CF12N554
 - **Vocabulary (URI)**: http://vocab.nerc.ac.uk/collection/P07/current/CF12N554/
 - **SeaDataNet Parameter**: [Insert if applicable]
@@ -416,7 +416,7 @@ northward_ocean_freshwater_transport (FWT)
 **Description**: Total northward transport of freshwater.
 
 - **CF Standard Name**: `northward_ocean_freshwater_transport`
-- **Suggested Units**: `m³ s⁻¹` (often presented as Sv freshwater equivalents)
+- **Suggested Units**: `m3 s-1` (often presented as Sverdrup freshwater equivalents)
 - **Vocabulary**: NERC P07 Concept ID CFSN0507
 - **Vocabulary (URI)**: http://vocab.nerc.ac.uk/collection/P07/current/CFSN0507/
 - **SeaDataNet Parameter**: Not available
@@ -432,7 +432,7 @@ northward_ocean_freshwater_transport_due_to_overturning (FWT_OV)
 **Description**: Freshwater transport component associated with the overturning circulation.
 
 - **CF Standard Name**: `northward_ocean_freshwater_transport_due_to_overturning`
-- **Suggested Units**: `m³ s⁻¹` or `Sv freshwater equivalent`
+- **Suggested Units**: `m3 s-1` or `Sverdrup freshwater equivalent`
 - **Vocabulary**: NERC P07 Concept ID CFSN0482
 - **Vocabulary (URI)**: http://vocab.nerc.ac.uk/collection/P07/current/CFSN0482/
 - **SeaDataNet Parameter**: Not available
@@ -448,7 +448,7 @@ northward_ocean_freshwater_transport_due_to_gyre (FWT_GYRE)
 **Description**: Component of freshwater transport from horizontal gyre-scale circulation.
 
 - **CF Standard Name**: `northward_ocean_freshwater_transport_due_to_gyre`
-- **Suggested Units**: `m³ s⁻¹` or `Sv freshwater equivalent`
+- **Suggested Units**: `m3 s-1` or `Sverdrup freshwater equivalent`
 - **Vocabulary**: NERC P07 Concept ID CFSN0510
 - **Vocabulary (URI)**: http://vocab.nerc.ac.uk/collection/P07/current/CFSN0510/
 - **SeaDataNet Parameter**: Not available

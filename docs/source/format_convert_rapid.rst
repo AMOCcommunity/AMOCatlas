@@ -14,11 +14,11 @@ Check CF conventions for standard names: https://github.com/cf-convention/vocabu
 
 - ``moc_vertical.nc``:
 
-  - **Convert to OceanSITES:** Here, we should change the dimension to all-caps ``DEPTH`` and ``TIME``.  Units on the streamfunction should be `sverdrup` to de-confliict with `Sv` for sievert. According to OceanSITES, the order of the variables should be  T, Z, Y, X, so the streamfunction should be (``TIME``, ``DEPTH``).  The filename should be something like ``OS_RAPID_YYYYMMDD-YYYYMMDD_DPR_moc_vertical.nc``. Here, we are using the ``OS`` prefix, ``RAPID`` as the PlatformCode, the date start and end for the DeploymentCode, and the data mode is ``DPR`` for derived product.  The additional text after is the original filename, ``moc_vertical.nc``.
+  - **Convert to OceanSITES:** Here, we should change the dimension to all-caps ``DEPTH`` and ``TIME``.  Units on the streamfunction should be `Sverdrup` (full spelling to avoid confusion with `Sv` for sievert). According to OceanSITES, the order of the variables should be T, Z, Y, X, so the streamfunction should be (``TIME``, ``DEPTH``).  The filename should be something like ``OS_RAPID_YYYYMMDD-YYYYMMDD_DPR_mocvertical_T12H.nc``. Here, we are using the ``OS`` prefix, ``RAPID`` as the PlatformCode, the date start and end for the DeploymentCode, and the data mode is ``DPR`` for derived product.  The PARTX field combines the content type and time resolution.
 
 - ``ts_gridded.nc``:
 
-- **Convert to OceanSITES:** Dimensions should be ``TIME`` and ``DEPTH``, where the coordinate name can be ``PRES`` for ``pressure``.  The featureType global attribute can be ``timeSeriesProfile``.
+- **Convert to OceanSITES:** Dimensions should be ``TIME`` and ``DEPTH`` (in T, Z order), where the coordinate name can be ``PRES`` for ``pressure``.  The featureType global attribute can be ``timeSeriesProfile``.
 
 - ``moc_transports.nc``:
 
@@ -34,11 +34,11 @@ Potential reformats:
 - **Overturning:**
   - ``MOC``: time series (dimension: ``TIME``)
 
-  - ``STREAMFUNCTION``: (``DEPTH``, ``TIME``) - this is the vertical profile of MOC (originally ``stream_function_mar`` in ``moc_vertical.nc``, note that this extends deeper than the depth grid in ``ts_gridded.nc`` due to the incorporation of an AABW profile).
+  - ``STREAMFUNCTION``: (``TIME``, ``DEPTH``) - this is the vertical profile of MOC (originally ``stream_function_mar`` in ``moc_vertical.nc``, note that this extends deeper than the depth grid in ``ts_gridded.nc`` due to the incorporation of an AABW profile).
 
 - **Profiles:** ``TEMPERATURE``, ``SALINITY``, vertically gridded at mooring locations.
 
-  - Dimensions: ``TIME``, ``N_PROF``, ``N_LEVELS`` (242,1)
+  - Dimensions: ``TIME``, ``N_PROF``, ``N_LEVELS`` (T, Y/X, Z order)
 
   - Coordinates: ``LATITUDE``, ``LONGITUDE`` (``N_PROF``=5,) - these would be the locations of the profiles, which are current in the "long name" for each of the ``TG_west``, ``TG_east``, ``TG_wb3``, ``TG_MARWEST``, ``TG_mareast``.  etc. ``TIME`` in datetime.  And ``PRESSURE`` (``N_LEVELS``,) - this is the depth grid in ``ts_gridded.nc``.
 
@@ -46,7 +46,7 @@ Potential reformats:
 
 - **Gridded sections:** ``TEMPERATURE``, ``SALINITY``, ``VELOCITY``
 
-  - Dimensions: ``TIME``, ``N_PROF``, ``N_LEVELS`` (13000, longitude grid, 242?)
+  - Dimensions: ``TIME``, ``N_PROF``, ``N_LEVELS`` (T, Y/X, Z order)
 
   - Coordinates: ``LATITUDE``, ``LONGITUDE`` (``N_PROF``=longitude grid,), ``TIME`` in datetime.  And ``PRESSURE`` (``N_LEVELS``,)
 
@@ -54,7 +54,7 @@ Potential reformats:
 
 - **Layer transports:**
 
-  - Dimensions: ``TIME``, ``N_LEVELS`` (13779, 5)
+  - Dimensions: ``TIME``, ``N_LEVELS`` (T, Z order)
 
   - Coordinates: ``LATITUDE``, ``LONGITUDE_BOUNDS`` (scalar, x2), ``TIME`` in datetime.  And ``DEPTH_BOUND`` (``N_LEVELS``, 2) - this would be the depth bounds for the transport layers.
 
@@ -62,7 +62,7 @@ Potential reformats:
 
 - **Component transports:**
 
-  - Dimensions: ``TIME``, ``N_COMPONENT`` (13779, 5)
+  - Dimensions: ``TIME``, ``N_COMPONENT`` (T, component order)
 
   - Coordinates: ``LATITUDE``, ``LONGITUDE_BOUNDS`` (scalar, x2), ``TIME`` in datetime.  ``N_COMPONENT`` for the number of components.
 

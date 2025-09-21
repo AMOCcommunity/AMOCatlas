@@ -15,6 +15,7 @@ For recommendations or bug reports, please visit https://github.com/AMOCcommunit
    :maxdepth: 2
    :caption: Getting started
 
+   about
    installation.md
 
 
@@ -30,6 +31,7 @@ For recommendations or bug reports, please visit https://github.com/AMOCcommunit
    :maxdepth: 2
    :caption: Data format
 
+   format_overview
    format_orig
    format_oceanSITES
    format_conversion

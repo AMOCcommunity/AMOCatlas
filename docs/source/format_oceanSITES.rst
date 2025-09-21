@@ -42,7 +42,7 @@ File naming for array data products
 
   - RAPID (PSPANCode = RAPID):
     - `ts_gridded.nc` has individual locations with timeSeriesProfile.  The `PARTX` for OceanSITES will be `gridded_mooring`, and ContentType = GRD.
-    - `moc_vertial.nc` and `moc_transports.nc` have the streamfunction, and time series of component transports at 12-hour intervals.  The `PARTX` for OceanSITES will combine both and this will be `transports_T12H.nc`, and ContentType = DPR.
+    - `moc_vertical.nc` and `moc_transports.nc` have the streamfunction, and time series of component transports at 12-hour intervals.  The `PARTX` for OceanSITES will combine both and this will be `transports_T12H.nc`, and ContentType = DPR.
     - `2d_gridded.nc` has the 2D gridded data.  The `PARTX` for OceanSITES will be `sections_T10D` for monthly, and ContentType = GRD.
     - `meridional_transports.nc` has the MOC transport in depth and sigma coordinates, as well as MHT and MFT on a 10-day grid. The `PARTX` for OceanSITES will be `transports_T10D.nc`, and ContentType = DPR.
 
@@ -373,8 +373,8 @@ The following attributes are recommended for inclusion in all OceanSITES-complia
      - RS
    * - ``publisher_name``
      - Name of the person responsible for metadata and formatting
-     - **ex.:** http://github.com/AMOCcommunity/amocarray
-     - **S**
+     - **ex.:** "AMOCarray Development Team"
+     - *S*
    * - ``publisher_url``
      - Web address of the institution or data publisher
      - **ex.:** "http://github.com/AMOCcommunity/amocarray"
@@ -422,7 +422,7 @@ The following attributes are recommended for inclusion in all OceanSITES-complia
      - *S*
    * - ``history``
      - Provides an audit trail for modifications to the original data. It should contain a separate line for each modification, with each line beginning with a timestamp, and including user name, modification name, and modification arguments. The time stamp should follow the format outlined in the note on time formats below. (NUG)
-     - **ex.:** history= “2012-04-11T08:35:00Z data collected, A. Meyer;
+     - **ex.:** history= "2012-04-11T08:35:00Z data collected, A. Meyer; 2012-04-12T10:15:00Z quality control applied, B. Smith"
      - *S*
    * - ``processing_level``
      - Level of processing and quality control applied to data. Preferred values are listed in reference table 3.
