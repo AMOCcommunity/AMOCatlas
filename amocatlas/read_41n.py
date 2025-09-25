@@ -5,9 +5,9 @@ import xarray as xr
 import datetime
 
 # Import the modules used
-from amocarray import logger, utilities
-from amocarray.logger import log_error, log_info, log_warning
-from amocarray.utilities import apply_defaults
+from amocatlas import logger, utilities
+from amocatlas.logger import log_error, log_info, log_warning
+from amocatlas.utilities import apply_defaults
 
 log = logger.log  # Use the global logger
 
@@ -23,7 +23,7 @@ A41N_DEFAULT_SOURCE = "https://zenodo.org/records/14681441/files/"
 A41N_METADATA = {
     "project": "Atlantic Meridional Overturning Circulation Near 41N from Altimetry and Argo Observations",
     "weblink": "https://zenodo.org/records/14681441",
-    "comment": "Dataset accessed and processed via http://github.com/AMOCcommunity/amocarray",
+    "comment": "Dataset accessed and processed via http://github.com/AMOCcommunity/amocatlas",
     "acknowledgement": "This study has been conducted using E.U. Copernicus Marine Service Information; https://doi.org/10.48670/moi-00149  and https://doi.org/10.48670/moi-00148. These data were collected and made freely available by the International Argo Program and the national programs that contribute to it.  (https://argo.ucsd.edu,  https://www.ocean-ops.org). The Argo Program is part of the Global Ocean Observing System.",
     "doi": "10.5281/zenodo.8170365",
     "paper": "Willis, J. K., and Hobbs, W. R., Atlantic Meridional Overturning Circulation Near 41N from Altimetry and Argo Observations. Dataset access [2025-05-27] at 10.5281/zenodo.8170366.",

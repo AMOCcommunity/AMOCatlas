@@ -4,7 +4,7 @@ from typing import Union
 import numpy as np
 import xarray as xr
 
-from amocarray import logger
+from amocatlas import logger
 
 log = logger.log  # Use the global logger
 

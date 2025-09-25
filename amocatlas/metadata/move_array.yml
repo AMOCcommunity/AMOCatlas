@@ -3,7 +3,7 @@ metadata:
   description: "MOVE transport estimates dataset from UCSD mooring project"
   project: "Meridional Overturning Variability Experiment (MOVE)"
   weblink: https://mooring.ucsd.edu/move/
-  comment: Dataset accessed and processed via http://github.com/AMOCcommunity/amocarray
+  comment: Dataset accessed and processed via http://github.com/AMOCcommunity/amocatlas
   acknowledgement: >
     The MOVE project is made possible with funding from the NOAA Climate Program Office under award NA15OAR4320071. Initial funding came from the German Bundesministerium fuer Bildung und Forschung.
   license: >
@@ -35,7 +35,7 @@ metadata:
 files:
   OS_MOVE_TRANSPORTS.nc:
     source_file: OS_MOVE_TRANSPORTS.nc
-    source_path: /Users/eddifying/Cloudfree/gitlab-cloudfree/amocarray/data/OS_MOVE_TRANSPORTS.nc
+    source_path: /Users/eddifying/Cloudfree/gitlab-cloudfree/amocatlas/data/OS_MOVE_TRANSPORTS.nc
     data_product: "MOVE transport time series"
     variable_mapping: {}
     variables:

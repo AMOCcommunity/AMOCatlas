@@ -11,8 +11,8 @@ import pandas as pd
 import requests
 import xarray as xr
 
-from amocarray import logger
-from amocarray.logger import log_debug
+from amocatlas import logger
+from amocatlas.logger import log_debug
 
 log = logger.log
 from importlib import resources
@@ -160,7 +160,7 @@ def load_array_metadata(array_name: str) -> dict:
     """
     try:
         with (
-            resources.files("amocarray.metadata")
+            resources.files("amocatlas.metadata")
             .joinpath(f"{array_name.lower()}_array.yml")
             .open("r") as f
         ):

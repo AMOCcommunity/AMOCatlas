@@ -2,7 +2,7 @@ metadata:
   program: RAPID
   title: "Atlantic Meridional Overturning Circulation (AMOC) Heat Transport Time Series between April 2004 and December 2020 at 26.5°N"
   weblink: http://mocha.rsmas.miami.edu/mocha
-  comment: Dataset accessed and processed via http://github.com/AMOCcommunity/amocarray
+  comment: Dataset accessed and processed via http://github.com/AMOCcommunity/amocatlas
   acknowledgement: >
     Data from the RAPID-MOCHA program are funded by the U.S. National Science Foundation and U.K. Natural Environment Research Council and are freely available at www.rapid.ac.uk/data/data-download and mocha.rsmas.miami.edu/mocha
   license: ODC-By

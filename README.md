@@ -1,12 +1,12 @@
-# AMOCarray
+# AMOCatlas
 
 [![PyPI version](https://badge.fury.io/py/amocarray.svg)](https://badge.fury.io/py/amocarray)
 [![Python](https://img.shields.io/pypi/pyversions/amocarray.svg)](https://pypi.org/project/amocarray/)
-[![License](https://img.shields.io/github/license/AMOCcommunity/amocarray.svg)](LICENSE)
+[![License](https://img.shields.io/github/license/AMOCcommunity/amocatlas.svg)](LICENSE)
 
 **Clean, modular loading of AMOC observing array datasets, with optional structured logging and metadata enrichment.**
 
-AMOCarray provides a unified system to access and process data from major Atlantic Meridional Overturning Circulation (AMOC) observing arrays. The Atlantic Meridional Overturning Circulation is a critical component of Earth's climate system, transporting heat northward in the Atlantic Ocean. This project enables researchers to easily access, analyze, and visualize data from key monitoring stations.
+AMOCatlas provides a unified system to access and process data from major Atlantic Meridional Overturning Circulation (AMOC) observing arrays. The Atlantic Meridional Overturning Circulation is a critical component of Earth's climate system, transporting heat northward in the Atlantic Ocean. This project enables researchers to easily access, analyze, and visualize data from key monitoring stations.
 
 This is a work in progress, all contributions welcome!
 
@@ -53,19 +53,19 @@ pip install amocarray
 
 ### For Development
 ```bash
-git clone https://github.com/AMOCcommunity/amocarray.git
-cd amocarray
+git clone https://github.com/AMOCcommunity/amocatlas.git
+cd amocatlas
 pip install -r requirements-dev.txt
 pip install -e .
 ```
 
-This installs amocarray locally. The `-e` ensures that any edits you make in the files will be picked up by scripts that import functions from amocarray.
+This installs amocatlas locally. The `-e` ensures that any edits you make in the files will be picked up by scripts that import functions from amocatlas.
 
 ## Quick Start
 
 ### Load Sample Data
 ```python
-from amocarray import readers
+from amocatlas import readers
 
 # Load RAPID sample dataset
 ds = readers.load_sample_dataset("rapid")
@@ -74,7 +74,7 @@ print(ds)
 
 ### Load Full Datasets
 ```python
-from amocarray import readers
+from amocatlas import readers
 
 # Load complete dataset (downloads and caches data)
 datasets = readers.load_dataset("osnap")
@@ -84,18 +84,18 @@ for ds in datasets:
 
 A `*.log` file will be written to `logs/` by default.
 
-Data will be cached in `~/.amocarray_data/` unless you specify a custom location.
+Data will be cached in `~/.amocatlas_data/` unless you specify a custom location.
 
 ## Documentation
 
-Documentation is available at [https://amoccommunity.github.io/amocarray](https://amoccommunity.github.io/amocarray/).
+Documentation is available at [https://amoccommunity.github.io/amocatlas](https://amoccommunity.github.io/amocatlas/).
 
 Check out the demo notebook `notebooks/demo.ipynb` for example functionality.
 
 ## Project Structure
 
 ```
-amocarray/
+amocatlas/
 │
 ├── readers.py               # Orchestrator for loading datasets
 ├── read_move.py             # MOVE reader
@@ -122,15 +122,15 @@ amocarray/
 ### Running Tests
 All new functions should include tests. You can run tests locally and generate a coverage report with:
 ```bash
-pytest --cov=amocarray --cov-report term-missing tests/
+pytest --cov=amocatlas --cov-report term-missing tests/
 ```
 
 Try to ensure that all the lines of your contribution are covered in the tests.
 
 ### Code Quality
 ```bash
-black amocarray/ tests/          # Format code
-ruff check amocarray/ tests/     # Lint code
+black amocatlas/ tests/          # Format code
+ruff check amocatlas/ tests/     # Lint code
 pre-commit run --all-files       # Run all hooks
 ```
 
@@ -141,7 +141,7 @@ You can run the example jupyter notebook by launching jupyterlab with `jupyter-l
 To build the documentation locally you need to install a few extra requirements:
 
 - Install `make` for your computer, e.g. on ubuntu with `sudo apt install make`
-- Install the additional python requirements. Activate the environment you use for working with amocarray, navigate to the top directory of this repo, then run `pip install -r requirements-dev.txt`
+- Install the additional python requirements. Activate the environment you use for working with amocatlas, navigate to the top directory of this repo, then run `pip install -r requirements-dev.txt`
 
 Once you have the extras installed, you can build the docs locally by navigating to the `docs/` directory and running `make clean html`. This command will create a directory called `build/` which contains the html files of the documentation. Open the file `docs/build/html/index.html` in your browser, and you will see the docs with your changes applied.
 
@@ -184,7 +184,7 @@ The observing arrays and datasets accessed through AMOCarray are supported by:
 
 - **FW2015 data**: Based on Frajka-Williams, E. (2015), "Estimating the Atlantic overturning at 26°N using satellite altimetry and cable measurements"
 
-Dataset access and processing via [AMOCarray](https://github.com/AMOCcommunity/amocarray).
+Dataset access and processing via [AMOCatlas](https://github.com/AMOCcommunity/amocatlas).
 
 ## Contributing
 
@@ -198,4 +198,4 @@ The **initial plan** for this repository is to simply load the volume transports
 
 ---
 
-*For questions or support, please open an [issue](https://github.com/AMOCcommunity/amocarray/issues) or check our [documentation](https://amoccommunity.github.io/amocarray/).*
+*For questions or support, please open an [issue](https://github.com/AMOCcommunity/amocatlas/issues) or check our [documentation](https://amoccommunity.github.io/amocatlas/).*

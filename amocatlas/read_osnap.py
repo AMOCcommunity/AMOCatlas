@@ -3,8 +3,8 @@ from typing import Union
 
 import xarray as xr
 
-from amocarray import logger, utilities
-from amocarray.utilities import apply_defaults
+from amocatlas import logger, utilities
+from amocatlas.utilities import apply_defaults
 
 log = logger.log  # Use global logger
 
@@ -28,7 +28,7 @@ OSNAP_FILE_URLS = {
 OSNAP_METADATA = {
     "project": "Overturning in the Subpolar North Atlantic Program (OSNAP)",
     "weblink": "https://www.o-snap.org",
-    "comment": "Dataset accessed and processed via http://github.com/AMOCcommunity/amocarray",
+    "comment": "Dataset accessed and processed via http://github.com/AMOCcommunity/amocatlas",
     "acknowledgement": "OSNAP data were collected and made freely available by the OSNAP (Overturning in the Subpolar North Atlantic Program) project and all the national programs that contribute to it (www.o-snap.org).",
     "doi": "https://doi.org/10.35090/gatech/70342",
 }

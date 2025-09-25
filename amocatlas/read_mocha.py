@@ -3,8 +3,8 @@ from typing import Union
 import zipfile
 import xarray as xr
 
-from amocarray import logger, utilities
-from amocarray.utilities import apply_defaults
+from amocatlas import logger, utilities
+from amocatlas.utilities import apply_defaults
 
 log = logger.log  # ✅ use the global logger
 
@@ -30,7 +30,7 @@ MOCHA_FILE_URLS = {
 
 # Global metadata for MOCHA
 MOCHA_METADATA = {
-    "comment": "Dataset accessed and processed via http://github.com/AMOCcommunity/amocarray",
+    "comment": "Dataset accessed and processed via http://github.com/AMOCcommunity/amocatlas",
 }
 
 # File-specific metadata placeholder

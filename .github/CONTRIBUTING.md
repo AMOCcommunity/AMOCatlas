@@ -1,6 +1,6 @@
-# Contributing to `amocarray`
+# Contributing to `amocatlas`
 
-Thank you for your interest in contributing to `amocarray`! 🎉
+Thank you for your interest in contributing to `amocatlas`! 🎉
 
 We welcome contributions of all kinds — from improving documentation, to adding new readers, tests, and features.
 
@@ -29,12 +29,12 @@ Your pull request will automatically trigger our continuous integration checks.
 
 ## Code Guidelines
 
-- Follow our [coding conventions](https://amoccommunity.github.io/amocarray/conventions.html).
+- Follow our [coding conventions](https://amoccommunity.github.io/amocatlas/conventions.html).
 - Write clear docstrings (NumPy style).
 - Add tests for any new features or fixes.
 - Keep functions small and focused.
 
-For full details, see our [Developer Guide](https://amoccommunity.github.io/amocarray/developer_guide.html).
+For full details, see our [Developer Guide](https://amoccommunity.github.io/amocatlas/developer_guide.html).
 
 ## Communication
 

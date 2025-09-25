@@ -3,7 +3,7 @@ from pathlib import Path
 import pytest
 import xarray as xr
 
-from amocarray import logger, utilities
+from amocatlas import logger, utilities
 
 # Sample data
 VALID_URL = "https://mooring.ucsd.edu/move/nc/"
@@ -52,7 +52,7 @@ def test_safe_update_attrs_add_new_attribute():
 
 
 def test_safe_update_attrs_existing_key_logs(caplog):
-    from amocarray import logger, utilities
+    from amocatlas import logger, utilities
 
     # Re-enable logging for this test
     logger.enable_logging()
@@ -60,7 +60,7 @@ def test_safe_update_attrs_existing_key_logs(caplog):
     ds = xr.Dataset(attrs={"project": "MOVE"})
     new_attrs = {"project": "OSNAP"}
 
-    with caplog.at_level("DEBUG", logger="amocarray"):
+    with caplog.at_level("DEBUG", logger="amocatlas"):
         utilities.safe_update_attrs(ds, new_attrs, overwrite=False, verbose=True)
 
     assert any(

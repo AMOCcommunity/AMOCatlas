@@ -3,7 +3,7 @@ metadata:
   description: "RAPID 26N transport estimates dataset"
   project: "RAPID-AMOC 26°N array"
   weblink: https://rapid.ac.uk/rapidmoc
-  comment: Dataset accessed and processed via http://github.com/AMOCcommunity/amocarray
+  comment: Dataset accessed and processed via http://github.com/AMOCcommunity/amocatlas
   acknowledgement: >
     The RAPID-MOC monitoring project is funded by the Natural Environment Research Council and data is freely available from www.rapid.ac.uk/
   license: CC-BY 4.0
@@ -73,7 +73,7 @@ files:
   ts_gridded.nc:
     data_product: "RAPID gridded temperature and salinity"
     source_file: ts_gridded.nc
-    source_path: /Users/eddifying/Cloudfree/gitlab-cloudfree/amocarray/data/ts_gridded.nc
+    source_path: /Users/eddifying/Cloudfree/gitlab-cloudfree/amocatlas/data/ts_gridded.nc
     variable_mapping: {}
     variables:
       TG_west:
@@ -120,7 +120,7 @@ files:
   moc_vertical.nc:
     data_product: "RAPID vertical streamfunction time series"
     source_file: moc_vertical.nc
-    source_path: /Users/eddifying/Cloudfree/gitlab-cloudfree/amocarray/data/moc_vertical.nc
+    source_path: /Users/eddifying/Cloudfree/gitlab-cloudfree/amocatlas/data/moc_vertical.nc
     variable_mapping: {}
     variables:
       stream_function_mar:

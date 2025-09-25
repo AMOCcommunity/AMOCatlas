@@ -1,4 +1,4 @@
-:mod:`amocarray API`
+:mod:`amocatlas API`
 -----------------------
 
 .. toctree::
@@ -23,7 +23,7 @@ readers
 
 Shared utilities and base classes for AMOC readers.
 
-.. automodule:: amocarray.readers
+.. automodule:: amocatlas.readers
    :members:
    :undoc-members:
 
@@ -34,7 +34,7 @@ read_rapid
 ~~~~~~~~~~
 Reader for RAPID-MOCHA-WBTS array data at 26°N.
 
-.. automodule:: amocarray.read_rapid
+.. automodule:: amocatlas.read_rapid
    :members:
    :undoc-members:
 
@@ -42,7 +42,7 @@ read_osnap
 ~~~~~~~~~~
 Reader for OSNAP (Overturning in the Subpolar North Atlantic Program) data.
 
-.. automodule:: amocarray.read_osnap
+.. automodule:: amocatlas.read_osnap
    :members:
    :undoc-members:
 
@@ -50,7 +50,7 @@ read_move
 ~~~~~~~~~
 Reader for MOVE (Meridional Overturning Variability Experiment) data.
 
-.. automodule:: amocarray.read_move
+.. automodule:: amocatlas.read_move
    :members:
    :undoc-members:
 
@@ -58,7 +58,7 @@ read_samba
 ~~~~~~~~~~
 Reader for SAMBA (South Atlantic MOC Basin-wide Array) data.
 
-.. automodule:: amocarray.read_samba
+.. automodule:: amocatlas.read_samba
    :members:
    :undoc-members:
 
@@ -66,7 +66,7 @@ standardise
 ===========
 Functions to apply naming conventions, units, and metadata standards to datasets.
 
-.. automodule:: amocarray.standardise
+.. automodule:: amocatlas.standardise
    :members:
    :undoc-members:
 
@@ -74,13 +74,13 @@ plotters
 ========
 Tools for visualising AMOC time series and transport data.
 
-.. automodule:: amocarray.plotters
+.. automodule:: amocatlas.plotters
    :members:
    :undoc-members:
 
 writers
 =======
-.. automodule:: amocarray.writers
+.. automodule:: amocatlas.writers
    :members:
    :undoc-members:
 
@@ -88,7 +88,7 @@ tools
 =====
 Helper functions for data manipulation, unit conversion, and clean-up.
 
-.. automodule:: amocarray.tools
+.. automodule:: amocatlas.tools
    :members:
    :undoc-members:
 
@@ -96,6 +96,6 @@ utilities
 =========
 Shared utilities for downloading, reading, and parsing data files.
 
-.. automodule:: amocarray.utilities
+.. automodule:: amocatlas.utilities
    :members:
    :undoc-members:

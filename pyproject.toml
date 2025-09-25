@@ -7,7 +7,7 @@ requires = [
 ]
 
 [project]
-name = "amocarray"
+name = "amocatlas"
 description = "Python project to read data from arrays measuring the Atlantic meridional overturning circulation"
 readme = "README.md"
 license = { file = "LICENSE" }
@@ -26,16 +26,16 @@ dynamic = [
   "dependencies",
   "version",
 ]
-urls.documentation = "https://github.com/AMOCcommunity/amocarray"
-urls.homepage = "https://github.com/AMOCcommunity/amocarray"
-urls.repository = "https://github.com/AMOCcommunity/amocarray"
+urls.documentation = "https://github.com/AMOCcommunity/AMOCatlas"
+urls.homepage = "https://github.com/AMOCcommunity/AMOCatlas"
+urls.repository = "https://github.com/AMOCcommunity/AMOCatlas"
 
 [tool.setuptools]
-packages = ["amocarray", "amocarray.metadata"]
+packages = ["amocatlas", "amocatlas.metadata"]
 include-package-data = true
 
 [tool.setuptools.package-data]
-amocarray = ["metadata/*.yml"]
+amocatlas = ["metadata/*.yml"]
 
 [tool.setuptools.dynamic]
 dependencies = { file = [
@@ -44,7 +44,7 @@ dependencies = { file = [
 readme = { file = "README.md", content-type = "text/markdown" }
 
 [tool.setuptools_scm]
-write_to = "amocarray/_version.py"
+write_to = "amocatlas/_version.py"
 write_to_template = "__version__ = '{version}'"
 version_scheme = "no-guess-dev"
 local_scheme = "no-local-version"

@@ -1,7 +1,7 @@
 AMOCarray Format AC1
 ====================
 
-This document defines the AC1 standard data format produced by the ``amocarray.convert.to_AC1()`` function.  This format is designed to provide consistency between moored estimates of overturning transport, as from the RAPID, OSNAP, MOVE and SAMBA arrays.
+This document defines the AC1 standard data format produced by the ``amocatlas.convert.to_AC1()`` function.  This format is designed to provide consistency between moored estimates of overturning transport, as from the RAPID, OSNAP, MOVE and SAMBA arrays.
 
 **Relationship to Other Format Documents:**
 
@@ -17,7 +17,7 @@ The AC1 format improves the interoperability for Atlantic Meridional Overturning
 
 Note, if the link to the pdf is broken, here is a version downloaded in 2025 [oceansites_data_format_reference_manual.pdf](oceansites_data_format_reference_manual.pdf) which describes OceanSITES version 1.4.
 
-See [oceanSITES format](format_oceanSITES.rst) for some information about how oceanSITES format applies to the datasets collated with `amocarray`.
+See [oceanSITES format](format_oceanSITES.rst) for some information about how oceanSITES format applies to the datasets collated with `amocatlas`.
 
 
 2. File Format
@@ -164,9 +164,9 @@ Note that CF-conventions (https://cfconventions.org/cf-conventions/cf-convention
      - "https://doi.org/..."
      - Semicolon-separated DOIs of original datasets
      - **M**
-   * - amocarray_version
+   * - amocatlas_version
      - "0.2.1"
-     - Version of amocarray used
+     - Version of amocatlas used
      - **M**
    * - web_link
      - "http://project.example.org"
@@ -279,7 +279,7 @@ To produce AC1-compliant datasets from raw standardised inputs, use:
 
 .. code-block:: python
 
-   from amocarray.convert import to_AC1
+   from amocatlas.convert import to_AC1
    ds_ac1 = to_AC1(ds_std)
 
 This function:
@@ -292,7 +292,7 @@ This function:
 ---------
 
 - Format is extensible for future variables or conventions
-- Please cite amocarray and relevant data providers when using AC1-formatted datasets
+- Please cite amocatlas and relevant data providers when using AC1-formatted datasets
 
 11. Provenance and Attribution
 ------------------------------
@@ -320,8 +320,8 @@ Required Provenance Fields:
      - Semicolon-separated list of attribution statements
    * - history
      - Auto-generated history log with timestamp and tool version
-   * - amocarray_version
-     - Version of amocarray used for conversion
+   * - amocatlas_version
+     - Version of amocatlas used for conversion
    * - generated_doi
      - DOI assigned to the converted AC1 dataset (optional)
 
@@ -332,9 +332,9 @@ Example:
    :source = "OSNAP; SAMBA"
    :source_doi = "https://doi.org/10.35090/gatech/70342; https://doi.org/10.1029/2018GL077408"
    :source_acknowledgement = "OSNAP data were collected and made freely available by the OSNAP project and all the national programs that contribute to it (www.o-snap.org); M. Kersalé et al., Highly variable upper and abyssal overturning cells in the South Atlantic. Sci. Adv. 6, eaba7573 (2020). DOI: 10.1126/sciadv.aba7573"
-   :history = "2025-04-19T13:42Z: Converted to AC1 using amocarray v0.2.1"
-   :amocarray_version = "0.2.1"
-   :generated_doi = "https://doi.org/10.xxxx/amocarray-ac1-2025"
+   :history = "2025-04-19T13:42Z: Converted to AC1 using amocatlas v0.2.1"
+   :amocatlas_version = "0.2.1"
+   :generated_doi = "https://doi.org/10.xxxx/amocatlas-ac1-2025"
 
 YAML Integration (optional):
 

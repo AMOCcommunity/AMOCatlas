@@ -25,7 +25,7 @@ Please describe your changes clearly and concisely.
 
 **Checklist:**
 
-- [ ] I have followed the [coding conventions](https://amoccommunity.github.io/amocarray/conventions.html).
+- [ ] I have followed the [coding conventions](https://amoccommunity.github.io/amocatlas/conventions.html).
 - [ ] I have updated or added tests to cover my changes.
 - [ ] I have updated the documentation if needed.
 - [ ] I have run `pytest` to check that all tests pass.

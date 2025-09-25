@@ -3,7 +3,7 @@ Array Format (Native / Original)
 
 This document describes some of the native data formats present in AMOC datasets provided by different observing arrays.
 
-In the logic of `amocarray`, we will first convert to an OceanSITES compatible format.  Documentation is outlined in the :doc:`OceanSITES format <format_oceanSITES>`.
+In the logic of `amocatlas`, we will first convert to an OceanSITES compatible format.  Documentation is outlined in the :doc:`OceanSITES format <format_oceanSITES>`.
 
 **Note:** This is a work in progress and not all arrays are fully described.  The goal is to provide a summary of the data formats and how they could be transformed into a common format.  The common format is not yet defined but will ideally be able to capture most if not all of the original data.
 

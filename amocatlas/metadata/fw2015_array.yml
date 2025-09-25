@@ -2,7 +2,7 @@ metadata:
   description: "Estimating the Atlantic overturning at 26°N using satellite altimetry and cable measurements"
   weblink: "https://figshare.com/articles/dataset/MOCproxy_for_figshare_v1_0_mat/1463479?file=3369779"
   comment: >
-    Dataset accessed and processed via http://github.com/AMOCcommunity/amocarray
+    Dataset accessed and processed via http://github.com/AMOCcommunity/amocatlas
   acknowledgement: >
     Frajka-Williams, E. (2015), Estimating the Atlantic overturning at 26°N using satellite altimetry and cable measurements. Geophys. Res. Lett., 42, 3458–3464. doi: 10.1002/2015GL063220.
   license: CC-BY 4.0

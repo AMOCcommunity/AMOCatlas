@@ -4,7 +4,7 @@ metadata:
   project: "South Atlantic MOC Basin-wide Array (SAMBA)"
   weblink: "https://www.aoml.noaa.gov/phod/samoc"
   comment: >
-    Dataset accessed and processed via http://github.com/AMOCcommunity/amocarray
+    Dataset accessed and processed via http://github.com/AMOCcommunity/amocatlas
   acknowledgement: >
     SAMBA data were collected and made freely available by the SAMOC international project and contributing national programs.
   license: CC-BY 4.0

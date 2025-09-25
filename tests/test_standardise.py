@@ -1,5 +1,5 @@
 import pytest
-from amocarray import logger, readers, standardise, utilities
+from amocatlas import logger, readers, standardise, utilities
 
 logger.disable_logging()
 

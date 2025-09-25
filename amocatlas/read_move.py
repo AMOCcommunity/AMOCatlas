@@ -5,8 +5,8 @@ import xarray as xr
 import numpy as np
 import pandas as pd
 
-from amocarray import logger, utilities
-from amocarray.utilities import apply_defaults
+from amocatlas import logger, utilities
+from amocatlas.utilities import apply_defaults
 
 log = logger.log  # ✅ use the global logger
 
@@ -26,7 +26,7 @@ MOVE_METADATA = {
     "description": "MOVE transport estimates dataset from UCSD mooring project",
     "project": "Meridional Overturning Variability Experiment (MOVE)",
     "weblink": "https://dods.ndbc.noaa.gov/thredds/fileServer/oceansites/DATA_GRIDDED/MOVE/",
-    "comment": "Dataset accessed and processed via http://github.com/AMOCcommunity/amocarray",
+    "comment": "Dataset accessed and processed via http://github.com/AMOCcommunity/amocatlas",
     # DOI can be added here when available
     "acknowledgement": "The MOVE project is made possible with funding from the NOAA Climate Program Office. Initial funding came from the German Bundesministerium fuer Bildung und Forschung.",
 }

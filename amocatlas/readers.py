@@ -4,20 +4,20 @@ from typing import Union
 import pandas as pd
 import xarray as xr
 
-from amocarray import logger
-from amocarray.logger import log_info
-from amocarray.read_move import read_move
-from amocarray.read_osnap import read_osnap
-from amocarray.read_rapid import read_rapid
-from amocarray.read_samba import read_samba
-from amocarray.read_fw2015 import read_fw2015
-from amocarray.read_mocha import read_mocha
-from amocarray.read_41n import read_41n
-from amocarray.read_dso import read_dso
+from amocatlas import logger
+from amocatlas.logger import log_info
+from amocatlas.read_move import read_move
+from amocatlas.read_osnap import read_osnap
+from amocatlas.read_rapid import read_rapid
+from amocatlas.read_samba import read_samba
+from amocatlas.read_fw2015 import read_fw2015
+from amocatlas.read_mocha import read_mocha
+from amocatlas.read_41n import read_41n
+from amocatlas.read_dso import read_dso
 
 log = logger.log
 
-# Dropbox location Public/linked_elsewhere/amocarray_data/
+# Dropbox location Public/linked_elsewhere/amocatlas_data/
 server = "https://www.dropbox.com/scl/fo/4bjo8slq1krn5rkhbkyds/AM-EVfSHi8ro7u2y8WAcKyw?rlkey=16nqlykhgkwfyfeodkj274xpc&dl=0"
 
 

@@ -34,7 +34,7 @@ jobs:
           python -m pip install flake8 pytest
           if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
 
-      - name: Install amocarray package
+      - name: Install amocatlas package
         run: |
           python -m pip install -e . --no-deps --force-reinstall
 
@@ -53,4 +53,4 @@ jobs:
       #
       # - name: Full Tests
       #   run: |
-      #     python -m pytest --cov=amocarray --cov-report term-missing tests/
+      #     python -m pytest --cov=amocatlas --cov-report term-missing tests/

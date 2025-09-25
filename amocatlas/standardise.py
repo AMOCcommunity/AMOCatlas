@@ -13,8 +13,8 @@ Currently implemented:
 import xarray as xr
 from collections import OrderedDict
 import re
-from amocarray import logger, utilities
-from amocarray.logger import log_debug
+from amocatlas import logger, utilities
+from amocatlas.logger import log_debug
 
 log = logger.log  # Use the global logger
 

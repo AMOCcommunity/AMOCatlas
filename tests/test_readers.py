@@ -1,7 +1,7 @@
 import pytest
 import xarray as xr
 
-from amocarray import logger, readers
+from amocatlas import logger, readers
 
 logger.disable_logging()
 

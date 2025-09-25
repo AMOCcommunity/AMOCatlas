@@ -4,9 +4,9 @@ from typing import Union
 import pandas as pd
 import xarray as xr
 
-from amocarray import logger, utilities
-from amocarray.logger import log_error, log_info, log_warning
-from amocarray.utilities import apply_defaults
+from amocatlas import logger, utilities
+from amocatlas.logger import log_error, log_info, log_warning
+from amocatlas.utilities import apply_defaults
 
 log = logger.log  # Use the global logger
 
@@ -30,7 +30,7 @@ SAMBA_METADATA = {
     "description": "SAMBA 34S transport estimates dataset",
     "project": "South Atlantic MOC Basin-wide Array (SAMBA)",
     "weblink": "https://www.aoml.noaa.gov/phod/SAMOC_international/",
-    "comment": "Dataset accessed and processed via http://github.com/AMOCcommunity/amocarray",
+    "comment": "Dataset accessed and processed via http://github.com/AMOCcommunity/amocatlas",
     "acknowledgement": "SAMBA data were collected and made freely available by the SAMOC international project and contributing national programs.",
     # Add DOI here when available
 }

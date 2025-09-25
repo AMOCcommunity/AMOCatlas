@@ -22,4 +22,4 @@ def mock_download_file(monkeypatch):
         destination.write_text("fake data")
         return str(destination)
 
-    monkeypatch.setattr("amocarray.utilities.download_file", fake_download_file)
+    monkeypatch.setattr("amocatlas.utilities.download_file", fake_download_file)

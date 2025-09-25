@@ -3,8 +3,8 @@ import re
 import numpy as np
 import xarray as xr
 
-from amocarray import logger
-from amocarray.logger import log_info, log_debug
+from amocatlas import logger
+from amocatlas.logger import log_info, log_debug
 
 log = logger.log
 

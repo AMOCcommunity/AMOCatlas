@@ -1,4 +1,4 @@
-name: amocarray
+name: amocatlas
 channels:
   - conda-forge
 dependencies:

@@ -41,7 +41,7 @@ Getting started
 
 The quickest way to try it out::
 
-    from amocarray import readers
+    from amocatlas import readers
 
     # Load a sample dataset
     ds = readers.load_sample_dataset("rapid")
@@ -52,8 +52,8 @@ Check out the demo notebook for more examples.
 Need help?
 ----------
 
-* Full documentation: https://amoccommunity.github.io/amocarray
-* Issues and questions: https://github.com/AMOCcommunity/amocarray/issues
+* Full documentation: https://amoccommunity.github.io/amocatlas
+* Issues and questions: https://github.com/AMOCcommunity/amocatlas/issues
 * Contributing: See our developer guide
 
 .. note::

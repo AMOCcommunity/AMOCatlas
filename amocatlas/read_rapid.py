@@ -4,9 +4,9 @@ from typing import Union
 import xarray as xr
 
 # Import the modules used
-from amocarray import logger, utilities
-from amocarray.logger import log_error, log_info, log_warning
-from amocarray.utilities import apply_defaults
+from amocatlas import logger, utilities
+from amocatlas.logger import log_error, log_info, log_warning
+from amocatlas.utilities import apply_defaults
 
 log = logger.log  # Use the global logger
 

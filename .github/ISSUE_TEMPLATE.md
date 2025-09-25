@@ -1,6 +1,6 @@
 ---
 name: "🐛 Bug Report / 💡 Feature Request"
-about: "Report a bug or suggest an improvement for the amocarray project"
+about: "Report a bug or suggest an improvement for the amocatlas project"
 title: "[Bug] <brief description>" or "[Feature] <brief description>"
 labels: []
 assignees: []
@@ -35,13 +35,13 @@ If you can, include a minimal, reproducible example or link to a failing test.
 
 - OS: [e.g., macOS 13.3, Ubuntu 22.04, etc.]
 - Python version: [e.g., 3.11]
-- amocarray version: [if applicable]
+- amocatlas version: [if applicable]
 - Virtualenv / Conda / System Python?: [env type]
 
 
 ## Checklist
 
-- [ ] I have checked the existing [issues](https://github.com/AMOCcommunity/amocarray/issues) to avoid duplicates.
+- [ ] I have checked the existing [issues](https://github.com/AMOCcommunity/amocatlas/issues) to avoid duplicates.
 - [ ] I have included steps to reproduce the issue, if it's a bug.
 - [ ] I have described the motivation clearly, if it's a feature request.
 

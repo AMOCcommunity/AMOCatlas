@@ -33,17 +33,17 @@ jobs:
       - name: Install package (editable)
         shell: bash -l {0}
         run: |
-          micromamba run -n amocarray python -m pip install --upgrade pip
-          micromamba run -n amocarray python -m pip install -e . --no-deps --force-reinstall
+          micromamba run -n amocatlas python -m pip install --upgrade pip
+          micromamba run -n amocatlas python -m pip install -e . --no-deps --force-reinstall
 
       - name: Build documentation
         shell: bash -l {0}
         run: |
           set -e
-          micromamba run -n amocarray jupyter nbconvert --to notebook --execute notebooks/demo.ipynb --output=demo-output.ipynb --ExecutePreprocessor.allow_errors=True
+          micromamba run -n amocatlas jupyter nbconvert --to notebook --execute notebooks/demo.ipynb --output=demo-output.ipynb --ExecutePreprocessor.allow_errors=True
           mv notebooks/*output.ipynb docs/source/
           pushd docs
-          micromamba run -n amocarray make clean html
+          micromamba run -n amocatlas make clean html
           popd
 
       - name: Deploy to GitHub Pages

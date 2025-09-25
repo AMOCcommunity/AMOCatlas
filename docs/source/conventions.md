@@ -105,7 +105,7 @@ def convert_units_var(
 ### Pre-commit Workflow
 - Pre-commit hooks are used for Black formatting, Ruff linting, and pytest.
 - Ruff handles both import sorting and code linting.
-- Pytest is configured to run only when files in `amocarray/`, `notebooks/`, or `tests/` are modified.
+- Pytest is configured to run only when files in `amocatlas/`, `notebooks/`, or `tests/` are modified.
 
 ### Logging
 - (Planned) Switch from `print()` to proper `logging` for warnings and information.

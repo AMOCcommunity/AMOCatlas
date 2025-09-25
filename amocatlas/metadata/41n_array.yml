@@ -3,7 +3,7 @@ metadata:
   description: "41N transport estimates dataset"
   project: "Atlantic Meridional Overturning Circulation Near 41N from Altimetry and Argo Observations"
   weblink: https://zenodo.org/records/14681441
-  comment: Dataset accessed and processed via http://github.com/AMOCcommunity/amocarray
+  comment: Dataset accessed and processed via http://github.com/AMOCcommunity/amocatlas
   acknowledgment: >
     These data were collected and made freely available by the International Argo Program and the national programs that contribute to it.  (https://argo.ucsd.edu,  https://www.ocean-ops.org).  The Argo Program is part of the Global Ocean Observing System.
   license:
