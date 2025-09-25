@@ -1,7 +1,7 @@
 OceanSITES Format for AMOC Arrays
 =================================
 
-This document describes how RAPID, MOVE, OSNAP, and SAMBA array products are mapped into OceanSITES-compliant NetCDF structures within the `amocarray` package. It summarizes conventions from the OceanSITES format reference manual (v1.4, from 2020) and describes decisions for AMOC-specific implementation.
+This document describes how RAPID, MOVE, OSNAP, and SAMBA array products are mapped into OceanSITES-compliant NetCDF structures within the `amocatlas` package. It summarizes conventions from the OceanSITES format reference manual (v1.4, from 2020) and describes decisions for AMOC-specific implementation.
 
 
 File naming
@@ -14,7 +14,7 @@ OceanSITES: Gridded and derived data
 
 OceanSITES says a number of higher-level data products can be created:
 
-- **merged:** A "long time series" version that may concatenate multiple deployments (some homogenization).  Not used in `amocarray`.
+- **merged:** A "long time series" version that may concatenate multiple deployments (some homogenization).  Not used in `amocatlas`.
 
 - **gridded (GRD):** A "gridded" version which interpolates to a space-time grid different from native instrumental resolution (this is what OSNAP and RAPID provide for their TEMPERATURE and SALINITY fields)
 
@@ -26,19 +26,19 @@ File naming for array data products
 
 `OS_[PSPANCode]_[StartEndCode]_ [ContentType]_[PARTX].nc`
 
-- `PSPANCode`: the `[PlatformCode]` can be replaced with an appropriate choice of site, project, array or network which can be taken from the global attributes of the underlying source data.  For `amocarray`, we will use the `array` global attribute (should be e.g. RAPID, OSNAP, MOVE, SAMBA, 11South).
+- `PSPANCode`: the `[PlatformCode]` can be replaced with an appropriate choice of site, project, array or network which can be taken from the global attributes of the underlying source data.  For `amocatlas`, we will use the `array` global attribute (should be e.g. RAPID, OSNAP, MOVE, SAMBA, 11South).
 
-- `StartEndCode`: the `[DeploymentCode]` can be replaced with a time range that is appropriate for the data in the file.  For `amocarray`, this will be the time range of the data in the file. Preferred format is e.g. “20050301-20190831” to indicate data from March 2005 through August 2019.
+- `StartEndCode`: the `[DeploymentCode]` can be replaced with a time range that is appropriate for the data in the file.  For `amocatlas`, this will be the time range of the data in the file. Preferred format is e.g. “20050301-20190831” to indicate data from March 2005 through August 2019.
 
 - `ContentType`: the `[DataMode]` can be replaced with a three-letter code that describes the content of the file (distinguished from the deployment files, which have a one-letter code here), one of:
 
-  - LTS (not used in `amocarray`): The data are “long time series” data that are essentially at the native instrumental resolution in space and time. The primary difference from the deployment-by-deployment files is that a single file contains merged data from multiple deployments.
+  - LTS (not used in `amocatlas`): The data are “long time series” data that are essentially at the native instrumental resolution in space and time. The primary difference from the deployment-by-deployment files is that a single file contains merged data from multiple deployments.
 
   - GRD: The data are “gridded”, meaning that some sort of binning, averaging, interpolating has been done to format the data onto a space-time grid that is different from the native resolution, and more than a simple concatenation like the “LTS” option.  This is what OSNAP and RAPID provide for their TEMPERATURE and SALINITY fields.
 
   - DPR: The data are a “derived product”, which means that there are data that were derived from multiple sites or some other higher-order processing that the data provider distinguishes from the lower-level data. This is the case for the overturning transports and component transports and streamfunctions.
 
-- [PARTX] - An optional user-defined field for additional identification or explanation of data. For gridded data, this could include the record interval as subfields of ISO 8601 (PnYnMnDTnHnMnS), e.g. P1M for monthly data, T30M for 30 minutes, T1H for hourly.  For `amocarray`, this will be a short code corresponding to the types of data in the file:
+- [PARTX] - An optional user-defined field for additional identification or explanation of data. For gridded data, this could include the record interval as subfields of ISO 8601 (PnYnMnDTnHnMnS), e.g. P1M for monthly data, T30M for 30 minutes, T1H for hourly.  For `amocatlas`, this will be a short code corresponding to the types of data in the file:
 
   - RAPID (PSPANCode = RAPID):
     - `ts_gridded.nc` has individual locations with timeSeriesProfile.  The `PARTX` for OceanSITES will be `gridded_mooring`, and ContentType = GRD.
@@ -219,7 +219,7 @@ The following global attributes are recommended for inclusion in all OceanSITES-
      - *S*
    * - ``platform_code``
      - A unique platform code.  This code is either assigned by the site PI (see principal_investigator) or by the data provider.
-     - Note that this is required for OceanSITES for GDAC, but it is not implemented in the current version of the `amocarray` package.
+     - Note that this is required for OceanSITES for GDAC, but it is not implemented in the current version of the `amocatlas` package.
      - **M** (for GDAC)
    * - ``principal_investigator_url``
      - Web URL for the PI.
@@ -377,7 +377,7 @@ The following attributes are recommended for inclusion in all OceanSITES-complia
      - *S*
    * - ``publisher_url``
      - Web address of the institution or data publisher
-     - **ex.:** "http://github.com/AMOCcommunity/amocarray"
+     - **ex.:** "http://github.com/AMOCcommunity/amocatlas"
      - *S*
    * - ``references``
      - Published or web-based references that describe the data or methods used to produce it. Include a reference to OceanSITES and a project-specific reference if appropriate.

@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Developer Guide for amocarray &mdash; amocarray v0.0.0 documentation</title>
+  <title>Developer Guide for amocatlas &mdash; amocatlas v0.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=1078e4cb" />
@@ -35,7 +35,7 @@
           
           
           <a href="index.html" class="icon icon-home">
-            amocarray
+            amocatlas
               <img src="_static/logo.jpg" class="logo" alt="Logo"/>
           </a>
 <div role="search">
@@ -65,15 +65,14 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Help and reference</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocarray">GitHub Repo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="amocarray.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">amocarray</span> <span class="pre">API</span></code></a></li>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">GitHub Repo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="AC1_vocabularies.html">Controlled Vocabularies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="AC1_units.html">Units Reference: for AC1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="AC1_variables.html">Variable Names</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Developers' guide</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Developer Guide for <code class="docutils literal notranslate"><span class="pre">amocarray</span></code></a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Developer Guide for <code class="docutils literal notranslate"><span class="pre">amocatlas</span></code></a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#table-of-contents">Table of Contents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#quickstart-first-contribution">1. Quickstart: First Contribution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#project-overview">2. Project Overview</a></li>
@@ -140,7 +139,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">amocarray</a>
+          <a href="index.html">amocatlas</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -148,7 +147,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Developer Guide for <code class="docutils literal notranslate"><span class="pre">amocarray</span></code></li>
+      <li class="breadcrumb-item active">Developer Guide for <code class="docutils literal notranslate"><span class="pre">amocatlas</span></code></li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/developer_guide.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -158,17 +157,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="developer-guide-for-amocarray">
-<h1>Developer Guide for <code class="docutils literal notranslate"><span class="pre">amocarray</span></code><a class="headerlink" href="#developer-guide-for-amocarray" title="Link to this heading"></a></h1>
+  <section id="developer-guide-for-amocatlas">
+<h1>Developer Guide for <code class="docutils literal notranslate"><span class="pre">amocatlas</span></code><a class="headerlink" href="#developer-guide-for-amocatlas" title="Link to this heading"></a></h1>
 <!-- omit in toc -->
-<p>Welcome to the <code class="docutils literal notranslate"><span class="pre">amocarray</span></code> Developer Guide!</p>
+<p>Welcome to the <code class="docutils literal notranslate"><span class="pre">amocatlas</span></code> Developer Guide!</p>
 <p>This guide will help you set up your local development environment, understand the project structure, and contribute effectively to the project. Whether you’re fixing bugs, adding new readers, or improving documentation, this guide is your starting point.</p>
 <p><strong>Related resources:</strong></p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://amoccommunity.github.io/amocarray/conventions.html">Coding conventions</a></p></li>
-<li><p><a class="reference external" href="https://amoccommunity.github.io/amocarray/housekeeping.html">Housekeeping checklist</a></p></li>
-<li><p><a class="reference external" href="https://amoccommunity.github.io/amocarray/gitcollab.html">Git collaboration</a></p></li>
-<li><p><a class="reference external" href="https://amoccommunity.github.io/amocarray/actions.html">Project actions</a></p></li>
+<li><p><a class="reference external" href="https://amoccommunity.github.io/amocatlas/conventions.html">Coding conventions</a></p></li>
+<li><p><a class="reference external" href="https://amoccommunity.github.io/amocatlas/housekeeping.html">Housekeeping checklist</a></p></li>
+<li><p><a class="reference external" href="https://amoccommunity.github.io/amocatlas/gitcollab.html">Git collaboration</a></p></li>
+<li><p><a class="reference external" href="https://amoccommunity.github.io/amocatlas/actions.html">Project actions</a></p></li>
 </ul>
 <hr class="docutils" />
 <section id="table-of-contents">
@@ -193,8 +192,8 @@
 <li><p>Fork the repository</p></li>
 <li><p>Clone the upstream repository:</p></li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/AMOCcommunity/amocarray.git
-<span class="nb">cd</span><span class="w"> </span>amocarray
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/AMOCcommunity/amocatlas.git
+<span class="nb">cd</span><span class="w"> </span>amocatlas
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
@@ -222,7 +221,7 @@ pre-commit<span class="w"> </span>run<span class="w"> </span>--all-files
 </section>
 <section id="project-overview">
 <span id="id1"></span><h2>2. Project Overview<a class="headerlink" href="#project-overview" title="Link to this heading"></a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">amocarray</span></code> is a Python package to process and analyse data from AMOC observing arrays.<br />
+<p><code class="docutils literal notranslate"><span class="pre">amocatlas</span></code> is a Python package to process and analyse data from AMOC observing arrays.<br />
 It is designed to support researchers and data users by providing tools to read, standardise, and work with multiple datasets.</p>
 <p><strong>Core goals:</strong></p>
 <ul class="simple">
@@ -234,8 +233,8 @@ It is designed to support researchers and data users by providing tools to read,
 </section>
 <section id="project-structure">
 <span id="id2"></span><h2>3. Project Structure<a class="headerlink" href="#project-structure" title="Link to this heading"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>amocarray/
-├──<span class="w"> </span>amocarray/<span class="w">               </span><span class="c1"># Core modules (readers, utilities, standardisation)</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>amocatlas/
+├──<span class="w"> </span>amocatlas/<span class="w">               </span><span class="c1"># Core modules (readers, utilities, standardisation)</span>
 │<span class="w">   </span>├──<span class="w"> </span>readers.py<span class="w">           </span><span class="c1"># High-level interface for loading datasets</span>
 │<span class="w">   </span>├──<span class="w"> </span>read_move.py<span class="w">         </span><span class="c1"># Reader for MOVE data</span>
 │<span class="w">   </span>├──<span class="w"> </span>read_rapid.py<span class="w">        </span><span class="c1"># Reader for RAPID data</span>
@@ -290,8 +289,8 @@ It is designed to support researchers and data users by providing tools to read,
 <span id="dev-env"></span><h2>4. Setting Up Development Environment<a class="headerlink" href="#setting-up-development-environment" title="Link to this heading"></a></h2>
 <section id="step-1-clone-the-repository">
 <h3>Step 1: Clone the repository<a class="headerlink" href="#step-1-clone-the-repository" title="Link to this heading"></a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/AMOCcommunity/amocarray.git
-<span class="nb">cd</span><span class="w"> </span>amocarray
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/AMOCcommunity/amocatlas.git
+<span class="nb">cd</span><span class="w"> </span>amocatlas
 </pre></div>
 </div>
 </section>
@@ -351,13 +350,13 @@ make<span class="w"> </span>html
 <ul class="simple">
 <li><p>Fork the repository on GitHub.</p></li>
 <li><p>Push your changes to your fork.</p></li>
-<li><p>Open a pull request to <code class="docutils literal notranslate"><span class="pre">AMOCcommunity/amocarray</span></code>.</p></li>
+<li><p>Open a pull request to <code class="docutils literal notranslate"><span class="pre">AMOCcommunity/amocatlas</span></code>.</p></li>
 </ul>
-<p><strong>See:</strong> <a class="reference external" href="https://amoccommunity.github.io/amocarray/gitcollab.html">Git collaboration guide</a></p>
+<p><strong>See:</strong> <a class="reference external" href="https://amoccommunity.github.io/amocatlas/gitcollab.html">Git collaboration guide</a></p>
 </section>
 <section id="keeping-your-fork-up-to-date">
 <h3>Keeping Your Fork Up To Date<a class="headerlink" href="#keeping-your-fork-up-to-date" title="Link to this heading"></a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>upstream<span class="w"> </span>https://github.com/AMOCcommunity/amocarray.git
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>upstream<span class="w"> </span>https://github.com/AMOCcommunity/amocatlas.git
 git<span class="w"> </span>fetch<span class="w"> </span>upstream
 git<span class="w"> </span>merge<span class="w"> </span>upstream/main
 </pre></div>
@@ -482,7 +481,7 @@ git<span class="w"> </span>merge<span class="w"> </span>upstream/main
 </section>
 <section id="logging-and-debugging">
 <span id="logging"></span><h2>8. Logging and Debugging<a class="headerlink" href="#logging-and-debugging" title="Link to this heading"></a></h2>
-<p>With PR #25, structured logging has been introduced to <code class="docutils literal notranslate"><span class="pre">amocarray</span></code>.</p>
+<p>With PR #25, structured logging has been introduced to <code class="docutils literal notranslate"><span class="pre">amocatlas</span></code>.</p>
 <p>Logs track steps during data reading and, in the future, will also report changes during dataset standardisation.</p>
 <section id="how-logging-works">
 <h3>How logging works<a class="headerlink" href="#how-logging-works" title="Link to this heading"></a></h3>
@@ -500,7 +499,7 @@ git<span class="w"> </span>merge<span class="w"> </span>upstream/main
 <h3>Enabling and disabling logging<a class="headerlink" href="#enabling-and-disabling-logging" title="Link to this heading"></a></h3>
 <p>Logging is controlled by the global variable <code class="docutils literal notranslate"><span class="pre">LOGGING_ENABLED</span></code> in <code class="docutils literal notranslate"><span class="pre">logger.py</span></code>.</p>
 <p>You can toggle logging dynamically:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">amocarray</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">amocatlas</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
 <span class="n">logger</span><span class="o">.</span><span class="n">enable_logging</span><span class="p">()</span>
 <span class="n">logger</span><span class="o">.</span><span class="n">disable_logging</span><span class="p">()</span>
 </pre></div>
@@ -509,7 +508,7 @@ git<span class="w"> </span>merge<span class="w"> </span>upstream/main
 <section id="writing-logs-in-modules">
 <h3>Writing logs in modules<a class="headerlink" href="#writing-logs-in-modules" title="Link to this heading"></a></h3>
 <p>We wrap standard Python logging calls to allow toggling:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">amocarray.logger</span><span class="w"> </span><span class="kn">import</span> <span class="n">log_info</span><span class="p">,</span> <span class="n">log_warning</span><span class="p">,</span> <span class="n">log_error</span><span class="p">,</span> <span class="n">log_debug</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">amocatlas.logger</span><span class="w"> </span><span class="kn">import</span> <span class="n">log_info</span><span class="p">,</span> <span class="n">log_warning</span><span class="p">,</span> <span class="n">log_error</span><span class="p">,</span> <span class="n">log_debug</span>
 </pre></div>
 </div>
 <p>Then, in your code:</p>
@@ -520,7 +519,7 @@ git<span class="w"> </span>merge<span class="w"> </span>upstream/main
 </pre></div>
 </div>
 <blockquote>
-<div><p><strong>Note:</strong> This departs from typical imports (<code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">amocarray</span> <span class="pre">import</span> <span class="pre">logger</span></code>) to keep calls clean and familiar: <code class="docutils literal notranslate"><span class="pre">log_info(...)</span></code> rather than <code class="docutils literal notranslate"><span class="pre">logger.log.info(...)</span></code>.</p>
+<div><p><strong>Note:</strong> This departs from typical imports (<code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">amocatlas</span> <span class="pre">import</span> <span class="pre">logger</span></code>) to keep calls clean and familiar: <code class="docutils literal notranslate"><span class="pre">log_info(...)</span></code> rather than <code class="docutils literal notranslate"><span class="pre">logger.log.info(...)</span></code>.</p>
 </div></blockquote>
 </section>
 <section id="log-levels">
@@ -545,7 +544,7 @@ git<span class="w"> </span>merge<span class="w"> </span>upstream/main
 <li><p>✅ Use <code class="docutils literal notranslate"><span class="pre">log_debug</span></code> for rich details useful in debugging.</p></li>
 <li><p>✅ Avoid excessive logging inside tight loops.</p></li>
 </ul>
-<p>As <code class="docutils literal notranslate"><span class="pre">amocarray</span></code> expands, logs will play an increasing role in transparency and reproducibility.</p>
+<p>As <code class="docutils literal notranslate"><span class="pre">amocatlas</span></code> expands, logs will play an increasing role in transparency and reproducibility.</p>
 <hr class="docutils" />
 </section>
 </section>
@@ -587,7 +586,7 @@ git<span class="w"> </span>merge<span class="w"> </span>upstream/main
 <section id="further-resources">
 <span id="resources"></span><h2>10. Further Resources<a class="headerlink" href="#further-resources" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://amoccommunity.github.io/amocarray/">amocarray User Documentation</a></p></li>
+<li><p><a class="reference external" href="https://amoccommunity.github.io/amocatlas/">amocatlas User Documentation</a></p></li>
 <li><p><a class="reference external" href="https://github.com/OceanGlidersCommunity/ocean-gliders">OceanGliders Metadata Standards</a></p></li>
 <li><p><a class="reference external" href="https://www.amoccommunity.org/">AMOC Community Project</a></p></li>
 </ul>

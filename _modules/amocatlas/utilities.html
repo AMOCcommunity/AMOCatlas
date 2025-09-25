@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>amocarray.utilities &mdash; amocarray v0.0.0 documentation</title>
+  <title>amocatlas.utilities &mdash; amocatlas v0.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=1078e4cb" />
@@ -32,7 +32,7 @@
           
           
           <a href="../../index.html" class="icon icon-home">
-            amocarray
+            amocatlas
               <img src="../../_static/logo.jpg" class="logo" alt="Logo"/>
           </a>
 <div role="search">
@@ -62,15 +62,14 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Help and reference</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocarray">GitHub Repo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../amocarray.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">amocarray</span> <span class="pre">API</span></code></a></li>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">GitHub Repo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../AC1_vocabularies.html">Controlled Vocabularies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../AC1_units.html">Units Reference: for AC1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../AC1_variables.html">Variable Names</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Developers' guide</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../developer_guide.html">Developer Guide for <code class="docutils literal notranslate"><span class="pre">amocarray</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide.html">Developer Guide for <code class="docutils literal notranslate"><span class="pre">amocatlas</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../gitcollab.html">Collaborating with git: Basic workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../actions.html">Extra GitHub features: Actions &amp; Pages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../conventions.html">Project Coding Conventions</a></li>
@@ -83,7 +82,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">amocarray</a>
+          <a href="../../index.html">amocatlas</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -92,7 +91,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
-      <li class="breadcrumb-item active">amocarray.utilities</li>
+      <li class="breadcrumb-item active">amocatlas.utilities</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -101,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <h1>Source code for amocarray.utilities</h1><div class="highlight"><pre>
+  <h1>Source code for amocatlas.utilities</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ftplib</span><span class="w"> </span><span class="kn">import</span> <span class="n">FTP</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">wraps</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
@@ -115,15 +114,15 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">amocarray</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">amocarray.logger</span><span class="w"> </span><span class="kn">import</span> <span class="n">log_debug</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">amocatlas</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">amocatlas.logger</span><span class="w"> </span><span class="kn">import</span> <span class="n">log_debug</span>
 
 <span class="n">log</span> <span class="o">=</span> <span class="n">logger</span><span class="o">.</span><span class="n">log</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">importlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">resources</span>
 
 
 <div class="viewcode-block" id="get_project_root">
-<a class="viewcode-back" href="../../amocarray.html#amocarray.utilities.get_project_root">[docs]</a>
+<a class="viewcode-back" href="../../amocarray.html#amocatlas.utilities.get_project_root">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">get_project_root</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the absolute path to the project root directory.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span></div>
@@ -131,14 +130,14 @@
 
 
 <div class="viewcode-block" id="get_default_data_dir">
-<a class="viewcode-back" href="../../amocarray.html#amocarray.utilities.get_default_data_dir">[docs]</a>
+<a class="viewcode-back" href="../../amocarray.html#amocatlas.utilities.get_default_data_dir">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">get_default_data_dir</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;data&quot;</span></div>
 
 
 
 <div class="viewcode-block" id="apply_defaults">
-<a class="viewcode-back" href="../../amocarray.html#amocarray.utilities.apply_defaults">[docs]</a>
+<a class="viewcode-back" href="../../amocarray.html#amocatlas.utilities.apply_defaults">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">apply_defaults</span><span class="p">(</span><span class="n">default_source</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">default_files</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Decorator to apply default values for &#39;source&#39; and &#39;file_list&#39; parameters if they are None.</span>
 
@@ -177,7 +176,7 @@
 
 
 <div class="viewcode-block" id="normalize_whitespace">
-<a class="viewcode-back" href="../../amocarray.html#amocarray.utilities.normalize_whitespace">[docs]</a>
+<a class="viewcode-back" href="../../amocarray.html#amocatlas.utilities.normalize_whitespace">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">normalize_whitespace</span><span class="p">(</span><span class="n">attrs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Replace non-breaking &amp; other unusual whitespace in every string attr value</span>
@@ -199,7 +198,7 @@
 
 
 <div class="viewcode-block" id="resolve_file_path">
-<a class="viewcode-back" href="../../amocarray.html#amocarray.utilities.resolve_file_path">[docs]</a>
+<a class="viewcode-back" href="../../amocarray.html#amocatlas.utilities.resolve_file_path">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">resolve_file_path</span><span class="p">(</span>
     <span class="n">file_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">source</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>
@@ -264,7 +263,7 @@
 
 
 <div class="viewcode-block" id="load_array_metadata">
-<a class="viewcode-back" href="../../amocarray.html#amocarray.utilities.load_array_metadata">[docs]</a>
+<a class="viewcode-back" href="../../amocarray.html#amocatlas.utilities.load_array_metadata">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">load_array_metadata</span><span class="p">(</span><span class="n">array_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Load metadata YAML for a given mooring array.</span>
@@ -281,7 +280,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">with</span> <span class="p">(</span>
-            <span class="n">resources</span><span class="o">.</span><span class="n">files</span><span class="p">(</span><span class="s2">&quot;amocarray.metadata&quot;</span><span class="p">)</span>
+            <span class="n">resources</span><span class="o">.</span><span class="n">files</span><span class="p">(</span><span class="s2">&quot;amocatlas.metadata&quot;</span><span class="p">)</span>
             <span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">array_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s2">_array.yml&quot;</span><span class="p">)</span>
             <span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span>
         <span class="p">):</span>
@@ -296,7 +295,7 @@
 
 
 <div class="viewcode-block" id="safe_update_attrs">
-<a class="viewcode-back" href="../../amocarray.html#amocarray.utilities.safe_update_attrs">[docs]</a>
+<a class="viewcode-back" href="../../amocarray.html#amocatlas.utilities.safe_update_attrs">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">safe_update_attrs</span><span class="p">(</span>
     <span class="n">ds</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">,</span>
     <span class="n">new_attrs</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span>
@@ -352,7 +351,7 @@
 
 
 <div class="viewcode-block" id="validate_array_yaml">
-<a class="viewcode-back" href="../../amocarray.html#amocarray.utilities.validate_array_yaml">[docs]</a>
+<a class="viewcode-back" href="../../amocarray.html#amocatlas.utilities.validate_array_yaml">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">validate_array_yaml</span><span class="p">(</span><span class="n">array_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Validate the structure and required fields of an array-level metadata YAML.</span>
@@ -473,7 +472,7 @@
 
 
 <div class="viewcode-block" id="download_file">
-<a class="viewcode-back" href="../../amocarray.html#amocarray.utilities.download_file">[docs]</a>
+<a class="viewcode-back" href="../../amocarray.html#amocatlas.utilities.download_file">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">download_file</span><span class="p">(</span>
     <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">dest_folder</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -537,7 +536,7 @@
 
 
 <div class="viewcode-block" id="parse_ascii_header">
-<a class="viewcode-back" href="../../amocarray.html#amocarray.utilities.parse_ascii_header">[docs]</a>
+<a class="viewcode-back" href="../../amocarray.html#amocatlas.utilities.parse_ascii_header">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">parse_ascii_header</span><span class="p">(</span>
     <span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">comment_char</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;%&quot;</span><span class="p">,</span>
@@ -585,7 +584,7 @@
 
 
 <div class="viewcode-block" id="read_ascii_file">
-<a class="viewcode-back" href="../../amocarray.html#amocarray.utilities.read_ascii_file">[docs]</a>
+<a class="viewcode-back" href="../../amocarray.html#amocatlas.utilities.read_ascii_file">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">read_ascii_file</span><span class="p">(</span><span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">comment_char</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;#&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Read an ASCII file into a pandas DataFrame, skipping lines starting with a specified comment character.</span>
 

@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>amocarray.read_rapid &mdash; amocarray v0.0.0 documentation</title>
+  <title>amocatlas.read_osnap &mdash; amocatlas v0.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=1078e4cb" />
@@ -32,7 +32,7 @@
           
           
           <a href="../../index.html" class="icon icon-home">
-            amocarray
+            amocatlas
               <img src="../../_static/logo.jpg" class="logo" alt="Logo"/>
           </a>
 <div role="search">
@@ -62,15 +62,14 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Help and reference</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocarray">GitHub Repo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../amocarray.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">amocarray</span> <span class="pre">API</span></code></a></li>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">GitHub Repo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../AC1_vocabularies.html">Controlled Vocabularies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../AC1_units.html">Units Reference: for AC1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../AC1_variables.html">Variable Names</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Developers' guide</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../developer_guide.html">Developer Guide for <code class="docutils literal notranslate"><span class="pre">amocarray</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide.html">Developer Guide for <code class="docutils literal notranslate"><span class="pre">amocatlas</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../gitcollab.html">Collaborating with git: Basic workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../actions.html">Extra GitHub features: Actions &amp; Pages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../conventions.html">Project Coding Conventions</a></li>
@@ -83,7 +82,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">amocarray</a>
+          <a href="../../index.html">amocatlas</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -92,7 +91,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
-      <li class="breadcrumb-item active">amocarray.read_rapid</li>
+      <li class="breadcrumb-item active">amocatlas.read_osnap</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -101,83 +100,75 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <h1>Source code for amocarray.read_rapid</h1><div class="highlight"><pre>
+  <h1>Source code for amocatlas.read_osnap</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Union</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
 
-<span class="c1"># Import the modules used</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">amocarray</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span><span class="p">,</span> <span class="n">utilities</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">amocarray.logger</span><span class="w"> </span><span class="kn">import</span> <span class="n">log_error</span><span class="p">,</span> <span class="n">log_info</span><span class="p">,</span> <span class="n">log_warning</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">amocarray.utilities</span><span class="w"> </span><span class="kn">import</span> <span class="n">apply_defaults</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">amocatlas</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span><span class="p">,</span> <span class="n">utilities</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">amocatlas.utilities</span><span class="w"> </span><span class="kn">import</span> <span class="n">apply_defaults</span>
 
-<span class="n">log</span> <span class="o">=</span> <span class="n">logger</span><span class="o">.</span><span class="n">log</span>  <span class="c1"># Use the global logger</span>
+<span class="n">log</span> <span class="o">=</span> <span class="n">logger</span><span class="o">.</span><span class="n">log</span>  <span class="c1"># Use global logger</span>
 
-<span class="c1"># Default list of RAPID data files</span>
-<span class="n">RAPID_DEFAULT_SOURCE</span> <span class="o">=</span> <span class="s2">&quot;https://rapid.ac.uk/sites/default/files/rapid_data/&quot;</span>
-<span class="n">RAPID_TRANSPORT_FILES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;moc_transports.nc&quot;</span><span class="p">]</span>
-<span class="n">RAPID_DEFAULT_FILES</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;moc_transports.nc&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;moc_vertical.nc&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;ts_gridded.nc&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;2d_gridded.nc&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;meridional_transports.nc&quot;</span><span class="p">,</span>
+<span class="c1"># Default file list</span>
+<span class="n">OSNAP_DEFAULT_FILES</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;OSNAP_MOC_MHT_MFT_TimeSeries_201408_202006_2023.nc&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;OSNAP_Streamfunction_201408_202006_2023.nc&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;OSNAP_Gridded_TSV_201408_202006_2023.nc&quot;</span><span class="p">,</span>
 <span class="p">]</span>
+<span class="n">OSNAP_TRANSPORT_FILES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;OSNAP_MOC_MHT_MFT_TimeSeries_201408_202006_2023.nc&quot;</span><span class="p">]</span>
 
-<span class="c1"># Inline metadata dictionary</span>
-<span class="n">RAPID_METADATA</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;RAPID 26N transport estimates dataset&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;project&quot;</span><span class="p">:</span> <span class="s2">&quot;RAPID-AMOC 26°N array&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;web_link&quot;</span><span class="p">:</span> <span class="s2">&quot;https://rapid.ac.uk/rapidmoc&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;note&quot;</span><span class="p">:</span> <span class="s2">&quot;Dataset accessed and processed via xarray&quot;</span><span class="p">,</span>
+<span class="c1"># Mapping of filenames to download URLs</span>
+<span class="n">OSNAP_FILE_URLS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;README_OSNAP-MOC_202306.doc&quot;</span><span class="p">:</span> <span class="s2">&quot;https://repository.gatech.edu/bitstreams/930261ff-6cca-4cf9-81c8-d27c51a4ca49/download&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;OSNAP_MOC_MHT_MFT_TimeSeries_201408_202006_2023.nc&quot;</span><span class="p">:</span> <span class="s2">&quot;https://repository.gatech.edu/bitstreams/e039e311-dd2e-4511-a525-c2fcfb3be85a/download&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;OSNAP_Streamfunction_201408_202006_2023.nc&quot;</span><span class="p">:</span> <span class="s2">&quot;https://repository.gatech.edu/bitstreams/5edf4cba-a28f-40a6-a4da-24d7436a42ab/download&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;OSNAP_Gridded_TSV_201408_202006_2023.nc&quot;</span><span class="p">:</span> <span class="s2">&quot;https://repository.gatech.edu/bitstreams/598f200a-50ba-4af0-96af-bd29fe692cdc/download&quot;</span><span class="p">,</span>
 <span class="p">}</span>
 
-<span class="c1"># File-specific metadata placeholder</span>
-<span class="n">RAPID_FILE_METADATA</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;moc_transports.nc&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;data_product&quot;</span><span class="p">:</span> <span class="s2">&quot;RAPID layer transport time series&quot;</span><span class="p">,</span>
+<span class="c1"># General metadata (global for OSNAP)</span>
+<span class="n">OSNAP_METADATA</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;project&quot;</span><span class="p">:</span> <span class="s2">&quot;Overturning in the Subpolar North Atlantic Program (OSNAP)&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;weblink&quot;</span><span class="p">:</span> <span class="s2">&quot;https://www.o-snap.org&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;comment&quot;</span><span class="p">:</span> <span class="s2">&quot;Dataset accessed and processed via http://github.com/AMOCcommunity/amocatlas&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;acknowledgement&quot;</span><span class="p">:</span> <span class="s2">&quot;OSNAP data were collected and made freely available by the OSNAP (Overturning in the Subpolar North Atlantic Program) project and all the national programs that contribute to it (www.o-snap.org).&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;doi&quot;</span><span class="p">:</span> <span class="s2">&quot;https://doi.org/10.35090/gatech/70342&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="c1"># File-specific metadata (placeholder, ready to extend)</span>
+<span class="n">OSNAP_FILE_METADATA</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;OSNAP_MOC_MHT_MFT_TimeSeries_201408_202006_2023.nc&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;data_product&quot;</span><span class="p">:</span> <span class="s2">&quot;Time series of MOC, MHT, and MFT&quot;</span><span class="p">,</span>
     <span class="p">},</span>
-    <span class="s2">&quot;moc_vertical.nc&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;data_product&quot;</span><span class="p">:</span> <span class="s2">&quot;RAPID vertical streamfunction time series&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;OSNAP_Streamfunction_201408_202006_2023.nc&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;data_product&quot;</span><span class="p">:</span> <span class="s2">&quot;Meridional overturning streamfunction&quot;</span><span class="p">,</span>
     <span class="p">},</span>
-    <span class="s2">&quot;ts_gridded.nc&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;data_product&quot;</span><span class="p">:</span> <span class="s2">&quot;RAPID gridded temperature and salinity&quot;</span><span class="p">,</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;2d_gridded.nc&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;data_product&quot;</span><span class="p">:</span> <span class="s2">&quot;RAPID 2D gridded temperature and salinity&quot;</span><span class="p">,</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;meridional_transports.nc&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;data_product&quot;</span><span class="p">:</span> <span class="s2">&quot;RAPID meridional transport time series&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;OSNAP_Gridded_TSV_201408_202006_2023.nc&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;data_product&quot;</span><span class="p">:</span> <span class="s2">&quot;Gridded temperature, salinity, and velocity&quot;</span><span class="p">,</span>
     <span class="p">},</span>
 <span class="p">}</span>
-<span class="c1"># https://rapid.ac.uk/sites/default/files/rapid_data/ts_gridded.nc</span>
-<span class="c1"># https://rapid.ac.uk/sites/default/files/rapid_data/moc_vertical.nc</span>
-<span class="c1"># https://rapid.ac.uk/sites/default/files/rapid_data/moc_transports.nc</span>
-<span class="c1"># https://rapid.ac.uk/sites/default/files/rapid_data/2d_gridded.nc</span>
-<span class="c1"># https://rapid.ac.uk/sites/default/files/rapid_data/meridional_transports.nc</span>
 
 
-<div class="viewcode-block" id="read_rapid">
-<a class="viewcode-back" href="../../amocarray.html#amocarray.read_rapid.read_rapid">[docs]</a>
-<span class="nd">@apply_defaults</span><span class="p">(</span><span class="n">RAPID_DEFAULT_SOURCE</span><span class="p">,</span> <span class="n">RAPID_DEFAULT_FILES</span><span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">read_rapid</span><span class="p">(</span>
-    <span class="n">source</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>
+<div class="viewcode-block" id="read_osnap">
+<a class="viewcode-back" href="../../amocarray.html#amocatlas.read_osnap.read_osnap">[docs]</a>
+<span class="nd">@apply_defaults</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">OSNAP_DEFAULT_FILES</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_osnap</span><span class="p">(</span>
+    <span class="n">source</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">file_list</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span>
     <span class="n">transport_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="n">data_dir</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">redownload</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Load the RAPID transport dataset from a URL or local file path into an xarray.Dataset.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Load the OSNAP transport datasets from a URL or local file path into xarray Datasets.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    source : str, optional</span>
-<span class="sd">        URL or local path to the NetCDF file(s).</span>
-<span class="sd">        Defaults to the RAPID data repository URL.</span>
+<span class="sd">        Local path to the data directory (remote source is handled per-file).</span>
 <span class="sd">    file_list : str or list of str, optional</span>
 <span class="sd">        Filename or list of filenames to process.</span>
-<span class="sd">        If None, will attempt to list files in the source directory.</span>
+<span class="sd">        Defaults to OSNAP_DEFAULT_FILES.</span>
 <span class="sd">    transport_only : bool, optional</span>
 <span class="sd">        If True, restrict to transport files only.</span>
 <span class="sd">    data_dir : str, Path or None, optional</span>
@@ -187,26 +178,28 @@
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    xr.Dataset</span>
-<span class="sd">        The loaded xarray dataset with basic inline metadata.</span>
+<span class="sd">    list of xr.Dataset</span>
+<span class="sd">        List of loaded xarray datasets with basic inline and file-specific metadata.</span>
 
 <span class="sd">    Raises</span>
 <span class="sd">    ------</span>
 <span class="sd">    ValueError</span>
-<span class="sd">        If the source is neither a valid URL nor a directory path.</span>
+<span class="sd">        If no source is provided for a file and no default URL mapping is found.</span>
 <span class="sd">    FileNotFoundError</span>
-<span class="sd">        If no valid NetCDF files are found in the provided file list.</span>
+<span class="sd">        If the file cannot be downloaded or does not exist locally.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">log_info</span><span class="p">(</span><span class="s2">&quot;Starting to read RAPID dataset&quot;</span><span class="p">)</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Starting to read OSNAP dataset&quot;</span><span class="p">)</span>
 
+    <span class="c1"># Ensure file_list has a default</span>
     <span class="k">if</span> <span class="n">file_list</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">file_list</span> <span class="o">=</span> <span class="n">RAPID_DEFAULT_FILES</span>
+        <span class="n">file_list</span> <span class="o">=</span> <span class="n">OSNAP_DEFAULT_FILES</span>
     <span class="k">if</span> <span class="n">transport_only</span><span class="p">:</span>
-        <span class="n">file_list</span> <span class="o">=</span> <span class="n">RAPID_TRANSPORT_FILES</span>
+        <span class="n">file_list</span> <span class="o">=</span> <span class="n">OSNAP_TRANSPORT_FILES</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">file_list</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
         <span class="n">file_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">file_list</span><span class="p">]</span>
 
+    <span class="c1"># Determine the local storage path</span>
     <span class="n">local_data_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span> <span class="k">if</span> <span class="n">data_dir</span> <span class="k">else</span> <span class="n">utilities</span><span class="o">.</span><span class="n">get_default_data_dir</span><span class="p">()</span>
     <span class="n">local_data_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
@@ -214,12 +207,13 @@
 
     <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">file_list</span><span class="p">:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">file</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.nc&quot;</span><span class="p">):</span>
-            <span class="n">log_warning</span><span class="p">(</span><span class="s2">&quot;Skipping non-NetCDF file: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Skipping non-NetCDF file: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
             <span class="k">continue</span>
 
-        <span class="n">download_url</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">source</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="n">utilities</span><span class="o">.</span><span class="n">_is_valid_url</span><span class="p">(</span><span class="n">source</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
-        <span class="p">)</span>
+        <span class="n">download_url</span> <span class="o">=</span> <span class="n">OSNAP_FILE_URLS</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">download_url</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;No download URL defined for OSNAP file: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No download URL defined for OSNAP file </span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
         <span class="n">file_path</span> <span class="o">=</span> <span class="n">utilities</span><span class="o">.</span><span class="n">resolve_file_path</span><span class="p">(</span>
             <span class="n">file_name</span><span class="o">=</span><span class="n">file</span><span class="p">,</span>
@@ -229,21 +223,23 @@
             <span class="n">redownload</span><span class="o">=</span><span class="n">redownload</span><span class="p">,</span>
         <span class="p">)</span>
 
+        <span class="c1"># Open dataset</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="n">log_info</span><span class="p">(</span><span class="s2">&quot;Opening RAPID dataset: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">file_path</span><span class="p">)</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Opening OSNAP dataset: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">file_path</span><span class="p">)</span>
             <span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="n">log_error</span><span class="p">(</span><span class="s2">&quot;Failed to open NetCDF file: </span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Failed to open NetCDF file: </span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
             <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to open NetCDF file: </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-        <span class="n">file_metadata</span> <span class="o">=</span> <span class="n">RAPID_FILE_METADATA</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="p">{})</span>
-        <span class="n">log_info</span><span class="p">(</span><span class="s2">&quot;Attaching metadata to RAPID dataset from file: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+        <span class="c1"># Attach metadata</span>
+        <span class="n">file_metadata</span> <span class="o">=</span> <span class="n">OSNAP_FILE_METADATA</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Attaching metadata to dataset from file: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
         <span class="n">utilities</span><span class="o">.</span><span class="n">safe_update_attrs</span><span class="p">(</span>
             <span class="n">ds</span><span class="p">,</span>
             <span class="p">{</span>
                 <span class="s2">&quot;source_file&quot;</span><span class="p">:</span> <span class="n">file</span><span class="p">,</span>
                 <span class="s2">&quot;source_path&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">file_path</span><span class="p">),</span>
-                <span class="o">**</span><span class="n">RAPID_METADATA</span><span class="p">,</span>
+                <span class="o">**</span><span class="n">OSNAP_METADATA</span><span class="p">,</span>
                 <span class="o">**</span><span class="n">file_metadata</span><span class="p">,</span>
             <span class="p">},</span>
         <span class="p">)</span>
@@ -251,10 +247,10 @@
         <span class="n">datasets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">datasets</span><span class="p">:</span>
-        <span class="n">log_error</span><span class="p">(</span><span class="s2">&quot;No valid RAPID NetCDF files found in </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">file_list</span><span class="p">)</span>
-        <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No valid RAPID NetCDF files found in </span><span class="si">{</span><span class="n">file_list</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;No valid NetCDF files found in </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">file_list</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No valid NetCDF files found in </span><span class="si">{</span><span class="n">file_list</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-    <span class="n">log_info</span><span class="p">(</span><span class="s2">&quot;Successfully loaded </span><span class="si">%d</span><span class="s2"> RAPID dataset(s)&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">datasets</span><span class="p">))</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Successfully loaded </span><span class="si">%d</span><span class="s2"> OSNAP dataset(s)&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">datasets</span><span class="p">))</span>
 
     <span class="k">return</span> <span class="n">datasets</span></div>
 

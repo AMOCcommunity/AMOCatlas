@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OceanSITES Format for AMOC Arrays &mdash; amocarray v0.0.0 documentation</title>
+  <title>OceanSITES Format for AMOC Arrays &mdash; amocatlas v0.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=1078e4cb" />
@@ -35,7 +35,7 @@
           
           
           <a href="index.html" class="icon icon-home">
-            amocarray
+            amocatlas
               <img src="_static/logo.jpg" class="logo" alt="Logo"/>
           </a>
 <div role="search">
@@ -89,15 +89,14 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Help and reference</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocarray">GitHub Repo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="amocarray.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">amocarray</span> <span class="pre">API</span></code></a></li>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">GitHub Repo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="AC1_vocabularies.html">Controlled Vocabularies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="AC1_units.html">Units Reference: for AC1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="AC1_variables.html">Variable Names</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Developers' guide</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="developer_guide.html">Developer Guide for <code class="docutils literal notranslate"><span class="pre">amocarray</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer_guide.html">Developer Guide for <code class="docutils literal notranslate"><span class="pre">amocatlas</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="gitcollab.html">Collaborating with git: Basic workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="actions.html">Extra GitHub features: Actions &amp; Pages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conventions.html">Project Coding Conventions</a></li>
@@ -110,7 +109,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">amocarray</a>
+          <a href="index.html">amocatlas</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -130,7 +129,7 @@
              
   <section id="oceansites-format-for-amoc-arrays">
 <h1>OceanSITES Format for AMOC Arrays<a class="headerlink" href="#oceansites-format-for-amoc-arrays" title="Link to this heading"></a></h1>
-<p>This document describes how RAPID, MOVE, OSNAP, and SAMBA array products are mapped into OceanSITES-compliant NetCDF structures within the <cite>amocarray</cite> package. It summarizes conventions from the OceanSITES format reference manual (v1.4, from 2020) and describes decisions for AMOC-specific implementation.</p>
+<p>This document describes how RAPID, MOVE, OSNAP, and SAMBA array products are mapped into OceanSITES-compliant NetCDF structures within the <cite>amocatlas</cite> package. It summarizes conventions from the OceanSITES format reference manual (v1.4, from 2020) and describes decisions for AMOC-specific implementation.</p>
 <section id="file-naming">
 <h2>File naming<a class="headerlink" href="#file-naming" title="Link to this heading"></a></h2>
 <p>According to OceanSITES, the filenaming convention is: <cite>OS_[PlatformCode]_[DeploymentCode]_[DataMode]_[PARTX].nc</cite>, when applied to individual instrument deployments.</p>
@@ -138,7 +137,7 @@
 <h3>OceanSITES: Gridded and derived data<a class="headerlink" href="#oceansites-gridded-and-derived-data" title="Link to this heading"></a></h3>
 <p>OceanSITES says a number of higher-level data products can be created:</p>
 <ul class="simple">
-<li><p><strong>merged:</strong> A “long time series” version that may concatenate multiple deployments (some homogenization).  Not used in <cite>amocarray</cite>.</p></li>
+<li><p><strong>merged:</strong> A “long time series” version that may concatenate multiple deployments (some homogenization).  Not used in <cite>amocatlas</cite>.</p></li>
 <li><p><strong>gridded (GRD):</strong> A “gridded” version which interpolates to a space-time grid different from native instrumental resolution (this is what OSNAP and RAPID provide for their TEMPERATURE and SALINITY fields)</p></li>
 <li><p><strong>derived (DPR):</strong> A “derived” data product (e.g., the “overturning circulation” or “meridional heat transport”)</p></li>
 </ul>
@@ -147,16 +146,16 @@
 <h3>File naming for array data products<a class="headerlink" href="#file-naming-for-array-data-products" title="Link to this heading"></a></h3>
 <p><cite>OS_[PSPANCode]_[StartEndCode]_ [ContentType]_[PARTX].nc</cite></p>
 <ul>
-<li><p><cite>PSPANCode</cite>: the <cite>[PlatformCode]</cite> can be replaced with an appropriate choice of site, project, array or network which can be taken from the global attributes of the underlying source data.  For <cite>amocarray</cite>, we will use the <cite>array</cite> global attribute (should be e.g. RAPID, OSNAP, MOVE, SAMBA, 11South).</p></li>
-<li><p><cite>StartEndCode</cite>: the <cite>[DeploymentCode]</cite> can be replaced with a time range that is appropriate for the data in the file.  For <cite>amocarray</cite>, this will be the time range of the data in the file. Preferred format is e.g. “20050301-20190831” to indicate data from March 2005 through August 2019.</p></li>
+<li><p><cite>PSPANCode</cite>: the <cite>[PlatformCode]</cite> can be replaced with an appropriate choice of site, project, array or network which can be taken from the global attributes of the underlying source data.  For <cite>amocatlas</cite>, we will use the <cite>array</cite> global attribute (should be e.g. RAPID, OSNAP, MOVE, SAMBA, 11South).</p></li>
+<li><p><cite>StartEndCode</cite>: the <cite>[DeploymentCode]</cite> can be replaced with a time range that is appropriate for the data in the file.  For <cite>amocatlas</cite>, this will be the time range of the data in the file. Preferred format is e.g. “20050301-20190831” to indicate data from March 2005 through August 2019.</p></li>
 <li><p><cite>ContentType</cite>: the <cite>[DataMode]</cite> can be replaced with a three-letter code that describes the content of the file (distinguished from the deployment files, which have a one-letter code here), one of:</p>
 <ul class="simple">
-<li><p>LTS (not used in <cite>amocarray</cite>): The data are “long time series” data that are essentially at the native instrumental resolution in space and time. The primary difference from the deployment-by-deployment files is that a single file contains merged data from multiple deployments.</p></li>
+<li><p>LTS (not used in <cite>amocatlas</cite>): The data are “long time series” data that are essentially at the native instrumental resolution in space and time. The primary difference from the deployment-by-deployment files is that a single file contains merged data from multiple deployments.</p></li>
 <li><p>GRD: The data are “gridded”, meaning that some sort of binning, averaging, interpolating has been done to format the data onto a space-time grid that is different from the native resolution, and more than a simple concatenation like the “LTS” option.  This is what OSNAP and RAPID provide for their TEMPERATURE and SALINITY fields.</p></li>
 <li><p>DPR: The data are a “derived product”, which means that there are data that were derived from multiple sites or some other higher-order processing that the data provider distinguishes from the lower-level data. This is the case for the overturning transports and component transports and streamfunctions.</p></li>
 </ul>
 </li>
-<li><p>[PARTX] - An optional user-defined field for additional identification or explanation of data. For gridded data, this could include the record interval as subfields of ISO 8601 (PnYnMnDTnHnMnS), e.g. P1M for monthly data, T30M for 30 minutes, T1H for hourly.  For <cite>amocarray</cite>, this will be a short code corresponding to the types of data in the file:</p>
+<li><p>[PARTX] - An optional user-defined field for additional identification or explanation of data. For gridded data, this could include the record interval as subfields of ISO 8601 (PnYnMnDTnHnMnS), e.g. P1M for monthly data, T30M for 30 minutes, T1H for hourly.  For <cite>amocatlas</cite>, this will be a short code corresponding to the types of data in the file:</p>
 <ul class="simple">
 <li><p>RAPID (PSPANCode = RAPID):
 - <cite>ts_gridded.nc</cite> has individual locations with timeSeriesProfile.  The <cite>PARTX</cite> for OceanSITES will be <cite>gridded_mooring</cite>, and ContentType = GRD.
@@ -391,7 +390,7 @@ make sense for the data product in question.</p>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">platform_code</span></code></p></td>
 <td><p>A unique platform code.  This code is either assigned by the site PI (see principal_investigator) or by the data provider.</p></td>
-<td><p>Note that this is required for OceanSITES for GDAC, but it is not implemented in the current version of the <cite>amocarray</cite> package.</p></td>
+<td><p>Note that this is required for OceanSITES for GDAC, but it is not implemented in the current version of the <cite>amocatlas</cite> package.</p></td>
 <td><p><strong>M</strong> (for GDAC)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">principal_investigator_url</span></code></p></td>
@@ -636,7 +635,7 @@ make sense for the data product in question.</p>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">publisher_url</span></code></p></td>
 <td><p>Web address of the institution or data publisher</p></td>
-<td><p><strong>ex.:</strong> “<a class="reference external" href="http://github.com/AMOCcommunity/amocarray">http://github.com/AMOCcommunity/amocarray</a>”</p></td>
+<td><p><strong>ex.:</strong> “<a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">http://github.com/AMOCcommunity/amocatlas</a>”</p></td>
 <td><p><em>S</em></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">references</span></code></p></td>

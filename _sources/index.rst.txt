@@ -3,12 +3,12 @@
    contain the root `toctree` directive.
 
 
-Welcome to amocarray's documentation!
+Welcome to amocatlas's documentation!
 ======================================
 
-`amocarray` is a repository to access and work with array data from Atlantic meridional overturning circulation mooring arrays.
+`amocatlas` is a repository to access and work with array data from Atlantic meridional overturning circulation mooring arrays.
 
-For recommendations or bug reports, please visit https://github.com/AMOCcommunity/amocarray/issues/new
+For recommendations or bug reports, please visit https://github.com/AMOCcommunity/amocatlas/issues/new
 
 
 .. toctree::
@@ -41,8 +41,8 @@ For recommendations or bug reports, please visit https://github.com/AMOCcommunit
    :maxdepth: 2
    :caption: Help and reference
 
-   GitHub Repo <http://github.com/AMOCcommunity/amocarray>
-   amocarray
+   GitHub Repo <http://github.com/AMOCcommunity/amocatlas>
+   amocatlas
    AC1_vocabularies
    AC1_units
    AC1_variables

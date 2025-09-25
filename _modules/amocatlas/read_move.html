@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>amocarray.read_move &mdash; amocarray v0.0.0 documentation</title>
+  <title>amocatlas.read_move &mdash; amocatlas v0.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=1078e4cb" />
@@ -32,7 +32,7 @@
           
           
           <a href="../../index.html" class="icon icon-home">
-            amocarray
+            amocatlas
               <img src="../../_static/logo.jpg" class="logo" alt="Logo"/>
           </a>
 <div role="search">
@@ -62,15 +62,14 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Help and reference</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocarray">GitHub Repo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../amocarray.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">amocarray</span> <span class="pre">API</span></code></a></li>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">GitHub Repo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../AC1_vocabularies.html">Controlled Vocabularies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../AC1_units.html">Units Reference: for AC1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../AC1_variables.html">Variable Names</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Developers' guide</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../developer_guide.html">Developer Guide for <code class="docutils literal notranslate"><span class="pre">amocarray</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide.html">Developer Guide for <code class="docutils literal notranslate"><span class="pre">amocatlas</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../gitcollab.html">Collaborating with git: Basic workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../actions.html">Extra GitHub features: Actions &amp; Pages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../conventions.html">Project Coding Conventions</a></li>
@@ -83,7 +82,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">amocarray</a>
+          <a href="../../index.html">amocatlas</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -92,7 +91,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
-      <li class="breadcrumb-item active">amocarray.read_move</li>
+      <li class="breadcrumb-item active">amocatlas.read_move</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -101,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <h1>Source code for amocarray.read_move</h1><div class="highlight"><pre>
+  <h1>Source code for amocatlas.read_move</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Union</span>
 
@@ -109,8 +108,8 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">amocarray</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span><span class="p">,</span> <span class="n">utilities</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">amocarray.utilities</span><span class="w"> </span><span class="kn">import</span> <span class="n">apply_defaults</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">amocatlas</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span><span class="p">,</span> <span class="n">utilities</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">amocatlas.utilities</span><span class="w"> </span><span class="kn">import</span> <span class="n">apply_defaults</span>
 
 <span class="n">log</span> <span class="o">=</span> <span class="n">logger</span><span class="o">.</span><span class="n">log</span>  <span class="c1"># ✅ use the global logger</span>
 
@@ -130,7 +129,7 @@
     <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;MOVE transport estimates dataset from UCSD mooring project&quot;</span><span class="p">,</span>
     <span class="s2">&quot;project&quot;</span><span class="p">:</span> <span class="s2">&quot;Meridional Overturning Variability Experiment (MOVE)&quot;</span><span class="p">,</span>
     <span class="s2">&quot;weblink&quot;</span><span class="p">:</span> <span class="s2">&quot;https://dods.ndbc.noaa.gov/thredds/fileServer/oceansites/DATA_GRIDDED/MOVE/&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;comment&quot;</span><span class="p">:</span> <span class="s2">&quot;Dataset accessed and processed via http://github.com/AMOCcommunity/amocarray&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;comment&quot;</span><span class="p">:</span> <span class="s2">&quot;Dataset accessed and processed via http://github.com/AMOCcommunity/amocatlas&quot;</span><span class="p">,</span>
     <span class="c1"># DOI can be added here when available</span>
     <span class="s2">&quot;acknowledgement&quot;</span><span class="p">:</span> <span class="s2">&quot;The MOVE project is made possible with funding from the NOAA Climate Program Office. Initial funding came from the German Bundesministerium fuer Bildung und Forschung.&quot;</span><span class="p">,</span>
 <span class="p">}</span>
@@ -145,7 +144,7 @@
 
 
 <div class="viewcode-block" id="read_move">
-<a class="viewcode-back" href="../../amocarray.html#amocarray.read_move.read_move">[docs]</a>
+<a class="viewcode-back" href="../../amocarray.html#amocatlas.read_move.read_move">[docs]</a>
 <span class="nd">@apply_defaults</span><span class="p">(</span><span class="n">MOVE_DEFAULT_SOURCE</span><span class="p">,</span> <span class="n">MOVE_DEFAULT_FILES</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">read_move</span><span class="p">(</span>
     <span class="n">source</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>

@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>amocarray.tools &mdash; amocarray v0.0.0 documentation</title>
+  <title>amocatlas.tools &mdash; amocatlas v0.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=1078e4cb" />
@@ -32,7 +32,7 @@
           
           
           <a href="../../index.html" class="icon icon-home">
-            amocarray
+            amocatlas
               <img src="../../_static/logo.jpg" class="logo" alt="Logo"/>
           </a>
 <div role="search">
@@ -62,15 +62,14 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Help and reference</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocarray">GitHub Repo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../amocarray.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">amocarray</span> <span class="pre">API</span></code></a></li>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">GitHub Repo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../AC1_vocabularies.html">Controlled Vocabularies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../AC1_units.html">Units Reference: for AC1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../AC1_variables.html">Variable Names</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Developers' guide</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../developer_guide.html">Developer Guide for <code class="docutils literal notranslate"><span class="pre">amocarray</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide.html">Developer Guide for <code class="docutils literal notranslate"><span class="pre">amocatlas</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../gitcollab.html">Collaborating with git: Basic workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../actions.html">Extra GitHub features: Actions &amp; Pages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../conventions.html">Project Coding Conventions</a></li>
@@ -83,7 +82,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">amocarray</a>
+          <a href="../../index.html">amocatlas</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -92,7 +91,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
-      <li class="breadcrumb-item active">amocarray.tools</li>
+      <li class="breadcrumb-item active">amocatlas.tools</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -101,20 +100,20 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <h1>Source code for amocarray.tools</h1><div class="highlight"><pre>
+  <h1>Source code for amocatlas.tools</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">amocarray</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">amocarray.logger</span><span class="w"> </span><span class="kn">import</span> <span class="n">log_info</span><span class="p">,</span> <span class="n">log_debug</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">amocatlas</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">amocatlas.logger</span><span class="w"> </span><span class="kn">import</span> <span class="n">log_info</span><span class="p">,</span> <span class="n">log_debug</span>
 
 <span class="n">log</span> <span class="o">=</span> <span class="n">logger</span><span class="o">.</span><span class="n">log</span>
 
 
 <div class="viewcode-block" id="generate_reverse_conversions">
-<a class="viewcode-back" href="../../amocarray.html#amocarray.tools.generate_reverse_conversions">[docs]</a>
+<a class="viewcode-back" href="../../amocarray.html#amocatlas.tools.generate_reverse_conversions">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">generate_reverse_conversions</span><span class="p">(</span>
     <span class="n">forward_conversions</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]],</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]:</span>
@@ -184,7 +183,7 @@
 
 
 <div class="viewcode-block" id="reformat_units_var">
-<a class="viewcode-back" href="../../amocarray.html#amocarray.tools.reformat_units_var">[docs]</a>
+<a class="viewcode-back" href="../../amocarray.html#amocatlas.tools.reformat_units_var">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">reformat_units_var</span><span class="p">(</span>
     <span class="n">ds</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">,</span>
     <span class="n">var_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -216,7 +215,7 @@
 
 
 <div class="viewcode-block" id="convert_units_var">
-<a class="viewcode-back" href="../../amocarray.html#amocarray.tools.convert_units_var">[docs]</a>
+<a class="viewcode-back" href="../../amocarray.html#amocatlas.tools.convert_units_var">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">convert_units_var</span><span class="p">(</span>
     <span class="n">var_values</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="nb">float</span><span class="p">,</span>
     <span class="n">current_unit</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -262,7 +261,7 @@
 
 
 <div class="viewcode-block" id="find_best_dtype">
-<a class="viewcode-back" href="../../amocarray.html#amocarray.tools.find_best_dtype">[docs]</a>
+<a class="viewcode-back" href="../../amocarray.html#amocatlas.tools.find_best_dtype">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">find_best_dtype</span><span class="p">(</span><span class="n">var_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">da</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Determines the most suitable data type for a given variable.</span>
 
@@ -298,7 +297,7 @@
 
 
 <div class="viewcode-block" id="set_fill_value">
-<a class="viewcode-back" href="../../amocarray.html#amocarray.tools.set_fill_value">[docs]</a>
+<a class="viewcode-back" href="../../amocarray.html#amocatlas.tools.set_fill_value">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">set_fill_value</span><span class="p">(</span><span class="n">new_dtype</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the fill value for a given data type.</span>
 
@@ -319,7 +318,7 @@
 
 
 <div class="viewcode-block" id="set_best_dtype">
-<a class="viewcode-back" href="../../amocarray.html#amocarray.tools.set_best_dtype">[docs]</a>
+<a class="viewcode-back" href="../../amocarray.html#amocatlas.tools.set_best_dtype">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">set_best_dtype</span><span class="p">(</span><span class="n">ds</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Adjust the data types of variables in a dataset to optimize memory usage.</span>
 

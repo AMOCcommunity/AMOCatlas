@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>amocarray.plotters &mdash; amocarray v0.0.0 documentation</title>
+  <title>amocatlas.plotters &mdash; amocatlas v0.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=1078e4cb" />
@@ -32,7 +32,7 @@
           
           
           <a href="../../index.html" class="icon icon-home">
-            amocarray
+            amocatlas
               <img src="../../_static/logo.jpg" class="logo" alt="Logo"/>
           </a>
 <div role="search">
@@ -62,15 +62,14 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Help and reference</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocarray">GitHub Repo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../amocarray.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">amocarray</span> <span class="pre">API</span></code></a></li>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">GitHub Repo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../AC1_vocabularies.html">Controlled Vocabularies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../AC1_units.html">Units Reference: for AC1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../AC1_variables.html">Variable Names</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Developers' guide</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../developer_guide.html">Developer Guide for <code class="docutils literal notranslate"><span class="pre">amocarray</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide.html">Developer Guide for <code class="docutils literal notranslate"><span class="pre">amocatlas</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../gitcollab.html">Collaborating with git: Basic workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../actions.html">Extra GitHub features: Actions &amp; Pages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../conventions.html">Project Coding Conventions</a></li>
@@ -83,7 +82,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">amocarray</a>
+          <a href="../../index.html">amocatlas</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -92,7 +91,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
-      <li class="breadcrumb-item active">amocarray.plotters</li>
+      <li class="breadcrumb-item active">amocatlas.plotters</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -101,7 +100,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <h1>Source code for amocarray.plotters</h1><div class="highlight"><pre>
+  <h1>Source code for amocatlas.plotters</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
@@ -114,7 +113,7 @@
 <span class="c1"># Views of the ds or nc file</span>
 <span class="c1"># ------------------------------------------------------------------------------------</span>
 <div class="viewcode-block" id="show_contents">
-<a class="viewcode-back" href="../../amocarray.html#amocarray.plotters.show_contents">[docs]</a>
+<a class="viewcode-back" href="../../amocarray.html#amocatlas.plotters.show_contents">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">show_contents</span><span class="p">(</span>
     <span class="n">data</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">,</span>
     <span class="n">content_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;variables&quot;</span><span class="p">,</span>
@@ -162,7 +161,7 @@
 
 
 <div class="viewcode-block" id="show_variables">
-<a class="viewcode-back" href="../../amocarray.html#amocarray.plotters.show_variables">[docs]</a>
+<a class="viewcode-back" href="../../amocarray.html#amocatlas.plotters.show_variables">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">show_variables</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Styler</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Processes an xarray Dataset or a netCDF file, extracts variable information,</span>
 <span class="sd">    and returns a styled DataFrame with details about the variables.</span>
@@ -242,7 +241,7 @@
 
 
 <div class="viewcode-block" id="show_attributes">
-<a class="viewcode-back" href="../../amocarray.html#amocarray.plotters.show_attributes">[docs]</a>
+<a class="viewcode-back" href="../../amocarray.html#amocatlas.plotters.show_attributes">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">show_attributes</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Processes an xarray Dataset or a netCDF file, extracts attribute information,</span>
 <span class="sd">    and returns a DataFrame with details about the attributes.</span>
@@ -293,7 +292,7 @@
 
 
 <div class="viewcode-block" id="show_variables_by_dimension">
-<a class="viewcode-back" href="../../amocarray.html#amocarray.plotters.show_variables_by_dimension">[docs]</a>
+<a class="viewcode-back" href="../../amocarray.html#amocatlas.plotters.show_variables_by_dimension">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">show_variables_by_dimension</span><span class="p">(</span>
     <span class="n">data</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">,</span>
     <span class="n">dimension_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;trajectory&quot;</span><span class="p">,</span>
@@ -372,7 +371,7 @@
 
 
 <div class="viewcode-block" id="monthly_resample">
-<a class="viewcode-back" href="../../amocarray.html#amocarray.plotters.monthly_resample">[docs]</a>
+<a class="viewcode-back" href="../../amocarray.html#amocatlas.plotters.monthly_resample">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">monthly_resample</span><span class="p">(</span><span class="n">da</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Resample to monthly mean if data is not already monthly.&quot;&quot;&quot;</span>
     <span class="n">time_key</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">da</span><span class="o">.</span><span class="n">coords</span> <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;time&quot;</span><span class="p">]</span>
@@ -403,7 +402,7 @@
 
 
 <div class="viewcode-block" id="plot_amoc_timeseries">
-<a class="viewcode-back" href="../../amocarray.html#amocarray.plotters.plot_amoc_timeseries">[docs]</a>
+<a class="viewcode-back" href="../../amocarray.html#amocatlas.plotters.plot_amoc_timeseries">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">plot_amoc_timeseries</span><span class="p">(</span>
     <span class="n">data</span><span class="p">,</span>
     <span class="n">varnames</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -528,7 +527,7 @@
 
 
 <div class="viewcode-block" id="plot_monthly_anomalies">
-<a class="viewcode-back" href="../../amocarray.html#amocarray.plotters.plot_monthly_anomalies">[docs]</a>
+<a class="viewcode-back" href="../../amocarray.html#amocatlas.plotters.plot_monthly_anomalies">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">plot_monthly_anomalies</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">plt</span><span class="o">.</span><span class="n">Figure</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="n">plt</span><span class="o">.</span><span class="n">Axes</span><span class="p">]]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Plot the monthly anomalies for various datasets.</span>

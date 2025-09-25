@@ -1,17 +1,17 @@
-# Developer Guide for `amocarray`
+# Developer Guide for `amocatlas`
 
 <!-- omit in toc -->
 
-Welcome to the `amocarray` Developer Guide!
+Welcome to the `amocatlas` Developer Guide!
 
 This guide will help you set up your local development environment, understand the project structure, and contribute effectively to the project. Whether you're fixing bugs, adding new readers, or improving documentation, this guide is your starting point.
 
 **Related resources:**
 
-- [Coding conventions](https://amoccommunity.github.io/amocarray/conventions.html)
-- [Housekeeping checklist](https://amoccommunity.github.io/amocarray/housekeeping.html)
-- [Git collaboration](https://amoccommunity.github.io/amocarray/gitcollab.html)
-- [Project actions](https://amoccommunity.github.io/amocarray/actions.html)
+- [Coding conventions](https://amoccommunity.github.io/amocatlas/conventions.html)
+- [Housekeeping checklist](https://amoccommunity.github.io/amocatlas/housekeeping.html)
+- [Git collaboration](https://amoccommunity.github.io/amocatlas/gitcollab.html)
+- [Project actions](https://amoccommunity.github.io/amocatlas/actions.html)
 
 ---
 
@@ -38,8 +38,8 @@ This guide will help you set up your local development environment, understand t
 2. Clone the upstream repository:
 
 ```bash
-git clone https://github.com/AMOCcommunity/amocarray.git
-cd amocarray
+git clone https://github.com/AMOCcommunity/amocatlas.git
+cd amocatlas
 ```
 
 3. Create a virtual environment and install dependencies:
@@ -68,7 +68,7 @@ pre-commit run --all-files
 
 ## 2. Project Overview
 
-`amocarray` is a Python package to process and analyse data from AMOC observing arrays.\
+`amocatlas` is a Python package to process and analyse data from AMOC observing arrays.\
 It is designed to support researchers and data users by providing tools to read, standardise, and work with multiple datasets.
 
 **Core goals:**
@@ -84,8 +84,8 @@ It is designed to support researchers and data users by providing tools to read,
 ## 3. Project Structure
 
 ```bash
-amocarray/
-├── amocarray/               # Core modules (readers, utilities, standardisation)
+amocatlas/
+├── amocatlas/               # Core modules (readers, utilities, standardisation)
 │   ├── readers.py           # High-level interface for loading datasets
 │   ├── read_move.py         # Reader for MOVE data
 │   ├── read_rapid.py        # Reader for RAPID data
@@ -140,8 +140,8 @@ amocarray/
 ### Step 1: Clone the repository
 
 ```bash
-git clone https://github.com/AMOCcommunity/amocarray.git
-cd amocarray
+git clone https://github.com/AMOCcommunity/amocatlas.git
+cd amocatlas
 ```
 
 ### Step 2: Set up a virtual environment
@@ -203,14 +203,14 @@ make html
 
 - Fork the repository on GitHub.
 - Push your changes to your fork.
-- Open a pull request to `AMOCcommunity/amocarray`.
+- Open a pull request to `AMOCcommunity/amocatlas`.
 
-**See:** [Git collaboration guide](https://amoccommunity.github.io/amocarray/gitcollab.html)
+**See:** [Git collaboration guide](https://amoccommunity.github.io/amocatlas/gitcollab.html)
 
 ### Keeping Your Fork Up To Date
 
 ```bash
-git remote add upstream https://github.com/AMOCcommunity/amocarray.git
+git remote add upstream https://github.com/AMOCcommunity/amocatlas.git
 git fetch upstream
 git merge upstream/main
 ```
@@ -314,7 +314,7 @@ When in doubt, keep your commits small and focused!
 
 ## 8. Logging and Debugging
 
-With PR #25, structured logging has been introduced to `amocarray`.
+With PR #25, structured logging has been introduced to `amocatlas`.
 
 Logs track steps during data reading and, in the future, will also report changes during dataset standardisation.
 
@@ -337,7 +337,7 @@ Logging is controlled by the global variable `LOGGING_ENABLED` in `logger.py`.
 You can toggle logging dynamically:
 
 ```python
-from amocarray import logger
+from amocatlas import logger
 logger.enable_logging()
 logger.disable_logging()
 ```
@@ -347,7 +347,7 @@ logger.disable_logging()
 We wrap standard Python logging calls to allow toggling:
 
 ```python
-from amocarray.logger import log_info, log_warning, log_error, log_debug
+from amocatlas.logger import log_info, log_warning, log_error, log_debug
 ```
 
 Then, in your code:
@@ -359,7 +359,7 @@ log_error("File not found.")
 log_debug("Variable dimensions: %s", dims)
 ```
 
-> **Note:** This departs from typical imports (`from amocarray import logger`) to keep calls clean and familiar: `log_info(...)` rather than `logger.log.info(...)`.
+> **Note:** This departs from typical imports (`from amocatlas import logger`) to keep calls clean and familiar: `log_info(...)` rather than `logger.log.info(...)`.
 
 ### Log levels
 
@@ -383,7 +383,7 @@ log.setLevel(logging.DEBUG)  # capture everything; handlers filter later
 - ✅ Use `log_debug` for rich details useful in debugging.
 - ✅ Avoid excessive logging inside tight loops.
 
-As `amocarray` expands, logs will play an increasing role in transparency and reproducibility.
+As `amocatlas` expands, logs will play an increasing role in transparency and reproducibility.
 
 ---
 
@@ -413,7 +413,7 @@ As `amocarray` expands, logs will play an increasing role in transparency and re
 
 ## 10. Further Resources
 
-- [amocarray User Documentation](https://amoccommunity.github.io/amocarray/)
+- [amocatlas User Documentation](https://amoccommunity.github.io/amocatlas/)
 - [OceanGliders Metadata Standards](https://github.com/OceanGlidersCommunity/ocean-gliders)
 - [AMOC Community Project](https://www.amoccommunity.org/)
 

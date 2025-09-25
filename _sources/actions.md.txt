@@ -13,15 +13,15 @@ The basic behaviour is explained in the template repository that this project wa
 
 ## This project's Actions
 
-The way that this project ([http://github.com/AMOCcommunity/amocarray](http://github.com/AMOCcommunity/amocarray)) is set up:
+The way that this project ([http://github.com/AMOCcommunity/amocatlas](http://github.com/AMOCcommunity/amocatlas)) is set up:
 
 - the `docs.yml` attempts to build the documentation which is contained in `docs/source/` and built to `docs/build/`.  It sets up the environment based on `requirements-dev.txt`, installs the project with `pip install`, and builds the documentation including running the `notebooks/demo.ipynb`.
 
 - the `tests.yml` uses `pytest` to run the tests contained within the `tests/` directory, and it does this on several platforms (windows, mac and linux) and with a couple versions of python.
 
-- the `docs_deploy.yml` is like `docs.yml` but additionally moves the resultant files onto the branch `gh-pages`.  Because of how we've set up the "Pages" of this repository ([https://github.com/AMOCcommunity/amocarray/settings/pages](https://github.com/AMOCcommunity/amocarray/settings/pages)), it updates the website that is hosted on github at [https://amoccommunity.github.io/amocarray/](https://amoccommunity.github.io/amocarray/).
+- the `docs_deploy.yml` is like `docs.yml` but additionally moves the resultant files onto the branch `gh-pages`.  Because of how we've set up the "Pages" of this repository ([https://github.com/AMOCcommunity/amocatlas/settings/pages](https://github.com/AMOCcommunity/amocatlas/settings/pages)), it updates the website that is hosted on github at [https://amoccommunity.github.io/amocatlas/](https://amoccommunity.github.io/amocatlas/).
 
-- the `pypi.yml` is triggered on a release, and it uses the information in `pyproject.toml` and builds a distribution (see lines like `python -m build -sdist --wheel . --outdir dist`) into the `dist/` directory.  In order for this to run properly, several other steps need to be set up e.g., on [https://pypi.org/project/amocarray/](https://pypi.org/project/amocarray/), including setting a trusted publisher so that the Github Action is allowed to publish to this project on pypi.
+- the `pypi.yml` is triggered on a release, and it uses the information in `pyproject.toml` and builds a distribution (see lines like `python -m build -sdist --wheel . --outdir dist`) into the `dist/` directory.  In order for this to run properly, several other steps need to be set up e.g., on [https://pypi.org/project/amocatlas/](https://pypi.org/project/amocatlas/), including setting a trusted publisher so that the Github Action is allowed to publish to this project on pypi.
 
 
 ## For contributors
@@ -42,7 +42,7 @@ To run the tests, in the command line on your computer, activate the environment
 
 For me, this looks like
 ```bash
-cd github/amocarray
+cd github/amocatlas
 virtualenv venv
 source venv/bin/activate
 pip install -r requirements-dev.txt
@@ -65,7 +65,7 @@ myst-nb
 
 When you'd like to test the build of your documentation (prior to submitting pull requests to the repository), navigate to the `docs/` directory in a terminal window, and run
 ```
-cd github/amocarray/docs
+cd github/amocatlas/docs
 make html
 ```
 This will generate the website within the directory `docs/build/html/`, which you can open from a browser to verify that everything worked.
@@ -78,7 +78,7 @@ If you also have the rights/inclination to publish a release to PyPi, you can te
 
 First go to the directory where your repository is located (i.e., where `pyproject.toml` is located):
 ```
-cd github/amocarray
+cd github/amocatlas
 ```
 
 To build the distribution locally, make sure you have the latest version of `build` installed:
@@ -98,7 +98,7 @@ python -m twine check dist/*
 
 You can also verify the version number
 ```
-more amocarray/_version.py
+more amocatlas/_version.py
 ```
 
 ### Publishing a release
@@ -107,20 +107,20 @@ more amocarray/_version.py
 
 ![image from github.com showing the merge button](/_static/merge.jpg)
 
-2. **On Github.com, your forked main:** If you're working from a branch (e.g., `yourname-patch-21`) of your fork (http://github.com/YOUR_USERNAME/amocarray) of the upstream main (http://github.com/AMOCcommunity/amocarray), then you'll want to sync your main to the upstream main.  On github.com, at http://github.com/YOUR_USERNAME/amocarray, you should see that your main is "X commits behind".  There is a button where you can sync.
+2. **On Github.com, your forked main:** If you're working from a branch (e.g., `yourname-patch-21`) of your fork (http://github.com/YOUR_USERNAME/amocatlas) of the upstream main (http://github.com/AMOCcommunity/amocatlas), then you'll want to sync your main to the upstream main.  On github.com, at http://github.com/YOUR_USERNAME/amocatlas, you should see that your main is "X commits behind".  There is a button where you can sync.
 
 ![image from github.com showing the sync fork button](/_static/sync_fork.jpg)
 
 3. **On your computer, terminal:** In your repository directory, checkout main and pull any changes:
 ```
-cd github/amocarray
+cd github/amocatlas
 ```
 ```
 git checkout main
 git pull
 ```
 
-4. **On your computer, terminal** Same place, but now we're going to create the tag.  First make a note of the last tag.  On Github.com, the upstream main, you can check what tags have already been used (i.e., https://github.com/AMOCcommunity/amocarray/tags).
+4. **On your computer, terminal** Same place, but now we're going to create the tag.  First make a note of the last tag.  On Github.com, the upstream main, you can check what tags have already been used (i.e., https://github.com/AMOCcommunity/amocatlas/tags).
 
 The usual process is to start with a `vX.Y.Z` and possibly have an "alpha" or "beta" following as `vX.Y.Za2`.  These are called PEP440 style versioning, with an alpha prerelease tag (`a1`=alpha 1).  The "X" indicates a big change, the "Y" a minor change, and the "Z" a patch or little fix.
 
@@ -149,7 +149,7 @@ git tag v0.0.2a7
 git push upstream v0.0.2a7
 ```
 
-This step assigns the tag and then pushes it to the upstream main.  Go onto Github.com and check that this tag is now there: https://github.com/AMOCcommunity/amocarray/tags.
+This step assigns the tag and then pushes it to the upstream main.  Go onto Github.com and check that this tag is now there: https://github.com/AMOCcommunity/amocatlas/tags.
 
 5. **On Github.com**
 
@@ -163,6 +163,6 @@ This step assigns the tag and then pushes it to the upstream main.  Go onto Gith
 
 - Click **"Publish release."**
 
-This last step will now trigger the GitHub action, `.github/workflows/pypi.yml` which will build the distribution and send it to pypi.org.  You should see this show up at [https://pypi.org/project/amocarray/](https://pypi.org/project/amocarray/).
+This last step will now trigger the GitHub action, `.github/workflows/pypi.yml` which will build the distribution and send it to pypi.org.  You should see this show up at [https://pypi.org/project/amocatlas/](https://pypi.org/project/amocatlas/).
 
-**Note:** Unexplained behaviour may occur (e.g., you get a `dev0` appended to the release on pypi) if you are not at the tip of main (i.e. there are uncommitted changes), or you haven't included `amocarray/_version.py` in your `.gitignore`, in which case the action itself generates a change in the repository which is then interpreted as an uncommitted change.
+**Note:** Unexplained behaviour may occur (e.g., you get a `dev0` appended to the release on pypi) if you are not at the tip of main (i.e. there are uncommitted changes), or you haven't included `amocatlas/_version.py` in your `.gitignore`, in which case the action itself generates a change in the repository which is then interpreted as an uncommitted change.

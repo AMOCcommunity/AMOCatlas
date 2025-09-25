@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Installation &mdash; amocarray v0.0.0 documentation</title>
+  <title>Installation &mdash; amocatlas v0.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=1078e4cb" />
@@ -35,7 +35,7 @@
           
           
           <a href="index.html" class="icon icon-home">
-            amocarray
+            amocatlas
               <img src="_static/logo.jpg" class="logo" alt="Logo"/>
           </a>
 <div role="search">
@@ -68,15 +68,14 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Help and reference</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocarray">GitHub Repo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="amocarray.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">amocarray</span> <span class="pre">API</span></code></a></li>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">GitHub Repo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="AC1_vocabularies.html">Controlled Vocabularies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="AC1_units.html">Units Reference: for AC1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="AC1_variables.html">Variable Names</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Developers' guide</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="developer_guide.html">Developer Guide for <code class="docutils literal notranslate"><span class="pre">amocarray</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer_guide.html">Developer Guide for <code class="docutils literal notranslate"><span class="pre">amocatlas</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="gitcollab.html">Collaborating with git: Basic workflow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="actions.html">Extra GitHub features: Actions &amp; Pages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conventions.html">Project Coding Conventions</a></li>
@@ -89,7 +88,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">amocarray</a>
+          <a href="index.html">amocatlas</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -110,29 +109,29 @@
   <section id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h1>
 <p>To install the latest released version of this package from PyPI, use</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>amocarray
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>amocatlas
 </pre></div>
 </div>
 <p>This allows you to import the package into a python file or notebook with:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">amocarray</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">amocatlas</span>
 </pre></div>
 </div>
 <section id="install-for-contributing">
 <h2>Install for contributing<a class="headerlink" href="#install-for-contributing" title="Link to this heading"></a></h2>
-<p>Or, to install a local, development version of amocarray, clone the repository, open a terminal in the root directory (next to this readme file) and run these commands:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/AMOCcommunity/amocarray.git
-<span class="nb">cd</span><span class="w"> </span>amocarray
+<p>Or, to install a local, development version of amocatlas, clone the repository, open a terminal in the root directory (next to this readme file) and run these commands:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/AMOCcommunity/amocatlas.git
+<span class="nb">cd</span><span class="w"> </span>amocatlas
 pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements-dev.txt
 pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
 </pre></div>
 </div>
-<p>This installs amocarray locally.  The <code class="docutils literal notranslate"><span class="pre">-e</span></code> ensures that any edits you make in the files will be picked up by scripts that import functions from glidertest.  The <code class="docutils literal notranslate"><span class="pre">requirements-dev.txt</span></code> includes more python packages which are needed for development, including to build this documentation page, run tests, or run linting (formatting checks on your code).</p>
+<p>This installs amocatlas locally.  The <code class="docutils literal notranslate"><span class="pre">-e</span></code> ensures that any edits you make in the files will be picked up by scripts that import functions from glidertest.  The <code class="docutils literal notranslate"><span class="pre">requirements-dev.txt</span></code> includes more python packages which are needed for development, including to build this documentation page, run tests, or run linting (formatting checks on your code).</p>
 <p>You can run the example jupyter notebook by launching jupyterlab with <code class="docutils literal notranslate"><span class="pre">jupyter-lab</span></code> and navigating to the <code class="docutils literal notranslate"><span class="pre">notebooks</span></code> directory, or in VS Code or another python GUI.</p>
 <p>All new functions should include tests.  You can run tests locally and generate a coverage report with:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>--cov<span class="o">=</span>amocarray<span class="w"> </span>--cov-report<span class="w"> </span>term-missing<span class="w"> </span>tests/
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>--cov<span class="o">=</span>amocatlas<span class="w"> </span>--cov-report<span class="w"> </span>term-missing<span class="w"> </span>tests/
 </pre></div>
 </div>
-<p>This tells you what lines of a module (e.g., <code class="docutils literal notranslate"><span class="pre">amocarray/readers.py</span></code>) are not run through during the existing tests (located in <code class="docutils literal notranslate"><span class="pre">tests/</span></code>).</p>
+<p>This tells you what lines of a module (e.g., <code class="docutils literal notranslate"><span class="pre">amocatlas/readers.py</span></code>) are not run through during the existing tests (located in <code class="docutils literal notranslate"><span class="pre">tests/</span></code>).</p>
 <p>Try to ensure that all the lines of your contribution are covered in the tests.</p>
 <p>See also the <a class="reference internal" href="developer_guide.html"><span class="std std-doc">Developers Guide</span></a> for coding conventions used here (e.g., style of comments at the top of a function), the automatic “GitHub Actions” which are triggered when you make a pull request,  and an example workflow to use Git to collaborate on code.</p>
 </section>

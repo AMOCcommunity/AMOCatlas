@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Extra GitHub features: Actions &amp; Pages &mdash; amocarray v0.0.0 documentation</title>
+  <title>Extra GitHub features: Actions &amp; Pages &mdash; amocatlas v0.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=1078e4cb" />
@@ -35,7 +35,7 @@
           
           
           <a href="index.html" class="icon icon-home">
-            amocarray
+            amocatlas
               <img src="_static/logo.jpg" class="logo" alt="Logo"/>
           </a>
 <div role="search">
@@ -65,15 +65,14 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Help and reference</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocarray">GitHub Repo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="amocarray.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">amocarray</span> <span class="pre">API</span></code></a></li>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">GitHub Repo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="AC1_vocabularies.html">Controlled Vocabularies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="AC1_units.html">Units Reference: for AC1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="AC1_variables.html">Variable Names</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Developers' guide</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="developer_guide.html">Developer Guide for <code class="docutils literal notranslate"><span class="pre">amocarray</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer_guide.html">Developer Guide for <code class="docutils literal notranslate"><span class="pre">amocatlas</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="gitcollab.html">Collaborating with git: Basic workflow</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Extra GitHub features: Actions &amp; Pages</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#this-project-s-actions">This project’s Actions</a></li>
@@ -100,7 +99,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">amocarray</a>
+          <a href="index.html">amocatlas</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -130,12 +129,12 @@
 <p>The basic behaviour is explained in the template repository that this project was built on at <a class="reference external" href="http://github.com/eleanorfrajka/template-project">http://github.com/eleanorfrajka/template-project/</a> or in the docs at <a class="reference external" href="https://eleanorfrajka.github.io/template-project/github.html">https://eleanorfrajka.github.io/template-project/github.html</a>.</p>
 <section id="this-project-s-actions">
 <h2>This project’s Actions<a class="headerlink" href="#this-project-s-actions" title="Link to this heading"></a></h2>
-<p>The way that this project (<a class="reference external" href="http://github.com/AMOCcommunity/amocarray">http://github.com/AMOCcommunity/amocarray</a>) is set up:</p>
+<p>The way that this project (<a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">http://github.com/AMOCcommunity/amocatlas</a>) is set up:</p>
 <ul class="simple">
 <li><p>the <code class="docutils literal notranslate"><span class="pre">docs.yml</span></code> attempts to build the documentation which is contained in <code class="docutils literal notranslate"><span class="pre">docs/source/</span></code> and built to <code class="docutils literal notranslate"><span class="pre">docs/build/</span></code>.  It sets up the environment based on <code class="docutils literal notranslate"><span class="pre">requirements-dev.txt</span></code>, installs the project with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code>, and builds the documentation including running the <code class="docutils literal notranslate"><span class="pre">notebooks/demo.ipynb</span></code>.</p></li>
 <li><p>the <code class="docutils literal notranslate"><span class="pre">tests.yml</span></code> uses <code class="docutils literal notranslate"><span class="pre">pytest</span></code> to run the tests contained within the <code class="docutils literal notranslate"><span class="pre">tests/</span></code> directory, and it does this on several platforms (windows, mac and linux) and with a couple versions of python.</p></li>
-<li><p>the <code class="docutils literal notranslate"><span class="pre">docs_deploy.yml</span></code> is like <code class="docutils literal notranslate"><span class="pre">docs.yml</span></code> but additionally moves the resultant files onto the branch <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code>.  Because of how we’ve set up the “Pages” of this repository (<a class="reference external" href="https://github.com/AMOCcommunity/amocarray/settings/pages">https://github.com/AMOCcommunity/amocarray/settings/pages</a>), it updates the website that is hosted on github at <a class="reference external" href="https://amoccommunity.github.io/amocarray/">https://amoccommunity.github.io/amocarray/</a>.</p></li>
-<li><p>the <code class="docutils literal notranslate"><span class="pre">pypi.yml</span></code> is triggered on a release, and it uses the information in <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> and builds a distribution (see lines like <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">build</span> <span class="pre">-sdist</span> <span class="pre">--wheel</span> <span class="pre">.</span> <span class="pre">--outdir</span> <span class="pre">dist</span></code>) into the <code class="docutils literal notranslate"><span class="pre">dist/</span></code> directory.  In order for this to run properly, several other steps need to be set up e.g., on <a class="reference external" href="https://pypi.org/project/amocarray/">https://pypi.org/project/amocarray/</a>, including setting a trusted publisher so that the Github Action is allowed to publish to this project on pypi.</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">docs_deploy.yml</span></code> is like <code class="docutils literal notranslate"><span class="pre">docs.yml</span></code> but additionally moves the resultant files onto the branch <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code>.  Because of how we’ve set up the “Pages” of this repository (<a class="reference external" href="https://github.com/AMOCcommunity/amocatlas/settings/pages">https://github.com/AMOCcommunity/amocatlas/settings/pages</a>), it updates the website that is hosted on github at <a class="reference external" href="https://amoccommunity.github.io/amocatlas/">https://amoccommunity.github.io/amocatlas/</a>.</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">pypi.yml</span></code> is triggered on a release, and it uses the information in <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> and builds a distribution (see lines like <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">build</span> <span class="pre">-sdist</span> <span class="pre">--wheel</span> <span class="pre">.</span> <span class="pre">--outdir</span> <span class="pre">dist</span></code>) into the <code class="docutils literal notranslate"><span class="pre">dist/</span></code> directory.  In order for this to run properly, several other steps need to be set up e.g., on <a class="reference external" href="https://pypi.org/project/amocatlas/">https://pypi.org/project/amocatlas/</a>, including setting a trusted publisher so that the Github Action is allowed to publish to this project on pypi.</p></li>
 </ul>
 </section>
 <section id="for-contributors">
@@ -151,7 +150,7 @@
 <p>You can run the tests locally if your environment is built from <code class="docutils literal notranslate"><span class="pre">requirements-dev.txt</span></code>.  Here we’ve also required e.g., <code class="docutils literal notranslate"><span class="pre">pytest</span></code>.</p>
 <p>To run the tests, in the command line on your computer, activate the environment, make sure requirements from <code class="docutils literal notranslate"><span class="pre">requirements-dev.txt</span></code> are installed, and then run <code class="docutils literal notranslate"><span class="pre">pytest</span></code>.</p>
 <p>For me, this looks like</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>github/amocarray
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>github/amocatlas
 virtualenv<span class="w"> </span>venv
 <span class="nb">source</span><span class="w"> </span>venv/bin/activate
 pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements-dev.txt
@@ -172,7 +171,7 @@ pytest
 </pre></div>
 </div>
 <p>When you’d like to test the build of your documentation (prior to submitting pull requests to the repository), navigate to the <code class="docutils literal notranslate"><span class="pre">docs/</span></code> directory in a terminal window, and run</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">github</span><span class="o">/</span><span class="n">amocarray</span><span class="o">/</span><span class="n">docs</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">github</span><span class="o">/</span><span class="n">amocatlas</span><span class="o">/</span><span class="n">docs</span>
 <span class="n">make</span> <span class="n">html</span>
 </pre></div>
 </div>
@@ -185,7 +184,7 @@ pytest
 <section id="build-distribution">
 <h3>Build distribution<a class="headerlink" href="#build-distribution" title="Link to this heading"></a></h3>
 <p>First go to the directory where your repository is located (i.e., where <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> is located):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">github</span><span class="o">/</span><span class="n">amocarray</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">github</span><span class="o">/</span><span class="n">amocatlas</span>
 </pre></div>
 </div>
 <p>To build the distribution locally, make sure you have the latest version of <code class="docutils literal notranslate"><span class="pre">build</span></code> installed:</p>
@@ -202,7 +201,7 @@ pytest
 </pre></div>
 </div>
 <p>You can also verify the version number</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">more</span> <span class="n">amocarray</span><span class="o">/</span><span class="n">_version</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">more</span> <span class="n">amocatlas</span><span class="o">/</span><span class="n">_version</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 </section>
@@ -213,13 +212,13 @@ pytest
 </ol>
 <p><img alt="image from github.com showing the merge button" src="_images/merge.jpg" /></p>
 <ol class="arabic simple" start="2">
-<li><p><strong>On Github.com, your forked main:</strong> If you’re working from a branch (e.g., <code class="docutils literal notranslate"><span class="pre">yourname-patch-21</span></code>) of your fork (http://github.com/YOUR_USERNAME/amocarray) of the upstream main (http://github.com/AMOCcommunity/amocarray), then you’ll want to sync your main to the upstream main.  On github.com, at http://github.com/YOUR_USERNAME/amocarray, you should see that your main is “X commits behind”.  There is a button where you can sync.</p></li>
+<li><p><strong>On Github.com, your forked main:</strong> If you’re working from a branch (e.g., <code class="docutils literal notranslate"><span class="pre">yourname-patch-21</span></code>) of your fork (http://github.com/YOUR_USERNAME/amocatlas) of the upstream main (http://github.com/AMOCcommunity/amocatlas), then you’ll want to sync your main to the upstream main.  On github.com, at http://github.com/YOUR_USERNAME/amocatlas, you should see that your main is “X commits behind”.  There is a button where you can sync.</p></li>
 </ol>
 <p><img alt="image from github.com showing the sync fork button" src="_images/sync_fork.jpg" /></p>
 <ol class="arabic simple" start="3">
 <li><p><strong>On your computer, terminal:</strong> In your repository directory, checkout main and pull any changes:</p></li>
 </ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">github</span><span class="o">/</span><span class="n">amocarray</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">github</span><span class="o">/</span><span class="n">amocatlas</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">main</span>
@@ -227,7 +226,7 @@ pytest
 </pre></div>
 </div>
 <ol class="arabic simple" start="4">
-<li><p><strong>On your computer, terminal</strong> Same place, but now we’re going to create the tag.  First make a note of the last tag.  On Github.com, the upstream main, you can check what tags have already been used (i.e., https://github.com/AMOCcommunity/amocarray/tags).</p></li>
+<li><p><strong>On your computer, terminal</strong> Same place, but now we’re going to create the tag.  First make a note of the last tag.  On Github.com, the upstream main, you can check what tags have already been used (i.e., https://github.com/AMOCcommunity/amocatlas/tags).</p></li>
 </ol>
 <p>The usual process is to start with a <code class="docutils literal notranslate"><span class="pre">vX.Y.Z</span></code> and possibly have an “alpha” or “beta” following as <code class="docutils literal notranslate"><span class="pre">vX.Y.Za2</span></code>.  These are called PEP440 style versioning, with an alpha prerelease tag (<code class="docutils literal notranslate"><span class="pre">a1</span></code>=alpha 1).  The “X” indicates a big change, the “Y” a minor change, and the “Z” a patch or little fix.</p>
 <p><code class="docutils literal notranslate"><span class="pre">MAJOR.MINOR.PATCH[pre-release]</span></code></p>
@@ -252,7 +251,7 @@ Example: fixing a unit conversion error, improving docstrings, or cleaning up wa
 <span class="n">git</span> <span class="n">push</span> <span class="n">upstream</span> <span class="n">v0</span><span class="mf">.0.2</span><span class="n">a7</span>
 </pre></div>
 </div>
-<p>This step assigns the tag and then pushes it to the upstream main.  Go onto Github.com and check that this tag is now there: https://github.com/AMOCcommunity/amocarray/tags.</p>
+<p>This step assigns the tag and then pushes it to the upstream main.  Go onto Github.com and check that this tag is now there: https://github.com/AMOCcommunity/amocatlas/tags.</p>
 <ol class="arabic simple" start="5">
 <li><p><strong>On Github.com</strong></p></li>
 </ol>
@@ -263,8 +262,8 @@ Example: fixing a unit conversion error, improving docstrings, or cleaning up wa
 <li><p>Fill in (or auto-generate) the release notes &amp; edit if necessary.</p></li>
 <li><p>Click <strong>“Publish release.”</strong></p></li>
 </ul>
-<p>This last step will now trigger the GitHub action, <code class="docutils literal notranslate"><span class="pre">.github/workflows/pypi.yml</span></code> which will build the distribution and send it to pypi.org.  You should see this show up at <a class="reference external" href="https://pypi.org/project/amocarray/">https://pypi.org/project/amocarray/</a>.</p>
-<p><strong>Note:</strong> Unexplained behaviour may occur (e.g., you get a <code class="docutils literal notranslate"><span class="pre">dev0</span></code> appended to the release on pypi) if you are not at the tip of main (i.e. there are uncommitted changes), or you haven’t included <code class="docutils literal notranslate"><span class="pre">amocarray/_version.py</span></code> in your <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>, in which case the action itself generates a change in the repository which is then interpreted as an uncommitted change.</p>
+<p>This last step will now trigger the GitHub action, <code class="docutils literal notranslate"><span class="pre">.github/workflows/pypi.yml</span></code> which will build the distribution and send it to pypi.org.  You should see this show up at <a class="reference external" href="https://pypi.org/project/amocatlas/">https://pypi.org/project/amocatlas/</a>.</p>
+<p><strong>Note:</strong> Unexplained behaviour may occur (e.g., you get a <code class="docutils literal notranslate"><span class="pre">dev0</span></code> appended to the release on pypi) if you are not at the tip of main (i.e. there are uncommitted changes), or you haven’t included <code class="docutils literal notranslate"><span class="pre">amocatlas/_version.py</span></code> in your <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>, in which case the action itself generates a change in the repository which is then interpreted as an uncommitted change.</p>
 </section>
 </section>
 </section>

@@ -26,7 +26,7 @@ The data format documentation is organized around four key stages of data handli
      - Planning how to transform native formats to standardized ones
    * - :doc:`format_AC1`
      - **Final standardized format** specification
-     - Using ``amocarray.convert.to_AC1()`` function output
+     - Using ``amocatlas.convert.to_AC1()`` function output
 
 Workflow Overview
 -----------------
@@ -76,6 +76,6 @@ Questions and Contributions
 
 If you have questions about data formats or want to contribute to format development:
 
-- Check our `GitHub issues <https://github.com/AMOCcommunity/amocarray/issues>`_
+- Check our `GitHub issues <https://github.com/AMOCcommunity/amocatlas/issues>`_
 - See the :doc:`developer_guide` for contribution guidelines
 - Review existing format documentation for similar arrays before proposing new formats

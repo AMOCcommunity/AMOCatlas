@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Collaborating with git: Basic workflow &mdash; amocarray v0.0.0 documentation</title>
+  <title>Collaborating with git: Basic workflow &mdash; amocatlas v0.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=1078e4cb" />
@@ -23,7 +23,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Extra GitHub features: Actions &amp; Pages" href="actions.html" />
-    <link rel="prev" title="Developer Guide for amocarray" href="developer_guide.html" /> 
+    <link rel="prev" title="Developer Guide for amocatlas" href="developer_guide.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -35,7 +35,7 @@
           
           
           <a href="index.html" class="icon icon-home">
-            amocarray
+            amocatlas
               <img src="_static/logo.jpg" class="logo" alt="Logo"/>
           </a>
 <div role="search">
@@ -65,15 +65,14 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Help and reference</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocarray">GitHub Repo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="amocarray.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">amocarray</span> <span class="pre">API</span></code></a></li>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">GitHub Repo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="AC1_vocabularies.html">Controlled Vocabularies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="AC1_units.html">Units Reference: for AC1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="AC1_variables.html">Variable Names</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Developers' guide</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="developer_guide.html">Developer Guide for <code class="docutils literal notranslate"><span class="pre">amocarray</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer_guide.html">Developer Guide for <code class="docutils literal notranslate"><span class="pre">amocatlas</span></code></a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Collaborating with git: Basic workflow</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#forking-branching-someone-else-s-repository">Forking &amp; branching someone else’s repository</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#fork-the-repository">1. Fork the repository</a></li>
@@ -101,7 +100,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">amocarray</a>
+          <a href="index.html">amocatlas</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -122,20 +121,20 @@
   <section id="collaborating-with-git-basic-workflow">
 <h1>Collaborating with git: Basic workflow<a class="headerlink" href="#collaborating-with-git-basic-workflow" title="Link to this heading"></a></h1>
 <p>See also, the description of actions in https://github.com/eleanorfrajka/template-project/pull/1.</p>
-<p>The instructions below assume that you would like to contribute to https://github.com/AMOCcommunity/amocarray</p>
+<p>The instructions below assume that you would like to contribute to https://github.com/AMOCcommunity/amocatlas</p>
 <section id="forking-branching-someone-else-s-repository">
 <h2>Forking &amp; branching someone else’s repository<a class="headerlink" href="#forking-branching-someone-else-s-repository" title="Link to this heading"></a></h2>
-<p>Suppose the original repository is located at: https://github.com/AMOCcommunity/amocarray, and you would like to contribute to it.  This repository located on the web at http://github.com/AMOCcommunity is the <strong>upstream main</strong> and is “owned” by the organisation “AMOCcommunity”, at https://github.com/AMOCcommunity.</p>
+<p>Suppose the original repository is located at: https://github.com/AMOCcommunity/amocatlas, and you would like to contribute to it.  This repository located on the web at http://github.com/AMOCcommunity is the <strong>upstream main</strong> and is “owned” by the organisation “AMOCcommunity”, at https://github.com/AMOCcommunity.</p>
 <p>When you first work with a shared repository, you will want to:</p>
 <section id="fork-the-repository">
 <h3>1. Fork the repository<a class="headerlink" href="#fork-the-repository" title="Link to this heading"></a></h3>
-<p><strong>On Github.com:</strong> Login with your Github username.  Navigate to the <strong>upstream main</strong> (<a class="reference external" href="https://github.com/AMOCcommunity/amocarray">https://github.com/AMOCcommunity/amocarray</a>) and click the “fork” button near the top right.  This will fork the repository into your own Github account, meaning it will create a complete copy of the repository in your account, located online at <code class="docutils literal notranslate"><span class="pre">https://github.com/YOUR_USERNAME/amocarray</span></code>.  If prompted, specify that you would like to <em>contribute to the original project</em>.  Initially, this new repository is <strong>your forked main</strong>.</p>
+<p><strong>On Github.com:</strong> Login with your Github username.  Navigate to the <strong>upstream main</strong> (<a class="reference external" href="https://github.com/AMOCcommunity/amocatlas">https://github.com/AMOCcommunity/amocatlas</a>) and click the “fork” button near the top right.  This will fork the repository into your own Github account, meaning it will create a complete copy of the repository in your account, located online at <code class="docutils literal notranslate"><span class="pre">https://github.com/YOUR_USERNAME/amocatlas</span></code>.  If prompted, specify that you would like to <em>contribute to the original project</em>.  Initially, this new repository is <strong>your forked main</strong>.</p>
 <p>For the way we recommend to work, the only thing you will do in your <strong>forked main</strong> is “sync” the changes with the <strong>upstream main</strong>.  “main” refers to which branch of the repository you’re talking about.  There may be several, but when you first start, you’ll only have a “main”.   You should do this before working on the repository to bring in any changes that were “pulled” onto the upstream main to your forked main.</p>
 </section>
 <section id="clone-to-your-computer">
 <h3>2. Clone to your computer<a class="headerlink" href="#clone-to-your-computer" title="Link to this heading"></a></h3>
 <p><strong>On Github.com:</strong> From your forked repository, clone the repository to your computer.</p>
-<p>(i) Navigate to your repositories on GitHub, <code class="docutils literal notranslate"><span class="pre">https://github.com/YOUR_USERNAME/amocarray</span></code>.  Click the green <code class="docutils literal notranslate"><span class="pre">&lt;&gt;</span> <span class="pre">Code</span></code> dropdown button, and choose a method to clone this.  If you’re not familiar with cloning repositories to your computer, choose <code class="docutils literal notranslate"><span class="pre">Open</span> <span class="pre">with</span> <span class="pre">Github</span> <span class="pre">Desktop</span></code> which will require you to have the application “GitHub Desktop” on your computer.</p>
+<p>(i) Navigate to your repositories on GitHub, <code class="docutils literal notranslate"><span class="pre">https://github.com/YOUR_USERNAME/amocatlas</span></code>.  Click the green <code class="docutils literal notranslate"><span class="pre">&lt;&gt;</span> <span class="pre">Code</span></code> dropdown button, and choose a method to clone this.  If you’re not familiar with cloning repositories to your computer, choose <code class="docutils literal notranslate"><span class="pre">Open</span> <span class="pre">with</span> <span class="pre">Github</span> <span class="pre">Desktop</span></code> which will require you to have the application “GitHub Desktop” on your computer.</p>
 <p>(ii) When prompted, choose where on your computer you would like this to live (<code class="docutils literal notranslate"><span class="pre">/a/path/on/your/computer/</span></code>).</p>
 <p>This is your <strong>local repository</strong> of your github repository.</p>
 <blockquote>
@@ -145,20 +144,20 @@ If you use a cloud backup service, do <em>not</em> put this in a folder that is 
 </section>
 <section id="find-the-clone-on-your-computer">
 <h3>3. Find the clone on your computer<a class="headerlink" href="#find-the-clone-on-your-computer" title="Link to this heading"></a></h3>
-<p><strong>On your computer in File Explorer (Windows) or Finder (Mac):</strong> Now you have a copy of the repository on your computer, with the associated “git” tracking information.  The repository already knows the history of changes, and has the necessary structure to update.  These are in a hidden folder within the repository folder (likely called <code class="docutils literal notranslate"><span class="pre">/a/path/on/your/computer/amocarray/.git</span></code>).   This is a “main” branch of your forked repository <code class="docutils literal notranslate"><span class="pre">https://github.com/YOUR_USERNAME/amocarray</span></code>.</p>
+<p><strong>On your computer in File Explorer (Windows) or Finder (Mac):</strong> Now you have a copy of the repository on your computer, with the associated “git” tracking information.  The repository already knows the history of changes, and has the necessary structure to update.  These are in a hidden folder within the repository folder (likely called <code class="docutils literal notranslate"><span class="pre">/a/path/on/your/computer/amocatlas/.git</span></code>).   This is a “main” branch of your forked repository <code class="docutils literal notranslate"><span class="pre">https://github.com/YOUR_USERNAME/amocatlas</span></code>.</p>
 <p>So now there are 3 copies of this repository:</p>
 <ul class="simple">
-<li><p>the <strong>upstream main</strong> at http://github.com/AMOCcommunity/amocarray</p></li>
-<li><p>your <strong>forked repository</strong> at <code class="docutils literal notranslate"><span class="pre">http://github.com/YOUR_USERNAME/amocarray</span></code></p></li>
-<li><p>your <strong>local repository</strong> on your computer at some <code class="docutils literal notranslate"><span class="pre">/a/path/on/your/computer/amocarray/</span></code></p></li>
+<li><p>the <strong>upstream main</strong> at http://github.com/AMOCcommunity/amocatlas</p></li>
+<li><p>your <strong>forked repository</strong> at <code class="docutils literal notranslate"><span class="pre">http://github.com/YOUR_USERNAME/amocatlas</span></code></p></li>
+<li><p>your <strong>local repository</strong> on your computer at some <code class="docutils literal notranslate"><span class="pre">/a/path/on/your/computer/amocatlas/</span></code></p></li>
 </ul>
-<p>The following process describes how to keep these working smoothly together.  The short version is, you’ll be working on a <em>feature branch</em> of your <strong>local repository</strong> (not the main, never the main).  When you have a set of changes you like and have committed (which stores discrete update information in your <code class="docutils literal notranslate"><span class="pre">.git/</span></code>), then you will initiate a “pull request” to the <strong>upstream main</strong>.  I.e., you skip your online forked repository entirely.  This triggers a change on http://github.com/AMOCcommunity/amocarray which can be seen in the “pull requests” menu.  Once this has been dealt with (more below), you will “merge” your changes with the <strong>upstream main</strong> which is also a “push to main”.  This updates http://github.com/AMOCcommunity/amocarray with the latest changes that you’d made in your <em>feature branch</em> on your computer.  Now, your <strong>forked repository</strong> is “behind” the <strong>upstream main</strong>, so you need to sync it to bring the changes into your fork.  And then you need to “pull” these changes onto your <strong>local repository</strong> with a <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">main;</span> <span class="pre">git</span> <span class="pre">pull</span></code>.  This will then ensure that your local computer has the latest changes from the <strong>upstream main</strong>.  Finally, you need to checkout a new <em>feature branch</em> to continue making changes.</p>
+<p>The following process describes how to keep these working smoothly together.  The short version is, you’ll be working on a <em>feature branch</em> of your <strong>local repository</strong> (not the main, never the main).  When you have a set of changes you like and have committed (which stores discrete update information in your <code class="docutils literal notranslate"><span class="pre">.git/</span></code>), then you will initiate a “pull request” to the <strong>upstream main</strong>.  I.e., you skip your online forked repository entirely.  This triggers a change on http://github.com/AMOCcommunity/amocatlas which can be seen in the “pull requests” menu.  Once this has been dealt with (more below), you will “merge” your changes with the <strong>upstream main</strong> which is also a “push to main”.  This updates http://github.com/AMOCcommunity/amocatlas with the latest changes that you’d made in your <em>feature branch</em> on your computer.  Now, your <strong>forked repository</strong> is “behind” the <strong>upstream main</strong>, so you need to sync it to bring the changes into your fork.  And then you need to “pull” these changes onto your <strong>local repository</strong> with a <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">main;</span> <span class="pre">git</span> <span class="pre">pull</span></code>.  This will then ensure that your local computer has the latest changes from the <strong>upstream main</strong>.  Finally, you need to checkout a new <em>feature branch</em> to continue making changes.</p>
 </section>
 <section id="create-a-feature-branch-or-just-branch-for-edits">
 <h3>4. Create a <em>feature branch</em> or just “branch” for edits<a class="headerlink" href="#create-a-feature-branch-or-just-branch-for-edits" title="Link to this heading"></a></h3>
-<p><strong>On Github.com:</strong> First make sure your <strong>forked main</strong> is up-to-date with the <strong>upstream main</strong>.  Navigate to your repository, <code class="docutils literal notranslate"><span class="pre">http://github.com/YOUR_USERNAME/amocarray</span></code> (refresh the page if you already had it open), and check whether it says “This branch is up to date with AMOCcommunity/amocarray:main”.  If it does, then you’re already synced and good to go.  If not, then you need to click the “sync fork” button to update.</p>
-<p><strong>On your computer in a terminal window:</strong> When you’d like to start making changes in your repository, <strong>first</strong> make a new branch. For a forked repository (<code class="docutils literal notranslate"><span class="pre">http://github.com/YOUR_USERNAME/amocarray</span></code>) from someone else’s original upstream repository (http://github.com/AMOCcommunity/amocarray), you will <em>never</em> work in your forked main branch.</p>
-<p>To make a branch, at the command line, the series of steps would be (from within <code class="docutils literal notranslate"><span class="pre">/a/path/on/your/computer/amocarray/</span></code>):</p>
+<p><strong>On Github.com:</strong> First make sure your <strong>forked main</strong> is up-to-date with the <strong>upstream main</strong>.  Navigate to your repository, <code class="docutils literal notranslate"><span class="pre">http://github.com/YOUR_USERNAME/amocatlas</span></code> (refresh the page if you already had it open), and check whether it says “This branch is up to date with AMOCcommunity/amocatlas:main”.  If it does, then you’re already synced and good to go.  If not, then you need to click the “sync fork” button to update.</p>
+<p><strong>On your computer in a terminal window:</strong> When you’d like to start making changes in your repository, <strong>first</strong> make a new branch. For a forked repository (<code class="docutils literal notranslate"><span class="pre">http://github.com/YOUR_USERNAME/amocatlas</span></code>) from someone else’s original upstream repository (http://github.com/AMOCcommunity/amocatlas), you will <em>never</em> work in your forked main branch.</p>
+<p>To make a branch, at the command line, the series of steps would be (from within <code class="docutils literal notranslate"><span class="pre">/a/path/on/your/computer/amocatlas/</span></code>):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git checkout main
 $ git pull
 $ git checkout -b yourname-patch-1
@@ -198,12 +197,12 @@ $ git checkout -b yourname-patch-1
 </section>
 <section id="create-a-pull-request-to-upstream-main">
 <h3>7. Create a pull request to <strong>upstream main</strong><a class="headerlink" href="#create-a-pull-request-to-upstream-main" title="Link to this heading"></a></h3>
-<p><strong>On your computer in VS Code:</strong> Sync the commit to main.  If this is the first time you’ve done this from your branch, you will need to “set the upstream”.  Set the upstream to be https://github.com/AMOCcommunity/amocarray.  This will direct the pull request to the <strong>upstream main</strong> repository (not your main). If you accidentally set it to your main, no worries, it just created a branch on your <strong>forked repository</strong> that won’t go anywhere.  Redo it to upstream.</p>
+<p><strong>On your computer in VS Code:</strong> Sync the commit to main.  If this is the first time you’ve done this from your branch, you will need to “set the upstream”.  Set the upstream to be https://github.com/AMOCcommunity/amocatlas.  This will direct the pull request to the <strong>upstream main</strong> repository (not your main). If you accidentally set it to your main, no worries, it just created a branch on your <strong>forked repository</strong> that won’t go anywhere.  Redo it to upstream.</p>
 <p>Don’t worry, if you created a pull request by mistake, you can “close it” on github.com without doing anything further.</p>
 </section>
 <section id="compare-pull-request-on-github-com">
 <h3>8. Compare pull request on GitHub.com<a class="headerlink" href="#compare-pull-request-on-github-com" title="Link to this heading"></a></h3>
-<p><strong>On Github.com (original/upstream repository):</strong> Navigate to the original repository https://github.com/AMOCcommunity/amocarray and you should see the pull request has come through.  There will be a shaded bar at the top with a button “compare and pull request”.  Click this button and on the next page add some useful details for the rest of the contributors to understand what your commit is doing.</p>
+<p><strong>On Github.com (original/upstream repository):</strong> Navigate to the original repository https://github.com/AMOCcommunity/amocatlas and you should see the pull request has come through.  There will be a shaded bar at the top with a button “compare and pull request”.  Click this button and on the next page add some useful details for the rest of the contributors to understand what your commit is doing.</p>
 <p>Note that the default version of this template includes some tests to be run when you submit a pull request.  The python code for these tests is located in <code class="docutils literal notranslate"><span class="pre">tests/</span></code>.  The Github Actions “workflow” that calls the tests is in <code class="docutils literal notranslate"><span class="pre">.github/workflows/tests.yml</span></code>.  It requires that your <code class="docutils literal notranslate"><span class="pre">requirements-dev.txt</span></code> file includes the package:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pytest</span>
 <span class="n">pytest</span><span class="o">-</span><span class="n">cov</span>
@@ -212,7 +211,7 @@ $ git checkout -b yourname-patch-1
 </section>
 <section id="merge-the-pull-request">
 <h3>9. Merge the pull request<a class="headerlink" href="#merge-the-pull-request" title="Link to this heading"></a></h3>
-<p><strong>On Github.com (original repository):</strong> Navigate to the original repository https://github.com/AMOCcommunity/amocarray.  Once your edits have passed all tests, a review from a repository owner (if required) and been approved, then <em>you</em> (as the originator of the change) can “merge”.  This will “push” your changes onto the <strong>upstream main</strong> branch.</p>
+<p><strong>On Github.com (original repository):</strong> Navigate to the original repository https://github.com/AMOCcommunity/amocatlas.  Once your edits have passed all tests, a review from a repository owner (if required) and been approved, then <em>you</em> (as the originator of the change) can “merge”.  This will “push” your changes onto the <strong>upstream main</strong> branch.</p>
 <p>Recommended (optional): If you find that you make a lot of incremental commits–like (1) you committed something, then realised you forgot to clear all outputs on your python notebook and want to re-save and commit, or (2) you made a change and committed it, then realised you had to update another function to be compatible so went and changed that then committed it–you may want to “Squash and Merge”. This will turn the 5 (or 10 or 20) commits in your pull request into a single commit, which cleans up the history of the software.</p>
 <p>If you have a lot of distinct commits with different purposes in the same PR, you may <em>not</em> want to squash and merge.</p>
 </section>
@@ -221,7 +220,7 @@ $ git checkout -b yourname-patch-1
 <p>Now the origin has been updated.</p>
 <p><strong>On Github.com (your forked repository):</strong> If you want to make further changes <em>after a merge (by anyone)</em>, you should <strong>first</strong> sync your fork (main branch) to the origin.</p>
 <ol class="arabic simple">
-<li><p>On your forked repository main, <code class="docutils literal notranslate"><span class="pre">https://github.com/YOUR_USERNAME/amocarray</span></code> where you should see a notification across the top saying “this is behind the origin/main by X commits” with the option to click the <strong>sync</strong> button.  Click it!  This gets your forked main branch <em>on Github</em> up-to-date with the origin/main.</p></li>
+<li><p>On your forked repository main, <code class="docutils literal notranslate"><span class="pre">https://github.com/YOUR_USERNAME/amocatlas</span></code> where you should see a notification across the top saying “this is behind the origin/main by X commits” with the option to click the <strong>sync</strong> button.  Click it!  This gets your forked main branch <em>on Github</em> up-to-date with the origin/main.</p></li>
 <li><p><strong>On your computer, terminal window:</strong> After syncing your fork to the origin’s main on GitHub.com, the next step is to pull any new changes onto your fork’s main branch <em>on your computer</em>.</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git checkout main
@@ -248,7 +247,7 @@ As before, create a new branch using <code class="docutils literal notranslate">
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="developer_guide.html" class="btn btn-neutral float-left" title="Developer Guide for amocarray" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="developer_guide.html" class="btn btn-neutral float-left" title="Developer Guide for amocatlas" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="actions.html" class="btn btn-neutral float-right" title="Extra GitHub features: Actions &amp; Pages" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
