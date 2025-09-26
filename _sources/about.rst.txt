@@ -1,17 +1,17 @@
-About AMOCarray
+About AMOCatlas
 ===============
 
 What is this?
 -------------
 
-AMOCarray is a Python package for loading data from Atlantic Meridional Overturning Circulation (AMOC) observing arrays. It gives you a simple way to access data from different programmes around the Atlantic.
+AMOCatlas is a Python package for loading data from Atlantic Meridional Overturning Circulation (AMOC) observing arrays. It gives you a simple way to access data from different programmes around the Atlantic.
 
 Why AMOC?
 ---------
 
 The Atlantic Meridional Overturning Circulation moves warm water north and cold water south in the Atlantic Ocean. It's important for climate - think of it as a giant conveyor belt that helps regulate temperatures in Europe and beyond.
 
-Scientists monitor this circulation at several locations using moorings and other instruments. AMOCarray makes it easier to work with data from these monitoring arrays.
+Scientists monitor this circulation at several locations using moorings and other instruments. AMOCatlas makes it easier to work with data from these monitoring arrays.
 
 What arrays are included?
 -------------------------
