@@ -1,7 +1,7 @@
 # AMOCatlas
 
-[![PyPI version](https://badge.fury.io/py/amocarray.svg)](https://badge.fury.io/py/amocarray)
-[![Python](https://img.shields.io/pypi/pyversions/amocarray.svg)](https://pypi.org/project/amocarray/)
+[![PyPI version](https://badge.fury.io/py/AMOCatlas.svg)](https://badge.fury.io/py/AMOCatlas)
+[![Python](https://img.shields.io/pypi/pyversions/AMOCatlas.svg)](https://pypi.org/project/AMOCatlas/)
 [![License](https://img.shields.io/github/license/AMOCcommunity/amocatlas.svg)](LICENSE)
 
 **Clean, modular loading of AMOC observing array datasets, with optional structured logging and metadata enrichment.**
@@ -46,7 +46,7 @@ This is a work in progress, all contributions welcome!
 
 ### From PyPI (Recommended)
 ```bash
-pip install amocarray
+pip install AMOCatlas
 ```
 
 **Requirements**: Python ≥3.9, with numpy, pandas, xarray, and matplotlib.
@@ -166,7 +166,7 @@ This project is supported by the Horizon Europe project **EPOC - Explaining and 
 
 ## Acknowledgements
 
-The observing arrays and datasets accessed through AMOCarray are supported by:
+The observing arrays and datasets accessed through AMOCatlas are supported by:
 
 - **RAPID data**: The RAPID-MOC monitoring project is funded by the Natural Environment Research Council (UK). Data is freely available from [www.rapid.ac.uk](https://www.rapid.ac.uk/)
 

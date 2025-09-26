@@ -7,7 +7,7 @@ requires = [
 ]
 
 [project]
-name = "amocatlas"
+name = "AMOCatlas"
 description = "Python project to read data from arrays measuring the Atlantic meridional overturning circulation"
 readme = "README.md"
 license = { file = "LICENSE" }
