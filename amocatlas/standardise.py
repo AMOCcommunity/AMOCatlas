@@ -10,15 +10,16 @@ Currently implemented:
 - SAMBA
 """
 
-import xarray as xr
-from collections import OrderedDict
 import os
 import re
 import warnings
+from collections import OrderedDict
 from datetime import datetime, timezone
-from amocatlas import logger, utilities, defaults, contributors
-from amocatlas.logger import log_debug
 
+import xarray as xr
+
+from amocatlas import contributors, defaults, logger, utilities
+from amocatlas.logger import log_debug
 
 log = logger.log  # Use the global logger
 
@@ -112,8 +113,8 @@ def get_dynamic_version() -> str:
         Software version string
 
     """
-    import subprocess
     import os
+    import subprocess
 
     # Method 1: Try git describe for development versions
     try:
@@ -344,7 +345,7 @@ def resolve_metadata_conflict(
     if not existing_str and new_str:
         log_debug(f"'{key}': using non-empty value from {new_source}")
         return new_value
-    elif existing_str and not new_str:
+    if existing_str and not new_str:
         log_debug(f"'{key}': keeping existing non-empty value from {existing_source}")
         return existing_value
 
@@ -526,7 +527,8 @@ def _standardize_role_names(role_string: str, role_map: dict) -> str:
         role_string: Comma-separated string of role names
         role_map: Dictionary mapping role names to standard NERC G04 terms
 
-    Returns:
+    Returns
+    -------
         Standardized comma-separated role string
 
     """
@@ -878,12 +880,8 @@ def merge_metadata_aliases(attrs: dict, preferred_keys: dict) -> dict:
             canonical = "Conventions"
         else:
             low = orig_key.lower()
-            # 1) if we have a mapping for this lowercase alias, rename
-            if low in preferred_keys:
-                canonical = preferred_keys[low]
-            # 2) otherwise use the lowercased key
-            else:
-                canonical = low
+            # Rename via the lowercase-alias mapping when present, else keep the lowercased key.
+            canonical = preferred_keys.get(low, low)
 
         # Log any renaming
         if canonical != orig_key:

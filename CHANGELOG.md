@@ -19,9 +19,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Per-array reports regenerated with corrected variable names, and the two report generators consolidated into `scripts/generate_reports.py` (#182)
 - Linting is now ruff-only: `ruff format` replaces black, and the pre-commit/codespell configuration was removed (#182)
 - Documentation autodoc deduplicated (`amocatlas.rst` reduced to an index; docs build warnings cut from ~140 to 4); the legacy `readers` string API was dropped from the API docs, though the code remains (still deprecated) (#182)
-- Dependencies are declared in `pyproject.toml` (`[project] dependencies`, extras `test`/`docs`/`dev`); `requirements.txt`, `requirements-dev.txt` and `environment.yml` removed; install with `pip install -e ".[dev]"`. Docs CI no longer uses conda. A coverage floor of 55% is enforced in CI
+- Dependencies are declared in `pyproject.toml` (`[project] dependencies`, extras `test`/`docs`/`dev`); `requirements.txt`, `requirements-dev.txt` and `environment.yml` removed; install with `pip install -e ".[dev]"`. Docs CI no longer uses conda. A coverage floor of 55% is enforced in CI (#185)
 
 ### Fixed
+- Report generation now writes plots into the docs tree (`docs/source/_static/reports`) resolved from the project root, instead of creating a stray `docs/source/_static/reports` directory under whatever directory it was invoked from
 - Every CF `standard_name` used in array metadata verified against the live CF standard-name table; three fabricated names removed; the transport unit canonicalised to lowercase `sverdrup` (#180)
 - Zenodo concept DOI added to the CITATION file and as a README badge (#178)
 
@@ -30,6 +31,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Breaking changes
 
+- **NAC data file renamed `_2_1.nc` → `bb6635909m_2_1.nc`.** The reader now saves, keys, and reports the North Atlantic Current file under `bb6635909m_2_1.nc` (the object id `bb6635909m` plus the component id), matching the name UCSD serves via `Content-Disposition` and what a browser download produces; the download URL still uses the internal `_2_1.nc` segment. A script referencing the cached path `~/.amocatlas_data/_2_1.nc` or the `nac` `files:` key `_2_1.nc` must update to `bb6635909m_2_1.nc`.
 - **#182 — AC1 writer and format docs removed.** `writers.save_AC1_dataset()` no longer exists; the only public writer is `writers.save_dataset(ds, output_file)`. Code that imported or called `save_AC1_dataset` must switch to `save_dataset`. The AC1 format reference pages were deleted.
 - **#181 — standardised output moved to the `amocvocab` + OceanSITES convention.** A script written against 0.4.0 output must update on two fronts:
   - **Variable names.** OSNAP streamfunctions `STREAMFUNCTION_SIGMA0` / `STREAMFUNCTION_SIGMA0_WEST` / `STREAMFUNCTION_SIGMA0_EAST` are now `PSI_SIGMA0` / `PSI_SIGMA0_WEST` / `PSI_SIGMA0_EAST`; streamfunctions generally standardise to `PSI_Z` / `PSI_SIGMA0` / `PSI_SIGMA2`. SAMBA is reworked to anomalies: `UPPER_TRANSPORT` / `ABYSSAL_TRANSPORT` became `TRANS_UPPER` / `TRANS_ABYSSAL`, and the MOC decomposition is now `MOC_ANOM`, `TRANS_RELATIVE`, `TRANS_REFERENCE`, `TRANS_EKMAN` (with `_WEST` / `_EAST` constituents).

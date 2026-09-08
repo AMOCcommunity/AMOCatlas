@@ -41,7 +41,6 @@ import os
 import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
-from typing import Dict, List, Optional, Set, Tuple
 
 HERE = Path(__file__).resolve().parent
 DEFAULT_VOCAB = HERE / "amocvocab.yml"
@@ -64,17 +63,17 @@ def load_yaml(path: Path) -> dict:
     """Load a YAML file for validation (read-only; round-trip not needed)."""
     import yaml
 
-    with open(path, "r", encoding="utf-8") as fh:
+    with open(path, encoding="utf-8") as fh:
         return yaml.safe_load(fh)
 
 
 def load_schema(path: Path) -> dict:
     """Load the JSON Schema document."""
-    with open(path, "r", encoding="utf-8") as fh:
+    with open(path, encoding="utf-8") as fh:
         return json.load(fh)
 
 
-def load_cf_table(path: Path) -> Tuple[Dict[str, str], Set[str]]:
+def load_cf_table(path: Path) -> tuple[dict[str, str], set[str]]:
     """Parse the CF standard-name table.
 
     Returns
@@ -89,7 +88,7 @@ def load_cf_table(path: Path) -> Tuple[Dict[str, str], Set[str]]:
     tree = ET.parse(path)
     root = tree.getroot()
 
-    canonical: Dict[str, str] = {}
+    canonical: dict[str, str] = {}
     for entry in root.findall("entry"):
         name = entry.get("id")
         if name is None:
@@ -97,7 +96,7 @@ def load_cf_table(path: Path) -> Tuple[Dict[str, str], Set[str]]:
         cu = entry.findtext("canonical_units")
         canonical[name] = (cu or "").strip()
 
-    aliases: Dict[str, str] = {}
+    aliases: dict[str, str] = {}
     for alias in root.findall("alias"):
         aid = alias.get("id")
         target = alias.findtext("entry_id")
@@ -113,16 +112,16 @@ def load_cf_table(path: Path) -> Tuple[Dict[str, str], Set[str]]:
     return canonical, valid_names
 
 
-def load_cf_subset(path: Path) -> Tuple[Dict[str, str], Set[str]]:
+def load_cf_subset(path: Path) -> tuple[dict[str, str], set[str]]:
     """Load the committed CF subset JSON (built by build_cf_subset.py).
 
     Same return shape as ``load_cf_table``: a name -> canonical-units map (aliases
     resolved) and the set of all valid names (entry ids plus alias ids).
     """
-    with open(path, "r", encoding="utf-8") as fh:
+    with open(path, encoding="utf-8") as fh:
         data = json.load(fh)
-    canonical: Dict[str, str] = dict(data.get("entries") or {})
-    aliases: Dict[str, str] = dict(data.get("aliases") or {})
+    canonical: dict[str, str] = dict(data.get("entries") or {})
+    aliases: dict[str, str] = dict(data.get("aliases") or {})
     for aid, target in aliases.items():
         if target in canonical:
             canonical[aid] = canonical[target]
@@ -130,14 +129,14 @@ def load_cf_subset(path: Path) -> Tuple[Dict[str, str], Set[str]]:
     return canonical, valid_names
 
 
-def load_cf_names(path: Path) -> Tuple[Dict[str, str], Set[str]]:
+def load_cf_names(path: Path) -> tuple[dict[str, str], set[str]]:
     """Load CF names + canonical units from either the JSON subset or the XML table."""
     if str(path).endswith(".json"):
         return load_cf_subset(path)
     return load_cf_table(path)
 
 
-def resolve_cf_table(explicit: Optional[str]) -> Path:
+def resolve_cf_table(explicit: str | None) -> Path:
     """Find a CF source (committed JSON subset by default), or raise with instructions."""
     if explicit:
         p = Path(explicit)
@@ -161,7 +160,7 @@ def resolve_cf_table(explicit: Optional[str]) -> Path:
 # --- individual checks: each returns a list of human-readable problem strings ---
 
 
-def schema_errors(vocab: dict, schema: dict) -> List[str]:
+def schema_errors(vocab: dict, schema: dict) -> list[str]:
     """Validate against the JSON Schema; return one string per violation."""
     from jsonschema import Draft202012Validator
 
@@ -173,7 +172,7 @@ def schema_errors(vocab: dict, schema: dict) -> List[str]:
     return out
 
 
-def name_key_errors(vocab: dict) -> List[str]:
+def name_key_errors(vocab: dict) -> list[str]:
     """Each quantity's ``name`` must equal its key."""
     out = []
     for key, entry in (vocab.get("quantities") or {}).items():
@@ -183,7 +182,7 @@ def name_key_errors(vocab: dict) -> List[str]:
     return out
 
 
-def referential_errors(vocab: dict) -> List[str]:
+def referential_errors(vocab: dict) -> list[str]:
     """Cross-reference qualifiers, decompositions, base quantity, superseded_by."""
     out = []
     quantities = vocab.get("quantities") or {}
@@ -238,7 +237,7 @@ def referential_errors(vocab: dict) -> List[str]:
     return out
 
 
-def cf_name_errors(vocab: dict, valid_names: Set[str]) -> List[str]:
+def cf_name_errors(vocab: dict, valid_names: set[str]) -> list[str]:
     """Every non-null standard_name must exist in the CF table."""
     out = []
     for key, entry in (vocab.get("quantities") or {}).items():
@@ -251,7 +250,7 @@ def cf_name_errors(vocab: dict, valid_names: Set[str]) -> List[str]:
     return out
 
 
-def units_errors(vocab: dict, canonical: Dict[str, str]) -> List[str]:
+def units_errors(vocab: dict, canonical: dict[str, str]) -> list[str]:
     """Units parse under UDUNITS-2 and are convertible where a standard_name is set."""
     from pyudunits2 import Unit, UnitSystem, UnresolvableUnitException
 
@@ -310,13 +309,13 @@ def units_errors(vocab: dict, canonical: Dict[str, str]) -> List[str]:
     return out
 
 
-def validate(vocab_path: Path, schema_path: Path, cf_table_path: Path) -> List[str]:
+def validate(vocab_path: Path, schema_path: Path, cf_table_path: Path) -> list[str]:
     """Run every check; return the combined list of problems (empty == valid)."""
     vocab = load_yaml(vocab_path)
     schema = load_schema(schema_path)
     canonical, valid_names = load_cf_names(cf_table_path)
 
-    problems: List[str] = []
+    problems: list[str] = []
     # Schema first: later checks assume the structure it guarantees.
     problems += schema_errors(vocab, schema)
     if problems:
@@ -333,7 +332,7 @@ def validate_draft(
     draft_schema_path: Path,
     strict_schema_path: Path,
     cf_table_path: Path,
-) -> List[str]:
+) -> list[str]:
     """Validate the staging draft: loose overall, strict on every ``ready`` entry.
 
     Unreviewed/draft entries only have to satisfy the loose draft schema. Any entry marked
@@ -344,7 +343,7 @@ def validate_draft(
     draft = load_yaml(draft_path)
     draft_schema = load_schema(draft_schema_path)
 
-    problems: List[str] = []
+    problems: list[str] = []
     problems += schema_errors(draft, draft_schema)
     if problems:
         return problems
@@ -374,7 +373,7 @@ def validate_draft(
     return problems
 
 
-def main(argv: Optional[List[str]] = None) -> int:
+def main(argv: list[str] | None = None) -> int:
     """CLI entry point. Returns process exit status."""
     ap = argparse.ArgumentParser(description="Validate the amocvocab vocabulary file.")
     ap.add_argument("--vocab", default=str(DEFAULT_VOCAB), help="Path to amocvocab.yml")

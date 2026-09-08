@@ -1,13 +1,14 @@
 """Tests for amocatlas.plotters module."""
 
-import tempfile
 import os
-import numpy as np
-import pandas as pd
-import xarray as xr
+import tempfile
+
 import matplotlib
 import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
 import pytest
+import xarray as xr
 
 # Use Agg backend for testing (no display needed)
 matplotlib.use("Agg")
@@ -346,7 +347,7 @@ def test_check_pygmt() -> None:
         has_pygmt = False
 
     # Check the module constant matches
-    assert plotters.HAS_PYGMT == has_pygmt
+    assert has_pygmt == plotters.HAS_PYGMT
 
 
 def test_add_amocatlas_timestamp() -> None:

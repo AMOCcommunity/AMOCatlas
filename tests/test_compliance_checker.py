@@ -1,10 +1,11 @@
 """Tests for AMOCatlas AC1 compliance checker functionality."""
 
+import os
+import tempfile
+
+import numpy as np
 import pytest
 import xarray as xr
-import numpy as np
-import tempfile
-import os
 
 from amocatlas import compliance_checker, logger
 

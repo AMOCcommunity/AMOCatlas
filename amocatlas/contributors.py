@@ -7,16 +7,17 @@ This module provides functions to:
 - Standardize contributor names using the registry
 """
 
-import warnings
-import yaml
 import re
+import warnings
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
-from amocatlas.logger import log_debug
+
+import yaml
+
 from amocatlas.defaults import INSTITUTION_CORRECTIONS
+from amocatlas.logger import log_debug
 
 
-def _split_clean(value: str) -> List[str]:
+def _split_clean(value: str) -> list[str]:
     """Split and clean comma and/or semicolon-separated values.
 
     Handles mixed delimiters by first splitting on semicolons, then commas.
@@ -25,10 +26,12 @@ def _split_clean(value: str) -> List[str]:
     Args:
         value: String to split (e.g., "A, B; C")
 
-    Returns:
+    Returns
+    -------
         List of cleaned strings (e.g., ["A", "B", "C"])
 
-    Examples:
+    Examples
+    --------
         >>> _split_clean("A, B, C")
         ["A", "B", "C"]
         >>> _split_clean("A; B; C")
@@ -54,8 +57,8 @@ def _split_clean(value: str) -> List[str]:
 
 
 def _deduplicate_structured_dict(
-    entries_dict: Dict[str, Dict[str, str]],
-) -> Dict[str, Dict[str, str]]:
+    entries_dict: dict[str, dict[str, str]],
+) -> dict[str, dict[str, str]]:
     """Remove exact duplicate entries from a structured dictionary.
 
     Parameters
@@ -97,7 +100,7 @@ def _deduplicate_structured_dict(
         entry = entries_dict[key]
 
         # Skip completely empty entries (all fields are empty or whitespace)
-        if all(not entry.get(field, "").strip() for field in entry.keys()):
+        if all(not entry.get(field, "").strip() for field in entry):
             continue
 
         # Create a tuple of all values in a consistent order
@@ -122,10 +125,12 @@ def is_valid_email(email: str) -> bool:
     Args:
         email: Email address string to validate
 
-    Returns:
+    Returns
+    -------
         True if email appears to be valid, False otherwise
 
-    Examples:
+    Examples
+    --------
         >>> is_valid_email("user@example.com")
         True
         >>> is_valid_email("invalid.email")
@@ -147,16 +152,17 @@ def is_valid_email(email: str) -> bool:
     return bool(re.match(pattern, email.strip()))
 
 
-def _load_contributor_registry() -> Optional[Dict]:
+def _load_contributor_registry() -> dict | None:
     """Load the contributor registry from YAML file.
 
-    Returns:
+    Returns
+    -------
         Dict containing the contributor registry, or None if loading fails.
 
     """
     try:
         registry_file = Path(__file__).parent / "metadata" / "contributor_registry.yml"
-        with open(registry_file, "r", encoding="utf-8") as f:
+        with open(registry_file, encoding="utf-8") as f:
             data = yaml.safe_load(f)
         log_debug(
             f"Loaded contributor registry with {len(data.get('contributors', {}))} contributors"
@@ -168,14 +174,15 @@ def _load_contributor_registry() -> Optional[Dict]:
         return data
 
 
-def _find_contributor_by_name(name: str, registry: Dict) -> Optional[Tuple[str, Dict]]:
+def _find_contributor_by_name(name: str, registry: dict) -> tuple[str, dict] | None:
     """Find a contributor in the registry by name variants.
 
     Args:
         name: The name to search for
         registry: The loaded contributor registry
 
-    Returns:
+    Returns
+    -------
         Tuple of (orcid, contributor_info) if found, None otherwise
 
     """
@@ -212,15 +219,16 @@ def _is_orcid_url(value: str) -> bool:
 
 
 def _find_contributor_by_orcid(
-    orcid_url: str, registry: Dict
-) -> Optional[Tuple[str, Dict]]:
+    orcid_url: str, registry: dict
+) -> tuple[str, dict] | None:
     """Find a contributor in the registry by ORCID URL.
 
     Args:
         orcid_url: The ORCID URL to search for
         registry: The loaded contributor registry
 
-    Returns:
+    Returns
+    -------
         Tuple of (orcid, contributor_info) if found, None otherwise
 
     """
@@ -251,7 +259,7 @@ def parse_contributors(
     contributor_id: str,
     contributor_email: str,
     contributor_role: str,
-) -> Dict[str, Dict[str, str]]:
+) -> dict[str, dict[str, str]]:
     """Parse comma-separated contributor strings into a structured dictionary.
 
     Args:
@@ -260,11 +268,13 @@ def parse_contributors(
         contributor_email: Comma-separated string of contributor emails
         contributor_role: Comma-separated string of contributor roles
 
-    Returns:
+    Returns
+    -------
         Dictionary with string keys "1", "2", etc. and values containing
         dictionaries with keys: name, id, email, role
 
-    Examples:
+    Examples
+    --------
         >>> parse_contributors("Yao Fu, Penny Holliday", ",", "yao.fu@fsu.edu", "creator, PI")
         {
             "1": {"name": "Yao Fu", "email": "yao.fu@fsu.edu", "id": "", "role": "creator"},
@@ -329,8 +339,8 @@ def parse_contributors(
 
 
 def enrich_contributors(
-    contributors_dict: Dict[str, Dict[str, str]],
-) -> Dict[str, Dict[str, str]]:
+    contributors_dict: dict[str, dict[str, str]],
+) -> dict[str, dict[str, str]]:
     """Enrich contributor data using the contributor registry.
 
     This function:
@@ -342,10 +352,12 @@ def enrich_contributors(
     Args:
         contributors_dict: Dictionary from parse_contributors()
 
-    Returns:
+    Returns
+    -------
         Updated dictionary with enriched contributor information
 
-    Examples:
+    Examples
+    --------
         >>> contributors = {"1": {"name": "Yao Fu", "email": "yao.fu@fsu.edu", "id": "", "role": "creator"}}
         >>> enrich_contributors(contributors)
         {"1": {"name": "Yao Fu", "email": "yao.fu@fsu.edu", "id": "https://orcid.org/0000-0003-2227-3694", "role": "creator"}}
@@ -415,16 +427,18 @@ def enrich_contributors(
     return result
 
 
-def format_contributors(contributors_dict: Dict[str, Dict[str, str]]) -> Dict[str, str]:
+def format_contributors(contributors_dict: dict[str, dict[str, str]]) -> dict[str, str]:
     """Format structured contributor data back to comma-separated strings.
 
     Args:
         contributors_dict: Dictionary from parse_contributors() or enrich_contributors()
 
-    Returns:
+    Returns
+    -------
         Dictionary with keys: contributor_name, contributor_id, contributor_email, contributor_role
 
-    Examples:
+    Examples
+    --------
         >>> contributors = {
         ...     "1": {"name": "Yao Fu", "email": "yao.fu@fsu.edu", "id": "https://orcid.org/0000-0003-2227-3694", "role": "creator"},
         ...     "2": {"name": "N. Penny Holliday", "email": "", "id": "https://orcid.org/0000-0002-9733-8002", "role": "PI"}
@@ -473,7 +487,7 @@ def process_contributor_metadata(
     contributor_id: str,
     contributor_email: str,
     contributor_role: str,
-) -> Dict[str, str]:
+) -> dict[str, str]:
     """Complete workflow: parse, enrich, and format contributor metadata.
 
     This is a convenience function that combines all three steps:
@@ -487,10 +501,12 @@ def process_contributor_metadata(
         contributor_email: Comma-separated string of contributor emails
         contributor_role: Comma-separated string of contributor roles
 
-    Returns:
+    Returns
+    -------
         Dictionary with processed contributor metadata ready for dataset attributes
 
-    Examples:
+    Examples
+    --------
         >>> process_contributor_metadata("Yao Fu, Penny Holliday", ",", "yao.fu@fsu.edu", "creator, PI")
         {
             "contributor_name": "Yao Fu, N. Penny Holliday",
@@ -523,16 +539,17 @@ def process_contributor_metadata(
 # Institution handling functions (similar pattern to contributor functions)
 
 
-def _load_institution_registry() -> Optional[Dict]:
+def _load_institution_registry() -> dict | None:
     """Load the institution registry from YAML file.
 
-    Returns:
+    Returns
+    -------
         Dict containing the institution registry, or None if loading fails.
 
     """
     try:
         registry_file = Path(__file__).parent / "metadata" / "institution_registry.yml"
-        with open(registry_file, "r", encoding="utf-8") as f:
+        with open(registry_file, encoding="utf-8") as f:
             data = yaml.safe_load(f)
         log_debug(
             f"Loaded institution registry with {len(data.get('institutions', {}))} institutions"
@@ -544,14 +561,15 @@ def _load_institution_registry() -> Optional[Dict]:
         return data
 
 
-def _find_institution_by_name(name: str, registry: Dict) -> Optional[Tuple[str, Dict]]:
+def _find_institution_by_name(name: str, registry: dict) -> tuple[str, dict] | None:
     """Find an institution in the registry by name variants.
 
     Args:
         name: The institution name to search for
         registry: The loaded institution registry
 
-    Returns:
+    Returns
+    -------
         Tuple of (edmo_id, institution_info) if found, None otherwise
 
     """
@@ -578,7 +596,7 @@ def parse_institutions(
     contributing_institutions: str,
     contributing_institutions_vocabulary: str,
     contributing_institutions_role: str,
-) -> Dict[str, Dict[str, str]]:
+) -> dict[str, dict[str, str]]:
     """Parse comma-separated institution strings into a structured dictionary.
 
     Args:
@@ -586,11 +604,13 @@ def parse_institutions(
         contributing_institutions_vocabulary: Comma-separated string of EDMO URLs
         contributing_institutions_role: Comma-separated string of institution roles
 
-    Returns:
+    Returns
+    -------
         Dictionary with string keys "1", "2", etc. and values containing
         dictionaries with keys: name, vocabulary, role
 
-    Examples:
+    Examples
+    --------
         >>> parse_institutions("NOCS, GA Tech", "", "host, partner")
         {
             "1": {"name": "NOCS", "vocabulary": "", "role": "host"},
@@ -649,8 +669,8 @@ def parse_institutions(
 
 
 def enrich_institutions(
-    institutions_dict: Dict[str, Dict[str, str]],
-) -> Dict[str, Dict[str, str]]:
+    institutions_dict: dict[str, dict[str, str]],
+) -> dict[str, dict[str, str]]:
     """Enrich institution data using the institution registry.
 
     This function:
@@ -662,10 +682,12 @@ def enrich_institutions(
     Args:
         institutions_dict: Dictionary from parse_institutions()
 
-    Returns:
+    Returns
+    -------
         Updated dictionary with enriched institution information
 
-    Examples:
+    Examples
+    --------
         >>> institutions = {"1": {"name": "NOCS", "vocabulary": "", "role": "host"}}
         >>> enrich_institutions(institutions)
         {"1": {"name": "National Oceanography Centre (Southampton)", "vocabulary": "https://edmo.seadatanet.org/report/17", "role": "host"}}
@@ -715,16 +737,18 @@ def enrich_institutions(
     return result
 
 
-def format_institutions(institutions_dict: Dict[str, Dict[str, str]]) -> Dict[str, str]:
+def format_institutions(institutions_dict: dict[str, dict[str, str]]) -> dict[str, str]:
     """Format structured institution data back to comma-separated strings.
 
     Args:
         institutions_dict: Dictionary from parse_institutions() or enrich_institutions()
 
-    Returns:
+    Returns
+    -------
         Dictionary with keys: contributing_institutions, contributing_institutions_vocabulary, contributing_institutions_role
 
-    Examples:
+    Examples
+    --------
         >>> institutions = {
         ...     "1": {"name": "NOC Southampton", "vocabulary": "https://edmo.seadatanet.org/report/17", "role": "host"},
         ...     "2": {"name": "GA Tech", "vocabulary": "https://edmo.seadatanet.org/report/3075", "role": "partner"}
@@ -767,7 +791,7 @@ def process_institution_metadata(
     contributing_institutions: str,
     contributing_institutions_vocabulary: str,
     contributing_institutions_role: str,
-) -> Dict[str, str]:
+) -> dict[str, str]:
     """Complete workflow: parse, enrich, and format institution metadata.
 
     This is a convenience function that combines all three steps:
@@ -780,10 +804,12 @@ def process_institution_metadata(
         contributing_institutions_vocabulary: Comma-separated string of EDMO URLs
         contributing_institutions_role: Comma-separated string of institution roles
 
-    Returns:
+    Returns
+    -------
         Dictionary with processed institution metadata ready for dataset attributes
 
-    Examples:
+    Examples
+    --------
         >>> process_institution_metadata("NOCS, GA Tech", "", "host, partner")
         {
             "contributing_institutions": "National Oceanography Centre (Southampton), Georgia Institute of Technology",

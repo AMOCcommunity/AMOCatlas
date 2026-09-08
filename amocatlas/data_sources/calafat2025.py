@@ -6,15 +6,15 @@ observations and estimates of meridional heat transport across multiple
 latitudes in the Atlantic Ocean.
 """
 
-from pathlib import Path
-from typing import Union
 import zipfile
+from pathlib import Path
+
 import xarray as xr
 
 from amocatlas import logger, utilities
 from amocatlas.logger import log_info
-from amocatlas.utilities import apply_defaults
 from amocatlas.reader_utils import ReaderUtils
+from amocatlas.utilities import apply_defaults
 
 log = logger.log  # ✅ use the global logger
 
@@ -59,7 +59,7 @@ def read_calafat2025(
     source: str,
     file_list: str | list[str],
     transport_only: bool = True,
-    data_dir: Union[str, Path, None] = None,
+    data_dir: str | Path | None = None,
     redownload: bool = False,
     track_added_attrs: bool = False,
 ) -> list[xr.Dataset]:
@@ -215,8 +215,8 @@ def read_calafat2025(
 
                 # Fix Calafat time coordinate: convert decimal years to standard format
                 if "time" in ds.coords:
-                    import pandas as pd
                     import numpy as np
+                    import pandas as pd
 
                     # Convert from 'time' to 'TIME' and from decimal years to seconds since 1970
                     decimal_years = ds["time"].values
@@ -318,5 +318,4 @@ def read_calafat2025(
 
     if track_added_attrs:
         return datasets, added_attrs_per_dataset
-    else:
-        return datasets
+    return datasets

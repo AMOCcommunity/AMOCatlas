@@ -34,11 +34,11 @@ class TestNAC:
         """Test default files configuration is reasonable."""
         files = nac.NAC_DEFAULT_FILES
         assert len(files) > 0
-        assert "_2_1.nc" in files
+        assert "bb6635909m_2_1.nc" in files
 
         transport_files = nac.NAC_TRANSPORT_FILES
         assert len(transport_files) > 0
-        assert "_2_1.nc" in transport_files
+        assert "bb6635909m_2_1.nc" in transport_files
 
         # Files should be NetCDF format for NAC data
         for file in files:
@@ -84,11 +84,11 @@ class TestNAC:
         """Test that NAC file metadata has expected structure."""
         file_metadata = nac.NAC_FILE_METADATA
 
-        # Should have metadata for the default _2_1.nc file
-        assert "_2_1.nc" in file_metadata
+        # Should have metadata for the default bb6635909m_2_1.nc file
+        assert "bb6635909m_2_1.nc" in file_metadata
 
         # File metadata should have expected keys
-        file_meta = file_metadata["_2_1.nc"]
+        file_meta = file_metadata["bb6635909m_2_1.nc"]
         assert "data_product" in file_meta
         assert isinstance(file_meta["data_product"], str)
         assert len(file_meta["data_product"]) > 0

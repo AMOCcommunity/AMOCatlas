@@ -1,14 +1,14 @@
 """Tests for amocatlas.utilities module."""
 
-from pathlib import Path
-import tempfile
 import os
-from typing import Any, Tuple
-import yaml
-import pandas as pd
+import tempfile
+from pathlib import Path
+from typing import Any
 
+import pandas as pd
 import pytest
 import xarray as xr
+import yaml
 
 from amocatlas import logger, utilities
 
@@ -171,8 +171,9 @@ def test_set_data_dir_get_data_dir_integration() -> None:
 
 def test_public_api_data_dir_functions() -> None:
     """Test that set_data_dir and get_data_dir are available in public API."""
-    import amocatlas
     import tempfile
+
+    import amocatlas
 
     # Store original state
     original_data_dir = utilities._user_data_dir
@@ -285,7 +286,7 @@ def test_validate_array_yaml() -> None:
         # This should work without errors (exact behavior depends on implementation)
         result = utilities.validate_array_yaml("test", verbose=False)
         assert isinstance(result, bool)
-    except Exception:  # noqa: BLE001
+    except Exception:
         # If validation fails due to missing schema, that's expected
         pass
     finally:
@@ -377,7 +378,7 @@ def test_apply_defaults_decorator() -> None:
     """Test the apply_defaults decorator functionality."""
 
     @utilities.apply_defaults("default_source", ["file1.nc", "file2.nc"])
-    def test_function(source: str = None, file_list: list = None) -> Tuple[str, list]:
+    def test_function(source: str = None, file_list: list = None) -> tuple[str, list]:
         return source, file_list
 
     # Test with no arguments (should use defaults)
@@ -554,15 +555,14 @@ class TestNewUtilityFunctions:
 
 def test_resolve_file_path_missing_file() -> None:
     """Test error handling when local file is missing."""
-    with tempfile.TemporaryDirectory() as tmp_dir:
-        with pytest.raises(FileNotFoundError):
-            utilities.resolve_file_path(
-                file_name="nonexistent.nc",
-                source=tmp_dir,  # Local directory
-                download_url=None,
-                local_data_dir=Path(tmp_dir),
-                redownload=False,
-            )
+    with tempfile.TemporaryDirectory() as tmp_dir, pytest.raises(FileNotFoundError):
+        utilities.resolve_file_path(
+            file_name="nonexistent.nc",
+            source=tmp_dir,  # Local directory
+            download_url=None,
+            local_data_dir=Path(tmp_dir),
+            redownload=False,
+        )
 
 
 def test_safe_update_attrs_edge_cases() -> None:
@@ -645,9 +645,9 @@ def test_set_data_dir_project_validation() -> None:
 
 def test_set_data_dir_uses_logging() -> None:
     """Test that set_data_dir uses logging instead of print statements."""
+    import io
     import tempfile
     from unittest.mock import patch
-    import io
 
     with tempfile.TemporaryDirectory() as temp_dir:
         # Capture stdout to verify no print statements

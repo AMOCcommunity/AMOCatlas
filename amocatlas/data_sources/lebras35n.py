@@ -13,15 +13,14 @@ Location: North Atlantic at 35°N
 """
 
 from pathlib import Path
-from typing import Union
 
 import xarray as xr
 
 # Import the modules used
 from amocatlas import logger, utilities
 from amocatlas.logger import log_error, log_info, log_warning
-from amocatlas.utilities import apply_defaults
 from amocatlas.reader_utils import ReaderUtils
+from amocatlas.utilities import apply_defaults
 
 log = logger.log  # Use the global logger
 
@@ -51,10 +50,10 @@ LEBRAS35N_FILE_METADATA = {
 
 @apply_defaults(LEBRAS35N_DEFAULT_SOURCE, LEBRAS35N_DEFAULT_FILES)
 def read_lebras35n(
-    source: Union[str, Path, None],
-    file_list: Union[str, list[str]],
+    source: str | Path | None,
+    file_list: str | list[str],
     transport_only: bool = True,
-    data_dir: Union[str, Path, None] = None,
+    data_dir: str | Path | None = None,
     redownload: bool = False,
     track_added_attrs: bool = False,
 ) -> list[xr.Dataset]:
@@ -184,5 +183,4 @@ def read_lebras35n(
 
     if track_added_attrs:
         return datasets, added_attrs_per_dataset
-    else:
-        return datasets
+    return datasets

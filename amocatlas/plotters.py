@@ -1,14 +1,14 @@
 """AMOCatlas plotting functions for visualization and publication figures."""
 
+import contextlib
 import textwrap
 
 import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
 import xarray as xr
-import numpy as np
 from pandas import DataFrame
 from pandas.io.formats.style import Styler
-from typing import Union, Dict
 
 
 def _vlabel(label: str, width: int = 24) -> str:
@@ -136,8 +136,7 @@ def format_variable_name_for_plotting(name: str) -> str:
     if len(parts) > 2:
         remaining = "_".join(parts[2:])
         return f"{main_name}$_{{{formatted_subscript}}}$_{remaining}"
-    else:
-        return f"{main_name}$_{{{formatted_subscript}}}$"
+    return f"{main_name}$_{{{formatted_subscript}}}$"
 
 
 def format_units_for_plotting(units: str) -> str:
@@ -235,19 +234,16 @@ def show_contents(
     if content_type in ["variables", "vars"]:
         if isinstance(data, (str, xr.Dataset)):
             return show_variables(data)
-        else:
-            raise TypeError("Input data must be a file path (str) or an xarray Dataset")
-    elif content_type in ["attributes", "attrs"]:
+        raise TypeError("Input data must be a file path (str) or an xarray Dataset")
+    if content_type in ["attributes", "attrs"]:
         if isinstance(data, (str, xr.Dataset)):
             return show_attributes(data)
-        else:
-            raise TypeError(
-                "Attributes can only be shown for netCDF files (str) or xarray Datasets",
-            )
-    else:
-        raise ValueError(
-            "content_type must be either 'variables' (or 'vars') or 'attributes' (or 'attrs')",
+        raise TypeError(
+            "Attributes can only be shown for netCDF files (str) or xarray Datasets",
         )
+    raise ValueError(
+        "content_type must be either 'variables' (or 'vars') or 'attributes' (or 'attrs')",
+    )
 
 
 def show_variables(data: str | xr.Dataset) -> Styler:
@@ -357,8 +353,7 @@ def show_attributes(data: str | xr.Dataset) -> pd.DataFrame:
         """Get attribute value based on data type."""
         if isinstance(data, str):
             return getattr(rootgrp, key)
-        else:
-            return data.attrs[key]
+        return data.attrs[key]
 
     if isinstance(data, str):
         print(f"information is based on file: {data}")
@@ -487,8 +482,7 @@ def monthly_resample(da: xr.DataArray) -> xr.DataArray:
 
         return da.resample({time_key: "1MS"}).mean()
 
-    else:
-        return da  # just return the original data without interpolation
+    return da  # just return the original data without interpolation
 
 
 def _format_units_for_plots(units: str) -> str:
@@ -850,7 +844,7 @@ def plot_moc_timeseries_pygmt(
     return fig
 
 
-def plot_osnap_components_pygmt(data: Union[DataFrame, Dict]) -> "pygmt.Figure":
+def plot_osnap_components_pygmt(data: DataFrame | dict) -> "pygmt.Figure":
     """Plot OSNAP MOC components with shaded error bands using PyGMT.
 
     Parameters
@@ -1211,6 +1205,7 @@ def plot_bryden2005_pygmt() -> "pygmt.Figure":
     _check_pygmt()
 
     import os
+
     import pandas as pd
 
     # Bryden 2005 data
@@ -1579,12 +1574,9 @@ def plot_amoc_2d_data(
     # Add grid for better readability
     ax.grid(True, alpha=0.3)
 
-    # Use AMOCatlas style
-    try:
+    # Use AMOCatlas style if available, else fall back to matplotlib defaults
+    with contextlib.suppress(OSError):
         plt.style.use("amocatlas.mplstyle")
-    except OSError:
-        # If style not found, use default
-        pass
 
     plt.tight_layout()
 

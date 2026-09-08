@@ -6,15 +6,14 @@ at 16°N in the Atlantic.
 """
 
 from pathlib import Path
-from typing import Union
 
-import xarray as xr
 import numpy as np
 import pandas as pd
+import xarray as xr
 
 from amocatlas import logger, utilities
-from amocatlas.utilities import apply_defaults
 from amocatlas.reader_utils import ReaderUtils
+from amocatlas.utilities import apply_defaults
 
 log = logger.log  # ✅ use the global logger
 
@@ -56,7 +55,7 @@ def read_move(
     source: str,
     file_list: str | list[str],
     transport_only: bool = True,
-    data_dir: Union[str, Path, None] = None,
+    data_dir: str | Path | None = None,
     redownload: bool = False,
     track_added_attrs: bool = False,
 ) -> list[xr.Dataset]:
@@ -211,5 +210,4 @@ def read_move(
     # Handle track_added_attrs parameter
     if track_added_attrs:
         return datasets, added_attrs_per_dataset
-    else:
-        return datasets
+    return datasets

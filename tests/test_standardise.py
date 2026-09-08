@@ -6,11 +6,11 @@ variable renaming, and dataset enrichment.
 
 import warnings
 
+import pandas as pd
 import pytest
 import xarray as xr
-import pandas as pd
 
-from amocatlas import standardise, readers
+from amocatlas import readers, standardise
 from amocatlas.logger import disable_logging
 
 # Disable logging for cleaner test output
@@ -227,8 +227,8 @@ class TestEdgeCases:
         # This tests that version detection doesn't crash
         # and provides some fallback even in edge cases
 
-        from unittest import mock
         import subprocess
+        from unittest import mock
 
         with mock.patch("subprocess.run") as mock_run:
             # Mock git failure with the proper exception type that the function catches

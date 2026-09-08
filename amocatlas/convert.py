@@ -4,10 +4,10 @@ This module provides functionality to convert standardised AMOCatlas data to the
 following OceanSITES conventions and AC1 specifications.
 """
 
-import xarray as xr
-import numpy as np
 from datetime import datetime, timezone
-from typing import Dict, List, Tuple
+
+import numpy as np
+import xarray as xr
 
 from amocatlas import logger
 
@@ -16,7 +16,7 @@ log = logger.log
 
 def to_AC1(
     ds: xr.Dataset, array_name: str = None, start_date: str = None, end_date: str = None
-) -> List[xr.Dataset]:
+) -> list[xr.Dataset]:
     """Convert standardised AMOCatlas dataset to AC1 format datasets.
 
     Parameters
@@ -82,11 +82,11 @@ def _determine_array_name(ds: xr.Dataset) -> str:
     source_file = ds.attrs.get("source_file", "")
     if "rapid" in source_file.lower():
         return "RAPID"
-    elif "osnap" in source_file.lower():
+    if "osnap" in source_file.lower():
         return "OSNAP"
-    elif "move" in source_file.lower():
+    if "move" in source_file.lower():
         return "MOVE"
-    elif "samba" in source_file.lower():
+    if "samba" in source_file.lower():
         return "SAMBA"
 
     # Default fallback
@@ -94,7 +94,7 @@ def _determine_array_name(ds: xr.Dataset) -> str:
     return "RAPID"
 
 
-def _determine_date_range(ds: xr.Dataset) -> Tuple[str, str]:
+def _determine_date_range(ds: xr.Dataset) -> tuple[str, str]:
     """Determine date range from dataset time coordinate."""
     time_coord = ds["TIME"]
 
@@ -325,7 +325,7 @@ def _convert_component_transports(
 
 def _create_ac1_global_attributes(
     ds: xr.Dataset, array_name: str, start_date: str, end_date: str, content_type: str
-) -> Dict:
+) -> dict:
     """Create AC1-compliant global attributes."""
     attrs = {}
 

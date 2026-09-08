@@ -13,25 +13,34 @@ Location: Between tip of Greenland and northern Spain
 """
 
 from pathlib import Path
-from typing import Union
 
 import xarray as xr
 
 # Import the modules used
 from amocatlas import logger, utilities
 from amocatlas.logger import log_error, log_info, log_warning
-from amocatlas.utilities import apply_defaults
 from amocatlas.reader_utils import ReaderUtils
+from amocatlas.utilities import apply_defaults
 
 log = logger.log  # Use the global logger
 
 # Datasource identifier for automatic standardization
 DATASOURCE_ID = "nac"
 
-# Default list of NAC data files
-NAC_DEFAULT_FILES = ["_2_1.nc"]
-NAC_TRANSPORT_FILES = ["_2_1.nc"]
+# Default list of NAC data files.
+#
+# The UCSD Digital Collections object serves this file under the internal
+# component id "_2_1.nc" (the prefixed URL .../bb6635909m/bb6635909m_2_1.nc
+# 404s), but the HTTP Content-Disposition names it "bb6635909m_2_1.nc". We save,
+# key metadata, and report it under that fuller name — which includes the object
+# id and matches what a browser download produces — and map back to the internal
+# id only when building the download URL (NAC_URL_PATH_SEGMENT below).
+NAC_DEFAULT_FILES = ["bb6635909m_2_1.nc"]
+NAC_TRANSPORT_FILES = ["bb6635909m_2_1.nc"]
 NAC_DEFAULT_SOURCE = "https://library.ucsd.edu/dc/object/bb6635909m"
+
+# Map the saved/reported filename to the URL path segment served by UCSD.
+NAC_URL_PATH_SEGMENT = {"bb6635909m_2_1.nc": "_2_1.nc"}
 
 NAC_METADATA = {
     "project": "North Atlantic Current Time Series from Satellite and Float Observations (1993-2025)",
@@ -40,7 +49,7 @@ NAC_METADATA = {
 }
 
 NAC_FILE_METADATA = {
-    "_2_1.nc": {
+    "bb6635909m_2_1.nc": {
         "data_product": "6-monthly estimates of NAC transport from satellite altimetry and float observations",
     },
 }
@@ -48,10 +57,10 @@ NAC_FILE_METADATA = {
 
 @apply_defaults(NAC_DEFAULT_SOURCE, NAC_DEFAULT_FILES)
 def read_nac(
-    source: Union[str, Path, None],
-    file_list: Union[str, list[str]],
+    source: str | Path | None,
+    file_list: str | list[str],
     transport_only: bool = True,
-    data_dir: Union[str, Path, None] = None,
+    data_dir: str | Path | None = None,
     redownload: bool = False,
     track_added_attrs: bool = False,
 ) -> list[xr.Dataset]:
@@ -121,8 +130,13 @@ def read_nac(
             log_warning("Skipping unsupported file type : %s", file)
             continue
 
+        # The saved/reported name (file) carries the object id; the download URL
+        # must use the internal component id served by UCSD.
+        url_segment = NAC_URL_PATH_SEGMENT.get(file, file)
         download_url = (
-            f"{source.rstrip('/')}/{file}" if utilities.is_valid_url(source) else None
+            f"{source.rstrip('/')}/{url_segment}"
+            if utilities.is_valid_url(source)
+            else None
         )
 
         file_path = utilities.resolve_file_path(
@@ -182,5 +196,4 @@ def read_nac(
 
     if track_added_attrs:
         return datasets, added_attrs_per_dataset
-    else:
-        return datasets
+    return datasets

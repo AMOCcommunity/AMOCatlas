@@ -147,7 +147,6 @@ files:
 
   OS_MOVE_TRANSPORTS.nc:
     source_file: OS_MOVE_TRANSPORTS.nc
-    source_path: /Users/eddifying/Cloudfree/gitlab-cloudfree/amocatlas/data/OS_MOVE_TRANSPORTS.nc
     data_product: "MOVE transport time series"
     variable_mapping: {}
     original_variable_metadata:

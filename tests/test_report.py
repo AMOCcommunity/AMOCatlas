@@ -7,6 +7,7 @@ for dataset analysis and reporting.
 import subprocess
 import sys
 from pathlib import Path
+
 import pandas as pd
 import pytest
 import xarray as xr
@@ -464,7 +465,7 @@ class TestDatabaseErrorHandling:
         # Read back the new content to verify it's valid YAML
         import yaml
 
-        with open(db_file, "r") as f:
+        with open(db_file) as f:
             new_data = yaml.safe_load(f)
             assert new_data is not None
             assert "arrays" in new_data
@@ -490,7 +491,7 @@ class TestDatabaseErrorHandling:
         # Verify content is valid
         import yaml
 
-        with open(db_file, "r") as f:
+        with open(db_file) as f:
             new_data = yaml.safe_load(f)
             assert new_data is not None
 

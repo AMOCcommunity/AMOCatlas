@@ -108,34 +108,45 @@ target-version = "py310"
 
 [tool.ruff.lint]
 select = [
-  "D",       # pydocstyle
-  "E",       # pycodestyle errors
-  "F",       # pyflakes errors
-  "W",       # pycodestyle warnings
-  "C90",     # mccabe complexity
-  "ANN",     # type annotations
-  "B",       # flake8-bugbear
-  "BLE",     # bleach checks
-  "TRY",     # tryceratops
-  "ARG",     # flake8-arguments
-  "SLF",     # flake8-self
+  "E", "F", "W",          # pycodestyle + pyflakes
+  "B", "BLE",             # bugbear, blind-except
+  "ARG",                  # unused arguments
+  "D", "ANN",             # docstrings (numpy convention) + annotations
+  "I",                    # import sorting
+  "UP",                   # pyupgrade — modern syntax
+  "C4",                   # comprehensions
+  "RET",                  # return-statement hygiene
+  "PIE", "SIM",           # misc lint + simplifications
+  "NPY",                  # numpy-specific
+  "RUF100",               # unused noqa
 ]
 ignore = [
-  "D107",    # missing docstring in __init__
-  "D203",    # 1 blank line required before class docstring
-  "D213",    # multi-line summary docstring style
-  "D401",    # first line should be in imperative mood
-  "E501",    # line‑length
-  "PLR0913", # too many arguments
-  "C901",    # complexity
-  "TRY003",  # avoid specifying long messages outside exception class
-  "D205",    # TODO: 1 blank line required between summary line and description - fix individually later
-  "D400",    # TODO: First line should end with a period - fix individually later
-  "D415",    # TODO: First line should end with a period, question mark, or exclamation point - fix individually later
+  "E501",   # line too long — formatter handles this
+  "C901",   # complexity
+  # Pre-existing docstring-mood/format debt, surfaced when these were un-ignored on
+  # 2026-09-08 (D401: 11, D205: 9, D400: 1). Burn down incrementally, then drop these.
+  "D401",   # first line should be in imperative mood
+  "D205",   # 1 blank line required between summary line and description
+  "D400",   # first line should end with a period
+  "SIM108", # if/else vs ternary is a case-by-case readability call, not a rule (7 hits, 2026-09-08)
+  # Adopt-incrementally: safe to fix but touch multi-line/nested blocks; deferred to a
+  # focused burn-down rather than a rushed inline (RET504: 8, SIM102: 4; 2026-09-08).
+  "RET504", # unnecessary assignment before return
+  "SIM102", # collapsible nested if
 ]
+# D417 (undocumented-param) is switched off by the numpy convention below; it is the
+# only check that enforces the "numpy sections with full type information" half of the
+# convention, so put it back. (PTH — pathlib over os.path/open — is the one ctdcast
+# rule not yet adopted here: it is a manual migration, tracked on the backlog.)
+extend-select = ["D417"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
 
 [tool.ruff.lint.per-file-ignores]
-"tests/*" = ["E402", "SLF001", "ANN", "D103", "D100", "ARG001", "ARG002", "ARG005", "BLE001"]  # Allow module level imports, private member access, missing type annotations, missing docstrings, unused function/method/lambda arguments (mock stubs), and blind exceptions in tests
+# tests are not public API: no docstring rules (D), no annotations (ANN), no unused-argument
+# rule (pytest fixtures and mock stubs look unused); allow late imports and private access.
+"tests/*" = ["E402", "SLF001", "ANN", "D", "ARG", "NPY002", "BLE001", "SIM", "RET504", "C4"]  # tests are not public API: allow legacy np.random in synthetic fixtures, blind except, and style-only simplifications
 "notebooks/*" = ["ANN", "F821"]  # Example notebooks: type annotations not expected; cross-cell names ruff cannot resolve per-cell
 "amocatlas/logger.py" = ["ANN401"]  # Allow Any type for *args in logging functions (standard pattern)
 "amocatlas/report.py" = ["BLE001"]  # Allow broad exception handling in plot generation where many failure modes exist
@@ -143,4 +154,12 @@ ignore = [
 [tool.pytest.ini_options]
 markers = [
     "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+]
+
+[tool.coverage.run]
+# Dev build scripts: not imported at runtime or by the test suite, so they only
+# depress the measured number. Exclude them (not shipped API, legitimately untested).
+omit = [
+    "amocatlas/vocabulary/build_cf_subset.py",
+    "amocatlas/vocabulary/build_rst.py",
 ]

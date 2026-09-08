@@ -11,9 +11,10 @@ Usage (run from the repo root, with the package installed via `pip install -e .`
 import argparse
 from pathlib import Path
 
+from amocatlas.defaults import ARRAY_NAMES
+
 # amocatlas must be importable — install the package in editable mode (`pip install -e .`).
 from amocatlas.report import ReportUtils
-from amocatlas.defaults import ARRAY_NAMES
 
 # Available data sources (centralized in defaults.py)
 AVAILABLE_SOURCES = ARRAY_NAMES

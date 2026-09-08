@@ -5,9 +5,10 @@ Tests the basic functionality without complex data loading mocks.
 """
 
 import tempfile
-import pytest
 from pathlib import Path
 from unittest.mock import patch
+
+import pytest
 import xarray as xr
 
 from amocatlas.data_sources import fbc
@@ -201,41 +202,45 @@ class TestFBC:
 
     def test_read_fbc_unsupported_file_type(self):
         """Test warning when unsupported file types are encountered."""
-        with tempfile.TemporaryDirectory() as temp_dir:
-            with patch(
+        with (
+            tempfile.TemporaryDirectory() as temp_dir,
+            patch(
                 "amocatlas.data_sources.fbc.ReaderUtils.load_array_metadata_with_fallback"
-            ) as mock_metadata:
-                mock_metadata.return_value = ({}, {})
+            ) as mock_metadata,
+        ):
+            mock_metadata.return_value = ({}, {})
 
-                # Should skip unsupported files and raise error when no valid files remain
-                with pytest.raises(
-                    FileNotFoundError,
-                    match="No valid data files found|Local file not found",
-                ):
-                    fbc.read_fbc(
-                        source=temp_dir,
-                        file_list=["test.txt"],  # Unsupported file type
-                        data_dir=temp_dir,
-                    )
+            # Should skip unsupported files and raise error when no valid files remain
+            with pytest.raises(
+                FileNotFoundError,
+                match="No valid data files found|Local file not found",
+            ):
+                fbc.read_fbc(
+                    source=temp_dir,
+                    file_list=["test.txt"],  # Unsupported file type
+                    data_dir=temp_dir,
+                )
 
     def test_read_fbc_no_valid_files_error(self):
         """Test error when no valid files are found."""
-        with tempfile.TemporaryDirectory() as temp_dir:
-            with patch(
+        with (
+            tempfile.TemporaryDirectory() as temp_dir,
+            patch(
                 "amocatlas.data_sources.fbc.ReaderUtils.load_array_metadata_with_fallback"
-            ) as mock_metadata:
-                mock_metadata.return_value = ({}, {})
+            ) as mock_metadata,
+        ):
+            mock_metadata.return_value = ({}, {})
 
-                # Test with a file that will be skipped and won't be found
-                with pytest.raises(
-                    FileNotFoundError,
-                    match="No valid data files found|Local file not found",
-                ):
-                    fbc.read_fbc(
-                        source=temp_dir,
-                        file_list=["nonexistent.txt"],
-                        data_dir=temp_dir,
-                    )
+            # Test with a file that will be skipped and won't be found
+            with pytest.raises(
+                FileNotFoundError,
+                match="No valid data files found|Local file not found",
+            ):
+                fbc.read_fbc(
+                    source=temp_dir,
+                    file_list=["nonexistent.txt"],
+                    data_dir=temp_dir,
+                )
 
     @pytest.mark.slow
     def test_read_fbc_integration_with_sample_data(self):
@@ -254,8 +259,8 @@ class TestFBC:
             sample_file = Path(temp_dir) / "OS_GSR_FBC_D_1995_2024.nc"
 
             # Create minimal NetCDF file using xarray
-            import pandas as pd
             import numpy as np
+            import pandas as pd
 
             # Create sample data that mimics real FBC data structure
             time_range = pd.date_range("2020-01-01", periods=5, freq="D")

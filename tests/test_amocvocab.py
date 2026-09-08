@@ -8,7 +8,8 @@ back to the committed CF subset.
 
 import pytest
 
-from amocatlas.vocabulary import inventory, validate_amocvocab as V
+from amocatlas.vocabulary import inventory
+from amocatlas.vocabulary import validate_amocvocab as V
 
 VOCAB = V.DEFAULT_VOCAB
 SCHEMA = V.DEFAULT_SCHEMA
