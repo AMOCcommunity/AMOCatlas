@@ -155,3 +155,11 @@ convention = "numpy"
 markers = [
     "slow: marks tests as slow (deselect with '-m \"not slow\"')",
 ]
+
+[tool.coverage.run]
+# Dev build scripts: not imported at runtime or by the test suite, so they only
+# depress the measured number. Exclude them (not shipped API, legitimately untested).
+omit = [
+    "amocatlas/vocabulary/build_cf_subset.py",
+    "amocatlas/vocabulary/build_rst.py",
+]

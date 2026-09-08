@@ -60,4 +60,9 @@ jobs:
         # grows; never lower it.
         run: |
           pytest -m "not slow" \
-          ${{ (matrix.os == 'ubuntu-latest' && matrix.python-version == '3.12') && '--cov=amocatlas --cov-report=term-missing --cov-fail-under=55' || '--no-cov' }}
+          ${{ (matrix.os == 'ubuntu-latest' && matrix.python-version == '3.12') && '--cov=amocatlas --cov-report=term-missing --cov-fail-under=57' || '--no-cov' }}
+
+      - name: Coverage summary
+        # Surface the number on the job page instead of only in the log.
+        if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.12'
+        run: echo "Coverage: $(coverage report | tail -1 | awk '{print $NF}')" >> "$GITHUB_STEP_SUMMARY"
