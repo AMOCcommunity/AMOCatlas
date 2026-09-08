@@ -88,6 +88,13 @@ For more detail on the AMOC and observing arrays, see:
 pip install AMOCatlas
 ```
 
+Or with [uv](https://docs.astral.sh/uv/):
+```bash
+uv pip install AMOCatlas        # into the active environment
+# or, inside a uv-managed project:
+uv add amocatlas
+```
+
 **Requirements**: Python ≥3.10, with numpy, pandas, xarray, and matplotlib.
 
 ### For Development
@@ -95,6 +102,14 @@ pip install AMOCatlas
 git clone https://github.com/AMOCcommunity/amocatlas.git
 cd amocatlas
 pip install -e ".[dev]"
+```
+
+Or with uv:
+```bash
+git clone https://github.com/AMOCcommunity/amocatlas.git
+cd amocatlas
+uv venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
+uv pip install -e ".[dev]"
 ```
 
 This installs amocatlas locally. The `-e` ensures that any edits you make in the files will be picked up by scripts that import functions from amocatlas.
@@ -157,7 +172,7 @@ AMOCatlas serves data collected and published by others. If it supports your wor
 
 2. **AMOCatlas**, if the tooling itself was useful, via its archived release:
 
-   > Frajka-Williams, E. and Schmitz, I. (2026). *amocatlas* (v0.4.0). Zenodo. https://doi.org/10.5281/zenodo.21921671
+   > Frajka-Williams, E. and Schmitz, I. (2026). *amocatlas* (v0.5.0). Zenodo. https://doi.org/10.5281/zenodo.21921671
 
 The DOI [10.5281/zenodo.21921671](https://doi.org/10.5281/zenodo.21921671) always resolves to the latest release; see [CITATION.cff](CITATION.cff) for the machine-readable citation and version-specific details.
 
