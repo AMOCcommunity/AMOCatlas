@@ -19,9 +19,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Per-array reports regenerated with corrected variable names, and the two report generators consolidated into `scripts/generate_reports.py` (#182)
 - Linting is now ruff-only: `ruff format` replaces black, and the pre-commit/codespell configuration was removed (#182)
 - Documentation autodoc deduplicated (`amocatlas.rst` reduced to an index; docs build warnings cut from ~140 to 4); the legacy `readers` string API was dropped from the API docs, though the code remains (still deprecated) (#182)
-- Dependencies are declared in `pyproject.toml` (`[project] dependencies`, extras `test`/`docs`/`dev`); `requirements.txt`, `requirements-dev.txt` and `environment.yml` removed; install with `pip install -e ".[dev]"`. Docs CI no longer uses conda. A coverage floor of 55% is enforced in CI
+- Dependencies are declared in `pyproject.toml` (`[project] dependencies`, extras `test`/`docs`/`dev`); `requirements.txt`, `requirements-dev.txt` and `environment.yml` removed; install with `pip install -e ".[dev]"`. Docs CI no longer uses conda. A coverage floor of 55% is enforced in CI (#185)
 
 ### Fixed
+- Report generation now writes plots into the docs tree (`docs/source/_static/reports`) resolved from the project root, instead of creating a stray `docs/source/_static/reports` directory under whatever directory it was invoked from
 - Every CF `standard_name` used in array metadata verified against the live CF standard-name table; three fabricated names removed; the transport unit canonicalised to lowercase `sverdrup` (#180)
 - Zenodo concept DOI added to the CITATION file and as a README badge (#178)
 

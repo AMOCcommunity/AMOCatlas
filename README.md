@@ -5,6 +5,7 @@
 [![Python](https://img.shields.io/pypi/pyversions/AMOCatlas.svg)](https://pypi.org/project/AMOCatlas/)
 [![License](https://img.shields.io/github/license/AMOCcommunity/amocatlas.svg)](LICENSE)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21921671.svg)](https://doi.org/10.5281/zenodo.21921671)
+[![Docs](https://img.shields.io/badge/docs-gh--pages-blue)](https://amoccommunity.github.io/amocatlas/)
 
 **One Python API for loading and comparing AMOC transport datasets — from moored observing arrays to satellite/Argo-based estimates — with consistent variable names, units, and metadata.**
 

@@ -31,6 +31,7 @@ matplotlib.use("Agg")  # Use non-interactive backend for automated plotting
 
 from amocatlas import read, plotters
 from amocatlas.logger import log_info, log_debug
+from amocatlas.utilities import get_project_root
 
 
 def _select_time_coordinate(dataset: xr.Dataset, time_coords: list) -> str:
@@ -48,6 +49,20 @@ def _select_time_coordinate(dataset: xr.Dataset, time_coords: list) -> str:
         c for c in time_coords if np.issubdtype(dataset[c].dtype, np.datetime64)
     ]
     return datetime_coords[0] if datetime_coords else time_coords[0]
+
+
+def _reports_plots_dir() -> Path:
+    """Return the report plots directory, anchored to the project root.
+
+    The directory is resolved from the project root rather than the current
+    working directory, so report generation always writes into the docs tree
+    (``docs/source/_static/reports``) instead of creating a stray
+    ``docs/source/_static/reports`` under wherever the caller happened to run.
+    The directory is created if it does not exist.
+    """
+    plots_dir = get_project_root() / "docs" / "source" / "_static" / "reports"
+    plots_dir.mkdir(parents=True, exist_ok=True)
+    return plots_dir
 
 
 class ReportUtils:
@@ -843,9 +858,7 @@ class ReportUtils:
     def generate_plot(dataset: xr.Dataset, dataset_name: str) -> Optional[str]:
         """Generate a plot for the dataset and return the relative path."""
         try:
-            # Create reports plots directory if it doesn't exist
-            plots_dir = Path("docs/source/_static/reports")
-            plots_dir.mkdir(parents=True, exist_ok=True)
+            plots_dir = _reports_plots_dir()
 
             # Generate base filename (clean dataset name for filename)
             clean_name = dataset_name.replace(" ", "_").replace(".nc", "").lower()
@@ -1667,9 +1680,7 @@ class StandardizedDatasetReport(BaseDatasetReport):
     def _generate_plot(self) -> Optional[str]:
         """Generate a plot for the dataset and return the path."""
         try:
-            # Create reports plots directory if it doesn't exist
-            plots_dir = Path("docs/source/_static/reports")
-            plots_dir.mkdir(parents=True, exist_ok=True)
+            plots_dir = _reports_plots_dir()
 
             # Generate plot filename
             plot_filename = (
