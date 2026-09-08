@@ -1,0 +1,303 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Extra GitHub features: Actions &amp; Pages &mdash; amocatlas 0.4.0.post1.dev10 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=1078e4cb" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=6d4c28d6"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Project Maintenance Checklist" href="housekeeping.html" />
+    <link rel="prev" title="Git for Beginners: Workflow Guide" href="git_beginners_guide.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            amocatlas
+              <img src="../_static/logo.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ / Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Demo notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../demo-output.html">AMOCatlas demo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dataset Reports</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reports/index.html">Data Sources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/format.html">AMOCatlas data format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/vocabulary.html">amocvocab — variable vocabulary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../amoc_paperfigs-output.html">AMOC Publication Figures</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Repository and API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">GitHub Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../amocatlas.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">amocatlas</span> <span class="pre">API</span></code></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers' guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="developer_guide.html">Developer Guide for AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git_beginners_guide.html">Git for Beginners: Workflow Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Extra GitHub features: Actions &amp; Pages</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#this-project-s-actions">This project’s Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#for-contributors">For contributors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#check-demo-ipynb">Check <code class="docutils literal notranslate"><span class="pre">demo.ipynb</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#check-tests">Check tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build-docs">Build docs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#for-maintainers">For maintainers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#build-distribution">Build distribution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#publishing-a-release">Publishing a release</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="housekeeping.html">Project Maintenance Checklist</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">amocatlas</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Extra GitHub features: Actions &amp; Pages</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/developers/actions.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="extra-github-features-actions-pages">
+<h1>Extra GitHub features: Actions &amp; Pages<a class="headerlink" href="#extra-github-features-actions-pages" title="Link to this heading"></a></h1>
+<p>In this GitHub repository, we are using GitHub Actions to carry out a number of automated tasks. These actions are stored within the repository in the hidden folder: <code class="docutils literal notranslate"><span class="pre">.github/workflows/</span></code>.  The yaml files within (e.g., <code class="docutils literal notranslate"><span class="pre">docs.yml</span></code> and <code class="docutils literal notranslate"><span class="pre">pypi.yml</span></code>) carry out a set of steps or actions when triggered by an event on GitHub.</p>
+<p>For example:</p>
+<ul class="simple">
+<li><p>On pull request, the actions <code class="docutils literal notranslate"><span class="pre">docs.yml</span></code> and <code class="docutils literal notranslate"><span class="pre">tests.yml</span></code> are triggered.</p></li>
+<li><p>On push (when a pull request is merged onto the upstream main), the action <code class="docutils literal notranslate"><span class="pre">docs_deploy.yml</span></code> is triggered.</p></li>
+<li><p>When a release is generated on Github, the action <code class="docutils literal notranslate"><span class="pre">pypi.yml</span></code> is triggered.</p></li>
+</ul>
+<p>The basic behaviour is explained in the template repository that this project was built on at <a class="reference external" href="http://github.com/eleanorfrajka/template-project">http://github.com/eleanorfrajka/template-project/</a> or in the docs at <a class="reference external" href="https://eleanorfrajka.github.io/template-project/github.html">https://eleanorfrajka.github.io/template-project/github.html</a>.</p>
+<section id="this-project-s-actions">
+<h2>This project’s Actions<a class="headerlink" href="#this-project-s-actions" title="Link to this heading"></a></h2>
+<p>The way that this project (<a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">http://github.com/AMOCcommunity/amocatlas</a>) is set up:</p>
+<ul class="simple">
+<li><p>the <code class="docutils literal notranslate"><span class="pre">docs.yml</span></code> attempts to build the documentation which is contained in <code class="docutils literal notranslate"><span class="pre">docs/source/</span></code> and built to <code class="docutils literal notranslate"><span class="pre">docs/build/</span></code>.  It installs the project with its <code class="docutils literal notranslate"><span class="pre">docs</span></code> extra (<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">&quot;.[docs]&quot;</span></code>, plus the <code class="docutils literal notranslate"><span class="pre">pandoc</span></code> binary), and builds the documentation including copying in the <code class="docutils literal notranslate"><span class="pre">notebooks/demo.ipynb</span></code>.</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">tests.yml</span></code> uses <code class="docutils literal notranslate"><span class="pre">pytest</span></code> to run the tests contained within the <code class="docutils literal notranslate"><span class="pre">tests/</span></code> directory, and it does this on several platforms (windows, mac and linux) and with a couple versions of python.</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">docs_deploy.yml</span></code> is like <code class="docutils literal notranslate"><span class="pre">docs.yml</span></code> but additionally moves the resultant files onto the branch <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code>.  Because of how we’ve set up the “Pages” of this repository (<a class="reference external" href="https://github.com/AMOCcommunity/amocatlas/settings/pages">https://github.com/AMOCcommunity/amocatlas/settings/pages</a>), it updates the website that is hosted on github at <a class="reference external" href="https://amoccommunity.github.io/amocatlas/">https://amoccommunity.github.io/amocatlas/</a>.</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">pypi.yml</span></code> is triggered on a release, and it uses the information in <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> and builds a distribution (see lines like <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">build</span> <span class="pre">-sdist</span> <span class="pre">--wheel</span> <span class="pre">.</span> <span class="pre">--outdir</span> <span class="pre">dist</span></code>) into the <code class="docutils literal notranslate"><span class="pre">dist/</span></code> directory.  In order for this to run properly, several other steps need to be set up e.g., on <a class="reference external" href="https://pypi.org/project/amocatlas/">https://pypi.org/project/amocatlas/</a>, including setting a trusted publisher so that the Github Action is allowed to publish to this project on pypi.</p></li>
+</ul>
+</section>
+<section id="for-contributors">
+<h2>For contributors<a class="headerlink" href="#for-contributors" title="Link to this heading"></a></h2>
+<p>Most of the setup has been taken care of already.  What is useful to know as a contributor?</p>
+<p>When you make a pull request (PR), Github will try to build the docs and run the tests.  Sometimes these are hard to troubleshoot online, or maybe you’d like to test them before making your pull request to fix some of the bugs.</p>
+<section id="check-demo-ipynb">
+<h3>Check <code class="docutils literal notranslate"><span class="pre">demo.ipynb</span></code><a class="headerlink" href="#check-demo-ipynb" title="Link to this heading"></a></h3>
+<p>Before making a PR, you can try to run <code class="docutils literal notranslate"><span class="pre">demo.ipynb</span></code> on your fork/branch to see whether it will run through.  Make sure you have the environment activated, restart the kernel, and then try a “run all”.  If it works without throwing errors, then it should also work on Github.</p>
+</section>
+<section id="check-tests">
+<h3>Check tests<a class="headerlink" href="#check-tests" title="Link to this heading"></a></h3>
+<p>You can run the tests locally if your environment has the <code class="docutils literal notranslate"><span class="pre">test</span></code> extra installed (which includes <code class="docutils literal notranslate"><span class="pre">pytest</span></code>).</p>
+<p>To run the tests, in the command line on your computer, activate the environment, make sure the <code class="docutils literal notranslate"><span class="pre">test</span></code> (or <code class="docutils literal notranslate"><span class="pre">dev</span></code>) extra is installed, and then run <code class="docutils literal notranslate"><span class="pre">pytest</span></code>.</p>
+<p>For me, this looks like</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>github/amocatlas
+virtualenv<span class="w"> </span>venv
+<span class="nb">source</span><span class="w"> </span>venv/bin/activate
+pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">".[dev]"</span>
+pytest
+</pre></div>
+</div>
+<p>Check what is failing.</p>
+</section>
+<section id="build-docs">
+<h3>Build docs<a class="headerlink" href="#build-docs" title="Link to this heading"></a></h3>
+<p>To build the docs locally, you will also need to have an environment with the development requirements installed.  These include:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sphinx</span>
+<span class="n">sphinx</span><span class="o">-</span><span class="n">rtd</span><span class="o">-</span><span class="n">theme</span>
+<span class="n">pypandoc</span>
+<span class="n">nbsphinx</span>
+<span class="n">nbconvert</span>
+<span class="n">myst</span><span class="o">-</span><span class="n">nb</span>
+</pre></div>
+</div>
+<p>When you’d like to test the build of your documentation (prior to submitting pull requests to the repository), navigate to the <code class="docutils literal notranslate"><span class="pre">docs/</span></code> directory in a terminal window, and run</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">github</span><span class="o">/</span><span class="n">amocatlas</span><span class="o">/</span><span class="n">docs</span>
+<span class="n">make</span> <span class="n">html</span>
+</pre></div>
+</div>
+<p>This will generate the website within the directory <code class="docutils literal notranslate"><span class="pre">docs/build/html/</span></code>, which you can open from a browser to verify that everything worked.</p>
+</section>
+</section>
+<section id="for-maintainers">
+<h2>For maintainers<a class="headerlink" href="#for-maintainers" title="Link to this heading"></a></h2>
+<p>If you also have the rights/inclination to publish a release to PyPi, you can test this before creating the release on GitHub.  There’s also a slightly finicky set of steps that needs to be done in a special order to make sure the GitHub “tag” matches the PyPi “version”.</p>
+<section id="build-distribution">
+<h3>Build distribution<a class="headerlink" href="#build-distribution" title="Link to this heading"></a></h3>
+<p>First go to the directory where your repository is located (i.e., where <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> is located):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">github</span><span class="o">/</span><span class="n">amocatlas</span>
+</pre></div>
+</div>
+<p>To build the distribution locally, make sure you have the latest version of <code class="docutils literal notranslate"><span class="pre">build</span></code> installed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">upgrade</span> <span class="n">build</span> <span class="n">pip</span> <span class="n">wheel</span> <span class="n">setuptools</span> <span class="n">setuptools_scm</span> <span class="n">build</span> <span class="n">twine</span>
+</pre></div>
+</div>
+<p>Then run the build step from the directory where <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> is located,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">build</span> <span class="o">--</span><span class="n">sdist</span> <span class="o">--</span><span class="n">wheel</span> <span class="o">.</span> <span class="o">--</span><span class="n">outdir</span> <span class="n">dist</span>
+</pre></div>
+</div>
+<p>You can check this with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="n">dist</span>
+<span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">twine</span> <span class="n">check</span> <span class="n">dist</span><span class="o">/*</span>
+</pre></div>
+</div>
+<p>You can also verify the version number</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">more</span> <span class="n">amocatlas</span><span class="o">/</span><span class="n">_version</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+</section>
+<section id="publishing-a-release">
+<h3>Publishing a release<a class="headerlink" href="#publishing-a-release" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>On Github.com, upstream main:</strong> Ensure all desired changes are merged into the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch.  So, after you do a PR from your branch to the upstream main, resolve any problems and “merge”, then you’re ready to go.</p></li>
+</ol>
+<p><img alt="image from github.com showing the merge button" src="../_images/merge.jpg" /></p>
+<ol class="arabic simple" start="2">
+<li><p><strong>On Github.com, your forked main:</strong> If you’re working from a branch (e.g., <code class="docutils literal notranslate"><span class="pre">yourname-patch-21</span></code>) of your fork (http://github.com/YOUR_USERNAME/amocatlas) of the upstream main (http://github.com/AMOCcommunity/amocatlas), then you’ll want to sync your main to the upstream main.  On github.com, at http://github.com/YOUR_USERNAME/amocatlas, you should see that your main is “X commits behind”.  There is a button where you can sync.</p></li>
+</ol>
+<p><img alt="image from github.com showing the sync fork button" src="../_images/sync_fork.jpg" /></p>
+<ol class="arabic simple" start="3">
+<li><p><strong>On your computer, terminal:</strong> In your repository directory, checkout main and pull any changes:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">github</span><span class="o">/</span><span class="n">amocatlas</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">main</span>
+<span class="n">git</span> <span class="n">pull</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p><strong>On your computer, terminal</strong> Same place, but now we’re going to create the tag.  First make a note of the last tag.  On Github.com, the upstream main, you can check what tags have already been used (i.e., https://github.com/AMOCcommunity/amocatlas/tags).</p></li>
+</ol>
+<p>The usual process is to start with a <code class="docutils literal notranslate"><span class="pre">vX.Y.Z</span></code> and possibly have an “alpha” or “beta” following as <code class="docutils literal notranslate"><span class="pre">vX.Y.Za2</span></code>.  These are called PEP440 style versioning, with an alpha prerelease tag (<code class="docutils literal notranslate"><span class="pre">a1</span></code>=alpha 1).  The “X” indicates a big change, the “Y” a minor change, and the “Z” a patch or little fix.</p>
+<p><code class="docutils literal notranslate"><span class="pre">MAJOR.MINOR.PATCH[pre-release]</span></code></p>
+<ul class="simple">
+<li><p><strong>MAJOR</strong>: Backward-incompatible changes
+Increment when you make changes that break existing APIs or data formats.
+Example: changing function signatures, renaming modules, or changing expected output structures.</p></li>
+<li><p><strong>MINOR</strong>: Backward-compatible feature additions
+Increment when you add new functionality in a backward-compatible way.
+Example: adding a new reader (read_xyz.py), adding new plotting functions, or expanding metadata handling.</p></li>
+<li><p><strong>PATCH</strong>: Backward-compatible bug fixes or internal improvements
+Increment for fixes or improvements that don’t add features or break existing code.
+Example: fixing a unit conversion error, improving docstrings, or cleaning up warnings.</p></li>
+</ul>
+<p>Increment the appropriate one based on the change you’re making, and pick the next available tag.  So a pre-release change if we’re at <code class="docutils literal notranslate"><span class="pre">v0.0.2a6</span></code> would mean your next version should be indicated with tag <code class="docutils literal notranslate"><span class="pre">v0.0.2a7</span></code>.  Assuming this, the next steps are:</p>
+<p>Quick check that you’re on the last commit.  The output from this should be your commit message from the PR.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">log</span> <span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>Then tag this version using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">tag</span> <span class="n">v0</span><span class="mf">.0.2</span><span class="n">a7</span>
+<span class="n">git</span> <span class="n">push</span> <span class="n">upstream</span> <span class="n">v0</span><span class="mf">.0.2</span><span class="n">a7</span>
+</pre></div>
+</div>
+<p>This step assigns the tag and then pushes it to the upstream main.  Go onto Github.com and check that this tag is now there: https://github.com/AMOCcommunity/amocatlas/tags.</p>
+<ol class="arabic simple" start="5">
+<li><p><strong>On Github.com</strong></p></li>
+</ol>
+<ul class="simple">
+<li><p>Go to the <strong>Releases</strong> tab.</p></li>
+<li><p>Click <strong>“Draft a new release.”</strong></p></li>
+<li><p>Choose the tag you just pushed (e.g. <code class="docutils literal notranslate"><span class="pre">v0.0.2a7</span></code>) from the dropdown.</p></li>
+<li><p>Fill in (or auto-generate) the release notes &amp; edit if necessary.</p></li>
+<li><p>Click <strong>“Publish release.”</strong></p></li>
+</ul>
+<p>This last step will now trigger the GitHub action, <code class="docutils literal notranslate"><span class="pre">.github/workflows/pypi.yml</span></code> which will build the distribution and send it to pypi.org.  You should see this show up at <a class="reference external" href="https://pypi.org/project/amocatlas/">https://pypi.org/project/amocatlas/</a>.</p>
+<p><strong>Note:</strong> Unexplained behaviour may occur (e.g., you get a <code class="docutils literal notranslate"><span class="pre">dev0</span></code> appended to the release on pypi) if you are not at the tip of main (i.e. there are uncommitted changes), or you haven’t included <code class="docutils literal notranslate"><span class="pre">amocatlas/_version.py</span></code> in your <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>, in which case the action itself generates a change in the repository which is then interpreted as an uncommitted change.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="git_beginners_guide.html" class="btn btn-neutral float-left" title="Git for Beginners: Workflow Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="housekeeping.html" class="btn btn-neutral float-right" title="Project Maintenance Checklist" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Eleanor Frajka-Williams, Isabelle Schmitz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

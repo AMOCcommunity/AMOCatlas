@@ -1,0 +1,341 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SF2021 Datasets &mdash; amocatlas 0.4.0.post1.dev10 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=1078e4cb" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=6d4c28d6"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="LEBRAS35N Datasets" href="lebras35n_report.html" />
+    <link rel="prev" title="NAC Datasets" href="nac_report.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            amocatlas
+              <img src="../_static/logo.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ / Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Demo notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../demo-output.html">AMOCatlas demo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dataset Reports</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Data Sources</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="rapid_report.html">RAPID Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="osnap_report.html">OSNAP Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="move_report.html">MOVE Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samba_report.html">SAMBA Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mocha_report.html">MOCHA Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arcticgateway_report.html">ARCTICGATEWAY Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dso_report.html">DSO Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fbc_report.html">FBC Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fw2015_report.html">FW2015 Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calafat2025_report.html">CALAFAT2025 Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zheng2024_report.html">ZHENG2024 Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wh41n_report.html">WH41N Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="noac47n_report.html">NOAC47N Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nac_report.html">NAC Datasets</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">SF2021 Datasets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#altimetry-moc-transport-1993-2020-18mos-smoothed-nc">altimetry_moc_transport_1993_2020_18mos_smoothed.nc</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dataset-overview">Dataset Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dataset-visualization">Dataset Visualization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dataset-statistics">Dataset Statistics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#coordinate-information">Coordinate Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#variable-information">Variable Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#metadata-edits-applied-noted">Metadata (edits applied noted)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lebras35n_report.html">LEBRAS35N Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="axmoc22s_report.html">AXMOC22S Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="axmoc34s_report.html">AXMOC34S Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovide_report.html">OVIDE Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scotia_report.html">SCOTIA Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#report-features">Report Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#automated-generation">Automated Generation</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/format.html">AMOCatlas data format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/vocabulary.html">amocvocab — variable vocabulary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../amoc_paperfigs-output.html">AMOC Publication Figures</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Repository and API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">GitHub Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../amocatlas.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">amocatlas</span> <span class="pre">API</span></code></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers' guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developers/developer_guide.html">Developer Guide for AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/git_beginners_guide.html">Git for Beginners: Workflow Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/actions.html">Extra GitHub features: Actions &amp; Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/housekeeping.html">Project Maintenance Checklist</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">amocatlas</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Data Sources</a></li>
+      <li class="breadcrumb-item active">SF2021 Datasets</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/reports/sf2021_report.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="sf2021-datasets">
+<h1>SF2021 Datasets<a class="headerlink" href="#sf2021-datasets" title="Link to this heading"></a></h1>
+<section id="altimetry-moc-transport-1993-2020-18mos-smoothed-nc">
+<h2>altimetry_moc_transport_1993_2020_18mos_smoothed.nc<a class="headerlink" href="#altimetry-moc-transport-1993-2020-18mos-smoothed-nc" title="Link to this heading"></a></h2>
+<section id="dataset-overview">
+<h3>Dataset Overview<a class="headerlink" href="#dataset-overview" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Project</strong>: Satellite proxy for the AMOC at 26N</p></li>
+<li><p><strong>Description</strong>: A dynamically based method for estimating the Atlantic meridional overturning circulation at 26°N from satellite altimetry</p></li>
+<li><p><strong>Source File</strong>: altimetry_moc_transport_1993_2020_18mos_smoothed.nc</p></li>
+<li><p><strong>Data Product</strong>: A dynamically based method for estimating the Atlantic meridional overturning circulation at 26°N from satellite altimetry</p></li>
+<li><p><strong>License</strong>: CC-BY-4.0</p></li>
+<li><p><strong>Time Coverage</strong>: 1993-01-17 to 2018-12-17</p></li>
+<li><p><strong>Record Length</strong>: 312 observations (25.9 years)</p></li>
+<li><p><strong>Sampling Frequency</strong>: monthly</p></li>
+</ul>
+<p><strong>Citation:</strong></p>
+<blockquote>
+<div><p>Sanchez-Franks, A., Frajka-Williams, E., Moat, B. I., and Smeed, D. A.: A dynamically based method for estimating the Atlantic meridional overturning circulation at 26°N from satellite altimetry, Ocean Sci., 17, 1321-1340, <a class="reference external" href="https://doi.org/10.5194/os-17-1321-2021">https://doi.org/10.5194/os-17-1321-2021</a>, 2021</p>
+</div></blockquote>
+<p><strong>Acknowledgement:</strong></p>
+<blockquote>
+<div><p>The authors thank the reviewers for their helpful comments. The authors also thank the many officers, crew, and technicians who helped to collect these data. Alejandra Sanchez-Franks also thanks Louis Clément for helpful discussions on normal-mode decomposition. This research has been supported by grants from the UK Natural Environment Research Council for the RAPID-AMOC programme and the ACSIS programme (grant no. NE/N018044/1) as well as funding from the European Union Horizon 2020 Research and Innovation programme BLUE-ACTION (grant no. 727852).</p>
+</div></blockquote>
+</section>
+<section id="dataset-visualization">
+<h3>Dataset Visualization<a class="headerlink" href="#dataset-visualization" title="Link to this heading"></a></h3>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/sf2021_timeseries.png"><img alt="AMOC time series plot" height="345" src="../_images/sf2021_timeseries.png" width="946" />
+</a>
+<figcaption>
+<p><span class="caption-text">Time series plot for SF2021 dataset.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="dataset-statistics">
+<h3>Dataset Statistics<a class="headerlink" href="#dataset-statistics" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Total Variables</strong>: 3</p></li>
+<li><p><strong>Total Coordinates</strong>: 1</p></li>
+<li><p><strong>Dataset Size</strong>: 0.01 MB</p></li>
+</ul>
+</section>
+<section id="coordinate-information">
+<h3>Coordinate Information<a class="headerlink" href="#coordinate-information" title="Link to this heading"></a></h3>
+<p>The following table shows information about the dataset coordinates in the standardised version, including coordinate name remapping from the original, if any:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Coordinate</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>sat_time</em> → <strong>TIME</strong></p></td>
+<td><p>Time</p></td>
+<td><p>seconds since 1970-01-01T00:00:00Z</p></td>
+<td><p>(312,)</p></td>
+<td><p>1993-01-17</p></td>
+<td><p>2018-12-17</p></td>
+<td><p>0.0%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="variable-information">
+<h3>Variable Information<a class="headerlink" href="#variable-information" title="Link to this heading"></a></h3>
+<p>The following table shows the mapping from original variable names to standardized names,
+along with key statistics for each variable.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>sat_moc_filt</em> → <strong>MOC_PROXY</strong></p></td>
+<td><p><strong>MOC proxy</strong>: constructed by adding the satellite-derived TRANS_GS and TRANS_UMO with the TRANS_EK, obtained from ERA5 wind stress</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(312,)</p></td>
+<td><p>-3.76</p></td>
+<td><p>2.83</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>sat_gs_filt</em> → <strong>TRANS_GS_PROXY</strong></p></td>
+<td><p><strong>Gulf Stream / Florida Current</strong>: The strength of the Gulf Stream transport through the Florida Straits between Florida and Bahamas, as measured by a submarine telephone cable.</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(312,)</p></td>
+<td><p>-0.64</p></td>
+<td><p>1.09</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>sat_umo_filt</em> → <strong>TRANS_UMO_PROXY</strong></p></td>
+<td><p><strong>UMO proxy</strong>: sum of the western boundary wedge transport, the hypsometric mass compensation, and the internal geostrophic transport over the top 1100 m</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(312,)</p></td>
+<td><p>-2.37</p></td>
+<td><p>3.20</p></td>
+<td><p>0.0%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="metadata-edits-applied-noted">
+<h3>Metadata (edits applied noted)<a class="headerlink" href="#metadata-edits-applied-noted" title="Link to this heading"></a></h3>
+<p>The following metadata describes this dataset:</p>
+<ul class="simple">
+<li><p><strong>Summary</strong>: A dynamically based method for estimating the Atlantic meridional overturning circulation at 26°N from satellite altimetry</p></li>
+<li><p><strong>Description*</strong>: A dynamically based method for estimating the Atlantic meridional overturning circulation at 26°N from satellite altimetry</p></li>
+<li><p><strong>Project*</strong>: Satellite proxy for the AMOC at 26N</p></li>
+<li><p><strong>License*</strong>: CC-BY-4.0</p></li>
+<li><p><strong>Acknowledgment*</strong>: The authors thank the reviewers for their helpful comments. The authors also thank the many officers, crew, and technicians who helped to collect these data. Alejandra Sanchez-Franks also thanks Louis Clément for helpful discussions on normal-mode decomposition. This research has been supported by grants from the UK Natural Environment Research Council for the RAPID-AMOC programme and the ACSIS programme (grant no. NE/N018044/1) as well as funding from the European Union Horizon 2020 Research and Innovation programme BLUE-ACTION (grant no. 727852).</p></li>
+<li><p><strong>Weblink*</strong>: <a class="reference external" href="https://zenodo.org/records/18941523">https://zenodo.org/records/18941523</a></p></li>
+<li><p><strong>Data Product*</strong>: A dynamically based method for estimating the Atlantic meridional overturning circulation at 26°N from satellite altimetry</p></li>
+<li><p><strong>Time Coverage Start*</strong>: 1993-01-17</p></li>
+<li><p><strong>Time Coverage End*</strong>: 2018-12-17</p></li>
+<li><p><strong>Contributor Name*</strong>: Alejandra Sanchez-Franks</p></li>
+<li><p><strong>Contributor Role*</strong>: originator</p></li>
+<li><p><strong>Contributor Role Vocabulary*</strong>: <a class="reference external" href="https://vocab.nerc.ac.uk/collection/G04/current/">https://vocab.nerc.ac.uk/collection/G04/current/</a></p></li>
+<li><p><strong>Contributor Email</strong>:</p></li>
+<li><p><strong>Contributor Id</strong>:</p></li>
+<li><p><strong>Contributing Institutions*</strong>: National Oceanographic Centre</p></li>
+<li><p><strong>Contributing Institutions Vocabulary</strong>:</p></li>
+<li><p><strong>Contributing Institutions Role</strong>:</p></li>
+<li><p><strong>Conventions*</strong>: CF-1.8, ACDD-1.3, OceanSITES-1.5</p></li>
+<li><p><strong>featureType*</strong>: timeSeries</p></li>
+<li><p><strong>featureType_vocabulary</strong>: <a class="reference external" href="https://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_features_and_feature_types">https://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_features_and_feature_types</a></p></li>
+<li><p><strong>Source File*</strong>: altimetry_moc_transport_1993_2020_18mos_smoothed.nc</p></li>
+<li><p><strong>Source Path*</strong>: ~/.amocatlas_data/altimetry_moc_transport_1993_2020_18mos_smoothed.nc</p></li>
+<li><p><strong>Source Url*</strong>: <a class="reference external" href="https://zenodo.org/records/18941523/files/altimetry_moc_transport_1993_2020_18mos_smoothed.nc">https://zenodo.org/records/18941523/files/altimetry_moc_transport_1993_2020_18mos_smoothed.nc</a></p></li>
+<li><p><strong>Date Modified</strong>: 2026-08-01T00:00:00Z</p></li>
+<li><p><strong>Processing Software</strong>: <a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">http://github.com/AMOCcommunity/amocatlas</a></p></li>
+<li><p><strong>Processing Version</strong>: v0.4.0</p></li>
+<li><p><strong>Processing Datasource*</strong>: sf2021</p></li>
+<li><p><strong>Applied Variable Mapping</strong>: {‘sat_time’: ‘TIME’, ‘sat_moc_filt’: ‘MOC_PROXY’, ‘sat_umo_filt’: ‘TRANS_UMO_PROXY’, ‘sat_gs_filt’: ‘TRANS_GS_PROXY’}</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="nac_report.html" class="btn btn-neutral float-left" title="NAC Datasets" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="lebras35n_report.html" class="btn btn-neutral float-right" title="LEBRAS35N Datasets" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Eleanor Frajka-Williams, Isabelle Schmitz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

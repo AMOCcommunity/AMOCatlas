@@ -1,0 +1,1386 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RAPID Datasets &mdash; amocatlas 0.4.0.post1.dev10 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=1078e4cb" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=6d4c28d6"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="OSNAP Datasets" href="osnap_report.html" />
+    <link rel="prev" title="Data Sources" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            amocatlas
+              <img src="../_static/logo.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ / Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Demo notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../demo-output.html">AMOCatlas demo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dataset Reports</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Data Sources</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">RAPID Datasets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#moc-transports-nc">moc_transports.nc</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dataset-overview">Dataset Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dataset-visualization">Dataset Visualization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dataset-statistics">Dataset Statistics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#coordinate-information">Coordinate Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#variable-information">Variable Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#metadata-edits-applied-noted">Metadata (edits applied noted)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#moc-vertical-nc">moc_vertical.nc</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Dataset Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Dataset Visualization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Dataset Statistics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Coordinate Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Variable Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Metadata (edits applied noted)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#ts-gridded-nc">ts_gridded.nc</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id7">Dataset Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">Dataset Visualization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">Dataset Statistics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">Coordinate Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">Variable Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">Metadata (edits applied noted)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#d-gridded-nc">2d_gridded.nc</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id13">Dataset Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id14">Dataset Visualization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id15">Dataset Statistics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id16">Coordinate Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id17">Variable Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id18">Metadata (edits applied noted)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#meridional-transports-nc">meridional_transports.nc</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id19">Dataset Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id20">Dataset Visualization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id21">Dataset Statistics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id22">Coordinate Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id23">Variable Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id24">Metadata (edits applied noted)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="osnap_report.html">OSNAP Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="move_report.html">MOVE Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samba_report.html">SAMBA Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mocha_report.html">MOCHA Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arcticgateway_report.html">ARCTICGATEWAY Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dso_report.html">DSO Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fbc_report.html">FBC Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fw2015_report.html">FW2015 Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calafat2025_report.html">CALAFAT2025 Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zheng2024_report.html">ZHENG2024 Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wh41n_report.html">WH41N Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="noac47n_report.html">NOAC47N Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nac_report.html">NAC Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sf2021_report.html">SF2021 Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lebras35n_report.html">LEBRAS35N Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="axmoc22s_report.html">AXMOC22S Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="axmoc34s_report.html">AXMOC34S Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovide_report.html">OVIDE Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scotia_report.html">SCOTIA Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#report-features">Report Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#automated-generation">Automated Generation</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/format.html">AMOCatlas data format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/vocabulary.html">amocvocab — variable vocabulary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../amoc_paperfigs-output.html">AMOC Publication Figures</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Repository and API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">GitHub Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../amocatlas.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">amocatlas</span> <span class="pre">API</span></code></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers' guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developers/developer_guide.html">Developer Guide for AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/git_beginners_guide.html">Git for Beginners: Workflow Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/actions.html">Extra GitHub features: Actions &amp; Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/housekeeping.html">Project Maintenance Checklist</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">amocatlas</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Data Sources</a></li>
+      <li class="breadcrumb-item active">RAPID Datasets</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/reports/rapid_report.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="rapid-datasets">
+<h1>RAPID Datasets<a class="headerlink" href="#rapid-datasets" title="Link to this heading"></a></h1>
+<p>This report covers all available RAPID datasets.</p>
+<section id="moc-transports-nc">
+<h2>moc_transports.nc<a class="headerlink" href="#moc-transports-nc" title="Link to this heading"></a></h2>
+<section id="dataset-overview">
+<h3>Dataset Overview<a class="headerlink" href="#dataset-overview" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Project</strong>: RAPID-AMOC 26°N array</p></li>
+<li><p><strong>Description</strong>: RAPID 26N transport estimates dataset</p></li>
+<li><p><strong>DOI</strong>: <a class="reference external" href="https://doi.org/10.5285/48d0bf43-0598-ceb2-e063-7086abc062f1">https://doi.org/10.5285/48d0bf43-0598-ceb2-e063-7086abc062f1</a></p></li>
+<li><p><strong>Source File</strong>: moc_transports.nc</p></li>
+<li><p><strong>Data Product</strong>: RAPID layer transport time series</p></li>
+<li><p><strong>License</strong>: UK Open Government Licence v3.0 <a class="reference external" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/</a></p></li>
+<li><p><strong>Date Created</strong>: 17-Sep-2024</p></li>
+<li><p><strong>Time Coverage</strong>: 2004-04-02 to 2024-03-27</p></li>
+<li><p><strong>Record Length</strong>: 14,599 observations (20.0 years)</p></li>
+<li><p><strong>Sampling Frequency</strong>: 12H</p></li>
+</ul>
+<p><strong>Distribution Statement:</strong></p>
+<blockquote>
+<div><p>Data from RAPID MOC monitoring project are made freely available to the public. Continued funding of this project depends on us being able to justify the usefulness of the data to the Natural Environment Research Council. The project scientists would appreciate it if you would use the data DOI (see “citation”) and add the following acknowledgment (see “acknowledgment”) to any publications that use this data.</p>
+</div></blockquote>
+<p><strong>Citation:</strong></p>
+<blockquote>
+<div><p>Moat B.I.; Smeed D.A.; Rayner D.; Johns W.E.; Smith, R.; Volkov, D.; Elipot S.; Petit T.; Kajtar J.; Baringer M. O.; and Collins, J. (2026). Atlantic meridional overturning circulation observed by the RAPID-MOCHA-WBTS (RAPID-Meridional Overturning Circulation and Heatflux Array-Western Boundary Time Series) array at 26N from 2004 to 2024 (v2024.1a), British Oceanographic Data Centre - Natural Environment Research Council, UK. doi: <a class="reference external" href="http://doi.org/10.5285/48d0bf43-0598-ceb2-e063-7086abc062f1">http://doi.org/10.5285/48d0bf43-0598-ceb2-e063-7086abc062f1</a></p>
+</div></blockquote>
+<p><strong>Acknowledgement:</strong></p>
+<blockquote>
+<div><p>Data from the RAPID MOC monitoring project are funded by the Natural Environment Research Council, the National Science Foundation (NSF) with support from NOAA. They are freely available from www.rapid.ac.uk/.</p>
+</div></blockquote>
+</section>
+<section id="dataset-visualization">
+<h3>Dataset Visualization<a class="headerlink" href="#dataset-visualization" title="Link to this heading"></a></h3>
+<figure class="align-center" id="id25">
+<a class="reference internal image-reference" href="../_images/moc_transports_timeseries.png"><img alt="AMOC time series plot" height="344" src="../_images/moc_transports_timeseries.png" width="946" />
+</a>
+<figcaption>
+<p><span class="caption-text">Time series plot for MOC_TRANSPORTS dataset.</span><a class="headerlink" href="#id25" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="dataset-statistics">
+<h3>Dataset Statistics<a class="headerlink" href="#dataset-statistics" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Total Variables</strong>: 9</p></li>
+<li><p><strong>Total Coordinates</strong>: 1</p></li>
+<li><p><strong>Dataset Size</strong>: 1.11 MB</p></li>
+</ul>
+</section>
+<section id="coordinate-information">
+<h3>Coordinate Information<a class="headerlink" href="#coordinate-information" title="Link to this heading"></a></h3>
+<p>The following table shows information about the dataset coordinates in the standardised version, including coordinate name remapping from the original, if any:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Coordinate</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>time</em> → <strong>TIME</strong></p></td>
+<td><p>Time</p></td>
+<td><p>seconds since 1970-01-01T00:00:00Z</p></td>
+<td><p>(14599,)</p></td>
+<td><p>2004-04-02</p></td>
+<td><p>2024-03-27</p></td>
+<td><p>0.0%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="variable-information">
+<h3>Variable Information<a class="headerlink" href="#variable-information" title="Link to this heading"></a></h3>
+<p>The following table shows the mapping from original variable names to standardized names,
+along with key statistics for each variable.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>moc_mar_hc10</em> → <strong>MOC</strong></p></td>
+<td><p><strong>MOC_z</strong>: MOC strength</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(14599,)</p></td>
+<td><p>-4.35</p></td>
+<td><p>32.34</p></td>
+<td><p>0.1%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>t_therm10</em> → <strong>TRANS_0_800</strong></p></td>
+<td><p><strong>Transport (0-800m)</strong>: Thermocline recirculation 0-800m</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(14599,)</p></td>
+<td><p>-28.85</p></td>
+<td><p>-7.63</p></td>
+<td><p>0.1%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>t_ud10</em> → <strong>TRANS_1100_3000</strong></p></td>
+<td><p><strong>Transport (1100-3000m)</strong>: upper NADW 1100-3000m</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(14599,)</p></td>
+<td><p>-22.20</p></td>
+<td><p>-0.38</p></td>
+<td><p>0.1%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>t_ld10</em> → <strong>TRANS_3000_5000</strong></p></td>
+<td><p><strong>Transport (3000-5000m)</strong>: lower NADW 3000-5000m</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(14599,)</p></td>
+<td><p>-14.41</p></td>
+<td><p>7.14</p></td>
+<td><p>0.1%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>t_aiw10</em> → <strong>TRANS_800_1100</strong></p></td>
+<td><p><strong>Transport (800-1100m)</strong>: Intermediate water 800-1100m</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(14599,)</p></td>
+<td><p>-2.17</p></td>
+<td><p>2.82</p></td>
+<td><p>0.1%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>t_ek10</em> → <strong>TRANS_EKMAN</strong></p></td>
+<td><p><strong>Ekman</strong>: Ekman transport from wind stress</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(14599,)</p></td>
+<td><p>-13.00</p></td>
+<td><p>18.29</p></td>
+<td><p>0.1%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>t_gs10</em> → <strong>TRANS_FC</strong></p></td>
+<td><p><strong>Florida Current</strong>: Florida Current from cable measurements</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(14599,)</p></td>
+<td><p>21.01</p></td>
+<td><p>39.65</p></td>
+<td><p>0.1%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>t_umo10</em> → <strong>TRANS_UMO</strong></p></td>
+<td><p><strong>Upper mid-ocean</strong>: Upper Mid-Ocean transport</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(14599,)</p></td>
+<td><p>-28.24</p></td>
+<td><p>-6.65</p></td>
+<td><p>0.1%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>t_bw10</em> → <strong>TRANS_below_5000</strong></p></td>
+<td><p><strong>Transport (AABW)</strong>: AABW &gt; 5000m</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(14599,)</p></td>
+<td><p>-0.60</p></td>
+<td><p>3.46</p></td>
+<td><p>0.1%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="metadata-edits-applied-noted">
+<h3>Metadata (edits applied noted)<a class="headerlink" href="#metadata-edits-applied-noted" title="Link to this heading"></a></h3>
+<p>The following metadata describes this dataset:</p>
+<ul class="simple">
+<li><p><strong>Title</strong>: RAPID MOC timeseries</p></li>
+<li><p><strong>Summary</strong>: RAPID 26N transport estimates dataset</p></li>
+<li><p><strong>Description*</strong>: RAPID 26N transport estimates dataset</p></li>
+<li><p><strong>Program*</strong>: RAPID</p></li>
+<li><p><strong>Project*</strong>: RAPID-AMOC 26°N array</p></li>
+<li><p><strong>License*</strong>: UK Open Government Licence v3.0 <a class="reference external" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/</a></p></li>
+<li><p><strong>Acknowledgment*</strong>: Data from the RAPID MOC monitoring project are funded by the Natural Environment Research Council, the National Science Foundation (NSF) with support from NOAA. They are freely available from www.rapid.ac.uk/.</p></li>
+<li><p><strong>Doi*</strong>: <a class="reference external" href="https://doi.org/10.5285/48d0bf43-0598-ceb2-e063-7086abc062f1">https://doi.org/10.5285/48d0bf43-0598-ceb2-e063-7086abc062f1</a></p></li>
+<li><p><strong>Weblink*</strong>: <a class="reference external" href="https://rapid.ac.uk/rapidmoc">https://rapid.ac.uk/rapidmoc</a></p></li>
+<li><p><strong>Distribution Statement*</strong>: Data from RAPID MOC monitoring project are made freely available to the public. Continued funding of this project depends on us being able to justify the usefulness of the data to the Natural Environment Research Council. The project scientists would appreciate it if you would use the data DOI (see “citation”) and add the following acknowledgment (see “acknowledgment”) to any publications that use this data.</p></li>
+<li><p><strong>Platform</strong>: mooring</p></li>
+<li><p><strong>Platform Vocabulary</strong>: <a class="reference external" href="https://vocab.nerc.ac.uk/collection/L06/">https://vocab.nerc.ac.uk/collection/L06/</a></p></li>
+<li><p><strong>Data Product*</strong>: RAPID layer transport time series</p></li>
+<li><p><strong>Time Coverage Start*</strong>: 2004-04-02</p></li>
+<li><p><strong>Time Coverage End*</strong>: 2024-03-27</p></li>
+<li><p><strong>Contributor Name</strong>: Ben I. Moat, Ben I. Moat</p></li>
+<li><p><strong>Contributor Role</strong>: originator, principalInvestigator</p></li>
+<li><p><strong>Contributor Role Vocabulary</strong>: <a class="reference external" href="https://vocab.nerc.ac.uk/collection/G04/current/">https://vocab.nerc.ac.uk/collection/G04/current/</a></p></li>
+<li><p><strong>Contributor Email</strong>: <a class="reference external" href="mailto:ben&#46;moat&#37;&#52;&#48;noc&#46;ac&#46;uk">ben<span>&#46;</span>moat<span>&#64;</span>noc<span>&#46;</span>ac<span>&#46;</span>uk</a>, <a class="reference external" href="mailto:ben&#46;moat&#37;&#52;&#48;noc&#46;ac&#46;uk">ben<span>&#46;</span>moat<span>&#64;</span>noc<span>&#46;</span>ac<span>&#46;</span>uk</a></p></li>
+<li><p><strong>Contributor Id</strong>: <a class="reference external" href="https://orcid.org/0000-0001-8676-7779">https://orcid.org/0000-0001-8676-7779</a>, <a class="reference external" href="https://orcid.org/0000-0001-8676-7779">https://orcid.org/0000-0001-8676-7779</a></p></li>
+<li><p><strong>Contributing Institutions</strong>: National Oceanography Centre (Southampton)</p></li>
+<li><p><strong>Contributing Institutions Vocabulary</strong>: <a class="reference external" href="https://edmo.seadatanet.org/report/17">https://edmo.seadatanet.org/report/17</a></p></li>
+<li><p><strong>Contributing Institutions Role</strong>:</p></li>
+<li><p><strong>Conventions*</strong>: CF-1.8, ACDD-1.3, OceanSITES-1.5</p></li>
+<li><p><strong>featureType*</strong>: timeSeries</p></li>
+<li><p><strong>featureType_vocabulary</strong>: <a class="reference external" href="https://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_features_and_feature_types">https://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_features_and_feature_types</a></p></li>
+<li><p><strong>Source File*</strong>: moc_transports.nc</p></li>
+<li><p><strong>Source Path*</strong>: ~/.amocatlas_data/moc_transports.nc</p></li>
+<li><p><strong>Date Created*</strong>: 17-Sep-2024</p></li>
+<li><p><strong>Date Modified</strong>: 2026-08-01T00:00:00Z</p></li>
+<li><p><strong>Processing Software</strong>: <a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">http://github.com/AMOCcommunity/amocatlas</a></p></li>
+<li><p><strong>Processing Version</strong>: v0.4.0</p></li>
+<li><p><strong>Processing Datasource*</strong>: rapid26n</p></li>
+<li><p><strong>Product Version*</strong>: 2024.1a</p></li>
+<li><p><strong>Applied Variable Mapping</strong>: [Complex metadata structure - 11 items]</p></li>
+<li><p><strong>Version</strong>: v2024.1a</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="moc-vertical-nc">
+<h2>moc_vertical.nc<a class="headerlink" href="#moc-vertical-nc" title="Link to this heading"></a></h2>
+<section id="id1">
+<h3>Dataset Overview<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Project</strong>: RAPID-AMOC 26°N array</p></li>
+<li><p><strong>Description</strong>: RAPID 26N transport estimates dataset</p></li>
+<li><p><strong>DOI</strong>: <a class="reference external" href="https://doi.org/10.5285/48d0bf43-0598-ceb2-e063-7086abc062f1">https://doi.org/10.5285/48d0bf43-0598-ceb2-e063-7086abc062f1</a></p></li>
+<li><p><strong>Source File</strong>: moc_vertical.nc</p></li>
+<li><p><strong>Data Product</strong>: RAPID vertical streamfunction time series</p></li>
+<li><p><strong>License</strong>: UK Open Government Licence v3.0 <a class="reference external" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/</a></p></li>
+<li><p><strong>Date Created</strong>: 17-Sep-2024</p></li>
+<li><p><strong>Time Coverage</strong>: 2004-04-02 to 2024-03-27</p></li>
+<li><p><strong>Record Length</strong>: 14,599 observations (20.0 years)</p></li>
+<li><p><strong>Sampling Frequency</strong>: 12H</p></li>
+</ul>
+<p><strong>Distribution Statement:</strong></p>
+<blockquote>
+<div><p>Data from RAPID MOC monitoring project are made freely available to the public. Continued funding of this project depends on us being able to justify the usefulness of the data to the Natural Environment Research Council. The project scientists would appreciate it if you would use the data DOI (see “citation”) and add the following acknowledgment (see “acknowledgment”) to any publications that use this data.</p>
+</div></blockquote>
+<p><strong>Citation:</strong></p>
+<blockquote>
+<div><p>Moat B.I.; Smeed D.A.; Rayner D.; Johns W.E.; Smith, R.; Volkov, D.; Elipot S.; Petit T.; Kajtar J.; Baringer M. O.; and Collins, J. (2026). Atlantic meridional overturning circulation observed by the RAPID-MOCHA-WBTS (RAPID-Meridional Overturning Circulation and Heatflux Array-Western Boundary Time Series) array at 26N from 2004 to 2024 (v2024.1a), British Oceanographic Data Centre - Natural Environment Research Council, UK. doi: <a class="reference external" href="http://doi.org/10.5285/48d0bf43-0598-ceb2-e063-7086abc062f1">http://doi.org/10.5285/48d0bf43-0598-ceb2-e063-7086abc062f1</a></p>
+</div></blockquote>
+<p><strong>Acknowledgement:</strong></p>
+<blockquote>
+<div><p>Data from the RAPID MOC monitoring project are funded by the Natural Environment Research Council, the National Science Foundation (NSF) with support from NOAA. They are freely available from www.rapid.ac.uk/.</p>
+</div></blockquote>
+</section>
+<section id="id2">
+<h3>Dataset Visualization<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<figure class="align-center" id="id26">
+<a class="reference internal image-reference" href="../_images/moc_vertical_2d_gridded.png"><img alt="AMOC time series plot" height="465" src="../_images/moc_vertical_2d_gridded.png" width="922" />
+</a>
+<figcaption>
+<p><span class="caption-text">Time series plot for MOC_VERTICAL dataset.</span><a class="headerlink" href="#id26" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id3">
+<h3>Dataset Statistics<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Total Variables</strong>: 1</p></li>
+<li><p><strong>Total Coordinates</strong>: 2</p></li>
+<li><p><strong>Dataset Size</strong>: 34.31 MB</p></li>
+</ul>
+</section>
+<section id="id4">
+<h3>Coordinate Information<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p>The following table shows information about the dataset coordinates in the standardised version, including coordinate name remapping from the original, if any:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Coordinate</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>depth</em> → <strong>DEPTH</strong></p></td>
+<td><p><strong>Depth</strong>:  Depth below surface of the water</p></td>
+<td><p>m</p></td>
+<td><p>(307,)</p></td>
+<td><p>0.00</p></td>
+<td><p>5995.07</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>time</em> → <strong>TIME</strong></p></td>
+<td><p>Time</p></td>
+<td><p>seconds since 1970-01-01T00:00:00Z</p></td>
+<td><p>(14599,)</p></td>
+<td><p>2004-04-02</p></td>
+<td><p>2024-03-27</p></td>
+<td><p>0.0%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id5">
+<h3>Variable Information<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<p>The following table shows the mapping from original variable names to standardized names,
+along with key statistics for each variable.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>stream_function_mar</em> → <strong>PSI_Z</strong></p></td>
+<td><p><strong>Streamfunction</strong>: Streamfunction across the Atlantic at 26.5°N</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(307, 14599)</p></td>
+<td><p>-17.34</p></td>
+<td><p>37.79</p></td>
+<td><p>0.0%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id6">
+<h3>Metadata (edits applied noted)<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<p>The following metadata describes this dataset:</p>
+<ul class="simple">
+<li><p><strong>Title</strong>: RAPID streamfunction</p></li>
+<li><p><strong>Summary</strong>: RAPID 26N transport estimates dataset</p></li>
+<li><p><strong>Description*</strong>: RAPID 26N transport estimates dataset</p></li>
+<li><p><strong>Program*</strong>: RAPID</p></li>
+<li><p><strong>Project*</strong>: RAPID-AMOC 26°N array</p></li>
+<li><p><strong>License*</strong>: UK Open Government Licence v3.0 <a class="reference external" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/</a></p></li>
+<li><p><strong>Acknowledgment*</strong>: Data from the RAPID MOC monitoring project are funded by the Natural Environment Research Council, the National Science Foundation (NSF) with support from NOAA. They are freely available from www.rapid.ac.uk/.</p></li>
+<li><p><strong>Doi*</strong>: <a class="reference external" href="https://doi.org/10.5285/48d0bf43-0598-ceb2-e063-7086abc062f1">https://doi.org/10.5285/48d0bf43-0598-ceb2-e063-7086abc062f1</a></p></li>
+<li><p><strong>Weblink*</strong>: <a class="reference external" href="https://rapid.ac.uk/rapidmoc">https://rapid.ac.uk/rapidmoc</a></p></li>
+<li><p><strong>Distribution Statement*</strong>: Data from RAPID MOC monitoring project are made freely available to the public. Continued funding of this project depends on us being able to justify the usefulness of the data to the Natural Environment Research Council. The project scientists would appreciate it if you would use the data DOI (see “citation”) and add the following acknowledgment (see “acknowledgment”) to any publications that use this data.</p></li>
+<li><p><strong>Platform</strong>: mooring</p></li>
+<li><p><strong>Platform Vocabulary</strong>: <a class="reference external" href="https://vocab.nerc.ac.uk/collection/L06/">https://vocab.nerc.ac.uk/collection/L06/</a></p></li>
+<li><p><strong>Data Product*</strong>: RAPID vertical streamfunction time series</p></li>
+<li><p><strong>Time Coverage Start*</strong>: 2004-04-02</p></li>
+<li><p><strong>Time Coverage End*</strong>: 2024-03-27</p></li>
+<li><p><strong>Contributor Name</strong>: Ben I. Moat, Ben I. Moat</p></li>
+<li><p><strong>Contributor Role</strong>: originator, principalInvestigator</p></li>
+<li><p><strong>Contributor Role Vocabulary</strong>: <a class="reference external" href="https://vocab.nerc.ac.uk/collection/G04/current/">https://vocab.nerc.ac.uk/collection/G04/current/</a></p></li>
+<li><p><strong>Contributor Email</strong>: <a class="reference external" href="mailto:ben&#46;moat&#37;&#52;&#48;noc&#46;ac&#46;uk">ben<span>&#46;</span>moat<span>&#64;</span>noc<span>&#46;</span>ac<span>&#46;</span>uk</a>, <a class="reference external" href="mailto:ben&#46;moat&#37;&#52;&#48;noc&#46;ac&#46;uk">ben<span>&#46;</span>moat<span>&#64;</span>noc<span>&#46;</span>ac<span>&#46;</span>uk</a></p></li>
+<li><p><strong>Contributor Id</strong>: <a class="reference external" href="https://orcid.org/0000-0001-8676-7779">https://orcid.org/0000-0001-8676-7779</a>, <a class="reference external" href="https://orcid.org/0000-0001-8676-7779">https://orcid.org/0000-0001-8676-7779</a></p></li>
+<li><p><strong>Contributing Institutions</strong>: National Oceanography Centre (Southampton)</p></li>
+<li><p><strong>Contributing Institutions Vocabulary</strong>: <a class="reference external" href="https://edmo.seadatanet.org/report/17">https://edmo.seadatanet.org/report/17</a></p></li>
+<li><p><strong>Contributing Institutions Role</strong>:</p></li>
+<li><p><strong>Conventions*</strong>: CF-1.8, ACDD-1.3, OceanSITES-1.5</p></li>
+<li><p><strong>featureType*</strong>: timeSeriesProfile</p></li>
+<li><p><strong>featureType_vocabulary</strong>: <a class="reference external" href="https://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_features_and_feature_types">https://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_features_and_feature_types</a></p></li>
+<li><p><strong>Source File*</strong>: moc_vertical.nc</p></li>
+<li><p><strong>Source Path*</strong>: ~/.amocatlas_data/moc_vertical.nc</p></li>
+<li><p><strong>Date Created*</strong>: 17-Sep-2024</p></li>
+<li><p><strong>Date Modified</strong>: 2026-08-01T00:00:00Z</p></li>
+<li><p><strong>Processing Software</strong>: <a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">http://github.com/AMOCcommunity/amocatlas</a></p></li>
+<li><p><strong>Processing Version</strong>: v0.4.0</p></li>
+<li><p><strong>Processing Datasource*</strong>: rapid26n</p></li>
+<li><p><strong>Product Version*</strong>: 2024.1a</p></li>
+<li><p><strong>Applied Variable Mapping</strong>: {‘time’: ‘TIME’, ‘depth’: ‘DEPTH’, ‘stream_function_mar’: ‘PSI_Z’, ‘TIME’: ‘TIME’, ‘DEPTH’: ‘DEPTH’}</p></li>
+<li><p><strong>Version</strong>: v2024.1a</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="ts-gridded-nc">
+<h2>ts_gridded.nc<a class="headerlink" href="#ts-gridded-nc" title="Link to this heading"></a></h2>
+<section id="id7">
+<h3>Dataset Overview<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Project</strong>: RAPID-AMOC 26°N array</p></li>
+<li><p><strong>Description</strong>: RAPID 26N transport estimates dataset</p></li>
+<li><p><strong>DOI</strong>: <a class="reference external" href="https://doi.org/10.5285/48d0bf43-0598-ceb2-e063-7086abc062f1">https://doi.org/10.5285/48d0bf43-0598-ceb2-e063-7086abc062f1</a></p></li>
+<li><p><strong>Source File</strong>: ts_gridded.nc</p></li>
+<li><p><strong>Data Product</strong>: RAPID gridded temperature and salinity</p></li>
+<li><p><strong>License</strong>: UK Open Government Licence v3.0 <a class="reference external" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/</a></p></li>
+<li><p><strong>Date Created</strong>: 17-Sep-2024</p></li>
+<li><p><strong>Time Coverage</strong>: 2004-04-02 to 2024-03-27</p></li>
+<li><p><strong>Record Length</strong>: 14,599 observations (20.0 years)</p></li>
+<li><p><strong>Sampling Frequency</strong>: 12H</p></li>
+</ul>
+<p><strong>Distribution Statement:</strong></p>
+<blockquote>
+<div><p>Data from RAPID MOC monitoring project are made freely available to the public. Continued funding of this project depends on us being able to justify the usefulness of the data to the Natural Environment Research Council. The project scientists would appreciate it if you would use the data DOI (see “citation”) and add the following acknowledgment (see “acknowledgment”) to any publications that use this data.</p>
+</div></blockquote>
+<p><strong>Citation:</strong></p>
+<blockquote>
+<div><p>Moat B.I.; Smeed D.A.; Rayner D.; Johns W.E.; Smith, R.; Volkov, D.; Elipot S.; Petit T.; Kajtar J.; Baringer M. O.; and Collins, J. (2026). Atlantic meridional overturning circulation observed by the RAPID-MOCHA-WBTS (RAPID-Meridional Overturning Circulation and Heatflux Array-Western Boundary Time Series) array at 26N from 2004 to 2024 (v2024.1a), British Oceanographic Data Centre - Natural Environment Research Council, UK. doi: <a class="reference external" href="http://doi.org/10.5285/48d0bf43-0598-ceb2-e063-7086abc062f1">http://doi.org/10.5285/48d0bf43-0598-ceb2-e063-7086abc062f1</a></p>
+</div></blockquote>
+<p><strong>Acknowledgement:</strong></p>
+<blockquote>
+<div><p>Data from the RAPID MOC monitoring project are funded by the Natural Environment Research Council, the National Science Foundation (NSF) with support from NOAA. They are freely available from www.rapid.ac.uk/.</p>
+</div></blockquote>
+</section>
+<section id="id8">
+<h3>Dataset Visualization<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<figure class="align-center" id="id27">
+<a class="reference internal image-reference" href="../_images/ts_gridded_2d_gridded.png"><img alt="AMOC time series plot" height="465" src="../_images/ts_gridded_2d_gridded.png" width="918" />
+</a>
+<figcaption>
+<p><span class="caption-text">Time series plot for TS_GRIDDED dataset.</span><a class="headerlink" href="#id27" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id9">
+<h3>Dataset Statistics<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Total Variables</strong>: 18</p></li>
+<li><p><strong>Total Coordinates</strong>: 2</p></li>
+<li><p><strong>Dataset Size</strong>: 485.29 MB</p></li>
+</ul>
+</section>
+<section id="id10">
+<h3>Coordinate Information<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<p>The following table shows information about the dataset coordinates in the standardised version, including coordinate name remapping from the original, if any:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Coordinate</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>pressure</em> → <strong>PRESSURE</strong></p></td>
+<td><p>pressure</p></td>
+<td><p>dbar</p></td>
+<td><p>(242,)</p></td>
+<td><p>0.00</p></td>
+<td><p>4820.00</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>time</em> → <strong>TIME</strong></p></td>
+<td><p>Time</p></td>
+<td><p>seconds since 1970-01-01T00:00:00Z</p></td>
+<td><p>(14599,)</p></td>
+<td><p>2004-04-02</p></td>
+<td><p>2024-03-27</p></td>
+<td><p>0.0%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id11">
+<h3>Variable Information<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<p>The following table shows the mapping from original variable names to standardized names,
+along with key statistics for each variable.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>SG_east</em> → <strong>PSAL_EAST</strong></p></td>
+<td><p>Salinity east 26.99N/16.23W</p></td>
+<td><p>1</p></td>
+<td><p>(242, 14599)</p></td>
+<td><p>34.89</p></td>
+<td><p>36.96</p></td>
+<td><p>0.8%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>SG_east_flag</em> → <strong>PSAL_EAST_FLAG</strong></p></td>
+<td><p>Salinity MAR west data FLAG</p></td>
+<td><p>data flag</p></td>
+<td><p>(242, 14599)</p></td>
+<td><p>0.00</p></td>
+<td><p>2.00</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>SG_mareast</em> → <strong>PSAL_MAREAST</strong></p></td>
+<td><p>Salinity MAR east 24.52N/41.21W</p></td>
+<td><p>1</p></td>
+<td><p>(242, 14599)</p></td>
+<td><p>34.88</p></td>
+<td><p>34.98</p></td>
+<td><p>50.4%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>SG_mareast_flag</em> → <strong>PSAL_MAREAST_FLAG</strong></p></td>
+<td><p>Salinity MAR east data FLAG</p></td>
+<td><p>data flag</p></td>
+<td><p>(242, 14599)</p></td>
+<td><p>0.00</p></td>
+<td><p>2.00</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>SG_marwest</em> → <strong>PSAL_MARWEST</strong></p></td>
+<td><p>Salinity MAR west 24.52N/50.57W</p></td>
+<td><p>1</p></td>
+<td><p>(242, 14599)</p></td>
+<td><p>34.86</p></td>
+<td><p>37.78</p></td>
+<td><p>0.8%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>SG_marwest_flag</em> → <strong>PSAL_MARWEST_FLAG</strong></p></td>
+<td><p>Salinity MAR east data FLAG</p></td>
+<td><p>data flag</p></td>
+<td><p>(242, 14599)</p></td>
+<td><p>0.00</p></td>
+<td><p>2.00</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>SG_wb3</em> → <strong>PSAL_WB3</strong></p></td>
+<td><p>Salinity WB3 26.50N/76.50W</p></td>
+<td><p>1</p></td>
+<td><p>(242, 14599)</p></td>
+<td><p>34.87</p></td>
+<td><p>37.06</p></td>
+<td><p>1.2%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>SG_west</em> → <strong>PSAL_WEST</strong></p></td>
+<td><p>Salinity 26.52N/76.74W</p></td>
+<td><p>1</p></td>
+<td><p>(242, 14599)</p></td>
+<td><p>34.87</p></td>
+<td><p>37.11</p></td>
+<td><p>0.4%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>SG_west_flag</em> → <strong>PSAL_WEST_FLAG</strong></p></td>
+<td><p>Salinity east data FLAG</p></td>
+<td><p>data flag</p></td>
+<td><p>(242, 14599)</p></td>
+<td><p>0.00</p></td>
+<td><p>1.00</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>TG_east</em> → <strong>TEMP_EAST</strong></p></td>
+<td><p>Temperature east 26.99N/16.23W</p></td>
+<td><p>degree_C</p></td>
+<td><p>(242, 14599)</p></td>
+<td><p>2.36</p></td>
+<td><p>23.74</p></td>
+<td><p>0.8%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>TG_east_flag</em> → <strong>TEMP_EAST_FLAG</strong></p></td>
+<td><p>Temperature MAR west data FLAG</p></td>
+<td><p>data flag</p></td>
+<td><p>(242, 14599)</p></td>
+<td><p>0.00</p></td>
+<td><p>2.00</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>TG_mareast</em> → <strong>TEMP_MAREAST</strong></p></td>
+<td><p>Temperature MAR east 24.52N/41.21W</p></td>
+<td><p>degree_C</p></td>
+<td><p>(242, 14599)</p></td>
+<td><p>2.36</p></td>
+<td><p>3.29</p></td>
+<td><p>50.4%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>TG_mareast_flag</em> → <strong>TEMP_MAREAST_FLAG</strong></p></td>
+<td><p>Temperature MAR east data FLAG</p></td>
+<td><p>data flag</p></td>
+<td><p>(242, 14599)</p></td>
+<td><p>0.00</p></td>
+<td><p>2.00</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>TG_marwest</em> → <strong>TEMP_MARWEST</strong></p></td>
+<td><p>Temperature MAR west 24.52N/50.57W</p></td>
+<td><p>degree_C</p></td>
+<td><p>(242, 14599)</p></td>
+<td><p>2.12</p></td>
+<td><p>28.80</p></td>
+<td><p>0.8%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>TG_marwest_flag</em> → <strong>TEMP_MARWEST_FLAG</strong></p></td>
+<td><p>Temperature MAR east data FLAG</p></td>
+<td><p>data flag</p></td>
+<td><p>(242, 14599)</p></td>
+<td><p>0.00</p></td>
+<td><p>2.00</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>TG_wb3</em> → <strong>TEMP_WB3</strong></p></td>
+<td><p>Temperature WB3 26.50N/76.50W</p></td>
+<td><p>degree_C</p></td>
+<td><p>(242, 14599)</p></td>
+<td><p>2.15</p></td>
+<td><p>28.77</p></td>
+<td><p>1.2%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>TG_west</em> → <strong>TEMP_WEST</strong></p></td>
+<td><p>Temperature 26.52N/76.74W</p></td>
+<td><p>degree_C</p></td>
+<td><p>(242, 14599)</p></td>
+<td><p>2.16</p></td>
+<td><p>29.23</p></td>
+<td><p>0.4%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>TG_west_flag</em> → <strong>TEMP_WEST_FLAG</strong></p></td>
+<td><p>Temperature east data FLAG</p></td>
+<td><p>data flag</p></td>
+<td><p>(242, 14599)</p></td>
+<td><p>0.00</p></td>
+<td><p>1.00</p></td>
+<td><p>0.0%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id12">
+<h3>Metadata (edits applied noted)<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
+<p>The following metadata describes this dataset:</p>
+<ul class="simple">
+<li><p><strong>Title</strong>: RAPID streamfunction</p></li>
+<li><p><strong>Summary</strong>: RAPID 26N transport estimates dataset</p></li>
+<li><p><strong>Description*</strong>: RAPID 26N transport estimates dataset</p></li>
+<li><p><strong>Program*</strong>: RAPID</p></li>
+<li><p><strong>Project*</strong>: RAPID-AMOC 26°N array</p></li>
+<li><p><strong>License*</strong>: UK Open Government Licence v3.0 <a class="reference external" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/</a></p></li>
+<li><p><strong>Acknowledgment*</strong>: Data from the RAPID MOC monitoring project are funded by the Natural Environment Research Council, the National Science Foundation (NSF) with support from NOAA. They are freely available from www.rapid.ac.uk/.</p></li>
+<li><p><strong>Doi*</strong>: <a class="reference external" href="https://doi.org/10.5285/48d0bf43-0598-ceb2-e063-7086abc062f1">https://doi.org/10.5285/48d0bf43-0598-ceb2-e063-7086abc062f1</a></p></li>
+<li><p><strong>Weblink*</strong>: <a class="reference external" href="https://rapid.ac.uk/rapidmoc">https://rapid.ac.uk/rapidmoc</a></p></li>
+<li><p><strong>Distribution Statement*</strong>: Data from RAPID MOC monitoring project are made freely available to the public. Continued funding of this project depends on us being able to justify the usefulness of the data to the Natural Environment Research Council. The project scientists would appreciate it if you would use the data DOI (see “citation”) and add the following acknowledgment (see “acknowledgment”) to any publications that use this data.</p></li>
+<li><p><strong>Platform</strong>: mooring</p></li>
+<li><p><strong>Platform Vocabulary</strong>: <a class="reference external" href="https://vocab.nerc.ac.uk/collection/L06/">https://vocab.nerc.ac.uk/collection/L06/</a></p></li>
+<li><p><strong>Data Product*</strong>: RAPID gridded temperature and salinity</p></li>
+<li><p><strong>Time Coverage Start*</strong>: 2004-04-02</p></li>
+<li><p><strong>Time Coverage End*</strong>: 2024-03-27</p></li>
+<li><p><strong>Contributor Name</strong>: Ben I. Moat, Ben I. Moat</p></li>
+<li><p><strong>Contributor Role</strong>: originator, principalInvestigator</p></li>
+<li><p><strong>Contributor Role Vocabulary</strong>: <a class="reference external" href="https://vocab.nerc.ac.uk/collection/G04/current/">https://vocab.nerc.ac.uk/collection/G04/current/</a></p></li>
+<li><p><strong>Contributor Email</strong>: <a class="reference external" href="mailto:ben&#46;moat&#37;&#52;&#48;noc&#46;ac&#46;uk">ben<span>&#46;</span>moat<span>&#64;</span>noc<span>&#46;</span>ac<span>&#46;</span>uk</a>, <a class="reference external" href="mailto:ben&#46;moat&#37;&#52;&#48;noc&#46;ac&#46;uk">ben<span>&#46;</span>moat<span>&#64;</span>noc<span>&#46;</span>ac<span>&#46;</span>uk</a></p></li>
+<li><p><strong>Contributor Id</strong>: <a class="reference external" href="https://orcid.org/0000-0001-8676-7779">https://orcid.org/0000-0001-8676-7779</a>, <a class="reference external" href="https://orcid.org/0000-0001-8676-7779">https://orcid.org/0000-0001-8676-7779</a></p></li>
+<li><p><strong>Contributing Institutions</strong>: National Oceanography Centre (Southampton)</p></li>
+<li><p><strong>Contributing Institutions Vocabulary</strong>: <a class="reference external" href="https://edmo.seadatanet.org/report/17">https://edmo.seadatanet.org/report/17</a></p></li>
+<li><p><strong>Contributing Institutions Role</strong>:</p></li>
+<li><p><strong>Conventions*</strong>: CF-1.8, ACDD-1.3, OceanSITES-1.5</p></li>
+<li><p><strong>featureType*</strong>: timeSeriesProfile</p></li>
+<li><p><strong>featureType_vocabulary</strong>: <a class="reference external" href="https://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_features_and_feature_types">https://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_features_and_feature_types</a></p></li>
+<li><p><strong>Source File*</strong>: ts_gridded.nc</p></li>
+<li><p><strong>Source Path*</strong>: ~/.amocatlas_data/ts_gridded.nc</p></li>
+<li><p><strong>Date Created*</strong>: 17-Sep-2024</p></li>
+<li><p><strong>Date Modified</strong>: 2026-08-01T00:00:00Z</p></li>
+<li><p><strong>Processing Software</strong>: <a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">http://github.com/AMOCcommunity/amocatlas</a></p></li>
+<li><p><strong>Processing Version</strong>: v0.4.0</p></li>
+<li><p><strong>Processing Datasource*</strong>: rapid26n</p></li>
+<li><p><strong>Product Version*</strong>: 2024.1a</p></li>
+<li><p><strong>Applied Variable Mapping</strong>: [Complex metadata structure - 22 items]</p></li>
+<li><p><strong>Convert To Coord*</strong>: pressure</p></li>
+<li><p><strong>Version</strong>: v2024.1a</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="d-gridded-nc">
+<h2>2d_gridded.nc<a class="headerlink" href="#d-gridded-nc" title="Link to this heading"></a></h2>
+<section id="id13">
+<h3>Dataset Overview<a class="headerlink" href="#id13" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Project</strong>: RAPID-AMOC 26°N array</p></li>
+<li><p><strong>Description</strong>: RAPID 26N transport estimates dataset</p></li>
+<li><p><strong>DOI</strong>: <a class="reference external" href="https://doi.org/10.5285/48d0bf43-0598-ceb2-e063-7086abc062f1">https://doi.org/10.5285/48d0bf43-0598-ceb2-e063-7086abc062f1</a></p></li>
+<li><p><strong>Source File</strong>: 2d_gridded.nc</p></li>
+<li><p><strong>Data Product</strong>: RAPID 2D gridded data</p></li>
+<li><p><strong>License</strong>: UK Open Government Licence v3.0 <a class="reference external" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/</a></p></li>
+<li><p><strong>Date Created</strong>: 17-Sep-2024</p></li>
+<li><p><strong>Time Coverage</strong>: 2004-04-06 to 2024-03-22</p></li>
+<li><p><strong>Record Length</strong>: 730 observations (20.0 years)</p></li>
+<li><p><strong>Sampling Frequency</strong>: 240.0H</p></li>
+</ul>
+<p><strong>Distribution Statement:</strong></p>
+<blockquote>
+<div><p>Data from RAPID MOC monitoring project are made freely available to the public. Continued funding of this project depends on us being able to justify the usefulness of the data to the Natural Environment Research Council. The project scientists would appreciate it if you would use the data DOI (see “citation”) and add the following acknowledgment (see “acknowledgment”) to any publications that use this data.</p>
+</div></blockquote>
+<p><strong>Citation:</strong></p>
+<blockquote>
+<div><p>Moat B.I.; Smeed D.A.; Rayner D.; Johns W.E.; Smith, R.; Volkov, D.; Elipot S.; Petit T.; Kajtar J.; Baringer M. O.; and Collins, J. (2026). Atlantic meridional overturning circulation observed by the RAPID-MOCHA-WBTS (RAPID-Meridional Overturning Circulation and Heatflux Array-Western Boundary Time Series) array at 26N from 2004 to 2024 (v2024.1a), British Oceanographic Data Centre - Natural Environment Research Council, UK. doi: <a class="reference external" href="http://doi.org/10.5285/48d0bf43-0598-ceb2-e063-7086abc062f1">http://doi.org/10.5285/48d0bf43-0598-ceb2-e063-7086abc062f1</a></p>
+</div></blockquote>
+<p><strong>Acknowledgement:</strong></p>
+<blockquote>
+<div><p>Data from the RAPID MOC monitoring project are funded by the Natural Environment Research Council, the National Science Foundation (NSF) with support from NOAA. They are freely available from www.rapid.ac.uk/.</p>
+</div></blockquote>
+</section>
+<section id="id14">
+<h3>Dataset Visualization<a class="headerlink" href="#id14" title="Link to this heading"></a></h3>
+<figure class="align-center" id="id28">
+<a class="reference internal image-reference" href="../_images/2d_gridded_timeseries.png"><img alt="AMOC time series plot" height="345" src="../_images/2d_gridded_timeseries.png" width="947" />
+</a>
+<figcaption>
+<p><span class="caption-text">Time series plot for 2D_GRIDDED dataset.</span><a class="headerlink" href="#id28" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id15">
+<h3>Dataset Statistics<a class="headerlink" href="#id15" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Total Variables</strong>: 7</p></li>
+<li><p><strong>Total Coordinates</strong>: 3</p></li>
+<li><p><strong>Dataset Size</strong>: 1737.79 MB</p></li>
+</ul>
+</section>
+<section id="id16">
+<h3>Coordinate Information<a class="headerlink" href="#id16" title="Link to this heading"></a></h3>
+<p>The following table shows information about the dataset coordinates in the standardised version, including coordinate name remapping from the original, if any:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Coordinate</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>depth</em> → <strong>DEPTH</strong></p></td>
+<td><p><strong>Depth</strong>:  Depth below surface of the water</p></td>
+<td><p>m</p></td>
+<td><p>(307,)</p></td>
+<td><p>0.00</p></td>
+<td><p>5995.06</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>longitude</em> → <strong>LONGITUDE</strong></p></td>
+<td><p><strong>Longitude</strong>: Longitude east (WGS84)</p></td>
+<td><p>degree_east</p></td>
+<td><p>(254,)</p></td>
+<td><p>-79.50</p></td>
+<td><p>-14.12</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>time</em> → <strong>TIME</strong></p></td>
+<td><p><strong>Time</strong>: Time coordinate</p></td>
+<td><p>seconds since 1970-01-01T00:00:00Z</p></td>
+<td><p>(730,)</p></td>
+<td><p>2004-04-06</p></td>
+<td><p>2024-03-22</p></td>
+<td><p>0.0%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id17">
+<h3>Variable Information<a class="headerlink" href="#id17" title="Link to this heading"></a></h3>
+<p>The following table shows the mapping from original variable names to standardized names,
+along with key statistics for each variable.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>area</em> → <strong>AREA</strong></p></td>
+<td><p><strong>Grid cell area</strong>: Area of each grid cell</p></td>
+<td><p>m2</p></td>
+<td><p>(254, 307)</p></td>
+<td><p>0.00</p></td>
+<td><p>1710169.15</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>CT</strong></p></td>
+<td><p><strong>Conservative temperature</strong>: Conservative temperature following TEOS-10 standard</p></td>
+<td><p>degree_C</p></td>
+<td><p>(730, 254, 307)</p></td>
+<td><p>1.49</p></td>
+<td><p>31.43</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>pressure</em> → <strong>PRESSURE</strong></p></td>
+<td><p><strong>Pressure</strong>: Sea water pressure at depth</p></td>
+<td><p>dbar</p></td>
+<td><p>(307,)</p></td>
+<td><p>0.00</p></td>
+<td><p>6120.00</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>SA</strong></p></td>
+<td><p><strong>Salinity</strong>: Absolute salinity following TEOS-10 standard</p></td>
+<td><p>g kg-1</p></td>
+<td><p>(730, 254, 307)</p></td>
+<td><p>35.02</p></td>
+<td><p>37.95</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>V_ekman</em> → <strong>VCUR_EKMAN</strong></p></td>
+<td><p><strong>Ekman velocity</strong>: Ekman transport velocity component</p></td>
+<td><p>m s-1</p></td>
+<td><p>(730, 254, 307)</p></td>
+<td><p>-0.03</p></td>
+<td><p>0.08</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>V_insitu</em> → <strong>VCUR_INSITU</strong></p></td>
+<td><p><strong>Meridional velocity</strong>: In-situ meridional velocity component</p></td>
+<td><p>m s-1</p></td>
+<td><p>(730, 254, 307)</p></td>
+<td><p>-1.16</p></td>
+<td><p>1.61</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>V_net</em> → <strong>VCUR_NET</strong></p></td>
+<td><p><strong>Net velocity</strong>: Net meridional velocity (in-situ + Ekman)</p></td>
+<td><p>m s-1</p></td>
+<td><p>(730,)</p></td>
+<td><p>-0.00</p></td>
+<td><p>-0.00</p></td>
+<td><p>0.0%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id18">
+<h3>Metadata (edits applied noted)<a class="headerlink" href="#id18" title="Link to this heading"></a></h3>
+<p>The following metadata describes this dataset:</p>
+<ul class="simple">
+<li><p><strong>Summary</strong>: RAPID 26N transport estimates dataset</p></li>
+<li><p><strong>Description*</strong>: RAPID 26N transport estimates dataset</p></li>
+<li><p><strong>Program*</strong>: RAPID</p></li>
+<li><p><strong>Project*</strong>: RAPID-AMOC 26°N array</p></li>
+<li><p><strong>License*</strong>: UK Open Government Licence v3.0 <a class="reference external" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/</a></p></li>
+<li><p><strong>Acknowledgment*</strong>: Data from the RAPID MOC monitoring project are funded by the Natural Environment Research Council, the National Science Foundation (NSF) with support from NOAA. They are freely available from www.rapid.ac.uk/.</p></li>
+<li><p><strong>Doi*</strong>: <a class="reference external" href="https://doi.org/10.5285/48d0bf43-0598-ceb2-e063-7086abc062f1">https://doi.org/10.5285/48d0bf43-0598-ceb2-e063-7086abc062f1</a></p></li>
+<li><p><strong>Weblink*</strong>: <a class="reference external" href="https://rapid.ac.uk/rapidmoc">https://rapid.ac.uk/rapidmoc</a></p></li>
+<li><p><strong>Distribution Statement*</strong>: Data from RAPID MOC monitoring project are made freely available to the public. Continued funding of this project depends on us being able to justify the usefulness of the data to the Natural Environment Research Council. The project scientists would appreciate it if you would use the data DOI (see “citation”) and add the following acknowledgment (see “acknowledgment”) to any publications that use this data.</p></li>
+<li><p><strong>Platform</strong>: mooring</p></li>
+<li><p><strong>Platform Vocabulary</strong>: <a class="reference external" href="https://vocab.nerc.ac.uk/collection/L06/">https://vocab.nerc.ac.uk/collection/L06/</a></p></li>
+<li><p><strong>Data Product*</strong>: RAPID 2D gridded data</p></li>
+<li><p><strong>Time Coverage Start</strong>: 2004-04-06</p></li>
+<li><p><strong>Time Coverage End</strong>: 2024-03-22</p></li>
+<li><p><strong>Contributing Institutions</strong>: National Oceanography Centre (Southampton)</p></li>
+<li><p><strong>Contributing Institutions Vocabulary</strong>: <a class="reference external" href="https://edmo.seadatanet.org/report/17">https://edmo.seadatanet.org/report/17</a></p></li>
+<li><p><strong>Contributing Institutions Role</strong>:</p></li>
+<li><p><strong>Conventions*</strong>: CF-1.8, ACDD-1.3, OceanSITES-1.5</p></li>
+<li><p><strong>featureType*</strong>: timeSeriesProfile</p></li>
+<li><p><strong>featureType_vocabulary</strong>: <a class="reference external" href="https://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_features_and_feature_types">https://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_features_and_feature_types</a></p></li>
+<li><p><strong>Source File*</strong>: 2d_gridded.nc</p></li>
+<li><p><strong>Source Path*</strong>: ~/.amocatlas_data/2d_gridded.nc</p></li>
+<li><p><strong>Date Created*</strong>: 17-Sep-2024</p></li>
+<li><p><strong>Date Modified</strong>: 2026-08-01T00:00:00Z</p></li>
+<li><p><strong>Processing Software</strong>: <a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">http://github.com/AMOCcommunity/amocatlas</a></p></li>
+<li><p><strong>Processing Version</strong>: v0.4.0</p></li>
+<li><p><strong>Processing Datasource*</strong>: rapid26n</p></li>
+<li><p><strong>Product Version*</strong>: 2024.1a</p></li>
+<li><p><strong>Applied Variable Mapping</strong>: [Complex metadata structure - 13 items]</p></li>
+<li><p><strong>Dataset Version</strong>: v2024-1a</p></li>
+<li><p><strong>Dataset Creation Date</strong>: 26-Jan-2026 14:06:26</p></li>
+<li><p><strong>File Creation Date</strong>: 2026-01-26</p></li>
+<li><p><strong>Note On Velocity</strong>: Velocity is separated into 3 components: V_insitu = Velocity derived from in-situ measurements and geostrophic balance, V_ekman = Ekman velocity derived from ERA5 reanalysis. The total transport from V_insitu and V_ekman is required to have zero net meridional transport. V_net is a spatially uniform velocity representing the net meridional transport derived from salt and mass conservation (McDonagh et al 2015) and is excluded from the calculation of the streamfunction. Note that the sizes of grid cells are not all equal, and velocity should be multiplied by area to obtain the transport in each cell. Longitude is the centre of the cells, except for values 2 and 3 which are the locations of moorings WB1 and WB2 and correspond with the eastern edge of the cells</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="meridional-transports-nc">
+<h2>meridional_transports.nc<a class="headerlink" href="#meridional-transports-nc" title="Link to this heading"></a></h2>
+<section id="id19">
+<h3>Dataset Overview<a class="headerlink" href="#id19" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Project</strong>: RAPID-AMOC 26°N array</p></li>
+<li><p><strong>Description</strong>: RAPID 26N transport estimates dataset</p></li>
+<li><p><strong>DOI</strong>: <a class="reference external" href="https://doi.org/10.5285/48d0bf43-0598-ceb2-e063-7086abc062f1">https://doi.org/10.5285/48d0bf43-0598-ceb2-e063-7086abc062f1</a></p></li>
+<li><p><strong>Source File</strong>: meridional_transports.nc</p></li>
+<li><p><strong>Data Product</strong>: RAPID meridional transport data</p></li>
+<li><p><strong>License</strong>: UK Open Government Licence v3.0 <a class="reference external" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/</a></p></li>
+<li><p><strong>Date Created</strong>: 17-Sep-2024</p></li>
+<li><p><strong>Time Coverage</strong>: 2004-04-06 to 2024-03-22</p></li>
+<li><p><strong>Record Length</strong>: 730 observations (20.0 years)</p></li>
+<li><p><strong>Sampling Frequency</strong>: 240.0H</p></li>
+</ul>
+<p><strong>Distribution Statement:</strong></p>
+<blockquote>
+<div><p>Data from RAPID MOC monitoring project are made freely available to the public. Continued funding of this project depends on us being able to justify the usefulness of the data to the Natural Environment Research Council. The project scientists would appreciate it if you would use the data DOI (see “citation”) and add the following acknowledgment (see “acknowledgment”) to any publications that use this data.</p>
+</div></blockquote>
+<p><strong>Citation:</strong></p>
+<blockquote>
+<div><p>Moat B.I.; Smeed D.A.; Rayner D.; Johns W.E.; Smith, R.; Volkov, D.; Elipot S.; Petit T.; Kajtar J.; Baringer M. O.; and Collins, J. (2026). Atlantic meridional overturning circulation observed by the RAPID-MOCHA-WBTS (RAPID-Meridional Overturning Circulation and Heatflux Array-Western Boundary Time Series) array at 26N from 2004 to 2024 (v2024.1a), British Oceanographic Data Centre - Natural Environment Research Council, UK. doi: <a class="reference external" href="http://doi.org/10.5285/48d0bf43-0598-ceb2-e063-7086abc062f1">http://doi.org/10.5285/48d0bf43-0598-ceb2-e063-7086abc062f1</a></p>
+</div></blockquote>
+<p><strong>Acknowledgement:</strong></p>
+<blockquote>
+<div><p>Data from the RAPID MOC monitoring project are funded by the Natural Environment Research Council, the National Science Foundation (NSF) with support from NOAA. They are freely available from www.rapid.ac.uk/.</p>
+</div></blockquote>
+</section>
+<section id="id20">
+<h3>Dataset Visualization<a class="headerlink" href="#id20" title="Link to this heading"></a></h3>
+<figure class="align-center" id="id29">
+<a class="reference internal image-reference" href="../_images/meridional_transports_2d_gridded.png"><img alt="AMOC time series plot" height="465" src="../_images/meridional_transports_2d_gridded.png" width="922" />
+</a>
+<figcaption>
+<p><span class="caption-text">Time series plot for MERIDIONAL_TRANSPORTS dataset.</span><a class="headerlink" href="#id29" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id21">
+<h3>Dataset Statistics<a class="headerlink" href="#id21" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Total Variables</strong>: 9</p></li>
+<li><p><strong>Total Coordinates</strong>: 4</p></li>
+<li><p><strong>Dataset Size</strong>: 9.22 MB</p></li>
+</ul>
+</section>
+<section id="id22">
+<h3>Coordinate Information<a class="headerlink" href="#id22" title="Link to this heading"></a></h3>
+<p>The following table shows information about the dataset coordinates in the standardised version, including coordinate name remapping from the original, if any:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Coordinate</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>depth</em> → <strong>DEPTH</strong></p></td>
+<td><p><strong>Depth</strong>:  Depth below surface of the water</p></td>
+<td><p>m</p></td>
+<td><p>(307,)</p></td>
+<td><p>0.00</p></td>
+<td><p>5995.06</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>sigma0</em> → <strong>SIGMA0</strong></p></td>
+<td><p><strong>Sigma0</strong>: Potential density anomaly to 1000 kg/m3, surface reference</p></td>
+<td><p>kg m-3</p></td>
+<td><p>(631,)</p></td>
+<td><p>22.00</p></td>
+<td><p>28.00</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>sigma2</em> → <strong>SIGMA2</strong></p></td>
+<td><p><strong>sigma2</strong>: Potential density anomaly referenced to 2000m (sigma-2), density anomaly to 1000 kg/m3</p></td>
+<td><p>kg m-3</p></td>
+<td><p>(708,)</p></td>
+<td><p>30.00</p></td>
+<td><p>37.15</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>time</em> → <strong>TIME</strong></p></td>
+<td><p><strong>Time</strong>: Time coordinate</p></td>
+<td><p>seconds since 1970-01-01T00:00:00Z</p></td>
+<td><p>(730,)</p></td>
+<td><p>2004-04-06</p></td>
+<td><p>2024-03-22</p></td>
+<td><p>0.0%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id23">
+<h3>Variable Information<a class="headerlink" href="#id23" title="Link to this heading"></a></h3>
+<p>The following table shows the mapping from original variable names to standardized names,
+along with key statistics for each variable.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>frwa_trans</em> → <strong>MFT</strong></p></td>
+<td><p><strong>northward ocean freshwater transport</strong>: Meridional freshwater transport</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(730,)</p></td>
+<td><p>-1.98</p></td>
+<td><p>-0.48</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>heat_trans</em> → <strong>MHT</strong></p></td>
+<td><p><strong>Meridional heat transport</strong>: Northward oceanic heat transport</p></td>
+<td><p>PW</p></td>
+<td><p>(730,)</p></td>
+<td><p>-0.13</p></td>
+<td><p>2.10</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>amoc_depth</em> → <strong>MOC</strong></p></td>
+<td><p><strong>MOC_z</strong>: Atlantic meridional overturning circulation strength in depth coordinates</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(730,)</p></td>
+<td><p>-0.45</p></td>
+<td><p>27.68</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>amoc_sigma0</em> → <strong>MOC_SIGMA0</strong></p></td>
+<td><p><strong>MOC_sigma0</strong>: Atlantic meridional overturning circulation strength in potential density (sigma0) coordinates</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(730,)</p></td>
+<td><p>7.23</p></td>
+<td><p>28.95</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>amoc_sigma2</em> → <strong>MOC_SIGMA2</strong></p></td>
+<td><p><strong>MOC_sigma2</strong>: Atlantic meridional overturning circulation strength in potential density (sigma2) coordinates</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(730,)</p></td>
+<td><p>7.09</p></td>
+<td><p>29.23</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>pressure</em> → <strong>PRESSURE</strong></p></td>
+<td><p><strong>Pressure</strong>: Sea water pressure at depth</p></td>
+<td><p>dbar</p></td>
+<td><p>(307,)</p></td>
+<td><p>0.00</p></td>
+<td><p>6120.00</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>stream_sigma0</em> → <strong>PSI_SIGMA0</strong></p></td>
+<td><p><strong>Streamfunction</strong>: Meridional overturning streamfunction in potential density (sigma0) coordinates</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(730, 631)</p></td>
+<td><p>-10.98</p></td>
+<td><p>28.95</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>stream_sigma2</em> → <strong>PSI_SIGMA2</strong></p></td>
+<td><p><strong>Streamfunction</strong>: Meridional overturning streamfunction in potential density (sigma2) coordinates</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(730, 708)</p></td>
+<td><p>-9.31</p></td>
+<td><p>29.23</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>stream_depth</em> → <strong>PSI_Z</strong></p></td>
+<td><p><strong>Streamfunction</strong>: Meridional overturning streamfunction in depth coordinates</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(730, 307)</p></td>
+<td><p>-8.89</p></td>
+<td><p>27.68</p></td>
+<td><p>0.0%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id24">
+<h3>Metadata (edits applied noted)<a class="headerlink" href="#id24" title="Link to this heading"></a></h3>
+<p>The following metadata describes this dataset:</p>
+<ul class="simple">
+<li><p><strong>Summary</strong>: RAPID 26N transport estimates dataset</p></li>
+<li><p><strong>Description*</strong>: RAPID 26N transport estimates dataset</p></li>
+<li><p><strong>Program*</strong>: RAPID</p></li>
+<li><p><strong>Project*</strong>: RAPID-AMOC 26°N array</p></li>
+<li><p><strong>License*</strong>: UK Open Government Licence v3.0 <a class="reference external" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/</a></p></li>
+<li><p><strong>Acknowledgment*</strong>: Data from the RAPID MOC monitoring project are funded by the Natural Environment Research Council, the National Science Foundation (NSF) with support from NOAA. They are freely available from www.rapid.ac.uk/.</p></li>
+<li><p><strong>Doi*</strong>: <a class="reference external" href="https://doi.org/10.5285/48d0bf43-0598-ceb2-e063-7086abc062f1">https://doi.org/10.5285/48d0bf43-0598-ceb2-e063-7086abc062f1</a></p></li>
+<li><p><strong>Weblink*</strong>: <a class="reference external" href="https://rapid.ac.uk/rapidmoc">https://rapid.ac.uk/rapidmoc</a></p></li>
+<li><p><strong>Distribution Statement*</strong>: Data from RAPID MOC monitoring project are made freely available to the public. Continued funding of this project depends on us being able to justify the usefulness of the data to the Natural Environment Research Council. The project scientists would appreciate it if you would use the data DOI (see “citation”) and add the following acknowledgment (see “acknowledgment”) to any publications that use this data.</p></li>
+<li><p><strong>Platform</strong>: mooring</p></li>
+<li><p><strong>Platform Vocabulary</strong>: <a class="reference external" href="https://vocab.nerc.ac.uk/collection/L06/">https://vocab.nerc.ac.uk/collection/L06/</a></p></li>
+<li><p><strong>Data Product*</strong>: RAPID meridional transport data</p></li>
+<li><p><strong>Time Coverage Start</strong>: 2004-04-06</p></li>
+<li><p><strong>Time Coverage End</strong>: 2024-03-22</p></li>
+<li><p><strong>Contributing Institutions</strong>: National Oceanography Centre (Southampton)</p></li>
+<li><p><strong>Contributing Institutions Vocabulary</strong>: <a class="reference external" href="https://edmo.seadatanet.org/report/17">https://edmo.seadatanet.org/report/17</a></p></li>
+<li><p><strong>Contributing Institutions Role</strong>:</p></li>
+<li><p><strong>Conventions*</strong>: CF-1.8, ACDD-1.3, OceanSITES-1.5</p></li>
+<li><p><strong>featureType*</strong>: timeSeriesProfile</p></li>
+<li><p><strong>featureType_vocabulary</strong>: <a class="reference external" href="https://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_features_and_feature_types">https://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_features_and_feature_types</a></p></li>
+<li><p><strong>Source File*</strong>: meridional_transports.nc</p></li>
+<li><p><strong>Source Path*</strong>: ~/.amocatlas_data/meridional_transports.nc</p></li>
+<li><p><strong>Date Created*</strong>: 17-Sep-2024</p></li>
+<li><p><strong>Date Modified</strong>: 2026-08-01T00:00:00Z</p></li>
+<li><p><strong>Processing Software</strong>: <a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">http://github.com/AMOCcommunity/amocatlas</a></p></li>
+<li><p><strong>Processing Version</strong>: v0.4.0</p></li>
+<li><p><strong>Processing Datasource*</strong>: rapid26n</p></li>
+<li><p><strong>Product Version*</strong>: 2024.1a</p></li>
+<li><p><strong>Applied Variable Mapping</strong>: [Complex metadata structure - 18 items]</p></li>
+<li><p><strong>Dataset Version</strong>: v2024-1a</p></li>
+<li><p><strong>Dataset Creation Date</strong>: 26-Jan-2026 14:06:26</p></li>
+<li><p><strong>File Creation Date</strong>: 2026-01-26</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Data Sources" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="osnap_report.html" class="btn btn-neutral float-right" title="OSNAP Datasets" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Eleanor Frajka-Williams, Isabelle Schmitz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

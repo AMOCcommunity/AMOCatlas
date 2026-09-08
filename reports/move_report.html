@@ -1,0 +1,902 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MOVE Datasets &mdash; amocatlas 0.4.0.post1.dev10 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=1078e4cb" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=6d4c28d6"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="SAMBA Datasets" href="samba_report.html" />
+    <link rel="prev" title="OSNAP Datasets" href="osnap_report.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            amocatlas
+              <img src="../_static/logo.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ / Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Demo notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../demo-output.html">AMOCatlas demo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dataset Reports</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Data Sources</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="rapid_report.html">RAPID Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="osnap_report.html">OSNAP Datasets</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">MOVE Datasets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#os-move-20000206-20221014-dpr-volumetransport-nc">OS_MOVE_20000206-20221014_DPR_VOLUMETRANSPORT.nc</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dataset-overview">Dataset Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dataset-visualization">Dataset Visualization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dataset-statistics">Dataset Statistics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#coordinate-information">Coordinate Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#variable-information">Variable Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#metadata-edits-applied-noted">Metadata (edits applied noted)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#os-move-20000101-20221021-grd-currents-at-sites-move3-move4-nc">OS_MOVE_20000101-20221021_GRD_CURRENTS-AT-SITES-MOVE3-MOVE4.nc</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Dataset Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Dataset Visualization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Dataset Statistics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Coordinate Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Variable Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Metadata (edits applied noted)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#os-move-20000101-20221018-grd-temperature-salinity-at-sites-move1-move3-nc">OS_MOVE_20000101-20221018_GRD_TEMPERATURE-SALINITY-AT-SITES-MOVE1-MOVE3.nc</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id7">Dataset Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">Dataset Visualization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">Dataset Statistics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">Coordinate Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">Variable Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">Metadata (edits applied noted)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="samba_report.html">SAMBA Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mocha_report.html">MOCHA Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arcticgateway_report.html">ARCTICGATEWAY Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dso_report.html">DSO Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fbc_report.html">FBC Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fw2015_report.html">FW2015 Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calafat2025_report.html">CALAFAT2025 Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zheng2024_report.html">ZHENG2024 Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wh41n_report.html">WH41N Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="noac47n_report.html">NOAC47N Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nac_report.html">NAC Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sf2021_report.html">SF2021 Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lebras35n_report.html">LEBRAS35N Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="axmoc22s_report.html">AXMOC22S Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="axmoc34s_report.html">AXMOC34S Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovide_report.html">OVIDE Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scotia_report.html">SCOTIA Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#report-features">Report Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#automated-generation">Automated Generation</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/format.html">AMOCatlas data format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/vocabulary.html">amocvocab — variable vocabulary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../amoc_paperfigs-output.html">AMOC Publication Figures</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Repository and API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">GitHub Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../amocatlas.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">amocatlas</span> <span class="pre">API</span></code></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers' guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developers/developer_guide.html">Developer Guide for AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/git_beginners_guide.html">Git for Beginners: Workflow Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/actions.html">Extra GitHub features: Actions &amp; Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/housekeeping.html">Project Maintenance Checklist</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">amocatlas</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Data Sources</a></li>
+      <li class="breadcrumb-item active">MOVE Datasets</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/reports/move_report.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="move-datasets">
+<h1>MOVE Datasets<a class="headerlink" href="#move-datasets" title="Link to this heading"></a></h1>
+<p>This report covers all available MOVE datasets.</p>
+<section id="os-move-20000206-20221014-dpr-volumetransport-nc">
+<h2>OS_MOVE_20000206-20221014_DPR_VOLUMETRANSPORT.nc<a class="headerlink" href="#os-move-20000206-20221014-dpr-volumetransport-nc" title="Link to this heading"></a></h2>
+<section id="dataset-overview">
+<h3>Dataset Overview<a class="headerlink" href="#dataset-overview" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Project</strong>: Meridional Overturning Variability Experiment (MOVE)</p></li>
+<li><p><strong>Description</strong>: MOVE transport estimates dataset from UCSD mooring project</p></li>
+<li><p><strong>Source File</strong>: OS_MOVE_20000206-20221014_DPR_VOLUMETRANSPORT.nc</p></li>
+<li><p><strong>Data Product</strong>: MOVE transport time series (2000-2022)</p></li>
+<li><p><strong>License</strong>: CC-BY-4.0</p></li>
+<li><p><strong>Date Created</strong>: 2025-04-23T01:35:26Z</p></li>
+<li><p><strong>Time Coverage</strong>: 2000-02-06 to 2022-10-14</p></li>
+<li><p><strong>Record Length</strong>: 4,144 observations (22.7 years)</p></li>
+<li><p><strong>Sampling Frequency</strong>: 48.0H</p></li>
+</ul>
+<p><strong>Citation:</strong></p>
+<blockquote>
+<div><p>Send, U., Lankhorst, M., Kanzow, T.: Observation of decadal change in the Atlantic Meridional Overturning Circulation using 10 years of continuous transport data. Geophysical Research Letters, Vol. 38, L24606, 2011. doi: <a class="reference external" href="http://doi.org/10.1029/2011GL049801">http://doi.org/10.1029/2011GL049801</a>. M. Lankhorst and U. Send: “Ocean Volume Transport across the MOVE Line at 16 N”. OceanSITES dataset. NOAA NDBC and Ifremer, 2025. Available online from e.g.: <a class="reference external" href="https://dods.ndbc.noaa.gov/thredds/catalog/oceansites/DATA_GRIDDED/MOVE/catalog.html">https://dods.ndbc.noaa.gov/thredds/catalog/oceansites/DATA_GRIDDED/MOVE/catalog.html</a></p>
+</div></blockquote>
+<p><strong>Acknowledgement:</strong></p>
+<blockquote>
+<div><p>MOVE was supported by the U.S. NOAA’s Global Ocean Monitoring and Observing (GOMO) program under award NA20OAR4320278 and earlier awards. Initially, MOVE was funded by the German BMBF.</p>
+</div></blockquote>
+</section>
+<section id="dataset-visualization">
+<h3>Dataset Visualization<a class="headerlink" href="#dataset-visualization" title="Link to this heading"></a></h3>
+<figure class="align-center" id="id13">
+<a class="reference internal image-reference" href="../_images/os_move_20000206-20221014_dpr_volumetransport_timeseries.png"><img alt="AMOC time series plot" height="344" src="../_images/os_move_20000206-20221014_dpr_volumetransport_timeseries.png" width="946" />
+</a>
+<figcaption>
+<p><span class="caption-text">Time series plot for OS_MOVE_20000206-20221014_DPR_VOLUMETRANSPORT dataset.</span><a class="headerlink" href="#id13" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="dataset-statistics">
+<h3>Dataset Statistics<a class="headerlink" href="#dataset-statistics" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Total Variables</strong>: 8</p></li>
+<li><p><strong>Total Coordinates</strong>: 4</p></li>
+<li><p><strong>Dataset Size</strong>: 0.16 MB</p></li>
+</ul>
+</section>
+<section id="coordinate-information">
+<h3>Coordinate Information<a class="headerlink" href="#coordinate-information" title="Link to this heading"></a></h3>
+<p>The following table shows information about the dataset coordinates in the standardised version, including coordinate name remapping from the original, if any:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Coordinate</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>location_center_latitude</em> → <strong>LATITUDE</strong></p></td>
+<td><p><strong>Latitude</strong>: Latitude north (WGS84)</p></td>
+<td><p>degree_north</p></td>
+<td><p>()</p></td>
+<td><p>16.04</p></td>
+<td><p>16.04</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>location_center_longitude</em> → <strong>LONGITUDE</strong></p></td>
+<td><p><strong>Longitude</strong>: Longitude east (WGS84)</p></td>
+<td><p>degree_east</p></td>
+<td><p>()</p></td>
+<td><p>-57.56</p></td>
+<td><p>-57.56</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>location_center_vertical</em> → <strong>PRESSURE</strong></p></td>
+<td><p>No description available</p></td>
+<td><p>dbar</p></td>
+<td><p>()</p></td>
+<td><p>2750.00</p></td>
+<td><p>2750.00</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>TIME</strong></p></td>
+<td><p>Time</p></td>
+<td><p>seconds since 1970-01-01T00:00:00Z</p></td>
+<td><p>(4164,)</p></td>
+<td><p>NaT</p></td>
+<td><p>NaT</p></td>
+<td><p>0.0%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="variable-information">
+<h3>Variable Information<a class="headerlink" href="#variable-information" title="Link to this heading"></a></h3>
+<p>The following table shows the mapping from original variable names to standardized names,
+along with key statistics for each variable.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>TRANSPORT_TOTAL</em> → <strong>MOC</strong></p></td>
+<td><p><strong>MOC_z</strong>: Ocean volume transport across the MOVE line</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(4164,)</p></td>
+<td><p>-31.86</p></td>
+<td><p>-3.34</p></td>
+<td><p>4.3%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>transport_component_boundary</em> → <strong>MOC_BOUNDARY</strong></p></td>
+<td><p><strong>Boundary transport</strong>: Boundary component of ocean volume transport across the MOVE line</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(4164,)</p></td>
+<td><p>-10.98</p></td>
+<td><p>7.42</p></td>
+<td><p>1.6%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>transport_component_internal</em> → <strong>MOC_INTERNAL</strong></p></td>
+<td><p><strong>Internal transport</strong>: Internal component of ocean volume transport across the MOVE line</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(4164,)</p></td>
+<td><p>-35.46</p></td>
+<td><p>-3.76</p></td>
+<td><p>4.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>transport_component_internal_offset</em> → <strong>MOC_INTERNAL_OFFSET</strong></p></td>
+<td><p><strong>Transport offset</strong>: Offset to be added to internal component of ocean volume transport across the MOVE line</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(4164,)</p></td>
+<td><p>5.78</p></td>
+<td><p>5.78</p></td>
+<td><p>2.3%</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>location_geometry</strong></p></td>
+<td><p>No description available</p></td>
+<td><p>unknown</p></td>
+<td><p>()</p></td>
+<td><p>0.00</p></td>
+<td><p>0.00</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>location_vertices_latitude</strong></p></td>
+<td><p><strong>Latitude of location vertices</strong>: Latitude of location vertices for transport estimates across the MOVE line</p></td>
+<td><p>degrees_north</p></td>
+<td><p>(6,)</p></td>
+<td><p>15.45</p></td>
+<td><p>16.33</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>location_vertices_longitude</strong></p></td>
+<td><p><strong>Longitude of location vertices</strong>: Longitude of location vertices for transport estimates across the MOVE line</p></td>
+<td><p>degrees_east</p></td>
+<td><p>(6,)</p></td>
+<td><p>-60.72</p></td>
+<td><p>-51.51</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>location_vertices_vertical</strong></p></td>
+<td><p><strong>Vertical coordinate of location vertices</strong>: Vertical coordinate of location vertices for transport estimates across the MOVE line</p></td>
+<td><p>dbar</p></td>
+<td><p>(6,)</p></td>
+<td><p>1200.00</p></td>
+<td><p>4950.00</p></td>
+<td><p>0.0%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="metadata-edits-applied-noted">
+<h3>Metadata (edits applied noted)<a class="headerlink" href="#metadata-edits-applied-noted" title="Link to this heading"></a></h3>
+<p>The following metadata describes this dataset:</p>
+<ul class="simple">
+<li><p><strong>Title</strong>: Ocean Volume Transport across the MOVE Line at 16 N</p></li>
+<li><p><strong>Summary</strong>: The Meridional Overturning Variability Experiment (MOVE) has been making mooring observations in the tropical Atlantic since 2000. Here, the derived ocean volume transports across the array are given. These represent the deep flow across the line spanned by the MOVE mooring array, approximately at 16 N from Guadeloupe island in the west to Researcher Ridge (part of the Mid-Atlantic Ridge) in the east and covering the vertical range defined by pressures of 1200-4950 dbar. The strength of this flow is thought to represent the Atlantic Meridional Overturning Circulation (AMOC). Results here are computed from gridded temperature, salinity, and velocity observations that are available separately through the OceanSITES data system. Earlier versions of the data have been discussed by Kanzow et al. (Deep-Sea Research I, 2006) as well as Send et al. (Geophys. Res. Letters, 2011), both linked in the ‘references’.</p></li>
+<li><p><strong>Description*</strong>: MOVE transport estimates dataset from UCSD mooring project</p></li>
+<li><p><strong>Program*</strong>: MOVE</p></li>
+<li><p><strong>Project</strong>: Meridional Overturning Variability Experiment (MOVE)</p></li>
+<li><p><strong>Source</strong>: Derived using the following files: OceanSITES file OS_MOVE_20000101-20221018_GRD_TEMPERATURE-SALINITY-AT-SITES-MOVE1-MOVE3.nc, created 20230112T194648Z OceanSITES file OS_MOVE_20000101-20221021_GRD_CURRENTS-AT-SITES-MOVE3-MOVE4.nc, created 20230112T233946Z</p></li>
+<li><p><strong>License</strong>: CC-BY-4.0</p></li>
+<li><p><strong>Acknowledgment</strong>: MOVE was supported by the U.S. NOAA’s Global Ocean Monitoring and Observing (GOMO) program under award NA20OAR4320278 and earlier awards. Initially, MOVE was funded by the German BMBF.</p></li>
+<li><p><strong>References</strong>: <a class="reference external" href="https://doi.org/10.1016/j.dsr.2005.12.007">https://doi.org/10.1016/j.dsr.2005.12.007</a>, <a class="reference external" href="https://doi.org/10.1029/2011GL049801">https://doi.org/10.1029/2011GL049801</a>, <a class="reference external" href="https://dods.ndbc.noaa.gov/thredds/catalog/oceansites/DATA_GRIDDED/MOVE/catalog.html">https://dods.ndbc.noaa.gov/thredds/catalog/oceansites/DATA_GRIDDED/MOVE/catalog.html</a></p></li>
+<li><p><strong>Weblink*</strong>: <a class="reference external" href="https://mooring.ucsd.edu/move/">https://mooring.ucsd.edu/move/</a></p></li>
+<li><p><strong>Platform</strong>: mooring</p></li>
+<li><p><strong>Platform Vocabulary</strong>: <a class="reference external" href="https://vocab.nerc.ac.uk/collection/L06/">https://vocab.nerc.ac.uk/collection/L06/</a></p></li>
+<li><p><strong>Data Product*</strong>: MOVE transport time series (2000-2022)</p></li>
+<li><p><strong>Time Coverage Start*</strong>: 2000-02-06</p></li>
+<li><p><strong>Time Coverage End*</strong>: 2022-10-14</p></li>
+<li><p><strong>Contributor Name</strong>: Matthias Lankhorst, Uwe Send</p></li>
+<li><p><strong>Contributor Role</strong>: originator, Principal Investigator</p></li>
+<li><p><strong>Contributor Role Vocabulary</strong>: <a class="reference external" href="https://vocab.nerc.ac.uk/collection/G04/current/">https://vocab.nerc.ac.uk/collection/G04/current/</a></p></li>
+<li><p><strong>Contributor Email</strong>: ,</p></li>
+<li><p><strong>Contributor Id</strong>: <a class="reference external" href="https://orcid.org/0000-0002-4166-4044">https://orcid.org/0000-0002-4166-4044</a>, <a class="reference external" href="https://orcid.org/0000-0002-7682-5688">https://orcid.org/0000-0002-7682-5688</a></p></li>
+<li><p><strong>Contributing Institutions</strong>: Scripps Institution of Oceanography</p></li>
+<li><p><strong>Contributing Institutions Vocabulary</strong>: <a class="reference external" href="https://edmo.seadatanet.org/report/1390">https://edmo.seadatanet.org/report/1390</a></p></li>
+<li><p><strong>Contributing Institutions Role</strong>:</p></li>
+<li><p><strong>Conventions</strong>: CF-1.7, ACDD-1.3, OceanSITES-1.5</p></li>
+<li><p><strong>featureType</strong>: timeSeries</p></li>
+<li><p><strong>featureType_vocabulary</strong>: <a class="reference external" href="https://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_features_and_feature_types">https://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_features_and_feature_types</a></p></li>
+<li><p><strong>Source File*</strong>: OS_MOVE_20000206-20221014_DPR_VOLUMETRANSPORT.nc</p></li>
+<li><p><strong>Source Path*</strong>: ~/.amocatlas_data/OS_MOVE_20000206-20221014_DPR_VOLUMETRANSPORT.nc</p></li>
+<li><p><strong>Date Created</strong>: 2025-04-23T01:35:26Z</p></li>
+<li><p><strong>Date Modified</strong>: 2026-08-01T00:00:00Z</p></li>
+<li><p><strong>Processing Software</strong>: <a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">http://github.com/AMOCcommunity/amocatlas</a></p></li>
+<li><p><strong>Processing Version</strong>: v0.4.0</p></li>
+<li><p><strong>Processing Datasource*</strong>: move16n</p></li>
+<li><p><strong>Applied Variable Mapping</strong>: [Complex metadata structure - 7 items]</p></li>
+<li><p><strong>Comment</strong>: The primary scientific data here have variable names in CAPITAL LETTERS; ancillary data are given in lower-case.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="os-move-20000101-20221021-grd-currents-at-sites-move3-move4-nc">
+<h2>OS_MOVE_20000101-20221021_GRD_CURRENTS-AT-SITES-MOVE3-MOVE4.nc<a class="headerlink" href="#os-move-20000101-20221021-grd-currents-at-sites-move3-move4-nc" title="Link to this heading"></a></h2>
+<section id="id1">
+<h3>Dataset Overview<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Project</strong>: Meridional Overturning Variability Experiment (MOVE)</p></li>
+<li><p><strong>Description</strong>: MOVE transport estimates dataset from UCSD mooring project</p></li>
+<li><p><strong>Source File</strong>: OS_MOVE_20000101-20221021_GRD_CURRENTS-AT-SITES-MOVE3-MOVE4.nc</p></li>
+<li><p><strong>Data Product</strong>: MOVE gridded currents at sites MOVE3-MOVE4</p></li>
+<li><p><strong>License</strong>: CC-BY-4.0</p></li>
+<li><p><strong>Date Created</strong>: 20230112T233946Z</p></li>
+<li><p><strong>Time Coverage</strong>: 2000-01-01 to 2022-10-21</p></li>
+<li><p><strong>Record Length</strong>: 8,330 observations (22.8 years)</p></li>
+<li><p><strong>Sampling Frequency</strong>: daily</p></li>
+</ul>
+<p><strong>Citation:</strong></p>
+<blockquote>
+<div><p>Send, U., Lankhorst, M., Kanzow, T.: Observation of decadal change in the Atlantic Meridional Overturning Circulation using 10 years of continuous transport data. Geophysical Research Letters, Vol. 38, L24606, 2011. doi: <a class="reference external" href="http://doi.org/10.1029/2011GL049801">http://doi.org/10.1029/2011GL049801</a>. M. Lankhorst and U. Send: “Ocean Volume Transport across the MOVE Line at 16 N”. OceanSITES dataset. NOAA NDBC and Ifremer, 2025. Available online from e.g.: <a class="reference external" href="https://dods.ndbc.noaa.gov/thredds/catalog/oceansites/DATA_GRIDDED/MOVE/catalog.html">https://dods.ndbc.noaa.gov/thredds/catalog/oceansites/DATA_GRIDDED/MOVE/catalog.html</a></p>
+</div></blockquote>
+<p><strong>Acknowledgement:</strong></p>
+<blockquote>
+<div><p>MOVE was supported by the U.S. NOAA’s Global Ocean Monitoring and Observing (GOMO) program under award NA20OAR4320278 and earlier awards. Initially, MOVE was funded by the German BMBF.</p>
+</div></blockquote>
+</section>
+<section id="id2">
+<h3>Dataset Visualization<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<figure class="align-center" id="id14">
+<a class="reference internal image-reference" href="../_images/os_move_20000101-20221021_grd_currents-at-sites-move3-move4_2d_gridded.png"><img alt="AMOC time series plot" height="465" src="../_images/os_move_20000101-20221021_grd_currents-at-sites-move3-move4_2d_gridded.png" width="1089" />
+</a>
+<figcaption>
+<p><span class="caption-text">Time series plot for OS_MOVE_20000101-20221021_GRD_CURRENTS-AT-SITES-MOVE3-MOVE4 dataset.</span><a class="headerlink" href="#id14" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id3">
+<h3>Dataset Statistics<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Total Variables</strong>: 6</p></li>
+<li><p><strong>Total Coordinates</strong>: 4</p></li>
+<li><p><strong>Dataset Size</strong>: 10.99 MB</p></li>
+</ul>
+</section>
+<section id="id4">
+<h3>Coordinate Information<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p>The following table shows information about the dataset coordinates in the standardised version, including coordinate name remapping from the original, if any:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Coordinate</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>LATITUDE</strong></p></td>
+<td><p><strong>Latitude</strong>: Latitude north (WGS84)</p></td>
+<td><p>degree_north</p></td>
+<td><p>(2,)</p></td>
+<td><p>16.33</p></td>
+<td><p>16.34</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>LONGITUDE</strong></p></td>
+<td><p><strong>Longitude</strong>: Longitude east (WGS84)</p></td>
+<td><p>degree_east</p></td>
+<td><p>(2,)</p></td>
+<td><p>-60.61</p></td>
+<td><p>-60.51</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>PRESSURE</strong></p></td>
+<td><p>Sea water pressure due to sea water, i.e. air pressure removed</p></td>
+<td><p>dbar</p></td>
+<td><p>(38,)</p></td>
+<td><p>1250.00</p></td>
+<td><p>4950.00</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>TIME</strong></p></td>
+<td><p>Time</p></td>
+<td><p>seconds since 1970-01-01T00:00:00Z</p></td>
+<td><p>(8330,)</p></td>
+<td><p>2000-01-01</p></td>
+<td><p>2022-10-21</p></td>
+<td><p>0.0%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id5">
+<h3>Variable Information<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<p>The following table shows the mapping from original variable names to standardized names,
+along with key statistics for each variable.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>instrument_depth_time_varying</em> → <strong>DEPTH</strong></p></td>
+<td><p><strong>Depth</strong>: Depth of velocity measurements at MOVE sites MOVE3-MOVE4</p></td>
+<td><p>m</p></td>
+<td><p>(2, 8330, 8)</p></td>
+<td><p>160.17</p></td>
+<td><p>4970.03</p></td>
+<td><p>1.2%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>latitude_time_varying</em> → <strong>LATITUDE_VARYING</strong></p></td>
+<td><p><strong>Latitude</strong>: Latitude of site, including differences between deployments</p></td>
+<td><p>degree_north</p></td>
+<td><p>(2, 8330)</p></td>
+<td><p>16.33</p></td>
+<td><p>16.36</p></td>
+<td><p>1.1%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>longitude_time_varying</em> → <strong>LONGITUDE_VARYING</strong></p></td>
+<td><p><strong>Longitude</strong>: Longitude of site, including differences between deployments</p></td>
+<td><p>degree_east</p></td>
+<td><p>(2, 8330)</p></td>
+<td><p>-60.61</p></td>
+<td><p>-60.49</p></td>
+<td><p>1.1%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>VELOCITY_U</em> → <strong>UCUR</strong></p></td>
+<td><p><strong>Zonal velocity</strong>: Zonal velocity at MOVE sites MOVE3-MOVE4</p></td>
+<td><p>m s-1</p></td>
+<td><p>(2, 8330, 38)</p></td>
+<td><p>-0.31</p></td>
+<td><p>0.41</p></td>
+<td><p>1.2%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>VELOCITY_V</em> → <strong>VCUR</strong></p></td>
+<td><p><strong>Meridional velocity</strong>: Meridional velocity at MOVE sites MOVE3-MOVE4</p></td>
+<td><p>m s-1</p></td>
+<td><p>(2, 8330, 38)</p></td>
+<td><p>-0.56</p></td>
+<td><p>0.35</p></td>
+<td><p>1.2%</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>platform_name</strong></p></td>
+<td><p>Official OceanSITES platform names</p></td>
+<td><p>unknown</p></td>
+<td><p>(5, 2)</p></td>
+<td><p>N/A</p></td>
+<td><p>N/A</p></td>
+<td><p>0.0%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id6">
+<h3>Metadata (edits applied noted)<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<p>The following metadata describes this dataset:</p>
+<ul class="simple">
+<li><p><strong>Title</strong>: Gridded Velocity Data from the MOVE Moorings</p></li>
+<li><p><strong>Summary</strong>: The Meridional Overturning Variability Experiment (MOVE) has been making mooring observations in the tropical Atlantic since 2000. Here, the direct velocity observations from a subset of these moorings are presented on an easy-to-use grid in space and time. The underlying data at the original resolution in time, deployment-by-deployment, are available in separate files with more detailed and deployment-specific metadata.</p></li>
+<li><p><strong>Description*</strong>: MOVE transport estimates dataset from UCSD mooring project</p></li>
+<li><p><strong>Program*</strong>: MOVE</p></li>
+<li><p><strong>Project</strong>: Meridional Overturning Variability Experiment (MOVE)</p></li>
+<li><p><strong>Source</strong>: Uses OceanSITES file: id=OS_MOVE4_01_D_CURRENTMETER date_update=2011-11-29T01:12:35Z Uses OceanSITES file: id=OS_MOVE3_01_D_CURRENTMETERPART01 date_update=2011-11-29T01:12:35Z Uses OceanSITES file: id=OS_MOVE3_01_D_CURRENTMETERPART02 date_update=2011-11-29T01:12:35Z Uses OceanSITES file: id=OS_MOVE4_02_D_CURRENTMETER date_update=2011-11-29T01:12:35Z Uses OceanSITES file: id=OS_MOVE3_02_D_CURRENTMETERPART01 date_update=2011-11-29T01:12:35Z Uses OceanSITES file: id=OS_MOVE3_02_D_CURRENTMETERPART02 date_update=2011-11-29T01:12:35Z Uses OceanSITES file: id=OS_MOVE4_03_D_CURRENTMETER date_update=2011-11-29T01:12:35Z Uses OceanSITES file: id=OS_MOVE3_03_D_CURRENTMETERPART01 date_update=2011-11-29T01:12:35Z Uses OceanSITES file: id=OS_MOVE3_03_D_CURRENTMETERPART02 date_update=2011-11-29T01:12:35Z Uses OceanSITES file: id=OS_MOVE3_04_D_CURRENTMETER date_update=2011-11-29T01:12:35Z Uses OceanSITES file: id=OS_MOVE4_04_D_CURRENTMETERPART01 date_update=2011-11-29T01:12:35Z Uses OceanSITES file: id=OS_MOVE4_04_D_CURRENTMETERPART02 date_update=2011-11-29T01:12:35Z Uses OceanSITES file: id=OS_MOVE4_05_D_CURRENTMETER date_update=2011-11-29T01:12:35Z Uses OceanSITES file: id=OS_MOVE3_05_D_CURRENTMETER date_update=2011-11-29T01:12:35Z Uses OceanSITES file: id=OS_MOVE4_06_D_CURRENTMETER date_update=2011-11-29T01:12:35Z Uses OceanSITES file: id=OS_MOVE3_06_D_CURRENTMETER date_update=2011-11-29T01:12:35Z Uses OceanSITES file: id=OS_MOVE4_07_D_CURRENTMETER date_update=2011-11-29T01:12:35Z Uses OceanSITES file: id=OS_MOVE3_07_D_CURRENTMETER date_update=2011-11-29T01:12:35Z Uses OceanSITES file: id=OS_MOVE4_08_D_CURRENTMETER date_update=2011-11-18T21:29:04Z Uses OceanSITES file: id=OS_MOVE3_08_D_CURRENTMETER date_update=2011-11-18T19:51:53Z Uses OceanSITES file: id=OS_MOVE4_09_D_CURRENTMETER date_update=2011-11-18T19:28:46Z Uses OceanSITES file: id=OS_MOVE3_09_D_CURRENTMETER date_update=2011-11-18T19:16:20Z Uses OceanSITES file: id=OS_MOVE4_10_D_CURRENTMETER date_update=2013-05-03T17:38:24Z Uses OceanSITES file: id=OS_MOVE3_10_D_CURRENTMETER date_update=2013-05-03T17:35:33Z Uses OceanSITES file: id=OS_MOVE4_11_D_CURRENTMETER date_created=2016-03-11T18:39:32Z Uses OceanSITES file: id=OS_MOVE3_11_D_CURRENTMETER date_created=2016-03-11T18:29:29Z Uses OceanSITES file: id=OS_MOVE4_12_R_CURRENTMETER date_created=2018-06-20T01:58:35Z Uses OceanSITES file: id=OS_MOVE3_12_D_CURRENTMETER date_created=2018-06-20T01:22:09Z Uses OceanSITES file: id=OS_MOVE4_13_D_CURRENTMETER date_created=2021-01-26T22:12:45Z Uses OceanSITES file: id=OS_MOVE3_13_D_CURRENTMETER date_created=2021-01-26T21:57:22Z Uses OceanSITES file: id=OS_MOVE4_14_D_CURRENTMETER date_created=2023-01-12T23:23:40Z Uses OceanSITES file: id=OS_MOVE3_14_D_CURRENTMETER date_created=2023-01-12T20:16:58Z</p></li>
+<li><p><strong>Id</strong>: OS_MOVE_20000101-20221021_GRD_CURRENTS-AT-SITES-MOVE3-MOVE4</p></li>
+<li><p><strong>Naming Authority</strong>: OceanSITES</p></li>
+<li><p><strong>License</strong>: CC-BY-4.0</p></li>
+<li><p><strong>Acknowledgment</strong>: MOVE was supported by the U.S. NOAA’s Global Ocean Monitoring and Observing (GOMO) program under award NA20OAR4320278 and earlier awards. Initially, MOVE was funded by the German BMBF.</p></li>
+<li><p><strong>References</strong>: <a class="reference external" href="https://doi.org/10.1016/j.dsr.2005.12.007">https://doi.org/10.1016/j.dsr.2005.12.007</a>, <a class="reference external" href="https://doi.org/10.1029/2011GL049801">https://doi.org/10.1029/2011GL049801</a>, <a class="reference external" href="https://dods.ndbc.noaa.gov/thredds/catalog/oceansites/DATA_GRIDDED/MOVE/catalog.html">https://dods.ndbc.noaa.gov/thredds/catalog/oceansites/DATA_GRIDDED/MOVE/catalog.html</a></p></li>
+<li><p><strong>Weblink*</strong>: <a class="reference external" href="https://mooring.ucsd.edu/move/">https://mooring.ucsd.edu/move/</a></p></li>
+<li><p><strong>Platform</strong>: mooring</p></li>
+<li><p><strong>Platform Vocabulary</strong>: <a class="reference external" href="https://vocab.nerc.ac.uk/collection/L06/">https://vocab.nerc.ac.uk/collection/L06/</a></p></li>
+<li><p><strong>Data Product*</strong>: MOVE gridded currents at sites MOVE3-MOVE4</p></li>
+<li><p><strong>Time Coverage Start</strong>: 2000-01-01</p></li>
+<li><p><strong>Time Coverage End</strong>: 2022-10-21</p></li>
+<li><p><strong>Geospatial Lat Min</strong>: 16.330833435058594</p></li>
+<li><p><strong>Geospatial Lat Max</strong>: 16.362333333333336</p></li>
+<li><p><strong>Geospatial Lon Min</strong>: -60.61249923706055</p></li>
+<li><p><strong>Geospatial Lon Max</strong>: -60.494327545166016</p></li>
+<li><p><strong>Geospatial Vertical Min</strong>: 1250.0</p></li>
+<li><p><strong>Geospatial Vertical Max</strong>: 4950.0</p></li>
+<li><p><strong>Contributor Name</strong>: Matthias Lankhorst, Uwe Send</p></li>
+<li><p><strong>Contributor Role</strong>: originator, Principal Investigator</p></li>
+<li><p><strong>Contributor Role Vocabulary</strong>: <a class="reference external" href="https://vocab.nerc.ac.uk/collection/G04/current/">https://vocab.nerc.ac.uk/collection/G04/current/</a></p></li>
+<li><p><strong>Contributor Email</strong>: ,</p></li>
+<li><p><strong>Contributor Id</strong>: <a class="reference external" href="https://orcid.org/0000-0002-4166-4044">https://orcid.org/0000-0002-4166-4044</a>, <a class="reference external" href="https://orcid.org/0000-0002-7682-5688">https://orcid.org/0000-0002-7682-5688</a></p></li>
+<li><p><strong>Contributing Institutions</strong>: Scripps Institution of Oceanography</p></li>
+<li><p><strong>Contributing Institutions Vocabulary</strong>: <a class="reference external" href="https://edmo.seadatanet.org/report/1390">https://edmo.seadatanet.org/report/1390</a></p></li>
+<li><p><strong>Contributing Institutions Role</strong>:</p></li>
+<li><p><strong>Conventions</strong>: CF-1.7, ACDD-1.3, OceanSITES-1.5</p></li>
+<li><p><strong>featureType</strong>: timeSeriesProfile</p></li>
+<li><p><strong>featureType_vocabulary</strong>: <a class="reference external" href="https://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_features_and_feature_types">https://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_features_and_feature_types</a></p></li>
+<li><p><strong>Data Type</strong>: OceanSITES time-series data</p></li>
+<li><p><strong>Source File*</strong>: OS_MOVE_20000101-20221021_GRD_CURRENTS-AT-SITES-MOVE3-MOVE4.nc</p></li>
+<li><p><strong>Source Path*</strong>: ~/.amocatlas_data/OS_MOVE_20000101-20221021_GRD_CURRENTS-AT-SITES-MOVE3-MOVE4.nc</p></li>
+<li><p><strong>Date Created</strong>: 20230112T233946Z</p></li>
+<li><p><strong>Date Modified</strong>: 2026-08-01T00:00:00Z</p></li>
+<li><p><strong>Processing Software</strong>: <a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">http://github.com/AMOCcommunity/amocatlas</a></p></li>
+<li><p><strong>Processing Version</strong>: v0.4.0</p></li>
+<li><p><strong>Processing Datasource*</strong>: move16n</p></li>
+<li><p><strong>Format Version</strong>: 1.5</p></li>
+<li><p><strong>Applied Variable Mapping</strong>: {‘VELOCITY_U’: ‘UCUR’, ‘VELOCITY_V’: ‘VCUR’, ‘instrument_depth_time_varying’: ‘DEPTH’, ‘latitude_time_varying’: ‘LATITUDE_VARYING’, ‘longitude_time_varying’: ‘LONGITUDE_VARYING’}</p></li>
+<li><p><strong>Update Interval</strong>: void</p></li>
+<li><p><strong>Comment</strong>: The primary scientific data here have variable names in CAPITAL LETTERS; ancillary data are given in lower-case.</p></li>
+<li><p><strong>Qc Indicator</strong>: excellent</p></li>
+<li><p><strong>Area</strong>: Tropical Atlantic Ocean</p></li>
+<li><p><strong>Geospatial Vertical Positive</strong>: down</p></li>
+<li><p><strong>Geospatial Vertical Units</strong>: dbar</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="os-move-20000101-20221018-grd-temperature-salinity-at-sites-move1-move3-nc">
+<h2>OS_MOVE_20000101-20221018_GRD_TEMPERATURE-SALINITY-AT-SITES-MOVE1-MOVE3.nc<a class="headerlink" href="#os-move-20000101-20221018-grd-temperature-salinity-at-sites-move1-move3-nc" title="Link to this heading"></a></h2>
+<section id="id7">
+<h3>Dataset Overview<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Project</strong>: Meridional Overturning Variability Experiment (MOVE)</p></li>
+<li><p><strong>Description</strong>: MOVE transport estimates dataset from UCSD mooring project</p></li>
+<li><p><strong>Source File</strong>: OS_MOVE_20000101-20221018_GRD_TEMPERATURE-SALINITY-AT-SITES-MOVE1-MOVE3.nc</p></li>
+<li><p><strong>Data Product</strong>: MOVE gridded temperature and salinity at sites MOVE1-MOVE3</p></li>
+<li><p><strong>License</strong>: CC-BY-4.0</p></li>
+<li><p><strong>Date Created</strong>: 20230112T194648Z</p></li>
+<li><p><strong>Time Coverage</strong>: 2000-01-01 to 2022-10-18</p></li>
+<li><p><strong>Record Length</strong>: 4,164 observations (22.8 years)</p></li>
+<li><p><strong>Sampling Frequency</strong>: 48.0H</p></li>
+</ul>
+<p><strong>Citation:</strong></p>
+<blockquote>
+<div><p>Send, U., Lankhorst, M., Kanzow, T.: Observation of decadal change in the Atlantic Meridional Overturning Circulation using 10 years of continuous transport data. Geophysical Research Letters, Vol. 38, L24606, 2011. doi: <a class="reference external" href="http://doi.org/10.1029/2011GL049801">http://doi.org/10.1029/2011GL049801</a>. M. Lankhorst and U. Send: “Ocean Volume Transport across the MOVE Line at 16 N”. OceanSITES dataset. NOAA NDBC and Ifremer, 2025. Available online from e.g.: <a class="reference external" href="https://dods.ndbc.noaa.gov/thredds/catalog/oceansites/DATA_GRIDDED/MOVE/catalog.html">https://dods.ndbc.noaa.gov/thredds/catalog/oceansites/DATA_GRIDDED/MOVE/catalog.html</a></p>
+</div></blockquote>
+<p><strong>Acknowledgement:</strong></p>
+<blockquote>
+<div><p>MOVE was supported by the U.S. NOAA’s Global Ocean Monitoring and Observing (GOMO) program under award NA20OAR4320278 and earlier awards. Initially, MOVE was funded by the German BMBF.</p>
+</div></blockquote>
+</section>
+<section id="id8">
+<h3>Dataset Visualization<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<figure class="align-center" id="id15">
+<a class="reference internal image-reference" href="../_images/os_move_20000101-20221018_grd_temperature-salinity-at-sites-move1-move3_2d_gridded.png"><img alt="AMOC time series plot" height="465" src="../_images/os_move_20000101-20221018_grd_temperature-salinity-at-sites-move1-move3_2d_gridded.png" width="1265" />
+</a>
+<figcaption>
+<p><span class="caption-text">Time series plot for OS_MOVE_20000101-20221018_GRD_TEMPERATURE-SALINITY-AT-SITES-MOVE1-MOVE3 dataset.</span><a class="headerlink" href="#id15" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id9">
+<h3>Dataset Statistics<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Total Variables</strong>: 6</p></li>
+<li><p><strong>Total Coordinates</strong>: 4</p></li>
+<li><p><strong>Dataset Size</strong>: 14.14 MB</p></li>
+</ul>
+</section>
+<section id="id10">
+<h3>Coordinate Information<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<p>The following table shows information about the dataset coordinates in the standardised version, including coordinate name remapping from the original, if any:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Coordinate</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>LATITUDE</strong></p></td>
+<td><p><strong>Latitude</strong>: Latitude north (WGS84)</p></td>
+<td><p>degree_north</p></td>
+<td><p>(2,)</p></td>
+<td><p>15.45</p></td>
+<td><p>16.34</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>LONGITUDE</strong></p></td>
+<td><p><strong>Longitude</strong>: Longitude east (WGS84)</p></td>
+<td><p>degree_east</p></td>
+<td><p>(2,)</p></td>
+<td><p>-60.51</p></td>
+<td><p>-51.51</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>PRESSURE</strong></p></td>
+<td><p>Sea water pressure due to sea water, i.e. air pressure removed</p></td>
+<td><p>dbar</p></td>
+<td><p>(99,)</p></td>
+<td><p>50.00</p></td>
+<td><p>4950.00</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>TIME</strong></p></td>
+<td><p>Time</p></td>
+<td><p>seconds since 1970-01-01T00:00:00Z</p></td>
+<td><p>(4164,)</p></td>
+<td><p>2000-01-01</p></td>
+<td><p>2022-10-18</p></td>
+<td><p>0.0%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id11">
+<h3>Variable Information<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<p>The following table shows the mapping from original variable names to standardized names,
+along with key statistics for each variable.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>instrument_depth_time_varying</em> → <strong>DEPTH</strong></p></td>
+<td><p><strong>Depth</strong>: Depth of temperature and salinity measurements at MOVE sites MOVE1-MOVE3</p></td>
+<td><p>m</p></td>
+<td><p>(2, 4164, 22)</p></td>
+<td><p>4.97</p></td>
+<td><p>5312.91</p></td>
+<td><p>0.6%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>latitude_time_varying</em> → <strong>LATITUDE_VARYING</strong></p></td>
+<td><p><strong>Latitude</strong>: Latitude of site, including differences between deployments</p></td>
+<td><p>degree_north</p></td>
+<td><p>(2, 4164)</p></td>
+<td><p>15.32</p></td>
+<td><p>16.34</p></td>
+<td><p>0.6%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>longitude_time_varying</em> → <strong>LONGITUDE_VARYING</strong></p></td>
+<td><p><strong>Longitude</strong>: Longitude of site, including differences between deployments</p></td>
+<td><p>degree_east</p></td>
+<td><p>(2, 4164)</p></td>
+<td><p>-60.52</p></td>
+<td><p>-51.50</p></td>
+<td><p>0.6%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>SALINITY</em> → <strong>PSAL</strong></p></td>
+<td><p><strong>Salinity</strong>: Salinity at MOVE sites MOVE1-MOVE3</p></td>
+<td><p>1</p></td>
+<td><p>(2, 4164, 99)</p></td>
+<td><p>33.88</p></td>
+<td><p>37.48</p></td>
+<td><p>0.6%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>TEMPERATURE</em> → <strong>TEMP</strong></p></td>
+<td><p><strong>Temperature (ITS-90)</strong>: Temperature at MOVE sites MOVE1-MOVE3 (ITS-90)</p></td>
+<td><p>degree_C</p></td>
+<td><p>(2, 4164, 99)</p></td>
+<td><p>1.84</p></td>
+<td><p>29.26</p></td>
+<td><p>0.6%</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>platform_name</strong></p></td>
+<td><p>Official OceanSITES platform name</p></td>
+<td><p>unknown</p></td>
+<td><p>(5, 2)</p></td>
+<td><p>N/A</p></td>
+<td><p>N/A</p></td>
+<td><p>0.0%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id12">
+<h3>Metadata (edits applied noted)<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
+<p>The following metadata describes this dataset:</p>
+<ul class="simple">
+<li><p><strong>Title</strong>: Gridded Temperature and Salinity Data from the MOVE Moorings</p></li>
+<li><p><strong>Summary</strong>: The Meridional Overturning Variability Experiment (MOVE) has been making mooring observations in the tropical Atlantic since 2000. Here, the temperature and salinity observations from the western and eastern mooring sites are presented on an easy-to-use grid in space and time. The underlying data at the original resolution in time, deployment-by-deployment, are available in separate files with more detailed and deployment-specific metadata.</p></li>
+<li><p><strong>Description*</strong>: MOVE transport estimates dataset from UCSD mooring project</p></li>
+<li><p><strong>Program*</strong>: MOVE</p></li>
+<li><p><strong>Project</strong>: Meridional Overturning Variability Experiment (MOVE)</p></li>
+<li><p><strong>Source</strong>: Uses OceanSITES file: id=OS_MOVE1_01_D_MICROCAT-PART01 date_created=2022-03-29T21:58:02Z Uses OceanSITES file: id=OS_MOVE1_01_D_MICROCAT-PART02 date_created=2022-03-29T21:58:26Z Uses OceanSITES file: id=OS_MOVE1_01_D_MICROCAT-PART03 date_created=2022-03-29T21:58:49Z Uses OceanSITES file: id=OS_MOVE1_01_D_MICROCAT-PART04 date_created=2022-03-29T22:00:48Z Uses OceanSITES file: id=OS_MOVE1_01_D_MICROCAT-PART05 date_created=2022-03-29T22:01:25Z Uses OceanSITES file: id=OS_MOVE1_01_D_MICROCAT-PART06 date_created=2022-03-29T22:01:50Z Uses OceanSITES file: id=OS_MOVE1_01_D_MICROCAT-PART07 date_created=2022-03-29T22:04:00Z Uses OceanSITES file: id=OS_MOVE1_01_D_MICROCAT-PART08 date_created=2022-03-29T22:04:29Z Uses OceanSITES file: id=OS_MOVE1_01_D_MICROCAT-PART09 date_created=2022-03-29T22:04:57Z Uses OceanSITES file: id=OS_MOVE1_01_D_MICROCAT-PART10 date_created=2022-03-29T22:05:43Z Uses OceanSITES file: id=OS_MOVE1_02_D_MICROCAT date_created=2022-03-24T21:57:34Z Uses OceanSITES file: id=OS_MOVE1_03_D_MICROCAT-PART01 date_created=2022-03-24T03:30:34Z Uses OceanSITES file: id=OS_MOVE1_03_D_MICROCAT-PART02 date_created=2022-03-24T03:30:48Z Uses OceanSITES file: id=OS_MOVE1_03_D_MICROCAT-PART03 date_created=2022-03-24T03:31:03Z Uses OceanSITES file: id=OS_MOVE1_03_D_MICROCAT-PART04 date_created=2022-03-24T03:31:17Z Uses OceanSITES file: id=OS_MOVE1_03_D_MICROCAT-PART05 date_created=2022-03-24T03:31:31Z Uses OceanSITES file: id=OS_MOVE1_03_D_MICROCAT-PART06 date_created=2022-03-24T03:31:45Z Uses OceanSITES file: id=OS_MOVE1_03_D_MICROCAT-PART07 date_created=2022-03-24T03:32:00Z Uses OceanSITES file: id=OS_MOVE1_03_D_MICROCAT-PART08 date_created=2022-03-24T03:32:13Z Uses OceanSITES file: id=OS_MOVE1_03_D_MICROCAT-PART09 date_created=2022-03-24T03:32:27Z Uses OceanSITES file: id=OS_MOVE1_03_D_MICROCAT-PART10 date_created=2022-03-24T03:32:42Z Uses OceanSITES file: id=OS_MOVE1_03_D_MICROCAT-PART11 date_created=2022-03-24T03:32:56Z Uses OceanSITES file: id=OS_MOVE1_03_D_MICROCAT-PART12 date_created=2022-03-24T03:33:11Z Uses OceanSITES file: id=OS_MOVE1_03_D_MICROCAT-PART13 date_created=2022-03-24T03:33:26Z Uses OceanSITES file: id=OS_MOVE1_03_D_MICROCAT-PART14 date_created=2022-03-24T03:33:40Z Uses OceanSITES file: id=OS_MOVE1_03_D_MICROCAT-PART15 date_created=2022-03-24T03:33:55Z Uses OceanSITES file: id=OS_MOVE1_03_D_MICROCAT-PART16 date_created=2022-03-24T03:34:10Z Uses OceanSITES file: id=OS_MOVE1_03_D_MICROCAT-PART17 date_created=2022-03-24T03:34:24Z Uses OceanSITES file: id=OS_MOVE1_03_D_MICROCAT-PART18 date_created=2022-03-24T03:34:41Z Uses OceanSITES file: id=OS_MOVE1_03_D_MICROCAT-PART19 date_created=2022-03-24T03:34:57Z Uses OceanSITES file: id=OS_MOVE1_03_D_MICROCAT-PART20 date_created=2022-03-24T03:35:13Z Uses OceanSITES file: id=OS_MOVE1_03_D_MICROCAT-PART21 date_created=2022-03-24T03:35:30Z Uses OceanSITES file: id=OS_MOVE1_03_D_MICROCAT-PART22 date_created=2022-03-24T03:35:51Z Uses OceanSITES file: id=OS_MOVE1_04_D_MICROCAT date_created=2022-03-21T23:43:30Z Uses OceanSITES file: id=OS_MOVE1_05_D_MICROCAT date_created=2022-04-15T19:19:32Z Uses OceanSITES file: id=OS_MOVE1_06_D_MICROCAT date_created=2022-04-15T19:35:03Z Uses OceanSITES file: id=OS_MOVE1_07_D_MICROCAT date_created=2022-02-22T20:40:16Z Uses OceanSITES file: id=OS_MOVE1_08_MICROCAT date_created=2022-02-17T01:35:17Z Uses OceanSITES file: id=OS_MOVE1_09_D_MICROCAT date_created=2022-02-14T23:23:01Z Uses OceanSITES file: id=OS_MOVE1_10_D_MICROCAT date_created=2022-02-11T17:56:47Z Uses OceanSITES file: id=OS_MOVE1_11_D_MICROCAT date_created=2022-02-11T19:00:48Z Uses OceanSITES file: id=OS_MOVE1_12_D_MICROCAT date_created=2022-01-31T23:06:51Z Uses OceanSITES file: id=OS_MOVE1_13_D_MICROCAT date_created=2022-01-31T22:28:43Z Uses OceanSITES file: id=OS_MOVE1_14_D_MICROCAT date_created=2023-01-12T00:17:54Z Uses OceanSITES file: id=OS_MOVE3_01_D_MICROCAT-PART01 date_created=2022-03-30T20:11:00Z Uses OceanSITES file: id=OS_MOVE3_01_D_MICROCAT-PART02 date_created=2022-03-30T20:11:27Z Uses OceanSITES file: id=OS_MOVE3_01_D_MICROCAT-PART03 date_created=2022-03-30T20:12:10Z Uses OceanSITES file: id=OS_MOVE3_01_D_MICROCAT-PART04 date_created=2022-03-30T20:13:00Z Uses OceanSITES file: id=OS_MOVE3_01_D_MICROCAT-PART05 date_created=2022-03-30T20:13:32Z Uses OceanSITES file: id=OS_MOVE3_01_D_MICROCAT-PART06 date_created=2022-03-30T20:14:14Z Uses OceanSITES file: id=OS_MOVE3_01_D_MICROCAT-PART07 date_created=2022-03-30T20:14:49Z Uses OceanSITES file: id=OS_MOVE3_01_D_MICROCAT-PART08 date_created=2022-03-30T20:15:31Z Uses OceanSITES file: id=OS_MOVE3_01_D_MICROCAT-PART09 date_created=2022-03-30T20:16:04Z Uses OceanSITES file: id=OS_MOVE3_01_D_MICROCAT-PART10 date_created=2022-03-30T20:16:37Z Uses OceanSITES file: id=OS_MOVE3_01_D_MICROCAT-PART11 date_created=2022-03-30T20:17:04Z Uses OceanSITES file: id=OS_MOVE3_01_D_MICROCAT-PART12 date_created=2022-03-30T20:17:30Z Uses OceanSITES file: id=OS_MOVE3_01_D_MICROCAT-PART13 date_created=2022-03-30T20:17:59Z Uses OceanSITES file: id=OS_MOVE3_01_D_MICROCAT-PART14 date_created=2022-03-30T20:18:23Z Uses OceanSITES file: id=OS_MOVE3_01_D_MICROCAT-PART15 date_created=2022-03-30T20:19:01Z Uses OceanSITES file: id=OS_MOVE3_02_D_MICROCAT date_created=2022-03-28T23:17:35Z Uses OceanSITES file: id=OS_MOVE3_03_D_MICROCAT-PART01 date_created=2022-03-22T22:15:56Z Uses OceanSITES file: id=OS_MOVE3_03_D_MICROCAT-PART02 date_created=2022-03-22T22:16:31Z Uses OceanSITES file: id=OS_MOVE3_03_D_MICROCAT-PART03 date_created=2022-03-22T22:17:17Z Uses OceanSITES file: id=OS_MOVE3_03_D_MICROCAT-PART04 date_created=2022-03-22T22:17:37Z Uses OceanSITES file: id=OS_MOVE3_03_D_MICROCAT-PART05 date_created=2022-03-22T22:17:59Z Uses OceanSITES file: id=OS_MOVE3_03_D_MICROCAT-PART06 date_created=2022-03-22T22:18:34Z Uses OceanSITES file: id=OS_MOVE3_03_D_MICROCAT-PART07 date_created=2022-03-22T22:18:58Z Uses OceanSITES file: id=OS_MOVE3_03_D_MICROCAT-PART08 date_created=2022-03-22T22:19:24Z Uses OceanSITES file: id=OS_MOVE3_03_D_MICROCAT-PART09 date_created=2022-03-22T22:19:55Z Uses OceanSITES file: id=OS_MOVE3_03_D_MICROCAT-PART10 date_created=2022-03-22T22:20:45Z Uses OceanSITES file: id=OS_MOVE3_03_D_MICROCAT-PART11 date_created=2022-03-22T22:21:48Z Uses OceanSITES file: id=OS_MOVE3_03_D_MICROCAT-PART12 date_created=2022-03-22T22:22:41Z Uses OceanSITES file: id=OS_MOVE3_03_D_MICROCAT-PART13 date_created=2022-03-22T22:23:39Z Uses OceanSITES file: id=OS_MOVE3_03_D_MICROCAT-PART14 date_created=2022-03-22T22:24:34Z Uses OceanSITES file: id=OS_MOVE3_03_D_MICROCAT-PART15 date_created=2022-03-22T22:25:17Z Uses OceanSITES file: id=OS_MOVE3_03_D_MICROCAT-PART16 date_created=2022-03-22T22:26:09Z Uses OceanSITES file: id=OS_MOVE3_03_D_MICROCAT-PART17 date_created=2022-03-22T22:26:57Z Uses OceanSITES file: id=OS_MOVE3_03_D_MICROCAT-PART18 date_created=2022-03-22T22:28:10Z Uses OceanSITES file: id=OS_MOVE3_03_D_MICROCAT-PART19 date_created=2022-03-22T22:29:03Z Uses OceanSITES file: id=OS_MOVE3_03_D_MICROCAT-PART20 date_created=2022-03-22T22:29:51Z Uses OceanSITES file: id=OS_MOVE3_03_D_MICROCAT-PART21 date_created=2022-03-22T22:30:56Z Uses OceanSITES file: id=OS_MOVE3_03_D_MICROCAT-PART22 date_created=2022-03-22T22:32:06Z Uses OceanSITES file: id=OS_MOVE3_04_D_MICROCAT date_created=2022-03-22T17:49:57Z Uses OceanSITES file: id=OS_MOVE3_05_D_MICROCAT-PART01 date_created=2022-04-15T19:50:20Z Uses OceanSITES file: id=OS_MOVE3_05_D_MICROCAT-PART02 date_created=2022-04-15T19:52:19Z Uses OceanSITES file: id=OS_MOVE3_06_D_MICROCAT date_created=2022-04-15T20:09:17Z Uses OceanSITES file: id=OS_MOVE3_07_D_MICROCAT date_created=2022-02-23T01:18:40Z Uses OceanSITES file: id=OS_MOVE3_08_D_MICROCAT date_created=2022-02-17T19:44:16Z Uses OceanSITES file: id=OS_MOVE3_09_D_MICROCAT date_created=2022-02-15T00:53:00Z Uses OceanSITES file: id=OS_MOVE3_10_D_MICROCAT date_created=2022-02-12T00:37:36Z Uses OceanSITES file: id=OS_MOVE3_11_D_MICROCAT date_created=2022-02-11T21:06:53Z Uses OceanSITES file: id=OS_MOVE3_12_D_MICROCAT date_created=2022-02-11T21:44:24Z Uses OceanSITES file: id=OS_MOVE3_13_D_MICROCAT date_created=2022-02-11T23:15:48Z Uses OceanSITES file: id=OS_MOVE3_14_D_MICROCAT date_created=2023-01-12T19:28:17Z</p></li>
+<li><p><strong>Id</strong>: OS_MOVE_20000101-20221018_GRD_TEMPERATURE-SALINITY-AT-SITES-MOVE1-MOVE3</p></li>
+<li><p><strong>Naming Authority</strong>: OceanSITES</p></li>
+<li><p><strong>License</strong>: CC-BY-4.0</p></li>
+<li><p><strong>Acknowledgment</strong>: MOVE was supported by the U.S. NOAA’s Global Ocean Monitoring and Observing (GOMO) program under award NA20OAR4320278 and earlier awards. Initially, MOVE was funded by the German BMBF.</p></li>
+<li><p><strong>References</strong>: <a class="reference external" href="https://doi.org/10.1016/j.dsr.2005.12.007">https://doi.org/10.1016/j.dsr.2005.12.007</a>, <a class="reference external" href="https://doi.org/10.1029/2011GL049801">https://doi.org/10.1029/2011GL049801</a>, <a class="reference external" href="https://dods.ndbc.noaa.gov/thredds/catalog/oceansites/DATA_GRIDDED/MOVE/catalog.html">https://dods.ndbc.noaa.gov/thredds/catalog/oceansites/DATA_GRIDDED/MOVE/catalog.html</a></p></li>
+<li><p><strong>Weblink*</strong>: <a class="reference external" href="https://mooring.ucsd.edu/move/">https://mooring.ucsd.edu/move/</a></p></li>
+<li><p><strong>Platform</strong>: mooring</p></li>
+<li><p><strong>Platform Vocabulary</strong>: <a class="reference external" href="https://vocab.nerc.ac.uk/collection/L06/">https://vocab.nerc.ac.uk/collection/L06/</a></p></li>
+<li><p><strong>Data Product*</strong>: MOVE gridded temperature and salinity at sites MOVE1-MOVE3</p></li>
+<li><p><strong>Time Coverage Start</strong>: 2000-01-01</p></li>
+<li><p><strong>Time Coverage End</strong>: 2022-10-18</p></li>
+<li><p><strong>Geospatial Lat Min</strong>: 15.323833333333333</p></li>
+<li><p><strong>Geospatial Lat Max</strong>: 16.34</p></li>
+<li><p><strong>Geospatial Lon Min</strong>: -60.516666666666666</p></li>
+<li><p><strong>Geospatial Lon Max</strong>: -51.5</p></li>
+<li><p><strong>Geospatial Vertical Min</strong>: 50.0</p></li>
+<li><p><strong>Geospatial Vertical Max</strong>: 4950.0</p></li>
+<li><p><strong>Contributor Name</strong>: Matthias Lankhorst, Uwe Send</p></li>
+<li><p><strong>Contributor Role</strong>: originator, Principal Investigator</p></li>
+<li><p><strong>Contributor Role Vocabulary</strong>: <a class="reference external" href="https://vocab.nerc.ac.uk/collection/G04/current/">https://vocab.nerc.ac.uk/collection/G04/current/</a></p></li>
+<li><p><strong>Contributor Email</strong>: ,</p></li>
+<li><p><strong>Contributor Id</strong>: <a class="reference external" href="https://orcid.org/0000-0002-4166-4044">https://orcid.org/0000-0002-4166-4044</a>, <a class="reference external" href="https://orcid.org/0000-0002-7682-5688">https://orcid.org/0000-0002-7682-5688</a></p></li>
+<li><p><strong>Contributing Institutions</strong>: Scripps Institution of Oceanography</p></li>
+<li><p><strong>Contributing Institutions Vocabulary</strong>: <a class="reference external" href="https://edmo.seadatanet.org/report/1390">https://edmo.seadatanet.org/report/1390</a></p></li>
+<li><p><strong>Contributing Institutions Role</strong>:</p></li>
+<li><p><strong>Conventions</strong>: CF-1.7, ACDD-1.3, OceanSITES-1.5</p></li>
+<li><p><strong>featureType</strong>: timeSeriesProfile</p></li>
+<li><p><strong>featureType_vocabulary</strong>: <a class="reference external" href="https://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_features_and_feature_types">https://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_features_and_feature_types</a></p></li>
+<li><p><strong>Data Type</strong>: OceanSITES time-series data</p></li>
+<li><p><strong>Source File*</strong>: OS_MOVE_20000101-20221018_GRD_TEMPERATURE-SALINITY-AT-SITES-MOVE1-MOVE3.nc</p></li>
+<li><p><strong>Source Path*</strong>: ~/.amocatlas_data/OS_MOVE_20000101-20221018_GRD_TEMPERATURE-SALINITY-AT-SITES-MOVE1-MOVE3.nc</p></li>
+<li><p><strong>Date Created</strong>: 20230112T194648Z</p></li>
+<li><p><strong>Date Modified</strong>: 2026-08-01T00:00:00Z</p></li>
+<li><p><strong>Processing Software</strong>: <a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">http://github.com/AMOCcommunity/amocatlas</a></p></li>
+<li><p><strong>Processing Version</strong>: v0.4.0</p></li>
+<li><p><strong>Processing Datasource*</strong>: move16n</p></li>
+<li><p><strong>Format Version</strong>: 1.5</p></li>
+<li><p><strong>Applied Variable Mapping</strong>: {‘TEMPERATURE’: ‘TEMP’, ‘SALINITY’: ‘PSAL’, ‘instrument_depth_time_varying’: ‘DEPTH’, ‘latitude_time_varying’: ‘LATITUDE_VARYING’, ‘longitude_time_varying’: ‘LONGITUDE_VARYING’}</p></li>
+<li><p><strong>Update Interval</strong>: void</p></li>
+<li><p><strong>Comment</strong>: The primary scientific data here have variable names in CAPITAL LETTERS; ancillary data are given in lower-case.</p></li>
+<li><p><strong>Qc Indicator</strong>: excellent</p></li>
+<li><p><strong>Area</strong>: Tropical Atlantic Ocean</p></li>
+<li><p><strong>Geospatial Vertical Positive</strong>: down</p></li>
+<li><p><strong>Geospatial Vertical Units</strong>: dbar</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="osnap_report.html" class="btn btn-neutral float-left" title="OSNAP Datasets" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="samba_report.html" class="btn btn-neutral float-right" title="SAMBA Datasets" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Eleanor Frajka-Williams, Isabelle Schmitz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

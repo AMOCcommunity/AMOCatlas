@@ -1,0 +1,755 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AMOCatlas demo &mdash; amocatlas 0.4.0.post1.dev10 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=1078e4cb" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=6d4c28d6"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Data Sources" href="reports/index.html" />
+    <link rel="prev" title="FAQ / Troubleshooting" href="faq.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            amocatlas
+              <img src="_static/logo.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ / Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Demo notebooks</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">AMOCatlas demo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Load-RAPID-26°N">Load RAPID 26°N</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Load-MOVE-16°N">Load MOVE 16°N</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Load-OSNAP">Load OSNAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Load-SAMBA-34.5°S">Load SAMBA 34.5°S</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Load-FW2015">Load FW2015</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#LOAD-SANCHEZ-FRANKS-2021-26°N-satellite-reconstruction">LOAD SANCHEZ-FRANKS 2021 26°N satellite reconstruction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#LOAD-MOCHA-26.5°N">LOAD MOCHA 26.5°N</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#LOAD-41°N">LOAD 41°N</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Load-Denmark-Strait-overflow-and-Faroe-Bank-Channel-overflow-transports">Load Denmark Strait overflow and Faroe Bank Channel overflow transports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Load-Calafat2025">Load Calafat2025</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Load-Zheng2024">Load Zheng2024</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Load-NAC-timeseries">Load NAC timeseries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Load-Le-Bras-35°N-AMOC">Load Le Bras 35°N AMOC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Load-the-AXMOC-transport-data-for-22.5°S-and-34.5°S">Load the AXMOC transport data for 22.5°S and 34.5°S</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Monthly-Anomalies-Overview">Monthly Anomalies Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Other-components">Other components</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dataset Reports</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reports/index.html">Data Sources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reference/format.html">AMOCatlas data format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/vocabulary.html">amocvocab — variable vocabulary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="amoc_paperfigs-output.html">AMOC Publication Figures</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Repository and API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">GitHub Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="amocatlas.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">amocatlas</span> <span class="pre">API</span></code></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers' guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="developers/developer_guide.html">Developer Guide for AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developers/git_beginners_guide.html">Git for Beginners: Workflow Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developers/actions.html">Extra GitHub features: Actions &amp; Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developers/housekeeping.html">Project Maintenance Checklist</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">amocatlas</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">AMOCatlas demo</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/demo-output.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="AMOCatlas-demo">
+<h1>AMOCatlas demo<a class="headerlink" href="#AMOCatlas-demo" title="Link to this heading"></a></h1>
+<p>The purpose of this notebook is to demonstrate the functionality of <code class="docutils literal notranslate"><span class="pre">AMOCatlas</span></code>.</p>
+<p>The demo is organised to show</p>
+<ul class="simple">
+<li><p>Step 1: Loading and plotting a sample dataset</p></li>
+<li><p>Step 2: Exploring the dataset attributes and variables.</p></li>
+</ul>
+<p>Note that when you submit a pull request, you should <code class="docutils literal notranslate"><span class="pre">clear</span> <span class="pre">all</span> <span class="pre">outputs</span></code> from your python notebook for a cleaner merge.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pathlib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">amocatlas</span><span class="w"> </span><span class="kn">import</span> <span class="n">plotters</span><span class="p">,</span> <span class="n">read</span>
+
+<span class="n">script_dir</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span>
+<span class="n">parent_dir</span> <span class="o">=</span> <span class="n">script_dir</span><span class="o">.</span><span class="n">parents</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">parent_dir</span><span class="p">))</span>
+
+<span class="c1"># Specify the path for writing datafiles</span>
+<span class="n">data_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">parent_dir</span><span class="p">,</span> <span class="s2">"data"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<section id="Load-RAPID-26°N">
+<h2>Load RAPID 26°N<a class="headerlink" href="#Load-RAPID-26°N" title="Link to this heading"></a></h2>
+<p>To see what files are available for each data source, use <code class="docutils literal notranslate"><span class="pre">read.DATASOURCE.list_files()</span></code>. So for the RAPID array, you can use <code class="docutils literal notranslate"><span class="pre">read.rapid.list_files()</span></code>.</p>
+<p>You can then use this list (or a subset thereof) to specify which files to be loaded and standardised using the <code class="docutils literal notranslate"><span class="pre">read.rapid(file_list=[&quot;file1&quot;,</span> <span class="pre">&quot;file2&quot;])</span></code> function with the input <code class="docutils literal notranslate"><span class="pre">file_list</span></code>. It will return a list of xarray datasets, in the same order and the same length as <code class="docutils literal notranslate"><span class="pre">file_list</span></code>. An exception is if <code class="docutils literal notranslate"><span class="pre">file_list</span></code> has length = 1, in which case it will return just the xarray dataset.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find available files</span>
+<span class="n">rapid_file_list</span> <span class="o">=</span> <span class="n">read</span><span class="o">.</span><span class="n">rapid</span><span class="o">.</span><span class="n">list_files</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Available RAPID files:"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rapid_file_list</span><span class="p">)</span>
+
+<span class="c1"># To specify to read two of those files, provide a file_list</span>
+<span class="n">standardRAPID</span> <span class="o">=</span> <span class="n">read</span><span class="o">.</span><span class="n">rapid</span><span class="p">(</span><span class="n">file_list</span><span class="o">=</span><span class="n">rapid_file_list</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot RAPID timeseries</span>
+<span class="n">plotters</span><span class="o">.</span><span class="n">plot_amoc_timeseries</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">standardRAPID</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
+    <span class="n">varnames</span><span class="o">=</span><span class="p">[</span><span class="s2">"MOC"</span><span class="p">],</span>
+    <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">""</span><span class="p">],</span>
+    <span class="n">resample_monthly</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">plot_raw</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">"RAPID 26°N"</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Load-MOVE-16°N">
+<h2>Load MOVE 16°N<a class="headerlink" href="#Load-MOVE-16°N" title="Link to this heading"></a></h2>
+<p>To load the specified default transport file, use the <code class="docutils literal notranslate"><span class="pre">read.DATASOURCE()</span></code> function with no inputs. So for the MOVE array, this is <code class="docutils literal notranslate"><span class="pre">read.move()</span></code>. It will provide a single xarray dataset. For each array, a default transport file has been specified.</p>
+<p><em>Developer’s note:</em> This is specified in <code class="docutils literal notranslate"><span class="pre">~/amocatlas/data_source/DATASOURCE.py</span></code>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_move</span> <span class="o">=</span> <span class="n">read</span><span class="o">.</span><span class="n">move</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot MOVE timeseries</span>
+<span class="n">plotters</span><span class="o">.</span><span class="n">plot_amoc_timeseries</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">ds_move</span><span class="p">],</span>
+    <span class="n">varnames</span><span class="o">=</span><span class="p">[</span><span class="s2">"MOC"</span><span class="p">],</span>
+    <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">""</span><span class="p">],</span>
+    <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s2">"darkgreen"</span><span class="p">],</span>
+    <span class="n">resample_monthly</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">plot_raw</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">"MOVE 16°N - NADW Transport"</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Load-OSNAP">
+<h2>Load OSNAP<a class="headerlink" href="#Load-OSNAP" title="Link to this heading"></a></h2>
+<p>For just the transport file, you can use either <code class="docutils literal notranslate"><span class="pre">read.osnap()</span></code> as above, or <code class="docutils literal notranslate"><span class="pre">read.osnap(transport_only=True)</span></code>. Both return a single xarray dataset.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_osnap</span> <span class="o">=</span> <span class="n">read</span><span class="o">.</span><span class="n">osnap</span><span class="p">()</span>
+<span class="n">ds_osnap</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot OSNAP timeseries</span>
+<span class="n">plotters</span><span class="o">.</span><span class="n">plot_amoc_timeseries</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">ds_osnap</span><span class="p">],</span>
+    <span class="n">varnames</span><span class="o">=</span><span class="p">[</span><span class="s2">"MOC_SIGMA0"</span><span class="p">],</span>
+    <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">""</span><span class="p">],</span>
+    <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s2">"darkblue"</span><span class="p">],</span>
+    <span class="n">resample_monthly</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">plot_raw</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">"OSNAP"</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Load-SAMBA-34.5°S">
+<h2>Load SAMBA 34.5°S<a class="headerlink" href="#Load-SAMBA-34.5°S" title="Link to this heading"></a></h2>
+<p>If you want to load all datasets available for a datasource, provide the option <code class="docutils literal notranslate"><span class="pre">all_files=True</span></code>. Note that the first time you do this, it will download the data for you. On subsequent runs (set up from the same location) it will use the previously downloaded data.</p>
+<p>See the data reports in the docs: <a class="reference external" href="https://amoccommunity.github.io/AMOCatlas/">https://amoccommunity.github.io/AMOCatlas/</a> if you want to check how big a dataset is before downloading it.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">standardSAMBA</span> <span class="o">=</span> <span class="n">read</span><span class="o">.</span><span class="n">samba</span><span class="p">(</span><span class="n">all_files</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot SAMBA timeseries</span>
+<span class="n">plotters</span><span class="o">.</span><span class="n">plot_amoc_timeseries</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">standardSAMBA</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">standardSAMBA</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span>
+    <span class="n">varnames</span><span class="o">=</span><span class="p">[</span><span class="s2">"UPPER_TRANSPORT"</span><span class="p">,</span> <span class="s2">"MOC"</span><span class="p">],</span>
+    <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">"Kersale et al. 2020"</span><span class="p">,</span> <span class="s2">"Meinen et al. 2018"</span><span class="p">],</span>
+    <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s2">"grey"</span><span class="p">,</span> <span class="s2">"blue"</span><span class="p">],</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">"SAMBA 34.5°S"</span><span class="p">,</span>
+    <span class="n">time_limits</span><span class="o">=</span><span class="p">(</span><span class="s2">"2000-01-01"</span><span class="p">,</span> <span class="s2">"2022-12-31"</span><span class="p">),</span>
+    <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span>
+    <span class="n">resample_monthly</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">plot_raw</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># Raw data is a little spiky</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Load-FW2015">
+<h2>Load FW2015<a class="headerlink" href="#Load-FW2015" title="Link to this heading"></a></h2>
+<p>For a formatted table showing the data including variables, dimensions, units etc, use the function <code class="docutils literal notranslate"><span class="pre">plotters.show_variables(DATASET)</span></code> where <code class="docutils literal notranslate"><span class="pre">DATASET</span></code> is an xarray dataset.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">standardfw2015</span> <span class="o">=</span> <span class="n">read</span><span class="o">.</span><span class="n">fw2015</span><span class="p">()</span>
+<span class="n">plotters</span><span class="o">.</span><span class="n">show_variables</span><span class="p">(</span><span class="n">standardfw2015</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot timeseries</span>
+<span class="n">plotters</span><span class="o">.</span><span class="n">plot_amoc_timeseries</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">standardfw2015</span><span class="p">],</span>
+    <span class="n">varnames</span><span class="o">=</span><span class="p">[</span><span class="s2">"MOC_PROXY"</span><span class="p">],</span>
+    <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">""</span><span class="p">],</span>
+    <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s2">"darkblue"</span><span class="p">],</span>
+    <span class="n">resample_monthly</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">plot_raw</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">"FW2015"</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<section id="LOAD-SANCHEZ-FRANKS-2021-26°N-satellite-reconstruction">
+<h3>LOAD SANCHEZ-FRANKS 2021 26°N satellite reconstruction<a class="headerlink" href="#LOAD-SANCHEZ-FRANKS-2021-26°N-satellite-reconstruction" title="Link to this heading"></a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read dataset</span>
+<span class="n">standardsf2021</span> <span class="o">=</span> <span class="n">read</span><span class="o">.</span><span class="n">sf2021</span><span class="p">()</span>
+
+<span class="c1"># Show variables</span>
+<span class="n">plotters</span><span class="o">.</span><span class="n">show_variables</span><span class="p">(</span><span class="n">standardsf2021</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot timeseries</span>
+<span class="n">plotters</span><span class="o">.</span><span class="n">plot_amoc_timeseries</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">standardsf2021</span><span class="p">],</span>
+    <span class="n">varnames</span><span class="o">=</span><span class="p">[</span><span class="s2">"MOC_PROXY"</span><span class="p">],</span>
+    <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">""</span><span class="p">],</span>
+    <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s2">"darkblue"</span><span class="p">],</span>
+    <span class="n">resample_monthly</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="c1"># plot_raw=True,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">"SF2021"</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="LOAD-MOCHA-26.5°N">
+<h2>LOAD MOCHA 26.5°N<a class="headerlink" href="#LOAD-MOCHA-26.5°N" title="Link to this heading"></a></h2>
+<p>Note that AMOCatlas renames variables and updates units according to defaults specified in the code. For the MOCHA dataset, for example, the meridional heat transport is denoted by “Q”, whereas for other datasets it is “MHT”. To simplify intercomparison, we rename heat transport variables to “MHT”. When you use the <code class="docutils literal notranslate"><span class="pre">read.mocha()</span></code> this variable remapping has already taken place.</p>
+<p>You can check the remapping applied in the docs: <a class="reference external" href="https://amoccommunity.github.io/AMOCatlas/">https://amoccommunity.github.io/AMOCatlas/</a></p>
+<p>Additionally, some units such as “W” for Watts are converted to PetaWatts “PW” during the loading and standardisation. If instead you want to load the raw data, you can use <code class="docutils literal notranslate"><span class="pre">read.mocha(raw=True)</span></code>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">standardMOCHA</span> <span class="o">=</span> <span class="n">read</span><span class="o">.</span><span class="n">mocha</span><span class="p">()</span>
+
+<span class="n">plotters</span><span class="o">.</span><span class="n">show_variables</span><span class="p">(</span><span class="n">standardMOCHA</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rawMOCHA</span> <span class="o">=</span> <span class="n">read</span><span class="o">.</span><span class="n">mocha</span><span class="p">(</span><span class="n">raw</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plotters</span><span class="o">.</span><span class="n">show_variables</span><span class="p">(</span><span class="n">rawMOCHA</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rawMOCHA</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot timeseries</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plotters</span><span class="o">.</span><span class="n">plot_amoc_timeseries</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">standardMOCHA</span><span class="p">,</span> <span class="n">standardMOCHA</span><span class="p">,</span> <span class="n">standardMOCHA</span><span class="p">],</span>
+    <span class="n">varnames</span><span class="o">=</span><span class="p">[</span><span class="s2">"MHT"</span><span class="p">,</span> <span class="s2">"MHT_OT"</span><span class="p">,</span> <span class="s2">"MHT_GYRE"</span><span class="p">],</span>
+    <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">"Total"</span><span class="p">,</span> <span class="s2">"Overturning"</span><span class="p">,</span> <span class="s2">"Gyre"</span><span class="p">],</span>
+    <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s2">"red"</span><span class="p">,</span> <span class="s2">"darkblue"</span><span class="p">,</span> <span class="s2">"black"</span><span class="p">],</span>
+    <span class="n">resample_monthly</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">plot_raw</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">"MOCHA"</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">"lower right"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="LOAD-41°N">
+<h2>LOAD 41°N<a class="headerlink" href="#LOAD-41°N" title="Link to this heading"></a></h2>
+<p>Besides array-based datasets, some additional data sources are integrated within AMOCatlas. For instance, the Willis and Hobbs estimates of heat transport at 41°N and the Willis transport estimates using Argo and altimetry are available as datasource “WH41N”.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_list</span> <span class="o">=</span> <span class="n">read</span><span class="o">.</span><span class="n">wh41n</span><span class="o">.</span><span class="n">list_files</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Available WH41N files:"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">file_list</span><span class="p">)</span>
+
+<span class="n">standard41n</span> <span class="o">=</span> <span class="n">read</span><span class="o">.</span><span class="n">wh41n</span><span class="p">()</span>
+
+<span class="n">plotters</span><span class="o">.</span><span class="n">plot_amoc_timeseries</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">standard41n</span><span class="p">],</span>
+    <span class="n">varnames</span><span class="o">=</span><span class="p">[</span><span class="s2">"MOC"</span><span class="p">],</span>
+    <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">""</span><span class="p">],</span>
+    <span class="n">resample_monthly</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">plot_raw</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s2">"darkblue"</span><span class="p">],</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">"41N"</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Load-Denmark-Strait-overflow-and-Faroe-Bank-Channel-overflow-transports">
+<h2>Load Denmark Strait overflow and Faroe Bank Channel overflow transports<a class="headerlink" href="#Load-Denmark-Strait-overflow-and-Faroe-Bank-Channel-overflow-transports" title="Link to this heading"></a></h2>
+<p>Overflow transports for Denmark Strait and Faroe Bank Channel are also available.</p>
+<p>Note that in the current version of AMOCatlas we have not standardised the sign of the transports. In this case, a stronger DSO is more negative, whereas a stronger FBC is more positive.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">standardDSO</span> <span class="o">=</span> <span class="n">read</span><span class="o">.</span><span class="n">dso</span><span class="p">()</span>
+<span class="n">standardFBC</span> <span class="o">=</span> <span class="n">read</span><span class="o">.</span><span class="n">fbc</span><span class="p">()</span>
+
+<span class="n">plotters</span><span class="o">.</span><span class="n">plot_amoc_timeseries</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">standardDSO</span><span class="p">,</span> <span class="n">standardFBC</span><span class="p">],</span>
+    <span class="n">varnames</span><span class="o">=</span><span class="p">[</span><span class="s2">"TRANS_DSO"</span><span class="p">,</span> <span class="s2">"TRANS_FBC"</span><span class="p">],</span>
+    <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">"DSO"</span><span class="p">,</span> <span class="s2">"FBC"</span><span class="p">],</span>
+    <span class="n">resample_monthly</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">plot_raw</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s2">"yellow"</span><span class="p">,</span> <span class="s2">"orange"</span><span class="p">],</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">"DSO and FBC"</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Load-Calafat2025">
+<h2>Load Calafat2025<a class="headerlink" href="#Load-Calafat2025" title="Link to this heading"></a></h2>
+<p>Meridional heat transport from a Bayesian method to produce a North Atlantic heat budget is also available. However, it has 4000 realisations of the time series (from which uncertainties can be estimated), so is less straightforward to plot. See below for an average across the realisations.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">standardCALAFAT2025</span> <span class="o">=</span> <span class="n">read</span><span class="o">.</span><span class="n">calafat2025</span><span class="p">()</span>
+<span class="n">standardCALAFAT2025</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">create_ensemble_mean_dataset</span><span class="p">(</span><span class="n">ds</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Create a new dataset with ensemble means, removing N_ENSEMBLE dimension.</span>
+
+<span class="sd">    This function takes the mean across the N_ENSEMBLE dimension for all variables</span>
+<span class="sd">    that have it, creating a dataset suitable for standard plotting functions.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ds : xarray.Dataset</span>
+<span class="sd">        Input dataset with N_ENSEMBLE dimension</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    xarray.Dataset</span>
+<span class="sd">        Dataset with ensemble means, N_ENSEMBLE dimension removed</span>
+
+<span class="sd">    """</span>
+    <span class="c1"># Create a copy of the dataset</span>
+    <span class="n">ds_mean</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="c1"># For each data variable, take the mean across N_ENSEMBLE if it has that dimension</span>
+    <span class="k">for</span> <span class="n">var_name</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">data_vars</span><span class="p">:</span>
+        <span class="n">var</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="n">var_name</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s2">"N_ENSEMBLE"</span> <span class="ow">in</span> <span class="n">var</span><span class="o">.</span><span class="n">dims</span><span class="p">:</span>
+            <span class="c1"># Take mean across N_ENSEMBLE dimension (point estimate)</span>
+            <span class="n">ds_mean</span><span class="p">[</span><span class="n">var_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s2">"N_ENSEMBLE"</span><span class="p">)</span>
+
+    <span class="c1"># Remove N_ENSEMBLE coordinate since no variables use it anymore</span>
+    <span class="k">if</span> <span class="s2">"N_ENSEMBLE"</span> <span class="ow">in</span> <span class="n">ds_mean</span><span class="o">.</span><span class="n">coords</span><span class="p">:</span>
+        <span class="n">ds_mean</span> <span class="o">=</span> <span class="n">ds_mean</span><span class="o">.</span><span class="n">drop_vars</span><span class="p">(</span><span class="s2">"N_ENSEMBLE"</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">ds_mean</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create the ensemble-averaged dataset</span>
+<span class="n">calafat_mean</span> <span class="o">=</span> <span class="n">create_ensemble_mean_dataset</span><span class="p">(</span><span class="n">standardCALAFAT2025</span><span class="p">)</span>
+
+<span class="c1"># Now your original plotting code will work:</span>
+<span class="n">lat_idx</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">lat_val</span> <span class="o">=</span> <span class="n">calafat_mean</span><span class="p">[</span><span class="s2">"LATITUDE"</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">lat_idx</span><span class="p">]</span>
+
+<span class="k">if</span> <span class="n">lat_val</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">title_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"CALAFAT2025 (lat = </span><span class="si">{</span><span class="o">-</span><span class="n">lat_val</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°S)"</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">title_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"CALAFAT2025 (lat = </span><span class="si">{</span><span class="n">lat_val</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°N)"</span>
+
+<span class="c1"># Plot the 2D MHT data</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plotters</span><span class="o">.</span><span class="n">plot_amoc_2d_data</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">calafat_mean</span><span class="p">,</span>
+    <span class="n">varname</span><span class="o">=</span><span class="s2">"MHT"</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">"CALAFAT2025 Meridional Heat Transport"</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">"Latitude (°N)"</span><span class="p">,</span>
+    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>
+    <span class="n">colormap</span><span class="o">=</span><span class="s2">"RdBu_r"</span><span class="p">,</span>  <span class="c1"># Red-blue colormap, good for heat transport</span>
+    <span class="c1"># vmin=-1.0,  # Optional: set color scale limits</span>
+    <span class="c1"># vmax=1.0,</span>
+<span class="p">)</span>
+
+<span class="c1"># Add colorbar label</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">get_axes</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">fig</span><span class="o">.</span><span class="n">get_axes</span><span class="p">())</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="kc">None</span>
+<span class="k">if</span> <span class="n">cbar</span><span class="p">:</span>
+    <span class="n">cbar</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"MHT (PW)"</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">270</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Load-Zheng2024">
+<h2>Load Zheng2024<a class="headerlink" href="#Load-Zheng2024" title="Link to this heading"></a></h2>
+<p>Freshwater transports also available.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load ZHENG2024 dataset</span>
+<span class="n">standardZHENG2024</span> <span class="o">=</span> <span class="n">read</span><span class="o">.</span><span class="n">zheng2024</span><span class="p">()</span>
+
+<span class="c1"># create mean by using function defined for calafat2025 dataset earlier</span>
+<span class="n">zheng_mean</span> <span class="o">=</span> <span class="n">create_ensemble_mean_dataset</span><span class="p">(</span><span class="n">standardZHENG2024</span><span class="p">)</span>
+
+<span class="c1"># Plot the 2D MFT data</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plotters</span><span class="o">.</span><span class="n">plot_amoc_2d_data</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">zheng_mean</span><span class="p">,</span>
+    <span class="n">varname</span><span class="o">=</span><span class="s2">"MFT"</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">"ZHENG2024 Meridional Freshwater Transport"</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">"Latitude (°N)"</span><span class="p">,</span>
+    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>
+    <span class="n">colormap</span><span class="o">=</span><span class="s2">"RdBu_r"</span><span class="p">,</span>  <span class="c1"># Red-blue colormaps</span>
+    <span class="c1"># vmin=-1.0,  # Optional: set color scale limits</span>
+    <span class="c1"># vmax=1.0,</span>
+<span class="p">)</span>
+
+<span class="c1"># Add colorbar label</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">get_axes</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">fig</span><span class="o">.</span><span class="n">get_axes</span><span class="p">())</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="kc">None</span>
+<span class="k">if</span> <span class="n">cbar</span><span class="p">:</span>
+    <span class="n">cbar</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"MFT (Sv)"</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">270</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Load-NAC-timeseries">
+<h2>Load NAC timeseries<a class="headerlink" href="#Load-NAC-timeseries" title="Link to this heading"></a></h2>
+<p>Available for plotting is a transport estimate by satellite and float observations (TRANS_NAC) and a proxy only based on satellite altimetry (TRANS_NAC_PROXY). Both are shown here.</p>
+<p>Dataset is already in 6-monthly resolution, which is why the raw data is shown in the plot. If you type <code class="docutils literal notranslate"><span class="pre">resample_monthly</span> <span class="pre">=</span> <span class="pre">False</span></code> then the raw data is shown in your desired color.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load dataset</span>
+<span class="n">standardNAC</span> <span class="o">=</span> <span class="n">read</span><span class="o">.</span><span class="n">nac</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plotters</span><span class="o">.</span><span class="n">plot_amoc_timeseries</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">standardNAC</span><span class="p">,</span> <span class="n">standardNAC</span><span class="p">],</span>
+    <span class="n">varnames</span><span class="o">=</span><span class="p">[</span><span class="s2">"TRANS_NAC"</span><span class="p">,</span> <span class="s2">"TRANS_NAC_PROXY"</span><span class="p">],</span>
+    <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">"Transport"</span><span class="p">,</span> <span class="s2">"Proxy"</span><span class="p">],</span>
+    <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s2">"red"</span><span class="p">,</span> <span class="s2">"darkblue"</span><span class="p">],</span>
+    <span class="n">resample_monthly</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">plot_raw</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">"NAC - North Atlantic Current"</span><span class="p">,</span>
+    <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">35</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">"lower right"</span><span class="p">)</span>  <span class="c1"># Plot NAC transport and proxy timeseries</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Load-Le-Bras-35°N-AMOC">
+<h2>Load Le Bras 35°N AMOC<a class="headerlink" href="#Load-Le-Bras-35°N-AMOC" title="Link to this heading"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load dataset</span>
+<span class="c1"># This dataset has multiple files, so we specify all_files=True create a list of datasets.</span>
+<span class="c1"># They can then be accessed with standardLEBRAS35N[0] (transport data) and standardLEBRAS35N[1] (gridded velocities).</span>
+<span class="c1"># If you only want the transport files, you could specify: transport_only=True</span>
+<span class="n">standardLEBRAS35N</span> <span class="o">=</span> <span class="n">read</span><span class="o">.</span><span class="n">lebras35n</span><span class="p">(</span><span class="n">all_files</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot MOC and Ekman component of transport timeseries</span>
+<span class="c1"># In the plot the data is displayed as (raw) because it is already on a monthly grid, so no resampling was needed.</span>
+<span class="n">plotters</span><span class="o">.</span><span class="n">plot_amoc_timeseries</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">standardLEBRAS35N</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">standardLEBRAS35N</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
+    <span class="n">varnames</span><span class="o">=</span><span class="p">[</span><span class="s2">"MOC_SIGMA2"</span><span class="p">,</span> <span class="s2">"TRANS_EKMAN"</span><span class="p">],</span>
+    <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">"MOC"</span><span class="p">,</span> <span class="s2">"Ekman"</span><span class="p">],</span>
+    <span class="n">resample_monthly</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">plot_raw</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s2">"red"</span><span class="p">,</span> <span class="s2">"darkblue"</span><span class="p">],</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">"Le Bras et al. 2023 - 35N"</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Load-the-AXMOC-transport-data-for-22.5°S-and-34.5°S">
+<h2>Load the AXMOC transport data for 22.5°S and 34.5°S<a class="headerlink" href="#Load-the-AXMOC-transport-data-for-22.5°S-and-34.5°S" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>use read.axmoc22s() for the 22.5°S data (here we have MOC and MHT available)</p></li>
+<li><p>use read.axmoc34s() for the 34.5°S data (here we have MOC, MHT and FOV available) (FOV = overturning component of freshwater transport)</p></li>
+</ul>
+<p>For both datasets we have the total, then the Ekman and the geostrophic component available</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">standardAXMOC22S</span> <span class="o">=</span> <span class="n">read</span><span class="o">.</span><span class="n">axmoc22s</span><span class="p">()</span>
+<span class="n">standardAXMOC34S</span> <span class="o">=</span> <span class="n">read</span><span class="o">.</span><span class="n">axmoc34s</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plotters</span><span class="o">.</span><span class="n">plot_amoc_timeseries</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">standardAXMOC22S</span><span class="p">,</span> <span class="n">standardAXMOC34S</span><span class="p">],</span>
+    <span class="n">varnames</span><span class="o">=</span><span class="p">[</span><span class="s2">"MOC"</span><span class="p">,</span> <span class="s2">"MOC"</span><span class="p">],</span>
+    <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">"MOC 22.5°S"</span><span class="p">,</span> <span class="s2">"MOC 34.5°S"</span><span class="p">],</span>
+    <span class="n">resample_monthly</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">plot_raw</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s2">"red"</span><span class="p">,</span> <span class="s2">"darkblue"</span><span class="p">],</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">"AXMOC - MOC transport at 22.5°S and 34.5°S"</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Monthly-Anomalies-Overview">
+<h2>Monthly Anomalies Overview<a class="headerlink" href="#Monthly-Anomalies-Overview" title="Link to this heading"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plotters</span><span class="o">.</span><span class="n">plot_monthly_anomalies</span><span class="p">(</span>
+    <span class="n">osnap_data</span><span class="o">=</span><span class="n">ds_osnap</span><span class="p">[</span><span class="s2">"MOC_SIGMA0"</span><span class="p">],</span>
+    <span class="n">fortyone_data</span><span class="o">=</span><span class="n">standard41n</span><span class="p">[</span><span class="s2">"MOC"</span><span class="p">],</span>
+    <span class="n">rapid_data</span><span class="o">=</span><span class="n">standardRAPID</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"MOC"</span><span class="p">],</span>
+    <span class="n">move_data</span><span class="o">=-</span><span class="n">ds_move</span><span class="p">[</span><span class="s2">"MOC"</span><span class="p">],</span>
+    <span class="n">samba_data</span><span class="o">=</span><span class="n">standardSAMBA</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">"MOC"</span><span class="p">],</span>
+    <span class="n">fw2015_data</span><span class="o">=</span><span class="n">standardfw2015</span><span class="p">[</span><span class="s2">"MOC_PROXY"</span><span class="p">],</span>
+    <span class="n">dso_data</span><span class="o">=</span><span class="n">standardDSO</span><span class="p">[</span><span class="s2">"TRANS_DSO"</span><span class="p">],</span>
+    <span class="n">osnap_label</span><span class="o">=</span><span class="s2">"OSNAP"</span><span class="p">,</span>
+    <span class="n">fortyone_label</span><span class="o">=</span><span class="s2">"41°N"</span><span class="p">,</span>
+    <span class="n">rapid_label</span><span class="o">=</span><span class="s2">"RAPID 26°N"</span><span class="p">,</span>
+    <span class="n">move_label</span><span class="o">=</span><span class="s2">"MOVE 16°N"</span><span class="p">,</span>
+    <span class="n">samba_label</span><span class="o">=</span><span class="s2">"SAMBA 34.5°S"</span><span class="p">,</span>
+    <span class="n">fw2015_label</span><span class="o">=</span><span class="s2">"FW2015"</span><span class="p">,</span>
+    <span class="n">dso_label</span><span class="o">=</span><span class="s2">"DS Overflow Transport"</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<section id="Other-components">
+<h3>Other components<a class="headerlink" href="#Other-components" title="Link to this heading"></a></h3>
+<p>It is also possible to manipulate (filter) and plot other components of the AMOC, depending on what is available in the datasets.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clim</span> <span class="o">=</span> <span class="n">standardRAPID</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"TIME.month"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s2">"TIME"</span><span class="p">)</span>
+<span class="n">tmp</span> <span class="o">=</span> <span class="n">standardRAPID</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"TIME.month"</span><span class="p">)</span> <span class="o">-</span> <span class="n">clim</span>
+<span class="n">filtRAPID</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">TIME</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plotters</span><span class="o">.</span><span class="n">plot_amoc_timeseries</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">filtRAPID</span><span class="p">],</span>
+    <span class="n">varnames</span><span class="o">=</span><span class="p">[</span><span class="s2">"TRANS_3000_5000"</span><span class="p">],</span>
+    <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">""</span><span class="p">],</span>
+    <span class="n">resample_monthly</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">plot_raw</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">"RAPID 26°N - t_ld10"</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="faq.html" class="btn btn-neutral float-left" title="FAQ / Troubleshooting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="reports/index.html" class="btn btn-neutral float-right" title="Data Sources" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Eleanor Frajka-Williams, Isabelle Schmitz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

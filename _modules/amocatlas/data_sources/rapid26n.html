@@ -1,0 +1,386 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>amocatlas.data_sources.rapid26n &mdash; amocatlas 0.4.0.post1.dev10 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=1078e4cb" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=6d4c28d6"></script>
+      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../../../about.html" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            amocatlas
+              <img src="../../../_static/logo.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../about.html">About AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../about.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../about.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../faq.html">FAQ / Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Demo notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../demo-output.html">AMOCatlas demo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dataset Reports</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../reports/index.html">Data Sources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/format.html">AMOCatlas data format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/vocabulary.html">amocvocab — variable vocabulary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../amoc_paperfigs-output.html">AMOC Publication Figures</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Repository and API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">GitHub Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../amocatlas.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">amocatlas</span> <span class="pre">API</span></code></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers' guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers/developer_guide.html">Developer Guide for AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers/git_beginners_guide.html">Git for Beginners: Workflow Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers/actions.html">Extra GitHub features: Actions &amp; Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers/housekeeping.html">Project Maintenance Checklist</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">amocatlas</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">amocatlas.data_sources.rapid26n</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for amocatlas.data_sources.rapid26n</h1><div class="highlight"><pre>
+<span></span><span class="sd">"""RAPID array data reader for AMOCatlas.</span>
+
+<span class="sd">This module provides functions to read and process data from the RAPID</span>
+<span class="sd">(Rapid Climate Change) observing array located at 26°N in the Atlantic.</span>
+
+<span class="sd">"""</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+
+<span class="c1"># Import the modules used</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">amocatlas</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span><span class="p">,</span> <span class="n">utilities</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">amocatlas.logger</span><span class="w"> </span><span class="kn">import</span> <span class="n">log_info</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">amocatlas.reader_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">ReaderUtils</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">amocatlas.utilities</span><span class="w"> </span><span class="kn">import</span> <span class="n">apply_defaults</span>
+
+<span class="n">log</span> <span class="o">=</span> <span class="n">logger</span><span class="o">.</span><span class="n">log</span>  <span class="c1"># Use the global logger</span>
+
+<span class="c1"># Datasource identifier for automatic standardization</span>
+<span class="n">DATASOURCE_ID</span> <span class="o">=</span> <span class="s2">"rapid26n"</span>
+
+<span class="c1"># Default list of RAPID data files</span>
+<span class="n">RAPID_DEFAULT_SOURCE</span> <span class="o">=</span> <span class="s2">"https://rapid.ac.uk/sites/default/files/rapid_data/"</span>
+<span class="n">RAPID_TRANSPORT_FILES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"moc_transports.nc"</span><span class="p">]</span>
+<span class="n">RAPID_DEFAULT_FILES</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"moc_transports.nc"</span><span class="p">,</span>
+    <span class="s2">"moc_vertical.nc"</span><span class="p">,</span>
+    <span class="s2">"ts_gridded.nc"</span><span class="p">,</span>
+    <span class="s2">"2d_gridded.nc"</span><span class="p">,</span>
+    <span class="s2">"meridional_transports.nc"</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="c1"># Inline metadata dictionary</span>
+<span class="n">RAPID_METADATA</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"description"</span><span class="p">:</span> <span class="s2">"RAPID 26N transport estimates dataset"</span><span class="p">,</span>
+    <span class="s2">"project"</span><span class="p">:</span> <span class="s2">"RAPID-AMOC 26°N array"</span><span class="p">,</span>
+    <span class="s2">"web_link"</span><span class="p">:</span> <span class="s2">"https://rapid.ac.uk/rapidmoc"</span><span class="p">,</span>
+    <span class="s2">"note"</span><span class="p">:</span> <span class="s2">"Dataset accessed and processed via xarray"</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="c1"># File-specific metadata placeholder</span>
+<span class="n">RAPID_FILE_METADATA</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"moc_transports.nc"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"data_product"</span><span class="p">:</span> <span class="s2">"Layer transports - individual water mass transport components (thermocline, intermediate water, NADW, AABW, Ekman, Florida Straits)"</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">"moc_vertical.nc"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"data_product"</span><span class="p">:</span> <span class="s2">"Vertical streamfunction - overturning circulation streamfunction as function of depth and time"</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">"ts_gridded.nc"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"data_product"</span><span class="p">:</span> <span class="s2">"Gridded temperature and salinity - T/S profiles from moorings across the basin"</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">"2d_gridded.nc"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"data_product"</span><span class="p">:</span> <span class="s2">"Monthly velocity and hydrography fields - Conservative Temperature (CT), Absolute Salinity (SA), and velocities on regular grid"</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">"meridional_transports.nc"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"data_product"</span><span class="p">:</span> <span class="s2">"Heat and freshwater transports - AMOC strength, heat transport, freshwater transport, and overturning streamfunctions in density space"</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+<span class="c1"># https://rapid.ac.uk/sites/default/files/rapid_data/ts_gridded.nc</span>
+<span class="c1"># https://rapid.ac.uk/sites/default/files/rapid_data/moc_vertical.nc</span>
+<span class="c1"># https://rapid.ac.uk/sites/default/files/rapid_data/moc_transports.nc</span>
+<span class="c1"># https://rapid.ac.uk/sites/default/files/rapid_data/2d_gridded.nc</span>
+<span class="c1"># https://rapid.ac.uk/sites/default/files/rapid_data/meridional_transports.nc</span>
+
+
+<div class="viewcode-block" id="read_rapid">
+<a class="viewcode-back" href="../../../data_sources.html#amocatlas.data_sources.read_rapid">[docs]</a>
+<span class="nd">@apply_defaults</span><span class="p">(</span><span class="n">RAPID_DEFAULT_SOURCE</span><span class="p">,</span> <span class="n">RAPID_DEFAULT_FILES</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_rapid</span><span class="p">(</span>
+    <span class="n">source</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">file_list</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+    <span class="n">transport_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">data_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">redownload</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">track_added_attrs</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">]</span> <span class="o">|</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">],</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]]:</span>
+<span class="w">    </span><span class="sd">"""Load the RAPID transport dataset from a URL or local file path into an xarray.Dataset.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    source : str, optional</span>
+<span class="sd">        URL or local path to the NetCDF file(s).</span>
+<span class="sd">        Defaults to the RAPID data repository URL.</span>
+<span class="sd">    file_list : str or list of str, optional</span>
+<span class="sd">        Filename or list of filenames to process.</span>
+<span class="sd">        If None, will attempt to list files in the source directory.</span>
+<span class="sd">    transport_only : bool, optional</span>
+<span class="sd">        If True, restrict to transport files only.</span>
+<span class="sd">    data_dir : str, Path or None, optional</span>
+<span class="sd">        Optional local data directory.</span>
+<span class="sd">    redownload : bool, optional</span>
+<span class="sd">        If True, force redownload of the data.</span>
+<span class="sd">    track_added_attrs : bool, optional</span>
+<span class="sd">        If True, return tuple of (datasets, list_of_metadata_changes_per_dataset).</span>
+<span class="sd">        If False, return only datasets. Default is False.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list[xr.Dataset] or tuple[list[xr.Dataset], list[dict]]</span>
+<span class="sd">        If track_added_attrs=False: List of loaded datasets with metadata.</span>
+<span class="sd">        If track_added_attrs=True: Tuple of (datasets, list of metadata changes per dataset).</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ValueError</span>
+<span class="sd">        If the source is neither a valid URL nor a directory path.</span>
+<span class="sd">    FileNotFoundError</span>
+<span class="sd">        If no valid NetCDF files are found in the provided file list.</span>
+
+<span class="sd">    """</span>
+    <span class="n">log_info</span><span class="p">(</span><span class="s2">"Starting to read RAPID dataset"</span><span class="p">)</span>
+
+    <span class="c1"># Load YAML metadata with fallback</span>
+    <span class="n">global_metadata</span><span class="p">,</span> <span class="n">yaml_file_metadata</span> <span class="o">=</span> <span class="n">ReaderUtils</span><span class="o">.</span><span class="n">load_array_metadata_with_fallback</span><span class="p">(</span>
+        <span class="n">DATASOURCE_ID</span><span class="p">,</span> <span class="n">RAPID_METADATA</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Use ReaderUtils for common operations</span>
+    <span class="n">file_list</span> <span class="o">=</span> <span class="n">ReaderUtils</span><span class="o">.</span><span class="n">prepare_file_list</span><span class="p">(</span>
+        <span class="n">file_list</span><span class="p">,</span> <span class="n">RAPID_DEFAULT_FILES</span><span class="p">,</span> <span class="n">RAPID_TRANSPORT_FILES</span><span class="p">,</span> <span class="n">transport_only</span>
+    <span class="p">)</span>
+    <span class="n">local_data_dir</span> <span class="o">=</span> <span class="n">ReaderUtils</span><span class="o">.</span><span class="n">setup_data_directory</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span>
+
+    <span class="c1"># Print information about files being loaded - use YAML metadata if available</span>
+    <span class="n">netcdf_files</span> <span class="o">=</span> <span class="n">ReaderUtils</span><span class="o">.</span><span class="n">filter_netcdf_files</span><span class="p">(</span><span class="n">file_list</span><span class="p">)</span>
+    <span class="n">display_file_metadata</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">yaml_file_metadata</span> <span class="k">if</span> <span class="n">yaml_file_metadata</span> <span class="k">else</span> <span class="n">RAPID_FILE_METADATA</span>
+    <span class="p">)</span>
+    <span class="n">ReaderUtils</span><span class="o">.</span><span class="n">print_loading_info</span><span class="p">(</span><span class="n">netcdf_files</span><span class="p">,</span> <span class="n">DATASOURCE_ID</span><span class="p">,</span> <span class="n">display_file_metadata</span><span class="p">)</span>
+
+    <span class="n">datasets</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">added_attrs_per_dataset</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">netcdf_files</span><span class="p">:</span>
+        <span class="c1"># RAPID-specific URL construction</span>
+        <span class="n">download_url</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">source</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2">"</span> <span class="k">if</span> <span class="n">utilities</span><span class="o">.</span><span class="n">is_valid_url</span><span class="p">(</span><span class="n">source</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="p">)</span>
+
+        <span class="n">file_path</span> <span class="o">=</span> <span class="n">utilities</span><span class="o">.</span><span class="n">resolve_file_path</span><span class="p">(</span>
+            <span class="n">file_name</span><span class="o">=</span><span class="n">file</span><span class="p">,</span>
+            <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span>
+            <span class="n">download_url</span><span class="o">=</span><span class="n">download_url</span><span class="p">,</span>
+            <span class="n">local_data_dir</span><span class="o">=</span><span class="n">local_data_dir</span><span class="p">,</span>
+            <span class="n">redownload</span><span class="o">=</span><span class="n">redownload</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Use ReaderUtils for consistent dataset loading and metadata</span>
+        <span class="n">ds</span> <span class="o">=</span> <span class="n">ReaderUtils</span><span class="o">.</span><span class="n">safe_load_dataset</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+
+        <span class="c1"># Fix sigma0 and sigma2 coordinates for meridional_transports.nc</span>
+        <span class="c1"># These values come in as potential density (e.g., 1027) but should be</span>
+        <span class="c1"># potential density anomaly (e.g., 27)</span>
+        <span class="k">if</span> <span class="n">file</span> <span class="o">==</span> <span class="s2">"meridional_transports.nc"</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s2">"sigma0"</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">coords</span><span class="p">:</span>
+                <span class="n">original_values</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s2">"sigma0"</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+                <span class="k">if</span> <span class="p">(</span>
+                    <span class="n">original_values</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">100</span>
+                <span class="p">):</span>  <span class="c1"># Check if values are in absolute density range (&gt;1000) rather than anomaly range</span>
+                    <span class="n">log_info</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">"Fixing sigma0 coordinates in </span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2">: subtracting 1000 to get density anomaly"</span>
+                    <span class="p">)</span>
+                    <span class="c1"># Preserve existing attributes from the DataArray</span>
+                    <span class="n">original_attrs</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s2">"sigma0"</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+                    <span class="n">ds</span><span class="p">[</span><span class="s2">"sigma0"</span><span class="p">]</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s2">"sigma0"</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1000</span>
+                    <span class="c1"># Restore the preserved attributes</span>
+                    <span class="n">ds</span><span class="p">[</span><span class="s2">"sigma0"</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">original_attrs</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="s2">"sigma2"</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">coords</span><span class="p">:</span>
+                <span class="n">original_values</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s2">"sigma2"</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+                <span class="k">if</span> <span class="p">(</span>
+                    <span class="n">original_values</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">100</span>
+                <span class="p">):</span>  <span class="c1"># Check if values are in absolute density range (&gt;1000) rather than anomaly range</span>
+                    <span class="n">log_info</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">"Fixing sigma2 coordinates in </span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2">: subtracting 1000 to get density anomaly"</span>
+                    <span class="p">)</span>
+                    <span class="c1"># Preserve existing attributes from the DataArray</span>
+                    <span class="n">original_attrs</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s2">"sigma2"</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+                    <span class="n">ds</span><span class="p">[</span><span class="s2">"sigma2"</span><span class="p">]</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s2">"sigma2"</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1000</span>
+                    <span class="c1"># Restore the preserved attributes</span>
+                    <span class="n">ds</span><span class="p">[</span><span class="s2">"sigma2"</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">original_attrs</span><span class="p">)</span>
+
+        <span class="c1"># Get file-specific metadata from YAML or fallback to hardcoded</span>
+        <span class="k">if</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">yaml_file_metadata</span><span class="p">:</span>
+            <span class="n">file_metadata</span> <span class="o">=</span> <span class="n">yaml_file_metadata</span><span class="p">[</span><span class="n">file</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">file_metadata</span> <span class="o">=</span> <span class="n">RAPID_FILE_METADATA</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="p">{})</span>
+
+        <span class="c1"># Apply variable mapping and coordinate metadata from YAML</span>
+        <span class="k">if</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">yaml_file_metadata</span> <span class="ow">and</span> <span class="n">yaml_file_metadata</span><span class="p">[</span><span class="n">file</span><span class="p">]:</span>
+            <span class="n">yaml_file_data</span> <span class="o">=</span> <span class="n">yaml_file_metadata</span><span class="p">[</span><span class="n">file</span><span class="p">]</span>
+
+            <span class="c1"># Variable mapping will be handled in standardization stage (Option A approach)</span>
+            <span class="c1"># Store mapping for later use but don't apply renaming here</span>
+            <span class="n">var_mapping</span> <span class="o">=</span> <span class="n">yaml_file_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"variable_mapping"</span><span class="p">,</span> <span class="p">{})</span>
+
+            <span class="c1"># Apply coordinate metadata from YAML</span>
+            <span class="c1"># Since we're not renaming in reader, use original coordinate names</span>
+            <span class="n">coord_metadata</span> <span class="o">=</span> <span class="n">yaml_file_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"coordinates"</span><span class="p">,</span> <span class="p">{})</span>
+            <span class="k">for</span> <span class="n">coord_name</span><span class="p">,</span> <span class="n">coord_attrs</span> <span class="ow">in</span> <span class="n">coord_metadata</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">coord_name</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">coords</span><span class="p">:</span>
+                    <span class="n">ds</span><span class="p">[</span><span class="n">coord_name</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">coord_attrs</span><span class="p">)</span>
+
+            <span class="c1"># Apply variable metadata from YAML using original variable names</span>
+            <span class="c1"># (standardized names will get metadata applied during standardization)</span>
+            <span class="n">var_metadata</span> <span class="o">=</span> <span class="n">yaml_file_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"variables"</span><span class="p">,</span> <span class="p">{})</span>
+            <span class="k">for</span> <span class="n">std_var_name</span><span class="p">,</span> <span class="n">var_attrs</span> <span class="ow">in</span> <span class="n">var_metadata</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="c1"># Find the original variable name that maps to this standardized name</span>
+                <span class="n">orig_var_name</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="k">for</span> <span class="n">orig</span><span class="p">,</span> <span class="n">std</span> <span class="ow">in</span> <span class="n">var_mapping</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="k">if</span> <span class="n">std</span> <span class="o">==</span> <span class="n">std_var_name</span><span class="p">:</span>
+                        <span class="n">orig_var_name</span> <span class="o">=</span> <span class="n">orig</span>
+                        <span class="k">break</span>
+
+                <span class="c1"># Apply metadata to original variable name if it exists in dataset</span>
+                <span class="k">if</span> <span class="n">orig_var_name</span> <span class="ow">and</span> <span class="n">orig_var_name</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">data_vars</span><span class="p">:</span>
+                    <span class="n">ds</span><span class="p">[</span><span class="n">orig_var_name</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">var_attrs</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">track_added_attrs</span><span class="p">:</span>
+            <span class="n">ds</span><span class="p">,</span> <span class="n">attr_changes</span> <span class="o">=</span> <span class="n">ReaderUtils</span><span class="o">.</span><span class="n">attach_metadata_with_tracking</span><span class="p">(</span>
+                <span class="n">ds</span><span class="p">,</span>
+                <span class="n">file</span><span class="p">,</span>
+                <span class="n">file_path</span><span class="p">,</span>
+                <span class="n">global_metadata</span><span class="p">,</span>
+                <span class="n">yaml_file_metadata</span><span class="p">,</span>
+                <span class="n">file_metadata</span><span class="p">,</span>
+                <span class="n">DATASOURCE_ID</span><span class="p">,</span>
+                <span class="n">track_added_attrs</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">added_attrs_per_dataset</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">attr_changes</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">ds</span> <span class="o">=</span> <span class="n">ReaderUtils</span><span class="o">.</span><span class="n">attach_metadata_with_tracking</span><span class="p">(</span>
+                <span class="n">ds</span><span class="p">,</span>
+                <span class="n">file</span><span class="p">,</span>
+                <span class="n">file_path</span><span class="p">,</span>
+                <span class="n">global_metadata</span><span class="p">,</span>
+                <span class="n">yaml_file_metadata</span><span class="p">,</span>
+                <span class="n">file_metadata</span><span class="p">,</span>
+                <span class="n">DATASOURCE_ID</span><span class="p">,</span>
+                <span class="n">track_added_attrs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="n">datasets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
+
+    <span class="c1"># Use ReaderUtils for validation</span>
+    <span class="n">ReaderUtils</span><span class="o">.</span><span class="n">validate_datasets_loaded</span><span class="p">(</span><span class="n">datasets</span><span class="p">,</span> <span class="n">file_list</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">track_added_attrs</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">added_attrs_per_dataset</span>
+    <span class="k">return</span> <span class="n">datasets</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Eleanor Frajka-Williams, Isabelle Schmitz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

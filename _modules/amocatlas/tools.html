@@ -1,0 +1,733 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>amocatlas.tools &mdash; amocatlas 0.4.0.post1.dev10 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=1078e4cb" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=6d4c28d6"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            amocatlas
+              <img src="../../_static/logo.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../about.html">About AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../about.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../about.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq.html">FAQ / Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Demo notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../demo-output.html">AMOCatlas demo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dataset Reports</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../reports/index.html">Data Sources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/format.html">AMOCatlas data format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/vocabulary.html">amocvocab — variable vocabulary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../amoc_paperfigs-output.html">AMOC Publication Figures</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Repository and API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">GitHub Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../amocatlas.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">amocatlas</span> <span class="pre">API</span></code></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers' guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developers/developer_guide.html">Developer Guide for AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers/git_beginners_guide.html">Git for Beginners: Workflow Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers/actions.html">Extra GitHub features: Actions &amp; Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers/housekeeping.html">Project Maintenance Checklist</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">amocatlas</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">amocatlas.tools</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for amocatlas.tools</h1><div class="highlight"><pre>
+<span></span><span class="sd">"""AMOCatlas analysis tools for data processing, filtering, and calculations."""</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.signal.windows</span><span class="w"> </span><span class="kn">import</span> <span class="n">tukey</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">amocatlas</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">amocatlas.logger</span><span class="w"> </span><span class="kn">import</span> <span class="n">log_debug</span><span class="p">,</span> <span class="n">log_info</span>
+
+<span class="n">log</span> <span class="o">=</span> <span class="n">logger</span><span class="o">.</span><span class="n">log</span>
+
+
+<div class="viewcode-block" id="generate_reverse_conversions">
+<a class="viewcode-back" href="../../tools.html#amocatlas.tools.generate_reverse_conversions">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_reverse_conversions</span><span class="p">(</span>
+    <span class="n">forward_conversions</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]],</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">"""Create a unit conversion dictionary with both forward and reverse conversions.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    forward_conversions : dict of {str: dict of {str: float}}</span>
+<span class="sd">        Mapping of source units to target units and conversion factors.</span>
+<span class="sd">        Example: {"m": {"cm": 100, "km": 0.001}}</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict of {str: dict of {str: float}}</span>
+<span class="sd">        Complete mapping of units including reverse conversions.</span>
+<span class="sd">        Example: {"cm": {"m": 0.01}, "km": {"m": 1000}}</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    If a conversion factor is zero, a warning is printed, and the reverse conversion is skipped.</span>
+
+<span class="sd">    """</span>
+    <span class="n">complete_conversions</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">for</span> <span class="n">from_unit</span><span class="p">,</span> <span class="n">targets</span> <span class="ow">in</span> <span class="n">forward_conversions</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">complete_conversions</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">from_unit</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="k">for</span> <span class="n">to_unit</span><span class="p">,</span> <span class="n">factor</span> <span class="ow">in</span> <span class="n">targets</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">complete_conversions</span><span class="p">[</span><span class="n">from_unit</span><span class="p">][</span><span class="n">to_unit</span><span class="p">]</span> <span class="o">=</span> <span class="n">factor</span>
+            <span class="n">complete_conversions</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">to_unit</span><span class="p">,</span> <span class="p">{})</span>
+            <span class="k">if</span> <span class="n">factor</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">"Warning: zero factor in conversion from </span><span class="si">{</span><span class="n">from_unit</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">to_unit</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="k">continue</span>
+            <span class="n">complete_conversions</span><span class="p">[</span><span class="n">to_unit</span><span class="p">][</span><span class="n">from_unit</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">factor</span>
+
+    <span class="k">return</span> <span class="n">complete_conversions</span></div>
+
+
+
+<span class="c1"># Various conversions from the key to units_name with the multiplicative conversion factor</span>
+<span class="n">base_unit_conversion</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"cm/s"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"m/s"</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">},</span>
+    <span class="s2">"cm s-1"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"m s-1"</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">},</span>
+    <span class="s2">"S/m"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"mS/cm"</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">},</span>
+    <span class="s2">"dbar"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"Pa"</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span> <span class="s2">"kPa"</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span>
+    <span class="s2">"degrees_Celsius"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"degree_Celsius"</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+    <span class="s2">"m"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"cm"</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s2">"km"</span><span class="p">:</span> <span class="mf">0.001</span><span class="p">},</span>
+    <span class="s2">"g m-3"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"kg m-3"</span><span class="p">:</span> <span class="mf">0.001</span><span class="p">},</span>
+    <span class="s2">"sverdrup"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"Sv"</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+    <span class="s2">"PW"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"W"</span><span class="p">:</span> <span class="mf">1e15</span><span class="p">},</span>
+<span class="p">}</span>
+
+<span class="n">unit_conversion</span> <span class="o">=</span> <span class="n">generate_reverse_conversions</span><span class="p">(</span><span class="n">base_unit_conversion</span><span class="p">)</span>
+
+<span class="c1"># Specify the preferred units, and it will convert if the conversion is available in unit_conversion</span>
+<span class="n">preferred_units</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"m s-1"</span><span class="p">,</span>
+    <span class="s2">"dbar"</span><span class="p">,</span>
+    <span class="s2">"S m-1"</span><span class="p">,</span>
+    <span class="s2">"sverdrup"</span><span class="p">,</span>
+    <span class="s2">"degree_Celsius"</span><span class="p">,</span>
+    <span class="s2">"kg m-3"</span><span class="p">,</span>
+    <span class="s2">"m"</span><span class="p">,</span>
+    <span class="s2">"degree_north"</span><span class="p">,</span>
+    <span class="s2">"degree_east"</span><span class="p">,</span>
+    <span class="s2">"watt"</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="c1"># String formats for units.  The key is the original, the value is the desired format</span>
+<span class="n">unit_str_format</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"m/s"</span><span class="p">:</span> <span class="s2">"m s-1"</span><span class="p">,</span>
+    <span class="s2">"cm/s"</span><span class="p">:</span> <span class="s2">"cm s-1"</span><span class="p">,</span>
+    <span class="s2">"S/m"</span><span class="p">:</span> <span class="s2">"S m-1"</span><span class="p">,</span>
+    <span class="s2">"meters"</span><span class="p">:</span> <span class="s2">"m"</span><span class="p">,</span>
+    <span class="s2">"degrees_Celsius"</span><span class="p">:</span> <span class="s2">"degree_Celsius"</span><span class="p">,</span>
+    <span class="s2">"g/m^3"</span><span class="p">:</span> <span class="s2">"g m-3"</span><span class="p">,</span>
+<span class="p">}</span>
+
+
+<div class="viewcode-block" id="reformat_units_var">
+<a class="viewcode-back" href="../../tools.html#amocatlas.tools.reformat_units_var">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">reformat_units_var</span><span class="p">(</span>
+    <span class="n">ds</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">,</span>
+    <span class="n">var_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">unit_format</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">unit_str_format</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Reformat the units of a variable in the dataset based on a provided mapping.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ds : xarray.Dataset</span>
+<span class="sd">        The input dataset containing variables with units to be reformatted.</span>
+<span class="sd">    var_name : str</span>
+<span class="sd">        The name of the variable whose units need to be reformatted.</span>
+<span class="sd">    unit_format : dict of {str: str}, optional</span>
+<span class="sd">        A dictionary mapping old unit strings to new formatted unit strings.</span>
+<span class="sd">        Defaults to `unit_str_format`.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    str</span>
+<span class="sd">        The reformatted unit string. If the old unit is not found in `unit_format`,</span>
+<span class="sd">        the original unit string is returned.</span>
+
+<span class="sd">    """</span>
+    <span class="n">old_unit</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="n">var_name</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">"units"</span><span class="p">]</span>
+    <span class="n">new_unit</span> <span class="o">=</span> <span class="n">unit_format</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">old_unit</span><span class="p">,</span> <span class="n">old_unit</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">new_unit</span></div>
+
+
+
+<div class="viewcode-block" id="convert_units_var">
+<a class="viewcode-back" href="../../tools.html#amocatlas.tools.convert_units_var">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">convert_units_var</span><span class="p">(</span>
+    <span class="n">var_values</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">current_unit</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">new_unit</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">unit_conversion</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="n">unit_conversion</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Converts variable values from one unit to another using a predefined conversion factor.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    var_values : numpy.ndarray or float</span>
+<span class="sd">        The values to be converted.</span>
+<span class="sd">    current_unit : str</span>
+<span class="sd">        The current unit of the variable values.</span>
+<span class="sd">    new_unit : str</span>
+<span class="sd">        The target unit to which the variable values should be converted.</span>
+<span class="sd">    unit_conversion : dict of {str: dict of {str: float}}, optional</span>
+<span class="sd">        A dictionary containing conversion factors between units. The default is `unit_conversion`.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy.ndarray or float</span>
+<span class="sd">        The converted variable values. If no conversion factor is found, the original values are returned.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    KeyError</span>
+<span class="sd">        If the conversion factor for the specified units is not found in the `unit_conversion` dictionary.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    If the conversion factor for the specified units is not available, a message is printed, and the original</span>
+<span class="sd">    values are returned without any conversion.</span>
+
+<span class="sd">    """</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">conversion_factor</span> <span class="o">=</span> <span class="n">unit_conversion</span><span class="p">[</span><span class="n">current_unit</span><span class="p">][</span><span class="n">new_unit</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">var_values</span> <span class="o">*</span> <span class="n">conversion_factor</span>
+    <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"No conversion information found for </span><span class="si">{</span><span class="n">current_unit</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">new_unit</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">var_values</span></div>
+
+
+
+<div class="viewcode-block" id="find_best_dtype">
+<a class="viewcode-back" href="../../tools.html#amocatlas.tools.find_best_dtype">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">find_best_dtype</span><span class="p">(</span><span class="n">var_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">da</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Determines the most suitable data type for a given variable.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    var_name : str</span>
+<span class="sd">        The name of the variable.</span>
+<span class="sd">    da : xarray.DataArray</span>
+<span class="sd">        The data array containing the variable's values.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy.dtype</span>
+<span class="sd">        The optimal data type for the variable based on its name and values.</span>
+
+<span class="sd">    """</span>
+    <span class="n">input_dtype</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">type</span>
+    <span class="k">if</span> <span class="s2">"latitude"</span> <span class="ow">in</span> <span class="n">var_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">or</span> <span class="s2">"longitude"</span> <span class="ow">in</span> <span class="n">var_name</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">double</span>
+    <span class="k">if</span> <span class="n">var_name</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">"qc"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">int8</span>
+    <span class="k">if</span> <span class="s2">"time"</span> <span class="ow">in</span> <span class="n">var_name</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">input_dtype</span>
+    <span class="k">if</span> <span class="n">var_name</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span> <span class="o">==</span> <span class="s2">"raw"</span> <span class="ow">or</span> <span class="s2">"int"</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">input_dtype</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">da</span><span class="o">.</span><span class="n">values</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="o">**</span><span class="mi">16</span> <span class="o">/</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">int16</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">da</span><span class="o">.</span><span class="n">values</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="o">**</span><span class="mi">32</span> <span class="o">/</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span>
+    <span class="k">if</span> <span class="n">input_dtype</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span>
+    <span class="k">return</span> <span class="n">input_dtype</span></div>
+
+
+
+<div class="viewcode-block" id="set_fill_value">
+<a class="viewcode-back" href="../../tools.html#amocatlas.tools.set_fill_value">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">set_fill_value</span><span class="p">(</span><span class="n">new_dtype</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Calculate the fill value for a given data type.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    new_dtype : numpy.dtype</span>
+<span class="sd">        The data type for which the fill value is to be calculated.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    int</span>
+<span class="sd">        The calculated fill value based on the bit-width of the data type.</span>
+
+<span class="sd">    """</span>
+    <span class="n">fill_val</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">**</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">"\d+"</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">new_dtype</span><span class="p">))[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">fill_val</span></div>
+
+
+
+<div class="viewcode-block" id="set_best_dtype">
+<a class="viewcode-back" href="../../tools.html#amocatlas.tools.set_best_dtype">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">set_best_dtype</span><span class="p">(</span><span class="n">ds</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Adjust the data types of variables in a dataset to optimize memory usage.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ds : xarray.Dataset</span>
+<span class="sd">        The input dataset whose variables' data types will be adjusted.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    xarray.Dataset</span>
+<span class="sd">        The dataset with updated data types for its variables, potentially saving memory.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    - The function determines the best data type for each variable using `find_best_dtype`.</span>
+<span class="sd">    - Attributes like `valid_min` and `valid_max` are updated to match the new data type.</span>
+<span class="sd">    - If the new data type is integer-based, NaN values are replaced with a fill value.</span>
+<span class="sd">    - Logs the percentage of memory saved after the data type adjustments.</span>
+
+<span class="sd">    """</span>
+    <span class="n">bytes_in</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">nbytes</span>
+    <span class="k">for</span> <span class="n">var_name</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">ds</span><span class="p">):</span>
+        <span class="n">da</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="n">var_name</span><span class="p">]</span>
+        <span class="n">input_dtype</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">type</span>
+        <span class="n">new_dtype</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span> <span class="o">=</span> <span class="n">find_best_dtype</span><span class="p">(</span><span class="n">var_name</span><span class="p">,</span> <span class="n">da</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">att</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"valid_min"</span><span class="p">,</span> <span class="s2">"valid_max"</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">att</span> <span class="ow">in</span> <span class="n">da</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
+                <span class="n">da</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">att</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">da</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">att</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">new_dtype</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">new_dtype</span> <span class="o">==</span> <span class="n">input_dtype</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">log_debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">var_name</span><span class="si">}</span><span class="s2"> input dtype </span><span class="si">{</span><span class="n">input_dtype</span><span class="si">}</span><span class="s2"> change to </span><span class="si">{</span><span class="n">new_dtype</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="n">da_new</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span> <span class="o">=</span> <span class="n">da</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">new_dtype</span><span class="p">)</span>
+        <span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">drop_vars</span><span class="p">(</span><span class="n">var_name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s2">"int"</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">new_dtype</span><span class="p">):</span>
+            <span class="n">fill_val</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">set_fill_value</span><span class="p">(</span><span class="n">new_dtype</span><span class="p">)</span>
+            <span class="n">da_new</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">da</span><span class="p">)]</span> <span class="o">=</span> <span class="n">fill_val</span>
+            <span class="n">da_new</span><span class="o">.</span><span class="n">encoding</span><span class="p">[</span><span class="s2">"_FillValue"</span><span class="p">]</span> <span class="o">=</span> <span class="n">fill_val</span>
+        <span class="n">ds</span><span class="p">[</span><span class="n">var_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">da_new</span>
+    <span class="n">bytes_out</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">nbytes</span>
+    <span class="n">log_info</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">"Space saved by dtype downgrade: </span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="mi">100</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">bytes_in</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">bytes_out</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">bytes_in</span><span class="p">)</span><span class="si">}</span><span class="s2"> %"</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">ds</span></div>
+
+
+
+<span class="c1"># ------------------------------------------------------------------------------------</span>
+<span class="c1"># Time series filtering and binning functions</span>
+<span class="c1"># ------------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="to_decimal_year">
+<a class="viewcode-back" href="../../tools.html#amocatlas.tools.to_decimal_year">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">to_decimal_year</span><span class="p">(</span><span class="n">dates</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Convert datetime series to decimal years, handling NaN values safely.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    dates : pandas.Series or pandas.DatetimeIndex</span>
+<span class="sd">        Series or Index of datetime objects to convert.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.Series</span>
+<span class="sd">        Series of decimal years with NaN preserved for invalid dates.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import pandas as pd</span>
+<span class="sd">    &gt;&gt;&gt; dates = pd.Series(['2020-01-01', '2020-07-01', '2021-01-01'])</span>
+<span class="sd">    &gt;&gt;&gt; dates = pd.to_datetime(dates)</span>
+<span class="sd">    &gt;&gt;&gt; decimal_years = to_decimal_year(dates)</span>
+
+<span class="sd">    """</span>
+    <span class="c1"># Convert to Series if DatetimeIndex</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dates</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DatetimeIndex</span><span class="p">):</span>
+        <span class="n">dates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">dates</span><span class="p">)</span>
+
+    <span class="c1"># Drop NaN values and handle them separately</span>
+    <span class="n">valid_dates</span> <span class="o">=</span> <span class="n">dates</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">valid_dates</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">dates</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">dates</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+    <span class="n">year</span> <span class="o">=</span> <span class="n">valid_dates</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">year</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"-01-01"</span><span class="p">)</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">((</span><span class="n">year</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"-01-01"</span><span class="p">)</span>
+    <span class="n">decimal_years</span> <span class="o">=</span> <span class="n">year</span> <span class="o">+</span> <span class="p">(</span><span class="n">valid_dates</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span>
+
+    <span class="c1"># Create full series with NaN for invalid dates</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">dates</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">dates</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    <span class="n">result</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">valid_dates</span><span class="o">.</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">decimal_years</span>
+    <span class="k">return</span> <span class="n">result</span></div>
+
+
+
+<div class="viewcode-block" id="extract_time_and_time_num">
+<a class="viewcode-back" href="../../tools.html#amocatlas.tools.extract_time_and_time_num">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">extract_time_and_time_num</span><span class="p">(</span><span class="n">ds</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">,</span> <span class="n">time_var</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"TIME"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Extract time coordinates from xarray Dataset and convert to pandas DataFrame.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ds : xarray.Dataset</span>
+<span class="sd">        Dataset containing time coordinate.</span>
+<span class="sd">    time_var : str, default "TIME"</span>
+<span class="sd">        Name of the time variable in the dataset.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.DataFrame</span>
+<span class="sd">        DataFrame with 'time' (datetime) and 'time_num' (decimal year) columns.</span>
+
+<span class="sd">    """</span>
+    <span class="n">time</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="n">time_var</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">"time"</span><span class="p">:</span> <span class="n">time</span><span class="p">})</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">"time_num"</span><span class="p">]</span> <span class="o">=</span> <span class="n">to_decimal_year</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">"time"</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">df</span></div>
+
+
+
+<div class="viewcode-block" id="bin_average_5day">
+<a class="viewcode-back" href="../../tools.html#amocatlas.tools.bin_average_5day">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">bin_average_5day</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">time_column</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"time"</span><span class="p">,</span> <span class="n">value_column</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"moc"</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Bin-average a time series into 5-day means.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    df : pandas.DataFrame</span>
+<span class="sd">        Input DataFrame with time and value columns.</span>
+<span class="sd">    time_column : str, default "time"</span>
+<span class="sd">        Name of the datetime column.</span>
+<span class="sd">    value_column : str, default "moc"</span>
+<span class="sd">        Name of the data column to average.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.DataFrame</span>
+<span class="sd">        DataFrame with 5-day averaged time and values.</span>
+
+<span class="sd">    """</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">time_column</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">time_column</span><span class="p">])</span>
+
+    <span class="c1"># Bin by 5-day frequency and take the mean of each bin</span>
+    <span class="n">df_binned</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">time_column</span><span class="p">)</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">"5D"</span><span class="p">)[</span><span class="n">value_column</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Drop NaNs and return</span>
+    <span class="n">df_binned</span> <span class="o">=</span> <span class="n">df_binned</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
+        <span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="n">value_column</span><span class="p">:</span> <span class="n">value_column</span><span class="p">,</span> <span class="n">time_column</span><span class="p">:</span> <span class="s2">"time"</span><span class="p">}</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">df_binned</span></div>
+
+
+
+<div class="viewcode-block" id="bin_average_monthly">
+<a class="viewcode-back" href="../../tools.html#amocatlas.tools.bin_average_monthly">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">bin_average_monthly</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">time_column</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"time"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Bin-average a time series into monthly means.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    df : pandas.DataFrame</span>
+<span class="sd">        Input DataFrame with time column.</span>
+<span class="sd">    time_column : str, default "time"</span>
+<span class="sd">        Name of the datetime column.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.DataFrame</span>
+<span class="sd">        DataFrame with monthly averaged data.</span>
+
+<span class="sd">    """</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">time_column</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">time_column</span><span class="p">])</span>
+    <span class="n">df_binned</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">time_column</span><span class="p">)</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">"ME"</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="n">df_binned</span> <span class="o">=</span> <span class="n">df_binned</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="n">time_column</span><span class="p">:</span> <span class="s2">"time"</span><span class="p">})</span>
+    <span class="k">return</span> <span class="n">df_binned</span></div>
+
+
+
+<div class="viewcode-block" id="check_and_bin">
+<a class="viewcode-back" href="../../tools.html#amocatlas.tools.check_and_bin">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">check_and_bin</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">time_column</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"time"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Check temporal resolution and bin to monthly if needed.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    df : pandas.DataFrame</span>
+<span class="sd">        Input DataFrame with time column.</span>
+<span class="sd">    time_column : str, default "time"</span>
+<span class="sd">        Name of the datetime column.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.DataFrame</span>
+<span class="sd">        Original DataFrame if already monthly, or monthly-binned version.</span>
+
+<span class="sd">    """</span>
+    <span class="c1"># Calculate median time difference in days</span>
+    <span class="n">time_diffs</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">time_column</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span><span class="o">.</span><span class="n">diff</span><span class="p">()</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span> <span class="o">/</span> <span class="p">(</span>
+        <span class="mi">3600</span> <span class="o">*</span> <span class="mi">24</span>
+    <span class="p">)</span>
+    <span class="n">median_diff</span> <span class="o">=</span> <span class="n">time_diffs</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">median_diff</span> <span class="o">&lt;</span> <span class="mi">15</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">bin_average_monthly</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">time_column</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span></div>
+
+
+
+<div class="viewcode-block" id="apply_tukey_filter">
+<a class="viewcode-back" href="../../tools.html#amocatlas.tools.apply_tukey_filter">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">apply_tukey_filter</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="n">column</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">window_months</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span>
+    <span class="n">samples_per_day</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">add_back_mean</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">output_column</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Apply a Tukey filter using NumPy convolution (safely handles NaN values).</span>
+
+<span class="sd">    This function uses pandas DataFrame input to leverage NumPy's convolution</span>
+<span class="sd">    capabilities with Tukey windows, which provides more flexibility than</span>
+<span class="sd">    xarray's built-in rolling operations for this specific filtering approach.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    df : pandas.DataFrame</span>
+<span class="sd">        Input DataFrame containing the column to filter.</span>
+<span class="sd">    column : str</span>
+<span class="sd">        Name of the column to apply the filter to.</span>
+<span class="sd">    window_months : int, default 6</span>
+<span class="sd">        Filter window size in months.</span>
+<span class="sd">    samples_per_day : float, default 0.2</span>
+<span class="sd">        Expected number of samples per day in the data.</span>
+<span class="sd">    alpha : float, default 0.5</span>
+<span class="sd">        Tukey window parameter (0=rectangular, 1=Hann).</span>
+<span class="sd">    add_back_mean : bool, default False</span>
+<span class="sd">        Whether to remove and add back the overall mean.</span>
+<span class="sd">    output_column : str, optional</span>
+<span class="sd">        Name for the filtered output column. If None, uses "{column}_filtered".</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.DataFrame</span>
+<span class="sd">        Copy of input DataFrame with filtered column added.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Uses pandas DataFrame rather than xarray Dataset because pandas provides</span>
+<span class="sd">    better access to convolution operations with custom window functions.</span>
+
+<span class="sd">    """</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+
+    <span class="c1"># Replace NaNs with nanmean for stable filtering</span>
+    <span class="n">nan_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">safe_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">nan_mask</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">data</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">add_back_mean</span><span class="p">:</span>
+        <span class="n">overall_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">safe_data</span><span class="p">)</span>
+        <span class="n">safe_data</span> <span class="o">=</span> <span class="n">safe_data</span> <span class="o">-</span> <span class="n">overall_mean</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">overall_mean</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="n">samples_per_month</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="mf">30.44</span> <span class="o">*</span> <span class="n">samples_per_day</span><span class="p">))</span>
+    <span class="n">window_len</span> <span class="o">=</span> <span class="n">window_months</span> <span class="o">*</span> <span class="n">samples_per_month</span>
+    <span class="k">if</span> <span class="n">window_len</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">window_len</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">half_width</span> <span class="o">=</span> <span class="n">window_len</span> <span class="o">//</span> <span class="mi">2</span>
+
+    <span class="c1"># Build normalized Tukey window</span>
+    <span class="n">win</span> <span class="o">=</span> <span class="n">tukey</span><span class="p">(</span><span class="n">window_len</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span>
+    <span class="n">win</span> <span class="o">/=</span> <span class="n">win</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+    <span class="c1"># Apply convolution</span>
+    <span class="n">filtered</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">convolve</span><span class="p">(</span><span class="n">safe_data</span><span class="p">,</span> <span class="n">win</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">"same"</span><span class="p">)</span>
+    <span class="n">filtered</span> <span class="o">+=</span> <span class="n">overall_mean</span>
+
+    <span class="c1"># Restore original NaNs and edge mask</span>
+    <span class="n">filtered</span><span class="p">[</span><span class="n">nan_mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="n">filtered</span><span class="p">[:</span><span class="n">half_width</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="n">filtered</span><span class="p">[</span><span class="o">-</span><span class="n">half_width</span><span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+    <span class="k">if</span> <span class="n">output_column</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">output_column</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s2">_filtered"</span>
+
+    <span class="n">df</span><span class="p">[</span><span class="n">output_column</span><span class="p">]</span> <span class="o">=</span> <span class="n">filtered</span>
+    <span class="k">return</span> <span class="n">df</span></div>
+
+
+
+<div class="viewcode-block" id="handle_samba_gaps">
+<a class="viewcode-back" href="../../tools.html#amocatlas.tools.handle_samba_gaps">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">handle_samba_gaps</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">time_column</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"time"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Handle temporal gaps in SAMBA MOC data to prevent plotting artifacts.</span>
+
+<span class="sd">    SAMBA data has significant gaps (e.g., 2011-2014) that cause plotting functions</span>
+<span class="sd">    to draw connecting lines across missing periods. This function creates a regular</span>
+<span class="sd">    monthly grid and masks interpolation to only occur within existing data periods,</span>
+<span class="sd">    preventing spurious connections across large gaps.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    df : pandas.DataFrame</span>
+<span class="sd">        Input DataFrame with time and MOC columns.</span>
+<span class="sd">    time_column : str, default "time"</span>
+<span class="sd">        Name of the datetime column.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.DataFrame</span>
+<span class="sd">        DataFrame with regular monthly grid and gap-aware data masking.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    PyGMT and other plotting functions connect all valid (non-NaN) data points</span>
+<span class="sd">    regardless of temporal gaps. This function prevents artifacts by:</span>
+<span class="sd">    1. Creating a regular monthly time grid</span>
+<span class="sd">    2. Preserving NaN values where no original data existed</span>
+<span class="sd">    3. Only interpolating within continuous data segments</span>
+
+<span class="sd">    """</span>
+    <span class="n">df_input</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="c1"># Create a regular monthly time grid covering the range</span>
+    <span class="n">monthly_time</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span>
+        <span class="n">start</span><span class="o">=</span><span class="n">df_input</span><span class="p">[</span><span class="n">time_column</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">end</span><span class="o">=</span><span class="n">df_input</span><span class="p">[</span><span class="n">time_column</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">freq</span><span class="o">=</span><span class="s2">"ME"</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Reindex to the monthly grid</span>
+    <span class="n">df_monthly</span> <span class="o">=</span> <span class="n">df_input</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">time_column</span><span class="p">)</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">monthly_time</span><span class="p">)</span>
+
+    <span class="c1"># For MOC column, preserve gaps by masking interpolation</span>
+    <span class="k">if</span> <span class="s2">"moc"</span> <span class="ow">in</span> <span class="n">df_monthly</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="c1"># Track where original data existed</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="n">df_monthly</span><span class="p">[</span><span class="s2">"moc"</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span>
+
+        <span class="c1"># Create gap-aware MOC column</span>
+        <span class="n">df_monthly</span><span class="p">[</span><span class="s2">"moc_interp"</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+        <span class="n">df_monthly</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mask</span><span class="p">,</span> <span class="s2">"moc_interp"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_monthly</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mask</span><span class="p">,</span> <span class="s2">"moc"</span><span class="p">]</span>
+
+        <span class="c1"># Mark locations with original data</span>
+        <span class="n">df_monthly</span><span class="p">[</span><span class="s2">"had_data"</span><span class="p">]</span> <span class="o">=</span> <span class="n">mask</span>
+
+        <span class="c1"># Replace original moc with gap-aware version</span>
+        <span class="n">df_monthly</span><span class="p">[</span><span class="s2">"moc"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_monthly</span><span class="p">[</span><span class="s2">"moc_interp"</span><span class="p">]</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+        <span class="n">df_monthly</span> <span class="o">=</span> <span class="n">df_monthly</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"moc_interp"</span><span class="p">])</span>
+
+    <span class="c1"># Reset index for further use</span>
+    <span class="n">df_monthly</span> <span class="o">=</span> <span class="n">df_monthly</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">"index"</span><span class="p">:</span> <span class="n">time_column</span><span class="p">})</span>
+
+    <span class="c1"># Recalculate time_num if it exists</span>
+    <span class="k">if</span> <span class="s2">"time_num"</span> <span class="ow">in</span> <span class="n">df_monthly</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">df_monthly</span><span class="p">[</span><span class="s2">"time_num"</span><span class="p">]</span> <span class="o">=</span> <span class="n">to_decimal_year</span><span class="p">(</span><span class="n">df_monthly</span><span class="p">[</span><span class="n">time_column</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">df_monthly</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Eleanor Frajka-Williams, Isabelle Schmitz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

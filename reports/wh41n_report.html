@@ -1,0 +1,753 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WH41N Datasets &mdash; amocatlas 0.4.0.post1.dev10 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=1078e4cb" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=6d4c28d6"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="NOAC47N Datasets" href="noac47n_report.html" />
+    <link rel="prev" title="ZHENG2024 Datasets" href="zheng2024_report.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            amocatlas
+              <img src="../_static/logo.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ / Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Demo notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../demo-output.html">AMOCatlas demo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dataset Reports</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Data Sources</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="rapid_report.html">RAPID Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="osnap_report.html">OSNAP Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="move_report.html">MOVE Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samba_report.html">SAMBA Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mocha_report.html">MOCHA Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arcticgateway_report.html">ARCTICGATEWAY Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dso_report.html">DSO Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fbc_report.html">FBC Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fw2015_report.html">FW2015 Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calafat2025_report.html">CALAFAT2025 Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zheng2024_report.html">ZHENG2024 Datasets</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">WH41N Datasets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hobbs-willis-amoc41n-tseries-txt">hobbs_willis_amoc41N_tseries.txt</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dataset-overview">Dataset Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dataset-visualization">Dataset Visualization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dataset-statistics">Dataset Statistics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#coordinate-information">Coordinate Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#variable-information">Variable Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#metadata-edits-applied-noted">Metadata (edits applied noted)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#trans-argo-era5-nc">trans_ARGO_ERA5.nc</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Dataset Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Dataset Visualization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Dataset Statistics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Coordinate Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Variable Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Metadata (edits applied noted)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#q-argo-obs-dens-2000depth-era5-nc">Q_ARGO_obs_dens_2000depth_ERA5.nc</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id7">Dataset Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">Dataset Visualization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">Dataset Statistics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">Coordinate Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">Variable Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">Metadata (edits applied noted)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="noac47n_report.html">NOAC47N Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nac_report.html">NAC Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sf2021_report.html">SF2021 Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lebras35n_report.html">LEBRAS35N Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="axmoc22s_report.html">AXMOC22S Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="axmoc34s_report.html">AXMOC34S Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovide_report.html">OVIDE Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scotia_report.html">SCOTIA Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#report-features">Report Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#automated-generation">Automated Generation</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/format.html">AMOCatlas data format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/vocabulary.html">amocvocab — variable vocabulary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../amoc_paperfigs-output.html">AMOC Publication Figures</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Repository and API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">GitHub Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../amocatlas.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">amocatlas</span> <span class="pre">API</span></code></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers' guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developers/developer_guide.html">Developer Guide for AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/git_beginners_guide.html">Git for Beginners: Workflow Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/actions.html">Extra GitHub features: Actions &amp; Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/housekeeping.html">Project Maintenance Checklist</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">amocatlas</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Data Sources</a></li>
+      <li class="breadcrumb-item active">WH41N Datasets</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/reports/wh41n_report.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="wh41n-datasets">
+<h1>WH41N Datasets<a class="headerlink" href="#wh41n-datasets" title="Link to this heading"></a></h1>
+<p>This report covers all available WH41N datasets.</p>
+<section id="hobbs-willis-amoc41n-tseries-txt">
+<h2>hobbs_willis_amoc41N_tseries.txt<a class="headerlink" href="#hobbs-willis-amoc41n-tseries-txt" title="Link to this heading"></a></h2>
+<section id="dataset-overview">
+<h3>Dataset Overview<a class="headerlink" href="#dataset-overview" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Project</strong>: Atlantic Meridional Overturning Circulation Near 41N from Altimetry and Argo Observations</p></li>
+<li><p><strong>Description</strong>: 41N transport estimates dataset</p></li>
+<li><p><strong>Source File</strong>: hobbs_willis_amoc41N_tseries.txt</p></li>
+<li><p><strong>Data Product</strong>: Atlantic Meridional Overturning Circulation Near 41N from Altimetry and Argo Observations</p></li>
+<li><p><strong>License</strong>: CC-BY-4.0</p></li>
+<li><p><strong>Time Coverage</strong>: 2002-01-16 to 2025-12-16</p></li>
+<li><p><strong>Record Length</strong>: 288 observations (23.9 years)</p></li>
+<li><p><strong>Sampling Frequency</strong>: monthly</p></li>
+</ul>
+<p><strong>Citation:</strong></p>
+<blockquote>
+<div><p>Willis, J. K., and Hobbs, W. R., Atlantic Meridional Overturning Circulation Near 41N from Altimetry and Argo Observations. Dataset accessed at 10.5281/zenodo.8170365.</p>
+</div></blockquote>
+</section>
+<section id="dataset-visualization">
+<h3>Dataset Visualization<a class="headerlink" href="#dataset-visualization" title="Link to this heading"></a></h3>
+<figure class="align-center" id="id13">
+<a class="reference internal image-reference" href="../_images/hobbs_willis_amoc41n_tseries.txt_timeseries.png"><img alt="AMOC time series plot" height="344" src="../_images/hobbs_willis_amoc41n_tseries.txt_timeseries.png" width="946" />
+</a>
+<figcaption>
+<p><span class="caption-text">Time series plot for HOBBS_WILLIS_AMOC41N_TSERIES.TXT dataset.</span><a class="headerlink" href="#id13" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="dataset-statistics">
+<h3>Dataset Statistics<a class="headerlink" href="#dataset-statistics" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Total Variables</strong>: 4</p></li>
+<li><p><strong>Total Coordinates</strong>: 1</p></li>
+<li><p><strong>Dataset Size</strong>: 0.01 MB</p></li>
+</ul>
+</section>
+<section id="coordinate-information">
+<h3>Coordinate Information<a class="headerlink" href="#coordinate-information" title="Link to this heading"></a></h3>
+<p>The following table shows information about the dataset coordinates in the standardised version, including coordinate name remapping from the original, if any:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Coordinate</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>TIME</strong></p></td>
+<td><p>Time</p></td>
+<td><p>seconds since 1970-01-01T00:00:00Z</p></td>
+<td><p>(288,)</p></td>
+<td><p>2002-01-16</p></td>
+<td><p>2025-12-16</p></td>
+<td><p>0.0%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="variable-information">
+<h3>Variable Information<a class="headerlink" href="#variable-information" title="Link to this heading"></a></h3>
+<p>The following table shows the mapping from original variable names to standardized names,
+along with key statistics for each variable.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>MOC (PW)</em> → <strong>MHT</strong></p></td>
+<td><p><strong>MHT</strong>: Meridional Overturning Heat Transport</p></td>
+<td><p>PW</p></td>
+<td><p>(288,)</p></td>
+<td><p>-0.04</p></td>
+<td><p>0.94</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>MOC (Sv)</em> → <strong>MOC</strong></p></td>
+<td><p><strong>MOC_z</strong>: Meridional Overturning Volume Transport</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(288,)</p></td>
+<td><p>2.47</p></td>
+<td><p>19.98</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Ekman (Sv)</em> → <strong>TRANS_EKMAN</strong></p></td>
+<td><p><strong>Ekman</strong>: Ekman Volume Transport</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(288,)</p></td>
+<td><p>-8.79</p></td>
+<td><p>0.51</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Geos (Sv)</em> → <strong>TRANS_GEO</strong></p></td>
+<td><p><strong>Geostrophic Transport</strong>: Northward Geostrophic Transport</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(288,)</p></td>
+<td><p>6.16</p></td>
+<td><p>23.96</p></td>
+<td><p>0.0%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="metadata-edits-applied-noted">
+<h3>Metadata (edits applied noted)<a class="headerlink" href="#metadata-edits-applied-noted" title="Link to this heading"></a></h3>
+<p>The following metadata describes this dataset:</p>
+<ul class="simple">
+<li><p><strong>Summary</strong>: 41N transport estimates dataset</p></li>
+<li><p><strong>Description*</strong>: 41N transport estimates dataset</p></li>
+<li><p><strong>Program*</strong>: 41N</p></li>
+<li><p><strong>Project*</strong>: Atlantic Meridional Overturning Circulation Near 41N from Altimetry and Argo Observations</p></li>
+<li><p><strong>License*</strong>: CC-BY-4.0</p></li>
+<li><p><strong>Weblink*</strong>: <a class="reference external" href="https://doi.org/10.5281/zenodo.8170365">https://doi.org/10.5281/zenodo.8170365</a></p></li>
+<li><p><strong>Platform</strong>: Argo floats</p></li>
+<li><p><strong>Platform Vocabulary</strong>: <a class="reference external" href="https://vocab.nerc.ac.uk/collection/L06/">https://vocab.nerc.ac.uk/collection/L06/</a></p></li>
+<li><p><strong>Data Product*</strong>: Atlantic Meridional Overturning Circulation Near 41N from Altimetry and Argo Observations</p></li>
+<li><p><strong>Time Coverage Start</strong>: 2002-01-16</p></li>
+<li><p><strong>Time Coverage End</strong>: 2025-12-16</p></li>
+<li><p><strong>Contributor Name*</strong>: Will Hobbs, Josh K. Willis</p></li>
+<li><p><strong>Contributor Role*</strong>: originator, principalInvestigator</p></li>
+<li><p><strong>Contributor Role Vocabulary*</strong>: <a class="reference external" href="https://vocab.nerc.ac.uk/collection/G04/current/">https://vocab.nerc.ac.uk/collection/G04/current/</a></p></li>
+<li><p><strong>Contributor Email</strong>: ,</p></li>
+<li><p><strong>Contributor Id</strong>: <a class="reference external" href="https://orcid.org/0000-0002-2061-0899">https://orcid.org/0000-0002-2061-0899</a>, <a class="reference external" href="https://orcid.org/0000-0002-4515-8771">https://orcid.org/0000-0002-4515-8771</a></p></li>
+<li><p><strong>Contributing Institutions*</strong>: National Aeronautics and Space Administration - Jet Propulsion Laboratory (NASA JPL)</p></li>
+<li><p><strong>Contributing Institutions Vocabulary</strong>: <a class="reference external" href="https://edmo.seadatanet.org/report/1224">https://edmo.seadatanet.org/report/1224</a></p></li>
+<li><p><strong>Contributing Institutions Role</strong>:</p></li>
+<li><p><strong>Conventions*</strong>: CF-1.8, ACDD-1.3, OceanSITES-1.5</p></li>
+<li><p><strong>featureType*</strong>: timeSeries</p></li>
+<li><p><strong>featureType_vocabulary</strong>: <a class="reference external" href="https://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_features_and_feature_types">https://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_features_and_feature_types</a></p></li>
+<li><p><strong>Source File*</strong>: hobbs_willis_amoc41N_tseries.txt</p></li>
+<li><p><strong>Source Path*</strong>: ~/.amocatlas_data/hobbs_willis_amoc41N_tseries.txt</p></li>
+<li><p><strong>Source Url*</strong>: <a class="reference external" href="https://doi.org/10.5281/zenodo.8170365">https://doi.org/10.5281/zenodo.8170365</a></p></li>
+<li><p><strong>Date Modified</strong>: 2026-08-01T00:00:00Z</p></li>
+<li><p><strong>Processing Software</strong>: <a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">http://github.com/AMOCcommunity/amocatlas</a></p></li>
+<li><p><strong>Processing Version</strong>: v0.4.0</p></li>
+<li><p><strong>Processing Datasource*</strong>: wh41n</p></li>
+<li><p><strong>Applied Variable Mapping</strong>: {‘Ekman (Sv)’: ‘TRANS_EKMAN’, ‘Geos (Sv)’: ‘TRANS_GEO’, ‘MOC (Sv)’: ‘MOC’, ‘MOC (PW)’: ‘MHT’}</p></li>
+<li><p><strong>Version*</strong>: v5</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="trans-argo-era5-nc">
+<h2>trans_ARGO_ERA5.nc<a class="headerlink" href="#trans-argo-era5-nc" title="Link to this heading"></a></h2>
+<section id="id1">
+<h3>Dataset Overview<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Project</strong>: Atlantic Meridional Overturning Circulation Near 41N from Altimetry and Argo Observations</p></li>
+<li><p><strong>Description</strong>: 41N transport estimates dataset</p></li>
+<li><p><strong>Source File</strong>: trans_ARGO_ERA5.nc</p></li>
+<li><p><strong>Data Product</strong>: Transport components from ARGO and ERA5</p></li>
+<li><p><strong>License</strong>: CC-BY-4.0</p></li>
+<li><p><strong>Date Created</strong>: Mon 12 Jan 2026 14:06:47 AEDT</p></li>
+<li><p><strong>Time Coverage</strong>: 2002-01-15 to 2025-12-15</p></li>
+<li><p><strong>Record Length</strong>: 288 observations (23.9 years)</p></li>
+<li><p><strong>Sampling Frequency</strong>: monthly</p></li>
+</ul>
+<p><strong>Citation:</strong></p>
+<blockquote>
+<div><p>Willis, J. K., and Hobbs, W. R., Atlantic Meridional Overturning Circulation Near 41N from Altimetry and Argo Observations. Dataset accessed at 10.5281/zenodo.8170365.</p>
+</div></blockquote>
+</section>
+<section id="id2">
+<h3>Dataset Visualization<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<figure class="align-center" id="id14">
+<a class="reference internal image-reference" href="../_images/trans_argo_era5_2d_gridded.png"><img alt="AMOC time series plot" height="465" src="../_images/trans_argo_era5_2d_gridded.png" width="920" />
+</a>
+<figcaption>
+<p><span class="caption-text">Time series plot for TRANS_ARGO_ERA5 dataset.</span><a class="headerlink" href="#id14" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id3">
+<h3>Dataset Statistics<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Total Variables</strong>: 3</p></li>
+<li><p><strong>Total Coordinates</strong>: 4</p></li>
+<li><p><strong>Dataset Size</strong>: 282.67 MB</p></li>
+</ul>
+</section>
+<section id="id4">
+<h3>Coordinate Information<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p>The following table shows information about the dataset coordinates in the standardised version, including coordinate name remapping from the original, if any:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Coordinate</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>depth</em> → <strong>DEPTH</strong></p></td>
+<td><p><strong>Depth</strong>:  Depth below surface of the water</p></td>
+<td><p>m</p></td>
+<td><p>(201,)</p></td>
+<td><p>0.00</p></td>
+<td><p>2000.00</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>lat</em> → <strong>LATITUDE</strong></p></td>
+<td><p><strong>Latitude</strong>: Latitude north (WGS84)</p></td>
+<td><p>degree_north</p></td>
+<td><p>(4,)</p></td>
+<td><p>40.00</p></td>
+<td><p>41.50</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>lon</em> → <strong>LONGITUDE</strong></p></td>
+<td><p><strong>Longitude</strong>: Longitude east (WGS84)</p></td>
+<td><p>degree_east</p></td>
+<td><p>(320,)</p></td>
+<td><p>280.12</p></td>
+<td><p>359.88</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>TIME</strong></p></td>
+<td><p>Time</p></td>
+<td><p>seconds since 1970-01-01T00:00:00Z</p></td>
+<td><p>(288,)</p></td>
+<td><p>2002-01-15</p></td>
+<td><p>2025-12-15</p></td>
+<td><p>0.0%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id5">
+<h3>Variable Information<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<p>The following table shows the mapping from original variable names to standardized names,
+along with key statistics for each variable.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>moc</em> → <strong>MOC</strong></p></td>
+<td><p><strong>MOC_z</strong>: Overturning circulation transport</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(288, 4)</p></td>
+<td><p>-4.78</p></td>
+<td><p>20.74</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Vek</em> → <strong>TRANS_EKMAN</strong></p></td>
+<td><p><strong>Ekman</strong>: Ekman transport from ERA5 reanalysis</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(288, 4)</p></td>
+<td><p>-8.99</p></td>
+<td><p>0.73</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>trans</em> → <strong>TRANS_GEO</strong></p></td>
+<td><p><strong>Geostrophic transport</strong>: Observed geostrophic transport from ARGO</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(288, 4, 320, 201)</p></td>
+<td><p>-0.18</p></td>
+<td><p>0.19</p></td>
+<td><p>26.2%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id6">
+<h3>Metadata (edits applied noted)<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<p>The following metadata describes this dataset:</p>
+<ul class="simple">
+<li><p><strong>Title</strong>: transport from ARGO/SSH data</p></li>
+<li><p><strong>Summary</strong>: 41N transport estimates dataset</p></li>
+<li><p><strong>Description*</strong>: 41N transport estimates dataset</p></li>
+<li><p><strong>Program*</strong>: 41N</p></li>
+<li><p><strong>Project*</strong>: Atlantic Meridional Overturning Circulation Near 41N from Altimetry and Argo Observations</p></li>
+<li><p><strong>License*</strong>: CC-BY-4.0</p></li>
+<li><p><strong>Weblink*</strong>: <a class="reference external" href="https://doi.org/10.5281/zenodo.8170365">https://doi.org/10.5281/zenodo.8170365</a></p></li>
+<li><p><strong>Platform</strong>: Argo floats</p></li>
+<li><p><strong>Platform Vocabulary</strong>: <a class="reference external" href="https://vocab.nerc.ac.uk/collection/L06/">https://vocab.nerc.ac.uk/collection/L06/</a></p></li>
+<li><p><strong>Data Product*</strong>: Transport components from ARGO and ERA5</p></li>
+<li><p><strong>Time Coverage Start</strong>: 2002-01-15</p></li>
+<li><p><strong>Time Coverage End</strong>: 2025-12-15</p></li>
+<li><p><strong>Contributor Name*</strong>: Will Hobbs, Josh K. Willis</p></li>
+<li><p><strong>Contributor Role*</strong>: originator, principalInvestigator</p></li>
+<li><p><strong>Contributor Role Vocabulary*</strong>: <a class="reference external" href="https://vocab.nerc.ac.uk/collection/G04/current/">https://vocab.nerc.ac.uk/collection/G04/current/</a></p></li>
+<li><p><strong>Contributor Email</strong>: ,</p></li>
+<li><p><strong>Contributor Id</strong>: <a class="reference external" href="https://orcid.org/0000-0002-2061-0899">https://orcid.org/0000-0002-2061-0899</a>, <a class="reference external" href="https://orcid.org/0000-0002-4515-8771">https://orcid.org/0000-0002-4515-8771</a></p></li>
+<li><p><strong>Contributing Institutions*</strong>: National Aeronautics and Space Administration - Jet Propulsion Laboratory (NASA JPL)</p></li>
+<li><p><strong>Contributing Institutions Vocabulary</strong>: <a class="reference external" href="https://edmo.seadatanet.org/report/1224">https://edmo.seadatanet.org/report/1224</a></p></li>
+<li><p><strong>Contributing Institutions Role</strong>:</p></li>
+<li><p><strong>Conventions*</strong>: CF-1.8, ACDD-1.3, OceanSITES-1.5</p></li>
+<li><p><strong>Source File*</strong>: trans_ARGO_ERA5.nc</p></li>
+<li><p><strong>Source Path*</strong>: ~/.amocatlas_data/trans_ARGO_ERA5.nc</p></li>
+<li><p><strong>Source Url*</strong>: <a class="reference external" href="https://doi.org/10.5281/zenodo.8170365">https://doi.org/10.5281/zenodo.8170365</a></p></li>
+<li><p><strong>Date Created</strong>: Mon 12 Jan 2026 14:06:47 AEDT</p></li>
+<li><p><strong>Date Modified</strong>: 2026-08-01T00:00:00Z</p></li>
+<li><p><strong>Processing Software</strong>: <a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">http://github.com/AMOCcommunity/amocatlas</a></p></li>
+<li><p><strong>Processing Version</strong>: v0.4.0</p></li>
+<li><p><strong>Processing Datasource*</strong>: wh41n</p></li>
+<li><p><strong>Applied Variable Mapping</strong>: {‘Vek’: ‘TRANS_EKMAN’, ‘trans’: ‘TRANS_GEO’, ‘moc’: ‘MOC’, ‘depth’: ‘DEPTH’, ‘lat’: ‘LATITUDE’, ‘lon’: ‘LONGITUDE’, ‘MOC’: ‘MOC’, ‘DEPTH’: ‘DEPTH’}</p></li>
+<li><p><strong>Reference Temp</strong>: kelvin</p></li>
+<li><p><strong>Wind Stress</strong>: ERA5</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="q-argo-obs-dens-2000depth-era5-nc">
+<h2>Q_ARGO_obs_dens_2000depth_ERA5.nc<a class="headerlink" href="#q-argo-obs-dens-2000depth-era5-nc" title="Link to this heading"></a></h2>
+<section id="id7">
+<h3>Dataset Overview<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Project</strong>: Atlantic Meridional Overturning Circulation Near 41N from Altimetry and Argo Observations</p></li>
+<li><p><strong>Description</strong>: 41N transport estimates dataset</p></li>
+<li><p><strong>Source File</strong>: Q_ARGO_obs_dens_2000depth_ERA5.nc</p></li>
+<li><p><strong>Data Product</strong>: Heat transport based on various assumptions about temperature below 2000m</p></li>
+<li><p><strong>License</strong>: CC-BY-4.0</p></li>
+<li><p><strong>Date Created</strong>: Mon 12 Jan 2026 14:06:47 AEDT</p></li>
+<li><p><strong>Time Coverage</strong>: 2002-01-15 to 2025-12-15</p></li>
+<li><p><strong>Record Length</strong>: 288 observations (23.9 years)</p></li>
+<li><p><strong>Sampling Frequency</strong>: monthly</p></li>
+</ul>
+<p><strong>Citation:</strong></p>
+<blockquote>
+<div><p>Willis, J. K., and Hobbs, W. R., Atlantic Meridional Overturning Circulation Near 41N from Altimetry and Argo Observations. Dataset accessed at 10.5281/zenodo.8170365.</p>
+</div></blockquote>
+</section>
+<section id="id8">
+<h3>Dataset Visualization<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<figure class="align-center" id="id15">
+<a class="reference internal image-reference" href="../_images/q_argo_obs_dens_2000depth_era5_2d_gridded.png"><img alt="AMOC time series plot" height="465" src="../_images/q_argo_obs_dens_2000depth_era5_2d_gridded.png" width="929" />
+</a>
+<figcaption>
+<p><span class="caption-text">Time series plot for Q_ARGO_OBS_DENS_2000DEPTH_ERA5 dataset.</span><a class="headerlink" href="#id15" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id9">
+<h3>Dataset Statistics<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Total Variables</strong>: 3</p></li>
+<li><p><strong>Total Coordinates</strong>: 5</p></li>
+<li><p><strong>Dataset Size</strong>: 282.68 MB</p></li>
+</ul>
+</section>
+<section id="id10">
+<h3>Coordinate Information<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<p>The following table shows information about the dataset coordinates in the standardised version, including coordinate name remapping from the original, if any:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Coordinate</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>depth</em> → <strong>DEPTH</strong></p></td>
+<td><p><strong>Depth</strong>:  Depth below surface of the water</p></td>
+<td><p>m</p></td>
+<td><p>(201,)</p></td>
+<td><p>0.00</p></td>
+<td><p>2000.00</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Hpar</strong></p></td>
+<td><p>deep ocean volumetric Heat</p></td>
+<td><p>J/m^3</p></td>
+<td><p>(4,)</p></td>
+<td><p>1115000064.00</p></td>
+<td><p>1129299968.00</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>lat</em> → <strong>LATITUDE</strong></p></td>
+<td><p><strong>Latitude</strong>: Latitude north (WGS84)</p></td>
+<td><p>degree_north</p></td>
+<td><p>(4,)</p></td>
+<td><p>40.00</p></td>
+<td><p>41.50</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>lon</em> → <strong>LONGITUDE</strong></p></td>
+<td><p><strong>Longitude</strong>: Longitude east (WGS84)</p></td>
+<td><p>degree_east</p></td>
+<td><p>(320,)</p></td>
+<td><p>280.12</p></td>
+<td><p>359.88</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>TIME</strong></p></td>
+<td><p>Time</p></td>
+<td><p>seconds since 1970-01-01T00:00:00Z</p></td>
+<td><p>(288,)</p></td>
+<td><p>2002-01-15</p></td>
+<td><p>2025-12-15</p></td>
+<td><p>0.0%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id11">
+<h3>Variable Information<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<p>The following table shows the mapping from original variable names to standardized names,
+along with key statistics for each variable.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>Q</em> → <strong>MHT</strong></p></td>
+<td><p><strong>MHT</strong>: Observed meridional heat transport</p></td>
+<td><p>PW</p></td>
+<td><p>(288, 4, 320, 201)</p></td>
+<td><p>-0.22</p></td>
+<td><p>0.24</p></td>
+<td><p>26.2%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Qek</em> → <strong>MHT_EKMAN</strong></p></td>
+<td><p><strong>northward ocean heat transport due to Ekman transport</strong>: Ekman meridional heat transport</p></td>
+<td><p>PW</p></td>
+<td><p>(288, 4)</p></td>
+<td><p>-10.55</p></td>
+<td><p>0.88</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Qnet</em> → <strong>MHT_NET</strong></p></td>
+<td><p><strong>Net heat transport</strong>: Net meridional heat transport</p></td>
+<td><p>PW</p></td>
+<td><p>(288, 4, 4)</p></td>
+<td><p>-0.54</p></td>
+<td><p>1.21</p></td>
+<td><p>0.0%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id12">
+<h3>Metadata (edits applied noted)<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
+<p>The following metadata describes this dataset:</p>
+<ul class="simple">
+<li><p><strong>Title</strong>: heat transport from ARGO/SSH data</p></li>
+<li><p><strong>Summary</strong>: 41N transport estimates dataset</p></li>
+<li><p><strong>Description*</strong>: 41N transport estimates dataset</p></li>
+<li><p><strong>Program*</strong>: 41N</p></li>
+<li><p><strong>Project*</strong>: Atlantic Meridional Overturning Circulation Near 41N from Altimetry and Argo Observations</p></li>
+<li><p><strong>License*</strong>: CC-BY-4.0</p></li>
+<li><p><strong>Weblink*</strong>: <a class="reference external" href="https://doi.org/10.5281/zenodo.8170365">https://doi.org/10.5281/zenodo.8170365</a></p></li>
+<li><p><strong>Platform</strong>: Argo floats</p></li>
+<li><p><strong>Platform Vocabulary</strong>: <a class="reference external" href="https://vocab.nerc.ac.uk/collection/L06/">https://vocab.nerc.ac.uk/collection/L06/</a></p></li>
+<li><p><strong>Data Product*</strong>: Heat transport based on various assumptions about temperature below 2000m</p></li>
+<li><p><strong>Time Coverage Start</strong>: 2002-01-15</p></li>
+<li><p><strong>Time Coverage End</strong>: 2025-12-15</p></li>
+<li><p><strong>Contributor Name*</strong>: Will Hobbs, Josh K. Willis</p></li>
+<li><p><strong>Contributor Role*</strong>: originator, principalInvestigator</p></li>
+<li><p><strong>Contributor Role Vocabulary*</strong>: <a class="reference external" href="https://vocab.nerc.ac.uk/collection/G04/current/">https://vocab.nerc.ac.uk/collection/G04/current/</a></p></li>
+<li><p><strong>Contributor Email</strong>: ,</p></li>
+<li><p><strong>Contributor Id</strong>: <a class="reference external" href="https://orcid.org/0000-0002-2061-0899">https://orcid.org/0000-0002-2061-0899</a>, <a class="reference external" href="https://orcid.org/0000-0002-4515-8771">https://orcid.org/0000-0002-4515-8771</a></p></li>
+<li><p><strong>Contributing Institutions*</strong>: National Aeronautics and Space Administration - Jet Propulsion Laboratory (NASA JPL)</p></li>
+<li><p><strong>Contributing Institutions Vocabulary</strong>: <a class="reference external" href="https://edmo.seadatanet.org/report/1224">https://edmo.seadatanet.org/report/1224</a></p></li>
+<li><p><strong>Contributing Institutions Role</strong>:</p></li>
+<li><p><strong>Conventions*</strong>: CF-1.8, ACDD-1.3, OceanSITES-1.5</p></li>
+<li><p><strong>Source File*</strong>: Q_ARGO_obs_dens_2000depth_ERA5.nc</p></li>
+<li><p><strong>Source Path*</strong>: ~/.amocatlas_data/Q_ARGO_obs_dens_2000depth_ERA5.nc</p></li>
+<li><p><strong>Source Url*</strong>: <a class="reference external" href="https://doi.org/10.5281/zenodo.8170365">https://doi.org/10.5281/zenodo.8170365</a></p></li>
+<li><p><strong>Date Created</strong>: Mon 12 Jan 2026 14:06:47 AEDT</p></li>
+<li><p><strong>Date Modified</strong>: 2026-08-01T00:00:00Z</p></li>
+<li><p><strong>Processing Software</strong>: <a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">http://github.com/AMOCcommunity/amocatlas</a></p></li>
+<li><p><strong>Processing Version</strong>: v0.4.0</p></li>
+<li><p><strong>Processing Datasource*</strong>: wh41n</p></li>
+<li><p><strong>Applied Variable Mapping</strong>: {‘Qnet’: ‘MHT_NET’, ‘Qek’: ‘MHT_EKMAN’, ‘Q’: ‘MHT’, ‘depth’: ‘DEPTH’, ‘lat’: ‘LATITUDE’, ‘lon’: ‘LONGITUDE’, ‘DEPTH’: ‘DEPTH’, ‘TIME’: ‘TIME’}</p></li>
+<li><p><strong>Reference Temp</strong>: kelvin</p></li>
+<li><p><strong>Wind Stress</strong>: ERA5</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="zheng2024_report.html" class="btn btn-neutral float-left" title="ZHENG2024 Datasets" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="noac47n_report.html" class="btn btn-neutral float-right" title="NOAC47N Datasets" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Eleanor Frajka-Williams, Isabelle Schmitz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

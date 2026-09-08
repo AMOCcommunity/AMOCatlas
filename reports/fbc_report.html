@@ -1,0 +1,388 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FBC Datasets &mdash; amocatlas 0.4.0.post1.dev10 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=1078e4cb" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=6d4c28d6"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="FW2015 Datasets" href="fw2015_report.html" />
+    <link rel="prev" title="DSO Datasets" href="dso_report.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            amocatlas
+              <img src="../_static/logo.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ / Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Demo notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../demo-output.html">AMOCatlas demo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dataset Reports</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Data Sources</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="rapid_report.html">RAPID Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="osnap_report.html">OSNAP Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="move_report.html">MOVE Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samba_report.html">SAMBA Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mocha_report.html">MOCHA Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arcticgateway_report.html">ARCTICGATEWAY Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dso_report.html">DSO Datasets</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">FBC Datasets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#os-gsr-fbc-d-1995-2024-nc">OS_GSR_FBC_D_1995_2024.nc</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dataset-overview">Dataset Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dataset-visualization">Dataset Visualization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dataset-statistics">Dataset Statistics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#coordinate-information">Coordinate Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#variable-information">Variable Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#metadata-edits-applied-noted">Metadata (edits applied noted)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fw2015_report.html">FW2015 Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calafat2025_report.html">CALAFAT2025 Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zheng2024_report.html">ZHENG2024 Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wh41n_report.html">WH41N Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="noac47n_report.html">NOAC47N Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nac_report.html">NAC Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sf2021_report.html">SF2021 Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lebras35n_report.html">LEBRAS35N Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="axmoc22s_report.html">AXMOC22S Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="axmoc34s_report.html">AXMOC34S Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovide_report.html">OVIDE Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scotia_report.html">SCOTIA Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#report-features">Report Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#automated-generation">Automated Generation</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/format.html">AMOCatlas data format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/vocabulary.html">amocvocab — variable vocabulary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../amoc_paperfigs-output.html">AMOC Publication Figures</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Repository and API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">GitHub Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../amocatlas.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">amocatlas</span> <span class="pre">API</span></code></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers' guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developers/developer_guide.html">Developer Guide for AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/git_beginners_guide.html">Git for Beginners: Workflow Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/actions.html">Extra GitHub features: Actions &amp; Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/housekeeping.html">Project Maintenance Checklist</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">amocatlas</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Data Sources</a></li>
+      <li class="breadcrumb-item active">FBC Datasets</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/reports/fbc_report.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="fbc-datasets">
+<h1>FBC Datasets<a class="headerlink" href="#fbc-datasets" title="Link to this heading"></a></h1>
+<section id="os-gsr-fbc-d-1995-2024-nc">
+<h2>OS_GSR_FBC_D_1995_2024.nc<a class="headerlink" href="#os-gsr-fbc-d-1995-2024-nc" title="Link to this heading"></a></h2>
+<section id="dataset-overview">
+<h3>Dataset Overview<a class="headerlink" href="#dataset-overview" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Project</strong>: B. Hansen, K. M. Larsen: NACLIM - Fluxes: Faroe Bank Channel overflow transport</p></li>
+<li><p><strong>Description</strong>: FBC Overflow transport time series</p></li>
+<li><p><strong>Source File</strong>: OS_GSR_FBC_D_1995_2024.nc</p></li>
+<li><p><strong>Data Product</strong>: Daily averaged kinematic FBC-overflow flux (transport) in Sv</p></li>
+<li><p><strong>License</strong>: CC-BY-4.0</p></li>
+<li><p><strong>Date Created</strong>: 2025-04-22T00:00:00Z</p></li>
+<li><p><strong>Time Coverage</strong>: 1995-11-14 to 2024-05-18</p></li>
+<li><p><strong>Record Length</strong>: 10,414 observations (28.5 years)</p></li>
+<li><p><strong>Sampling Frequency</strong>: daily</p></li>
+</ul>
+<p><strong>Citation:</strong></p>
+<blockquote>
+<div><p>Larsen, K. M. H., Hansen, B., Hátún, H., Johansen, G. E., Østerhus, S., &amp; Olsen, S.M. (2024). The Coldest and densest overflow branch into the North Atlantic is stable in transport, but warming. Geophysical Research Letters, 51,e2024GL110097. <a class="reference external" href="https://doi.org/10.1029/2024GL110097These">https://doi.org/10.1029/2024GL110097These</a> data were collected and made freely available by the OceanSITES project and the national programs that contribute to it.</p>
+</div></blockquote>
+<p><strong>Acknowledgement:</strong></p>
+<blockquote>
+<div><p>The time series was generated by the Faroe Marine Research Institute, Faroe Islands. Funding for the in situ Faroe Bank Channel measurements is from the Environmental Research Programme of the Nordic Council of Ministers (NMR) 1993–1998, from national Nordic research councils, from the Danish DANCEA programme, and from the European Framework Programs, lately under grant agreement no. 633211 (AtlantOS) and under grant agreement no. 101136548 (ObsSea4Clim).</p>
+</div></blockquote>
+</section>
+<section id="dataset-visualization">
+<h3>Dataset Visualization<a class="headerlink" href="#dataset-visualization" title="Link to this heading"></a></h3>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/fbc_timeseries.png"><img alt="AMOC time series plot" height="345" src="../_images/fbc_timeseries.png" width="946" />
+</a>
+<figcaption>
+<p><span class="caption-text">Time series plot for FBC dataset.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="dataset-statistics">
+<h3>Dataset Statistics<a class="headerlink" href="#dataset-statistics" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Total Variables</strong>: 1</p></li>
+<li><p><strong>Total Coordinates</strong>: 4</p></li>
+<li><p><strong>Dataset Size</strong>: 0.12 MB</p></li>
+</ul>
+</section>
+<section id="coordinate-information">
+<h3>Coordinate Information<a class="headerlink" href="#coordinate-information" title="Link to this heading"></a></h3>
+<p>The following table shows information about the dataset coordinates in the standardised version, including coordinate name remapping from the original, if any:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Coordinate</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>DEPTH</strong></p></td>
+<td><p><strong>Depth</strong>:  Depth below surface of the water</p></td>
+<td><p>m</p></td>
+<td><p>(1,)</p></td>
+<td><p>9969209968386869046778552952102584320.00</p></td>
+<td><p>9969209968386869046778552952102584320.00</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>LATITUDE</strong></p></td>
+<td><p><strong>Latitude</strong>: Latitude north (WGS84)</p></td>
+<td><p>degree_north</p></td>
+<td><p>(2,)</p></td>
+<td><p>61.36</p></td>
+<td><p>61.50</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>LONGITUDE</strong></p></td>
+<td><p><strong>Longitude</strong>: Longitude east (WGS84)</p></td>
+<td><p>degree_east</p></td>
+<td><p>(2,)</p></td>
+<td><p>-8.36</p></td>
+<td><p>-8.17</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>TIME</strong></p></td>
+<td><p>Time</p></td>
+<td><p>seconds since 1970-01-01T00:00:00Z</p></td>
+<td><p>(10414,)</p></td>
+<td><p>1995-11-14</p></td>
+<td><p>2024-05-18</p></td>
+<td><p>0.0%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="variable-information">
+<h3>Variable Information<a class="headerlink" href="#variable-information" title="Link to this heading"></a></h3>
+<p>The following table shows the mapping from original variable names to standardized names,
+along with key statistics for each variable.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>FBC_tr</em> → <strong>TRANS_FBC</strong></p></td>
+<td><p><strong>FBC Overflow</strong>: FBC Overflow transport time series</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(10414, 1)</p></td>
+<td><p>0.50</p></td>
+<td><p>4.86</p></td>
+<td><p>5.5%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="metadata-edits-applied-noted">
+<h3>Metadata (edits applied noted)<a class="headerlink" href="#metadata-edits-applied-noted" title="Link to this heading"></a></h3>
+<p>The following metadata describes this dataset:</p>
+<ul class="simple">
+<li><p><strong>Title</strong>: Faroe Bank Channel Overflow Volume Transport</p></li>
+<li><p><strong>Summary</strong>: Time series of volume transport of the Faroe Bank Channel Overflow (FBCO). The transports are Daily averaged kinematic FBC-overflow as described in Hansen et al, 2016.</p></li>
+<li><p><strong>Description*</strong>: FBC Overflow transport time series</p></li>
+<li><p><strong>Program*</strong>: FBC</p></li>
+<li><p><strong>Project</strong>: B. Hansen, K. M. Larsen: NACLIM - Fluxes: Faroe Bank Channel overflow transport</p></li>
+<li><p><strong>Source</strong>: subsurface moorings</p></li>
+<li><p><strong>Id</strong>: OS_GSR_FBC_D_1995_2024</p></li>
+<li><p><strong>Naming Authority</strong>: OceanSITES</p></li>
+<li><p><strong>License</strong>: CC-BY-4.0</p></li>
+<li><p><strong>Acknowledgment*</strong>: The time series was generated by the Faroe Marine Research Institute, Faroe Islands. Funding for the in situ Faroe Bank Channel measurements is from the Environmental Research Programme of the Nordic Council of Ministers (NMR) 1993–1998, from national Nordic research councils, from the Danish DANCEA programme, and from the European Framework Programs, lately under grant agreement no. 633211 (AtlantOS) and under grant agreement no. 101136548 (ObsSea4Clim).</p></li>
+<li><p><strong>References</strong>: <a class="reference external" href="http://www.oceansites.org/tma/index.html">http://www.oceansites.org/tma/index.html</a></p></li>
+<li><p><strong>Weblink*</strong>: <a class="reference external" href="https://zenodo.org/records/19554222">https://zenodo.org/records/19554222</a></p></li>
+<li><p><strong>Platform Code</strong>: FBCO</p></li>
+<li><p><strong>Wmo Platform Code</strong>: 6801006</p></li>
+<li><p><strong>Processing Level</strong>: Known bad data has been replaced with values based on surrounding data, Data interpolated, Data manually reviewed, Other QC process applied</p></li>
+<li><p><strong>Data Product*</strong>: Daily averaged kinematic FBC-overflow flux (transport) in Sv</p></li>
+<li><p><strong>Site Code</strong>: GSR</p></li>
+<li><p><strong>Array</strong>: GSR</p></li>
+<li><p><strong>Network</strong>: GSR</p></li>
+<li><p><strong>Time Coverage Start</strong>: 1995-11-14</p></li>
+<li><p><strong>Time Coverage End</strong>: 2024-05-18</p></li>
+<li><p><strong>Geospatial Lat Min</strong>: 61.36</p></li>
+<li><p><strong>Geospatial Lat Max</strong>: 61.5</p></li>
+<li><p><strong>Geospatial Lon Min</strong>: -8.36</p></li>
+<li><p><strong>Geospatial Lon Max</strong>: -8.17</p></li>
+<li><p><strong>Geospatial Vertical Min</strong>: 500</p></li>
+<li><p><strong>Geospatial Vertical Max</strong>: 790</p></li>
+<li><p><strong>Creator Institution</strong>: Havstovan - Faroe Marine Research Institute</p></li>
+<li><p><strong>Contributor Name</strong>: Karin Margretha H. Larsen, Karin Margretha H. Larsen, Karin Margretha H. Larsen, Karin Margretha H. Larsen, Bogi Hansen, Hjálmar Hátún, Steffen M. Olsen, Svein Østerhus</p></li>
+<li><p><strong>Contributor Role</strong>: originator, principalInvestigator, publisher, contributor, contributor, contributor, contributor, contributor</p></li>
+<li><p><strong>Contributor Role Vocabulary</strong>: <a class="reference external" href="https://vocab.nerc.ac.uk/collection/G04/current/">https://vocab.nerc.ac.uk/collection/G04/current/</a></p></li>
+<li><p><strong>Contributor Email</strong>: <a class="reference external" href="mailto:KarinL&#37;&#52;&#48;hav&#46;fo">KarinL<span>&#64;</span>hav<span>&#46;</span>fo</a>, <a class="reference external" href="mailto:KarinL&#37;&#52;&#48;hav&#46;fo">KarinL<span>&#64;</span>hav<span>&#46;</span>fo</a>, <a class="reference external" href="mailto:KarinL&#37;&#52;&#48;hav&#46;fo">KarinL<span>&#64;</span>hav<span>&#46;</span>fo</a>, <a class="reference external" href="mailto:KarinL&#37;&#52;&#48;hav&#46;fo">KarinL<span>&#64;</span>hav<span>&#46;</span>fo</a>, <a class="reference external" href="mailto:bogihan&#37;&#52;&#48;hav&#46;fo">bogihan<span>&#64;</span>hav<span>&#46;</span>fo</a>, <a class="reference external" href="mailto:hjalmarh&#37;&#52;&#48;hav&#46;fo">hjalmarh<span>&#64;</span>hav<span>&#46;</span>fo</a>, <a class="reference external" href="mailto:smo&#37;&#52;&#48;dmi&#46;dk">smo<span>&#64;</span>dmi<span>&#46;</span>dk</a>, <a class="reference external" href="mailto:svos&#37;&#52;&#48;norceresearch&#46;no">svos<span>&#64;</span>norceresearch<span>&#46;</span>no</a></p></li>
+<li><p><strong>Contributor Id</strong>: <a class="reference external" href="https://orcid.org/0000-0001-7033-9139">https://orcid.org/0000-0001-7033-9139</a>, <a class="reference external" href="https://orcid.org/0000-0001-7033-9139">https://orcid.org/0000-0001-7033-9139</a>, <a class="reference external" href="http://www.hav.fo">http://www.hav.fo</a>, , <a class="reference external" href="https://orcid.org/0000-0001-8697-0013">https://orcid.org/0000-0001-8697-0013</a>, , ,</p></li>
+<li><p><strong>Contributing Institutions*</strong>: Faroe Marine Research Institute (FAMRI)</p></li>
+<li><p><strong>Contributing Institutions Vocabulary</strong>: <a class="reference external" href="https://edmo.seadatanet.org/report/3084">https://edmo.seadatanet.org/report/3084</a></p></li>
+<li><p><strong>Contributing Institutions Role</strong>:</p></li>
+<li><p><strong>Conventions</strong>: OceanSITES-1.4, OceanSITES-1.5</p></li>
+<li><p><strong>featureType*</strong>: timeSeries</p></li>
+<li><p><strong>featureType_vocabulary</strong>: <a class="reference external" href="https://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_features_and_feature_types">https://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_features_and_feature_types</a></p></li>
+<li><p><strong>Cdm Data Type</strong>: Station</p></li>
+<li><p><strong>Data Type</strong>: OceanSITES time-series data</p></li>
+<li><p><strong>Source File*</strong>: OS_GSR_FBC_D_1995_2024.nc</p></li>
+<li><p><strong>Source Path*</strong>: ~/.amocatlas_data/OS_GSR_FBC_D_1995_2024.nc</p></li>
+<li><p><strong>Source Url*</strong>: <a class="reference external" href="https://zenodo.org/records/19554222/files/">https://zenodo.org/records/19554222/files/</a></p></li>
+<li><p><strong>Date Created</strong>: 2025-04-22T00:00:00Z</p></li>
+<li><p><strong>Date Modified</strong>: 2026-08-01T00:00:00Z</p></li>
+<li><p><strong>Processing Software</strong>: <a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">http://github.com/AMOCcommunity/amocatlas</a></p></li>
+<li><p><strong>Processing Version</strong>: v0.4.0</p></li>
+<li><p><strong>Processing Datasource*</strong>: fbc</p></li>
+<li><p><strong>Format Version</strong>: 1.4</p></li>
+<li><p><strong>Applied Variable Mapping</strong>: {‘FBC_tr’: ‘TRANS_FBC’}</p></li>
+<li><p><strong>Keywords</strong>: OCEANOGRAPHY: PHYSICAL &gt;Currents, OCEANOGRAPHY: GENERAL &gt;North Atlantic oceanography, OCEANOGRAPHY: GENERAL &gt;Time series experiments</p></li>
+<li><p><strong>Keywords Vocabulary</strong>: AGU Index Terms</p></li>
+<li><p><strong>Update Interval</strong>: void</p></li>
+<li><p><strong>Comment</strong>: The array instrument data that the transports are based on are available from the Faroe Marine Research Institute</p></li>
+<li><p><strong>Data Mode</strong>: D</p></li>
+<li><p><strong>Sea Area</strong>: North Atlantic Ocean</p></li>
+<li><p><strong>Geospatial Lat Units</strong>: degree_north</p></li>
+<li><p><strong>Geospatial Lon Units</strong>: degree_east</p></li>
+<li><p><strong>Geospatial Vertical Positive</strong>: down</p></li>
+<li><p><strong>Geospatial Vertical Units</strong>: meter</p></li>
+<li><p><strong>Time Coverage Duration</strong>: P28Y07M04D</p></li>
+<li><p><strong>Time Coverage Resolution</strong>: PT01D</p></li>
+<li><p><strong>Netcdf Version</strong>: 3.5</p></li>
+<li><p><strong>Qc Indicator</strong>: excellent</p></li>
+<li><p><strong>Contributor Institute</strong>: Faroe Marine Research Institute (Faroe Islands); National Centre for Climate Research (Denmark); NORCE Research (Norway)</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="dso_report.html" class="btn btn-neutral float-left" title="DSO Datasets" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="fw2015_report.html" class="btn btn-neutral float-right" title="FW2015 Datasets" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Eleanor Frajka-Williams, Isabelle Schmitz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

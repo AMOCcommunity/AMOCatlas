@@ -1,0 +1,389 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DSO Datasets &mdash; amocatlas 0.4.0.post1.dev10 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=1078e4cb" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=6d4c28d6"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="FBC Datasets" href="fbc_report.html" />
+    <link rel="prev" title="ARCTICGATEWAY Datasets" href="arcticgateway_report.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            amocatlas
+              <img src="../_static/logo.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ / Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Demo notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../demo-output.html">AMOCatlas demo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dataset Reports</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Data Sources</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="rapid_report.html">RAPID Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="osnap_report.html">OSNAP Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="move_report.html">MOVE Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samba_report.html">SAMBA Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mocha_report.html">MOCHA Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arcticgateway_report.html">ARCTICGATEWAY Datasets</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">DSO Datasets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dso-transport-hourly-1996-2021-nc">DSO_transport_hourly_1996_2021.nc</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dataset-overview">Dataset Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dataset-visualization">Dataset Visualization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dataset-statistics">Dataset Statistics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#coordinate-information">Coordinate Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#variable-information">Variable Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#metadata-edits-applied-noted">Metadata (edits applied noted)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fbc_report.html">FBC Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fw2015_report.html">FW2015 Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calafat2025_report.html">CALAFAT2025 Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zheng2024_report.html">ZHENG2024 Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wh41n_report.html">WH41N Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="noac47n_report.html">NOAC47N Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nac_report.html">NAC Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sf2021_report.html">SF2021 Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lebras35n_report.html">LEBRAS35N Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="axmoc22s_report.html">AXMOC22S Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="axmoc34s_report.html">AXMOC34S Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovide_report.html">OVIDE Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scotia_report.html">SCOTIA Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#report-features">Report Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#automated-generation">Automated Generation</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/format.html">AMOCatlas data format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/vocabulary.html">amocvocab — variable vocabulary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../amoc_paperfigs-output.html">AMOC Publication Figures</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Repository and API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">GitHub Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../amocatlas.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">amocatlas</span> <span class="pre">API</span></code></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers' guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developers/developer_guide.html">Developer Guide for AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/git_beginners_guide.html">Git for Beginners: Workflow Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/actions.html">Extra GitHub features: Actions &amp; Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/housekeeping.html">Project Maintenance Checklist</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">amocatlas</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Data Sources</a></li>
+      <li class="breadcrumb-item active">DSO Datasets</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/reports/dso_report.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="dso-datasets">
+<h1>DSO Datasets<a class="headerlink" href="#dso-datasets" title="Link to this heading"></a></h1>
+<section id="dso-transport-hourly-1996-2021-nc">
+<h2>DSO_transport_hourly_1996_2021.nc<a class="headerlink" href="#dso-transport-hourly-1996-2021-nc" title="Link to this heading"></a></h2>
+<section id="dataset-overview">
+<h3>Dataset Overview<a class="headerlink" href="#dataset-overview" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Project</strong>: Overflow time-series through Denmark Strait</p></li>
+<li><p><strong>Description</strong>: Denmark Strait Overflow</p></li>
+<li><p><strong>Source File</strong>: DSO_transport_hourly_1996_2021.nc</p></li>
+<li><p><strong>Data Product</strong>: Overflow time-series through Denmark Strait</p></li>
+<li><p><strong>License</strong>: CC-BY-4.0</p></li>
+<li><p><strong>Date Created</strong>: 2021-12-06T19:37:07Z</p></li>
+<li><p><strong>Time Coverage</strong>: 1996-05-01 to 2021-08-07</p></li>
+<li><p><strong>Record Length</strong>: 221,514 observations (25.3 years)</p></li>
+<li><p><strong>Sampling Frequency</strong>: hourly</p></li>
+</ul>
+<p><strong>Citation:</strong></p>
+<blockquote>
+<div><p>Jochumsen, K., Moritz, M., Nunes, N., Quadfasel, D., Larsen, K. M. H., Hansen, B., Valdimarsson, H., and Jonsson, S.: Revised transport estimates of the Denmark Strait overflow, Journal of Geophysical Research: Oceans, 122, doi: <a class="reference external" href="http://doi.org/10.1002/2017JC012803">http://doi.org/10.1002/2017JC012803</a>, 2017.</p>
+</div></blockquote>
+<p><strong>Acknowledgement:</strong></p>
+<blockquote>
+<div><p>The DSO was generated by the University of Hamburg and Hafrannsóknastofnun / Marine and Freshwater Research Institute (Reykjavik, Iceland) with support from NACLIM (no. 308299), until 2016, and from RACE II (no. 03F0729B, until 2018), RACE-Synthese (no. 03F0825B, until 2020) German Federal Ministry for Education and Research (BMBF). Nordic WOCE, VEINS, MOEN (no. EVK2-CT-2002-00141), ASOF-W (no. EVK2-CT-2002-00149), THOR (grant agr. nr. 212643), AtlantOS, Blue Action.</p>
+</div></blockquote>
+</section>
+<section id="dataset-visualization">
+<h3>Dataset Visualization<a class="headerlink" href="#dataset-visualization" title="Link to this heading"></a></h3>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/dso_timeseries.png"><img alt="AMOC time series plot" height="345" src="../_images/dso_timeseries.png" width="962" />
+</a>
+<figcaption>
+<p><span class="caption-text">Time series plot for DSO dataset.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="dataset-statistics">
+<h3>Dataset Statistics<a class="headerlink" href="#dataset-statistics" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Total Variables</strong>: 1</p></li>
+<li><p><strong>Total Coordinates</strong>: 4</p></li>
+<li><p><strong>Dataset Size</strong>: 2.54 MB</p></li>
+</ul>
+</section>
+<section id="coordinate-information">
+<h3>Coordinate Information<a class="headerlink" href="#coordinate-information" title="Link to this heading"></a></h3>
+<p>The following table shows information about the dataset coordinates in the standardised version, including coordinate name remapping from the original, if any:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Coordinate</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>DEPTH</strong></p></td>
+<td><p><strong>Depth</strong>:  Depth below surface of the water</p></td>
+<td><p>m</p></td>
+<td><p>(1,)</p></td>
+<td><p>None</p></td>
+<td><p>None</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>LATITUDE</strong></p></td>
+<td><p><strong>Latitude</strong>: Latitude north (WGS84)</p></td>
+<td><p>degree_north</p></td>
+<td><p>(1,)</p></td>
+<td><p>66.00</p></td>
+<td><p>66.00</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>LONGITUDE</strong></p></td>
+<td><p><strong>Longitude</strong>: Longitude east (WGS84)</p></td>
+<td><p>degree_east</p></td>
+<td><p>(1,)</p></td>
+<td><p>-27.00</p></td>
+<td><p>-27.00</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>TIME</strong></p></td>
+<td><p>Time</p></td>
+<td><p>seconds since 1970-01-01T00:00:00Z</p></td>
+<td><p>(221514,)</p></td>
+<td><p>1996-05-01</p></td>
+<td><p>2021-08-07</p></td>
+<td><p>0.0%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="variable-information">
+<h3>Variable Information<a class="headerlink" href="#variable-information" title="Link to this heading"></a></h3>
+<p>The following table shows the mapping from original variable names to standardized names,
+along with key statistics for each variable.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>DSO_tr</em> → <strong>TRANS_DSO</strong></p></td>
+<td><p><strong>DS Overflow</strong>: Denmark Strait Overflow volume transport</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(221514, 1)</p></td>
+<td><p>-9.66</p></td>
+<td><p>3.08</p></td>
+<td><p>8.3%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="metadata-edits-applied-noted">
+<h3>Metadata (edits applied noted)<a class="headerlink" href="#metadata-edits-applied-noted" title="Link to this heading"></a></h3>
+<p>The following metadata describes this dataset:</p>
+<ul class="simple">
+<li><p><strong>Title</strong>: Volume transport timeseries in the North Atlantic</p></li>
+<li><p><strong>Summary</strong>: Time series of volume transport of the Denmark Strait Overflow (DSO) at about 66 degN. The transports are calculated through interpolation of mooring data between the maximum mooring depth at 660 m and 400 m above bottom. The time period is between 1996 and 2017; the time increment is 1 hour.</p></li>
+<li><p><strong>Description*</strong>: Denmark Strait Overflow</p></li>
+<li><p><strong>Program*</strong>: DSO</p></li>
+<li><p><strong>Project</strong>: Overflow time-series through Denmark Strait</p></li>
+<li><p><strong>Source</strong>: subsurface moorings</p></li>
+<li><p><strong>Id</strong>: OS_2GSR_DSO_D</p></li>
+<li><p><strong>Naming Authority</strong>: OceanSITES</p></li>
+<li><p><strong>License</strong>: CC-BY-4.0</p></li>
+<li><p><strong>Acknowledgment</strong>: The DSO was generated by the University of Hamburg and Hafrannsóknastofnun / Marine and Freshwater Research Institute (Reykjavik, Iceland) with support from NACLIM (no. 308299), until 2016, and from RACE II (no. 03F0729B, until 2018), RACE-Synthese (no. 03F0825B, until 2020) German Federal Ministry for Education and Research (BMBF). Nordic WOCE, VEINS, MOEN (no. EVK2-CT-2002-00141), ASOF-W (no. EVK2-CT-2002-00149), THOR (grant agr. nr. 212643), AtlantOS, Blue Action.</p></li>
+<li><p><strong>References</strong>: <a class="reference external" href="http://www.oceansites.org/tma/index.html">http://www.oceansites.org/tma/index.html</a></p></li>
+<li><p><strong>Weblink*</strong>: <a class="reference external" href="https://www.cen.uni-hamburg.de/en/icdc/data/ocean/denmark-strait-overflow.html">https://www.cen.uni-hamburg.de/en/icdc/data/ocean/denmark-strait-overflow.html</a></p></li>
+<li><p><strong>Platform</strong>: mooring</p></li>
+<li><p><strong>Platform Vocabulary</strong>: <a class="reference external" href="https://vocab.nerc.ac.uk/collection/L06/">https://vocab.nerc.ac.uk/collection/L06/</a></p></li>
+<li><p><strong>Platform Code</strong>: DSO</p></li>
+<li><p><strong>Processing Level</strong>: Known bad data has been replaced with values based on surrounding data, Data interpolated, Data manually reviewed</p></li>
+<li><p><strong>Data Product*</strong>: Overflow time-series through Denmark Strait</p></li>
+<li><p><strong>Site Code</strong>: GSR</p></li>
+<li><p><strong>Array</strong>: GSR</p></li>
+<li><p><strong>Network</strong>: GSR</p></li>
+<li><p><strong>Time Coverage Start</strong>: 1996-05-01</p></li>
+<li><p><strong>Time Coverage End</strong>: 2021-08-07</p></li>
+<li><p><strong>Geospatial Lat Min</strong>: 66</p></li>
+<li><p><strong>Geospatial Lat Max</strong>: 66</p></li>
+<li><p><strong>Geospatial Lon Min</strong>: -27</p></li>
+<li><p><strong>Geospatial Lon Max</strong>: -27</p></li>
+<li><p><strong>Contributor Name</strong>: Armin Koehl, Armin Koehl</p></li>
+<li><p><strong>Contributor Role</strong>: principalInvestigator, publisher</p></li>
+<li><p><strong>Contributor Role Vocabulary</strong>: <a class="reference external" href="https://vocab.nerc.ac.uk/collection/G04/current/">https://vocab.nerc.ac.uk/collection/G04/current/</a></p></li>
+<li><p><strong>Contributor Email</strong>: <a class="reference external" href="mailto:armin&#46;koehl&#37;&#52;&#48;uni-hamburg&#46;de">armin<span>&#46;</span>koehl<span>&#64;</span>uni-hamburg<span>&#46;</span>de</a>, <a class="reference external" href="mailto:armin&#46;koehl&#37;&#52;&#48;uni-hamburg&#46;de">armin<span>&#46;</span>koehl<span>&#64;</span>uni-hamburg<span>&#46;</span>de</a></p></li>
+<li><p><strong>Contributor Id</strong>: <a class="reference external" href="https://orcid.org/0000-0002-9777-674X">https://orcid.org/0000-0002-9777-674X</a>, <a class="reference external" href="https://orcid.org/0000-0002-9777-674X">https://orcid.org/0000-0002-9777-674X</a></p></li>
+<li><p><strong>Contributing Institutions*</strong>: University of Hamburg (IfM), Marine and Freshwater Research Institute (MFRI)</p></li>
+<li><p><strong>Contributing Institutions Vocabulary</strong>: <a class="reference external" href="https://edmo.seadatanet.org/report/1156">https://edmo.seadatanet.org/report/1156</a>, <a class="reference external" href="https://edmo.seadatanet.org/report/4766">https://edmo.seadatanet.org/report/4766</a></p></li>
+<li><p><strong>Contributing Institutions Role</strong>: ,</p></li>
+<li><p><strong>Conventions</strong>: CF-1.8, ACDD-1.3, OceanSITES-1.5</p></li>
+<li><p><strong>featureType*</strong>: timeSeries</p></li>
+<li><p><strong>featureType_vocabulary</strong>: <a class="reference external" href="https://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_features_and_feature_types">https://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_features_and_feature_types</a></p></li>
+<li><p><strong>Cdm Data Type</strong>: Station</p></li>
+<li><p><strong>Data Type</strong>: OceanSITES time series data</p></li>
+<li><p><strong>Source File*</strong>: DSO_transport_hourly_1996_2021.nc</p></li>
+<li><p><strong>Source Path*</strong>: ~/.amocatlas_data/DSO_transport_hourly_1996_2021.nc</p></li>
+<li><p><strong>Source Url*</strong>: <a class="reference external" href="https://www.cen.uni-hamburg.de/en/icdc/data/ocean/denmark-strait-overflow.html">https://www.cen.uni-hamburg.de/en/icdc/data/ocean/denmark-strait-overflow.html</a></p></li>
+<li><p><strong>Date Created</strong>: 2021-12-06T19:37:07Z</p></li>
+<li><p><strong>Date Modified</strong>: 2026-08-01T00:00:00Z</p></li>
+<li><p><strong>History</strong>: 2021-12-06T19:37:07Z OceanSITES file with provisional transport data sent to DAC by Ursula Schauer; 2026-08-14T11:57:40Z AMOCatlas: Corrupted DEPTH value in DSO_transport_hourly_1996_2021.nc marked as NaN (was 9.97e+36)</p></li>
+<li><p><strong>Processing Software</strong>: <a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">http://github.com/AMOCcommunity/amocatlas</a></p></li>
+<li><p><strong>Processing Version</strong>: v0.4.0</p></li>
+<li><p><strong>Processing Datasource*</strong>: dso</p></li>
+<li><p><strong>Format Version</strong>: 1.3</p></li>
+<li><p><strong>Applied Variable Mapping</strong>: {‘DSO_tr’: ‘TRANS_DSO’}</p></li>
+<li><p><strong>Keywords</strong>: OCEANOGRAPHY: PHYSICAL &gt;Currents, OCEANOGRAPHY: GENERAL &gt;North Atlantic oceanography, OCEANOGRAPHY: GENERAL &gt;Time series experiments</p></li>
+<li><p><strong>Keywords Vocabulary</strong>: AGU Index Terms</p></li>
+<li><p><strong>Update Interval</strong>: void</p></li>
+<li><p><strong>Comment</strong>: The array instrument data that the transports are based on are available from Institute of Oceanography (Hamburg) and the Marine Research Institute (Reykjavik, Iceland)</p></li>
+<li><p><strong>Data Mode</strong>: D</p></li>
+<li><p><strong>Wmo Platfrom Code</strong>: void</p></li>
+<li><p><strong>Area</strong>: North Atlantic Ocean</p></li>
+<li><p><strong>Geospatial Lat Units</strong>: degrees_north</p></li>
+<li><p><strong>Geospatial Lon Units</strong>: degrees_east</p></li>
+<li><p><strong>Geospatial Vertical Positive</strong>: down</p></li>
+<li><p><strong>Geospatial Vertical Units</strong>: meter</p></li>
+<li><p><strong>Time Coverage Duration</strong>: P21Y4M17D</p></li>
+<li><p><strong>Time Coverage Resolution</strong>: PT1H</p></li>
+<li><p><strong>Netcdf Version</strong>: 3.5</p></li>
+<li><p><strong>Data Assembly Center</strong>: void</p></li>
+<li><p><strong>Qc Indicator</strong>: excellent</p></li>
+<li><p><strong>Instituion</strong>: Institute of Oceanography (Hamburg) and the Marine Research Institute (Reykjavik, Iceland)</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="arcticgateway_report.html" class="btn btn-neutral float-left" title="ARCTICGATEWAY Datasets" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="fbc_report.html" class="btn btn-neutral float-right" title="FBC Datasets" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Eleanor Frajka-Williams, Isabelle Schmitz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

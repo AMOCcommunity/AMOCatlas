@@ -1,0 +1,622 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>utilities &mdash; amocatlas 0.4.0.post1.dev10 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=1078e4cb" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=6d4c28d6"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Developer Guide for AMOCatlas" href="developers/developer_guide.html" />
+    <link rel="prev" title="standardise" href="standardise.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            amocatlas
+              <img src="_static/logo.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ / Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Demo notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="demo-output.html">AMOCatlas demo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dataset Reports</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reports/index.html">Data Sources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reference/format.html">AMOCatlas data format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/vocabulary.html">amocvocab — variable vocabulary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="amoc_paperfigs-output.html">AMOC Publication Figures</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Repository and API</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">GitHub Repo</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="amocatlas.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">amocatlas</span> <span class="pre">API</span></code></a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="read.html">read module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_sources.html">data_sources package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotters.html">plotters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="writers.html">writers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html">tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standardise.html">standardise</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.utilities.DOWNLOAD_TIMEOUT"><code class="docutils literal notranslate"><span class="pre">DOWNLOAD_TIMEOUT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.utilities.PROVENANCE_SUFFIX"><code class="docutils literal notranslate"><span class="pre">PROVENANCE_SUFFIX</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.utilities.apply_defaults"><code class="docutils literal notranslate"><span class="pre">apply_defaults()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.utilities.apply_unit_standardization_after_metadata"><code class="docutils literal notranslate"><span class="pre">apply_unit_standardization_after_metadata()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.utilities.download_file"><code class="docutils literal notranslate"><span class="pre">download_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.utilities.find_data_start"><code class="docutils literal notranslate"><span class="pre">find_data_start()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.utilities.get_data_dir"><code class="docutils literal notranslate"><span class="pre">get_data_dir()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.utilities.get_default_data_dir"><code class="docutils literal notranslate"><span class="pre">get_default_data_dir()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.utilities.get_project_root"><code class="docutils literal notranslate"><span class="pre">get_project_root()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.utilities.get_standard_unit_mappings"><code class="docutils literal notranslate"><span class="pre">get_standard_unit_mappings()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.utilities.is_valid_url"><code class="docutils literal notranslate"><span class="pre">is_valid_url()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.utilities.load_array_metadata"><code class="docutils literal notranslate"><span class="pre">load_array_metadata()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.utilities.mask_invalid_values"><code class="docutils literal notranslate"><span class="pre">mask_invalid_values()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.utilities.normalize_whitespace"><code class="docutils literal notranslate"><span class="pre">normalize_whitespace()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.utilities.parse_ascii_header"><code class="docutils literal notranslate"><span class="pre">parse_ascii_header()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.utilities.read_ascii_file"><code class="docutils literal notranslate"><span class="pre">read_ascii_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.utilities.read_provenance"><code class="docutils literal notranslate"><span class="pre">read_provenance()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.utilities.resolve_file_path"><code class="docutils literal notranslate"><span class="pre">resolve_file_path()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.utilities.safe_update_attrs"><code class="docutils literal notranslate"><span class="pre">safe_update_attrs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.utilities.sanitize_variable_name"><code class="docutils literal notranslate"><span class="pre">sanitize_variable_name()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.utilities.set_data_dir"><code class="docutils literal notranslate"><span class="pre">set_data_dir()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.utilities.standardize_dataset_units"><code class="docutils literal notranslate"><span class="pre">standardize_dataset_units()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.utilities.validate_array_yaml"><code class="docutils literal notranslate"><span class="pre">validate_array_yaml()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers' guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="developers/developer_guide.html">Developer Guide for AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developers/git_beginners_guide.html">Git for Beginners: Workflow Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developers/actions.html">Extra GitHub features: Actions &amp; Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developers/housekeeping.html">Project Maintenance Checklist</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">amocatlas</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="amocatlas.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">amocatlas</span> <span class="pre">API</span></code></a></li>
+      <li class="breadcrumb-item active">utilities</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/utilities.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="utilities">
+<h1>utilities<a class="headerlink" href="#utilities" title="Link to this heading"></a></h1>
+<p>Shared utilities for downloading, reading, and parsing data files.</p>
+<p id="module-amocatlas.utilities">Utility functions for AMOCatlas package.</p>
+<p>This module provides shared utility functions including:
+- File download and caching
+- Data directory management
+- URL and path validation
+- Metadata loading and validation
+- Decorator functions for default parameters</p>
+<dl class="py data">
+<dt class="sig sig-object py" id="amocatlas.utilities.DOWNLOAD_TIMEOUT">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.utilities.</span></span><span class="sig-name descname"><span class="pre">DOWNLOAD_TIMEOUT</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(30,</span> <span class="pre">300)</span></span><a class="headerlink" href="#amocatlas.utilities.DOWNLOAD_TIMEOUT" title="Link to this definition"></a></dt>
+<dd><p>(connect, read) timeout in seconds for network downloads, so a stalled server
+cannot hang a download indefinitely.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="amocatlas.utilities.PROVENANCE_SUFFIX">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.utilities.</span></span><span class="sig-name descname"><span class="pre">PROVENANCE_SUFFIX</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'.provenance.json'</span></span><a class="headerlink" href="#amocatlas.utilities.PROVENANCE_SUFFIX" title="Link to this definition"></a></dt>
+<dd><p>Suffix for the JSON provenance sidecar written next to each downloaded file.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.utilities.apply_defaults">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.utilities.</span></span><span class="sig-name descname"><span class="pre">apply_defaults</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">default_source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Callable</span></span></span><a class="reference internal" href="_modules/amocatlas/utilities.html#apply_defaults"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.utilities.apply_defaults" title="Link to this definition"></a></dt>
+<dd><p>Decorator to apply default values for ‘source’ and ‘file_list’ parameters if they are None.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>default_source</strong> (<em>str</em>) – Default source URL or path.</p></li>
+<li><p><strong>default_files</strong> (<em>list</em><em> of </em><em>str</em>) – Default list of filenames.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A wrapped function with defaults applied.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Callable</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.utilities.apply_unit_standardization_after_metadata">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.utilities.</span></span><span class="sig-name descname"><span class="pre">apply_unit_standardization_after_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dataset</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span></span></span><a class="reference internal" href="_modules/amocatlas/utilities.html#apply_unit_standardization_after_metadata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.utilities.apply_unit_standardization_after_metadata" title="Link to this definition"></a></dt>
+<dd><p>Apply unit standardization with high priority to override YAML metadata.</p>
+<p>This function is designed to be called after metadata enrichment to ensure
+that standardized units take precedence over any units specified in YAML
+metadata files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ds</strong> (<em>xr.Dataset</em>) – Dataset that may have had units overwritten by metadata processing.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dataset with units re-standardized.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xr.Dataset</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This addresses the issue where YAML metadata files contain “Sv” units
+that override the standardized “sverdrup” units. This function should
+be called as the final step in standardization.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># In standardization pipeline</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span> <span class="o">=</span> <span class="n">apply_metadata_from_yaml</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>  <span class="c1"># This might set units: Sv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ds</span> <span class="o">=</span> <span class="n">apply_unit_standardization_after_metadata</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>  <span class="c1"># This fixes it</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.utilities.download_file">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.utilities.</span></span><span class="sig-name descname"><span class="pre">download_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dest_folder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">redownload</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/amocatlas/utilities.html#download_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.utilities.download_file" title="Link to this definition"></a></dt>
+<dd><p>Download a file from HTTP(S) or FTP to the specified destination folder.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>url</strong> (<em>str</em>) – The URL of the file to download.</p></li>
+<li><p><strong>dest_folder</strong> (<em>str</em>) – Local folder to save the downloaded file.</p></li>
+<li><p><strong>redownload</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, force re-download of the file even if it exists.</p></li>
+<li><p><strong>filename</strong> (<em>str</em><em>, </em><em>optional</em>) – Optional filename to save the file as. If not given, uses the name from the URL.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The full path to the downloaded file.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the URL scheme is unsupported.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.utilities.find_data_start">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.utilities.</span></span><span class="sig-name descname"><span class="pre">find_data_start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/amocatlas/utilities.html#find_data_start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.utilities.find_data_start" title="Link to this definition"></a></dt>
+<dd><p>Locate the first line of numerical data in a legacy ASCII file.</p>
+<p>This function scans an ASCII text file line by line and returns the
+zero-based line index of the first row that appears to contain data.
+A data row is identified as a non-empty line whose first non-whitespace
+character is a digit. This is useful for files with long, human-readable
+headers (titles, references, separators) preceding the actual data table.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – Path to the ASCII file to be scanned.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Zero-based line index at which the numerical data table begins.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If no data-like lines are found in the file.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.utilities.get_data_dir">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.utilities.</span></span><span class="sig-name descname"><span class="pre">get_data_dir</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Path</span></span></span><a class="reference internal" href="_modules/amocatlas/utilities.html#get_data_dir"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.utilities.get_data_dir" title="Link to this definition"></a></dt>
+<dd><p>Get the current default data directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Current default data directory path.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Path</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.utilities.get_default_data_dir">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.utilities.</span></span><span class="sig-name descname"><span class="pre">get_default_data_dir</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Path</span></span></span><a class="reference internal" href="_modules/amocatlas/utilities.html#get_default_data_dir"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.utilities.get_default_data_dir" title="Link to this definition"></a></dt>
+<dd><p>Get the default data directory path for AMOCatlas.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.utilities.get_project_root">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.utilities.</span></span><span class="sig-name descname"><span class="pre">get_project_root</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Path</span></span></span><a class="reference internal" href="_modules/amocatlas/utilities.html#get_project_root"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.utilities.get_project_root" title="Link to this definition"></a></dt>
+<dd><p>Return the absolute path to the project root directory.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.utilities.get_standard_unit_mappings">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.utilities.</span></span><span class="sig-name descname"><span class="pre">get_standard_unit_mappings</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/amocatlas/utilities.html#get_standard_unit_mappings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.utilities.get_standard_unit_mappings" title="Link to this definition"></a></dt>
+<dd><p>Get the mapping of unit variations to standard units.</p>
+<p>Uses defaults.PREFERRED_UNITS as target values for standardization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionary mapping various unit forms to their standard equivalents.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dict[str, str]</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This centralizes all unit standardization rules for consistency across
+the AMOCatlas package. Add new unit mappings here as needed.
+Target values come from defaults.PREFERRED_UNITS to ensure consistency.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mappings</span> <span class="o">=</span> <span class="n">get_standard_unit_mappings</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">mappings</span><span class="p">[</span><span class="s2">"Sv"</span><span class="p">])</span>  <span class="c1"># "sverdrup"</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">mappings</span><span class="p">[</span><span class="s2">"deg C"</span><span class="p">])</span>  <span class="c1"># "degree_C"</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.utilities.is_valid_url">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.utilities.</span></span><span class="sig-name descname"><span class="pre">is_valid_url</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/amocatlas/utilities.html#is_valid_url"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.utilities.is_valid_url" title="Link to this definition"></a></dt>
+<dd><p>Validate if a given string is a valid URL with supported schemes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>url</strong> (<em>str</em>) – The URL string to validate.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the URL is valid and uses a supported scheme (‘http’, ‘https’, ‘ftp’),
+otherwise False.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.utilities.load_array_metadata">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.utilities.</span></span><span class="sig-name descname"><span class="pre">load_array_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datasource_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="_modules/amocatlas/utilities.html#load_array_metadata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.utilities.load_array_metadata" title="Link to this definition"></a></dt>
+<dd><p>Load metadata YAML for a given data source.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>datasource_id</strong> (<em>str</em>) – Datasource identifier (e.g., ‘rapid26n’, ‘samba34s’).</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary containing the parsed YAML metadata.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.utilities.mask_invalid_values">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.utilities.</span></span><span class="sig-name descname"><span class="pre">mask_invalid_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dataset</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span></span></span><a class="reference internal" href="_modules/amocatlas/utilities.html#mask_invalid_values"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.utilities.mask_invalid_values" title="Link to this definition"></a></dt>
+<dd><p>Mask values outside valid_min/valid_max ranges as NaN.</p>
+<p>Many netCDF files contain valid_min and valid_max attributes that define
+the valid range for variables. Values outside this range should be treated
+as missing data but are often not automatically masked by xarray.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ds</strong> (<em>xr.Dataset</em>) – Dataset to check for invalid values.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dataset with values outside valid ranges masked as NaN.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xr.Dataset</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Variable has valid_min=-100, valid_max=100 but contains 9.97e+36</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ds_clean</span> <span class="o">=</span> <span class="n">mask_invalid_values</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Now extreme values are masked as NaN</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.utilities.normalize_whitespace">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.utilities.</span></span><span class="sig-name descname"><span class="pre">normalize_whitespace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attrs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="_modules/amocatlas/utilities.html#normalize_whitespace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.utilities.normalize_whitespace" title="Link to this definition"></a></dt>
+<dd><p>Replace non-breaking &amp; other unusual whitespace in every string attr value
+with a normal ASCII space, and collapse runs of whitespace down to one space.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.utilities.parse_ascii_header">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.utilities.</span></span><span class="sig-name descname"><span class="pre">parse_ascii_header</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment_char</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'%'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/amocatlas/utilities.html#parse_ascii_header"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.utilities.parse_ascii_header" title="Link to this definition"></a></dt>
+<dd><p>Parse the header of an ASCII file to extract column names and the number of header lines.</p>
+<p>Header lines are identified by the given comment character (default: ‘%’).
+Columns are defined in lines like:
+‘&lt;comment_char&gt; Column 1: &lt;column_name&gt;’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_path</strong> (<em>str</em>) – Path to the ASCII file.</p></li>
+<li><p><strong>comment_char</strong> (<em>str</em><em>, </em><em>optional</em>) – Character used to identify header lines. Defaults to ‘%’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A tuple containing:
+- A list of column names extracted from the header.
+- The number of header lines to skip.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple of (list of str, int)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.utilities.read_ascii_file">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.utilities.</span></span><span class="sig-name descname"><span class="pre">read_ascii_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment_char</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'#'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/amocatlas/utilities.html#read_ascii_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.utilities.read_ascii_file" title="Link to this definition"></a></dt>
+<dd><p>Read an ASCII file into a pandas DataFrame, skipping lines starting with a specified comment character.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_path</strong> (<em>str</em>) – Path to the ASCII file.</p></li>
+<li><p><strong>comment_char</strong> (<em>str</em><em>, </em><em>optional</em>) – Character denoting comment lines. Defaults to ‘#’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The loaded data as a pandas DataFrame.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.utilities.read_provenance">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.utilities.</span></span><span class="sig-name descname"><span class="pre">read_provenance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="_modules/amocatlas/utilities.html#read_provenance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.utilities.read_provenance" title="Link to this definition"></a></dt>
+<dd><p>Return the provenance sidecar for a downloaded file, or None if absent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em><em> or </em><em>Path</em>) – Path to the downloaded data file (not the sidecar itself).</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The recorded provenance (url, downloaded_at, bytes, sha256, and optionally etag /
+last_modified), or None if no sidecar exists or it cannot be read.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.utilities.resolve_file_path">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.utilities.</span></span><span class="sig-name descname"><span class="pre">resolve_file_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">download_url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">local_data_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">redownload</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Path</span></span></span><a class="reference internal" href="_modules/amocatlas/utilities.html#resolve_file_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.utilities.resolve_file_path" title="Link to this definition"></a></dt>
+<dd><p>Resolve the path to a data file, using local source, cache, or downloading if necessary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_name</strong> (<em>str</em>) – The name of the file to resolve.</p></li>
+<li><p><strong>source</strong> (<em>str</em><em> or </em><em>Path</em><em> or </em><em>None</em>) – Optional local source directory.</p></li>
+<li><p><strong>download_url</strong> (<em>str</em><em> or </em><em>None</em>) – URL to download the file if needed.</p></li>
+<li><p><strong>local_data_dir</strong> (<em>Path</em>) – Directory where downloaded files are stored.</p></li>
+<li><p><strong>redownload</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, force redownload even if cached file exists.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Path to the resolved file.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Path</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.utilities.safe_update_attrs">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.utilities.</span></span><span class="sig-name descname"><span class="pre">safe_update_attrs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_attrs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span></span></span><a class="reference internal" href="_modules/amocatlas/utilities.html#safe_update_attrs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.utilities.safe_update_attrs" title="Link to this definition"></a></dt>
+<dd><p>Safely update attributes of an xarray Dataset without overwriting existing keys,
+unless explicitly allowed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ds</strong> (<em>xr.Dataset</em>) – The xarray Dataset whose attributes will be updated.</p></li>
+<li><p><strong>new_attrs</strong> (<em>dict</em><em> of </em><em>str</em>) – Dictionary of new attributes to add.</p></li>
+<li><p><strong>overwrite</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, allow overwriting existing attributes. Defaults to False.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, emit a warning when skipping existing attributes. Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The dataset with updated attributes.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xr.Dataset</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.utilities.sanitize_variable_name">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.utilities.</span></span><span class="sig-name descname"><span class="pre">sanitize_variable_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/amocatlas/utilities.html#sanitize_variable_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.utilities.sanitize_variable_name" title="Link to this definition"></a></dt>
+<dd><p>Sanitize variable names to create valid Python identifiers.</p>
+<p>Replaces illegal Python identifier characters (spaces, parentheses, periods,
+hyphens, etc.) with underscores and collapses repeated underscores into single ones.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – The original variable name that may contain illegal characters</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A sanitized variable name that is a valid Python identifier</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sanitize_variable_name</span><span class="p">(</span><span class="s2">"Total MOC anomaly (relative to record-length average of 14.7 Sv)"</span><span class="p">)</span>
+<span class="go">'Total_MOC_anomaly__relative_to_record_length_average_of_14_7_Sv'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sanitize_variable_name</span><span class="p">(</span><span class="s2">"Upper-cell volume transport anomaly"</span><span class="p">)</span>
+<span class="go">'Upper_cell_volume_transport_anomaly'</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.utilities.set_data_dir">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.utilities.</span></span><span class="sig-name descname"><span class="pre">set_data_dir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/amocatlas/utilities.html#set_data_dir"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.utilities.set_data_dir" title="Link to this definition"></a></dt>
+<dd><p>Set the default data directory for AMOCatlas.</p>
+<p>This will be used by all readers unless overridden with data_dir parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data_dir</strong> (<em>str</em><em> or </em><em>Path</em>) – Path to the directory to use as the default data location.
+Use “project” to set to &lt;project_root&gt;/data.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">amocatlas</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">amocatlas</span><span class="o">.</span><span class="n">set_data_dir</span><span class="p">(</span><span class="s2">"~/my_data"</span><span class="p">)</span>     <span class="c1"># Custom location</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">amocatlas</span><span class="o">.</span><span class="n">set_data_dir</span><span class="p">(</span><span class="s2">"project"</span><span class="p">)</span>       <span class="c1"># Use project/data directory</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.utilities.standardize_dataset_units">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.utilities.</span></span><span class="sig-name descname"><span class="pre">standardize_dataset_units</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mapping</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_changes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span></span></span><a class="reference internal" href="_modules/amocatlas/utilities.html#standardize_dataset_units"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.utilities.standardize_dataset_units" title="Link to this definition"></a></dt>
+<dd><p>Standardize units throughout a dataset using the unit mapping rules.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ds</strong> (<em>xr.Dataset</em>) – Dataset to standardize units for.</p></li>
+<li><p><strong>mapping</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em><em>, </em><em>optional</em>) – Custom unit mapping. If None, uses get_standard_unit_mappings().</p></li>
+<li><p><strong>log_changes</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to log unit changes. Default is True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dataset with standardized units.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xr.Dataset</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This function applies unit standardization to all variables and coordinates
+in the dataset. It’s designed to be the central unit standardization
+function for AMOCatlas, replacing the simpler standardize_units function.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ds_std</span> <span class="o">=</span> <span class="n">standardize_dataset_units</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Check if Sv was converted to sverdrup</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">ds_std</span><span class="p">[</span><span class="s1">'transport'</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">'units'</span><span class="p">])</span>  <span class="c1"># "sverdrup"</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.utilities.validate_array_yaml">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.utilities.</span></span><span class="sig-name descname"><span class="pre">validate_array_yaml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datasource_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/amocatlas/utilities.html#validate_array_yaml"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.utilities.validate_array_yaml" title="Link to this definition"></a></dt>
+<dd><p>Validate the structure and required fields of a datasource metadata YAML.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>datasource_id</strong> (<em>str</em>) – The datasource identifier (e.g., ‘rapid26n’, ‘samba34s’).</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – If True, print detailed validation messages.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if validation passes, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="standardise.html" class="btn btn-neutral float-left" title="standardise" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="developers/developer_guide.html" class="btn btn-neutral float-right" title="Developer Guide for AMOCatlas" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Eleanor Frajka-Williams, Isabelle Schmitz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

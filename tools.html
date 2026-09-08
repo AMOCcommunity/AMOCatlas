@@ -1,0 +1,468 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tools &mdash; amocatlas 0.4.0.post1.dev10 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=1078e4cb" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=6d4c28d6"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="standardise" href="standardise.html" />
+    <link rel="prev" title="writers" href="writers.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            amocatlas
+              <img src="_static/logo.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ / Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Demo notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="demo-output.html">AMOCatlas demo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dataset Reports</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reports/index.html">Data Sources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reference/format.html">AMOCatlas data format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/vocabulary.html">amocvocab — variable vocabulary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="amoc_paperfigs-output.html">AMOC Publication Figures</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Repository and API</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">GitHub Repo</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="amocatlas.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">amocatlas</span> <span class="pre">API</span></code></a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="read.html">read module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_sources.html">data_sources package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotters.html">plotters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="writers.html">writers</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.tools.apply_tukey_filter"><code class="docutils literal notranslate"><span class="pre">apply_tukey_filter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.tools.bin_average_5day"><code class="docutils literal notranslate"><span class="pre">bin_average_5day()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.tools.bin_average_monthly"><code class="docutils literal notranslate"><span class="pre">bin_average_monthly()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.tools.check_and_bin"><code class="docutils literal notranslate"><span class="pre">check_and_bin()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.tools.convert_units_var"><code class="docutils literal notranslate"><span class="pre">convert_units_var()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.tools.extract_time_and_time_num"><code class="docutils literal notranslate"><span class="pre">extract_time_and_time_num()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.tools.find_best_dtype"><code class="docutils literal notranslate"><span class="pre">find_best_dtype()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.tools.generate_reverse_conversions"><code class="docutils literal notranslate"><span class="pre">generate_reverse_conversions()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.tools.handle_samba_gaps"><code class="docutils literal notranslate"><span class="pre">handle_samba_gaps()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.tools.reformat_units_var"><code class="docutils literal notranslate"><span class="pre">reformat_units_var()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.tools.set_best_dtype"><code class="docutils literal notranslate"><span class="pre">set_best_dtype()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.tools.set_fill_value"><code class="docutils literal notranslate"><span class="pre">set_fill_value()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.tools.to_decimal_year"><code class="docutils literal notranslate"><span class="pre">to_decimal_year()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="standardise.html">standardise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utilities.html">utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers' guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="developers/developer_guide.html">Developer Guide for AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developers/git_beginners_guide.html">Git for Beginners: Workflow Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developers/actions.html">Extra GitHub features: Actions &amp; Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developers/housekeeping.html">Project Maintenance Checklist</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">amocatlas</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="amocatlas.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">amocatlas</span> <span class="pre">API</span></code></a></li>
+      <li class="breadcrumb-item active">tools</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/tools.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tools">
+<h1>tools<a class="headerlink" href="#tools" title="Link to this heading"></a></h1>
+<p>Helper functions for data manipulation, unit conversion, and analysis.</p>
+<p id="module-amocatlas.tools">AMOCatlas analysis tools for data processing, filtering, and calculations.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.tools.apply_tukey_filter">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.tools.</span></span><span class="sig-name descname"><span class="pre">apply_tukey_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_months</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">samples_per_day</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_back_mean</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/amocatlas/tools.html#apply_tukey_filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.tools.apply_tukey_filter" title="Link to this definition"></a></dt>
+<dd><p>Apply a Tukey filter using NumPy convolution (safely handles NaN values).</p>
+<p>This function uses pandas DataFrame input to leverage NumPy’s convolution
+capabilities with Tukey windows, which provides more flexibility than
+xarray’s built-in rolling operations for this specific filtering approach.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – Input DataFrame containing the column to filter.</p></li>
+<li><p><strong>column</strong> (<em>str</em>) – Name of the column to apply the filter to.</p></li>
+<li><p><strong>window_months</strong> (<em>int</em><em>, </em><em>default 6</em>) – Filter window size in months.</p></li>
+<li><p><strong>samples_per_day</strong> (<em>float</em><em>, </em><em>default 0.2</em>) – Expected number of samples per day in the data.</p></li>
+<li><p><strong>alpha</strong> (<em>float</em><em>, </em><em>default 0.5</em>) – Tukey window parameter (0=rectangular, 1=Hann).</p></li>
+<li><p><strong>add_back_mean</strong> (<em>bool</em><em>, </em><em>default False</em>) – Whether to remove and add back the overall mean.</p></li>
+<li><p><strong>output_column</strong> (<em>str</em><em>, </em><em>optional</em>) – Name for the filtered output column. If None, uses “{column}_filtered”.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Copy of input DataFrame with filtered column added.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Uses pandas DataFrame rather than xarray Dataset because pandas provides
+better access to convolution operations with custom window functions.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.tools.bin_average_5day">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.tools.</span></span><span class="sig-name descname"><span class="pre">bin_average_5day</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'time'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value_column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'moc'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/amocatlas/tools.html#bin_average_5day"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.tools.bin_average_5day" title="Link to this definition"></a></dt>
+<dd><p>Bin-average a time series into 5-day means.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – Input DataFrame with time and value columns.</p></li>
+<li><p><strong>time_column</strong> (<em>str</em><em>, </em><em>default &quot;time&quot;</em>) – Name of the datetime column.</p></li>
+<li><p><strong>value_column</strong> (<em>str</em><em>, </em><em>default &quot;moc&quot;</em>) – Name of the data column to average.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataFrame with 5-day averaged time and values.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.tools.bin_average_monthly">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.tools.</span></span><span class="sig-name descname"><span class="pre">bin_average_monthly</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'time'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/amocatlas/tools.html#bin_average_monthly"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.tools.bin_average_monthly" title="Link to this definition"></a></dt>
+<dd><p>Bin-average a time series into monthly means.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – Input DataFrame with time column.</p></li>
+<li><p><strong>time_column</strong> (<em>str</em><em>, </em><em>default &quot;time&quot;</em>) – Name of the datetime column.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataFrame with monthly averaged data.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.tools.check_and_bin">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.tools.</span></span><span class="sig-name descname"><span class="pre">check_and_bin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'time'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/amocatlas/tools.html#check_and_bin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.tools.check_and_bin" title="Link to this definition"></a></dt>
+<dd><p>Check temporal resolution and bin to monthly if needed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – Input DataFrame with time column.</p></li>
+<li><p><strong>time_column</strong> (<em>str</em><em>, </em><em>default &quot;time&quot;</em>) – Name of the datetime column.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Original DataFrame if already monthly, or monthly-binned version.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.tools.convert_units_var">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.tools.</span></span><span class="sig-name descname"><span class="pre">convert_units_var</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var_values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_unit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_unit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit_conversion</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{'PW':</span> <span class="pre">{'W':</span> <span class="pre">1000000000000000.0},</span> <span class="pre">'Pa':</span> <span class="pre">{'dbar':</span> <span class="pre">0.0001},</span> <span class="pre">'S/m':</span> <span class="pre">{'mS/cm':</span> <span class="pre">0.1},</span> <span class="pre">'Sv':</span> <span class="pre">{'sverdrup':</span> <span class="pre">1.0},</span> <span class="pre">'W':</span> <span class="pre">{'PW':</span> <span class="pre">1e-15},</span> <span class="pre">'cm':</span> <span class="pre">{'m':</span> <span class="pre">0.01},</span> <span class="pre">'cm</span> <span class="pre">s-1':</span> <span class="pre">{'m</span> <span class="pre">s-1':</span> <span class="pre">0.01},</span> <span class="pre">'cm/s':</span> <span class="pre">{'m/s':</span> <span class="pre">0.01},</span> <span class="pre">'dbar':</span> <span class="pre">{'Pa':</span> <span class="pre">10000,</span> <span class="pre">'kPa':</span> <span class="pre">10},</span> <span class="pre">'degree_Celsius':</span> <span class="pre">{'degrees_Celsius':</span> <span class="pre">1.0},</span> <span class="pre">'degrees_Celsius':</span> <span class="pre">{'degree_Celsius':</span> <span class="pre">1},</span> <span class="pre">'g</span> <span class="pre">m-3':</span> <span class="pre">{'kg</span> <span class="pre">m-3':</span> <span class="pre">0.001},</span> <span class="pre">'kPa':</span> <span class="pre">{'dbar':</span> <span class="pre">0.1},</span> <span class="pre">'kg</span> <span class="pre">m-3':</span> <span class="pre">{'g</span> <span class="pre">m-3':</span> <span class="pre">1000.0},</span> <span class="pre">'km':</span> <span class="pre">{'m':</span> <span class="pre">1000.0},</span> <span class="pre">'m':</span> <span class="pre">{'cm':</span> <span class="pre">100,</span> <span class="pre">'km':</span> <span class="pre">0.001},</span> <span class="pre">'m</span> <span class="pre">s-1':</span> <span class="pre">{'cm</span> <span class="pre">s-1':</span> <span class="pre">100.0},</span> <span class="pre">'m/s':</span> <span class="pre">{'cm/s':</span> <span class="pre">100.0},</span> <span class="pre">'mS/cm':</span> <span class="pre">{'S/m':</span> <span class="pre">10.0},</span> <span class="pre">'sverdrup':</span> <span class="pre">{'Sv':</span> <span class="pre">1}}</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span></span><a class="reference internal" href="_modules/amocatlas/tools.html#convert_units_var"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.tools.convert_units_var" title="Link to this definition"></a></dt>
+<dd><p>Converts variable values from one unit to another using a predefined conversion factor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>var_values</strong> (<em>numpy.ndarray</em><em> or </em><em>float</em>) – The values to be converted.</p></li>
+<li><p><strong>current_unit</strong> (<em>str</em>) – The current unit of the variable values.</p></li>
+<li><p><strong>new_unit</strong> (<em>str</em>) – The target unit to which the variable values should be converted.</p></li>
+<li><p><strong>unit_conversion</strong> (<em>dict</em><em> of </em><em>{str: dict</em><em> of </em><em>{str: float}}</em><em>, </em><em>optional</em>) – A dictionary containing conversion factors between units. The default is <cite>unit_conversion</cite>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The converted variable values. If no conversion factor is found, the original values are returned.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray or float</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>KeyError</strong> – If the conversion factor for the specified units is not found in the <cite>unit_conversion</cite> dictionary.</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>If the conversion factor for the specified units is not available, a message is printed, and the original
+values are returned without any conversion.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.tools.extract_time_and_time_num">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.tools.</span></span><span class="sig-name descname"><span class="pre">extract_time_and_time_num</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_var</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'TIME'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/amocatlas/tools.html#extract_time_and_time_num"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.tools.extract_time_and_time_num" title="Link to this definition"></a></dt>
+<dd><p>Extract time coordinates from xarray Dataset and convert to pandas DataFrame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ds</strong> (<em>xarray.Dataset</em>) – Dataset containing time coordinate.</p></li>
+<li><p><strong>time_var</strong> (<em>str</em><em>, </em><em>default &quot;TIME&quot;</em>) – Name of the time variable in the dataset.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataFrame with ‘time’ (datetime) and ‘time_num’ (decimal year) columns.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.tools.find_best_dtype">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.tools.</span></span><span class="sig-name descname"><span class="pre">find_best_dtype</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">da</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataArray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dtype</span></span></span><a class="reference internal" href="_modules/amocatlas/tools.html#find_best_dtype"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.tools.find_best_dtype" title="Link to this definition"></a></dt>
+<dd><p>Determines the most suitable data type for a given variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>var_name</strong> (<em>str</em>) – The name of the variable.</p></li>
+<li><p><strong>da</strong> (<em>xarray.DataArray</em>) – The data array containing the variable’s values.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The optimal data type for the variable based on its name and values.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.dtype</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.tools.generate_reverse_conversions">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.tools.</span></span><span class="sig-name descname"><span class="pre">generate_reverse_conversions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">forward_conversions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/amocatlas/tools.html#generate_reverse_conversions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.tools.generate_reverse_conversions" title="Link to this definition"></a></dt>
+<dd><p>Create a unit conversion dictionary with both forward and reverse conversions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>forward_conversions</strong> (<em>dict</em><em> of </em><em>{str: dict</em><em> of </em><em>{str: float}}</em>) – Mapping of source units to target units and conversion factors.
+Example: {“m”: {“cm”: 100, “km”: 0.001}}</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>dict of {str</strong> – Complete mapping of units including reverse conversions.
+Example: {“cm”: {“m”: 0.01}, “km”: {“m”: 1000}}</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict of {str: float}}</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>If a conversion factor is zero, a warning is printed, and the reverse conversion is skipped.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.tools.handle_samba_gaps">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.tools.</span></span><span class="sig-name descname"><span class="pre">handle_samba_gaps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'time'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/amocatlas/tools.html#handle_samba_gaps"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.tools.handle_samba_gaps" title="Link to this definition"></a></dt>
+<dd><p>Handle temporal gaps in SAMBA MOC data to prevent plotting artifacts.</p>
+<p>SAMBA data has significant gaps (e.g., 2011-2014) that cause plotting functions
+to draw connecting lines across missing periods. This function creates a regular
+monthly grid and masks interpolation to only occur within existing data periods,
+preventing spurious connections across large gaps.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – Input DataFrame with time and MOC columns.</p></li>
+<li><p><strong>time_column</strong> (<em>str</em><em>, </em><em>default &quot;time&quot;</em>) – Name of the datetime column.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataFrame with regular monthly grid and gap-aware data masking.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>PyGMT and other plotting functions connect all valid (non-NaN) data points
+regardless of temporal gaps. This function prevents artifacts by:
+1. Creating a regular monthly time grid
+2. Preserving NaN values where no original data existed
+3. Only interpolating within continuous data segments</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.tools.reformat_units_var">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.tools.</span></span><span class="sig-name descname"><span class="pre">reformat_units_var</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit_format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{'S/m':</span> <span class="pre">'S</span> <span class="pre">m-1',</span> <span class="pre">'cm/s':</span> <span class="pre">'cm</span> <span class="pre">s-1',</span> <span class="pre">'degrees_Celsius':</span> <span class="pre">'degree_Celsius',</span> <span class="pre">'g/m^3':</span> <span class="pre">'g</span> <span class="pre">m-3',</span> <span class="pre">'m/s':</span> <span class="pre">'m</span> <span class="pre">s-1',</span> <span class="pre">'meters':</span> <span class="pre">'m'}</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/amocatlas/tools.html#reformat_units_var"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.tools.reformat_units_var" title="Link to this definition"></a></dt>
+<dd><p>Reformat the units of a variable in the dataset based on a provided mapping.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ds</strong> (<em>xarray.Dataset</em>) – The input dataset containing variables with units to be reformatted.</p></li>
+<li><p><strong>var_name</strong> (<em>str</em>) – The name of the variable whose units need to be reformatted.</p></li>
+<li><p><strong>unit_format</strong> (<em>dict</em><em> of </em><em>{str: str}</em><em>, </em><em>optional</em>) – A dictionary mapping old unit strings to new formatted unit strings.
+Defaults to <cite>unit_str_format</cite>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The reformatted unit string. If the old unit is not found in <cite>unit_format</cite>,
+the original unit string is returned.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.tools.set_best_dtype">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.tools.</span></span><span class="sig-name descname"><span class="pre">set_best_dtype</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dataset</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span></span></span><a class="reference internal" href="_modules/amocatlas/tools.html#set_best_dtype"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.tools.set_best_dtype" title="Link to this definition"></a></dt>
+<dd><p>Adjust the data types of variables in a dataset to optimize memory usage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ds</strong> (<em>xarray.Dataset</em>) – The input dataset whose variables’ data types will be adjusted.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The dataset with updated data types for its variables, potentially saving memory.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xarray.Dataset</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>The function determines the best data type for each variable using <cite>find_best_dtype</cite>.</p></li>
+<li><p>Attributes like <cite>valid_min</cite> and <cite>valid_max</cite> are updated to match the new data type.</p></li>
+<li><p>If the new data type is integer-based, NaN values are replaced with a fill value.</p></li>
+<li><p>Logs the percentage of memory saved after the data type adjustments.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.tools.set_fill_value">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.tools.</span></span><span class="sig-name descname"><span class="pre">set_fill_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_dtype</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dtype</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/amocatlas/tools.html#set_fill_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.tools.set_fill_value" title="Link to this definition"></a></dt>
+<dd><p>Calculate the fill value for a given data type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>new_dtype</strong> (<em>numpy.dtype</em>) – The data type for which the fill value is to be calculated.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The calculated fill value based on the bit-width of the data type.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.tools.to_decimal_year">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.tools.</span></span><span class="sig-name descname"><span class="pre">to_decimal_year</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dates</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Series</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="_modules/amocatlas/tools.html#to_decimal_year"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.tools.to_decimal_year" title="Link to this definition"></a></dt>
+<dd><p>Convert datetime series to decimal years, handling NaN values safely.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dates</strong> (<em>pandas.Series</em><em> or </em><em>pandas.DatetimeIndex</em>) – Series or Index of datetime objects to convert.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Series of decimal years with NaN preserved for invalid dates.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s1">'2020-01-01'</span><span class="p">,</span> <span class="s1">'2020-07-01'</span><span class="p">,</span> <span class="s1">'2021-01-01'</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">dates</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">decimal_years</span> <span class="o">=</span> <span class="n">to_decimal_year</span><span class="p">(</span><span class="n">dates</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="writers.html" class="btn btn-neutral float-left" title="writers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="standardise.html" class="btn btn-neutral float-right" title="standardise" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Eleanor Frajka-Williams, Isabelle Schmitz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

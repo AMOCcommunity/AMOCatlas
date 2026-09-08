@@ -1,0 +1,873 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OSNAP Datasets &mdash; amocatlas 0.4.0.post1.dev10 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=1078e4cb" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=6d4c28d6"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="MOVE Datasets" href="move_report.html" />
+    <link rel="prev" title="RAPID Datasets" href="rapid_report.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            amocatlas
+              <img src="../_static/logo.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ / Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Demo notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../demo-output.html">AMOCatlas demo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dataset Reports</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Data Sources</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="rapid_report.html">RAPID Datasets</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">OSNAP Datasets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#osnap-moc-mht-mft-timeseries-201408-202207-2025-nc">OSNAP_MOC_MHT_MFT_TimeSeries_201408_202207_2025.nc</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dataset-overview">Dataset Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dataset-visualization">Dataset Visualization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dataset-statistics">Dataset Statistics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#coordinate-information">Coordinate Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#variable-information">Variable Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#metadata-edits-applied-noted">Metadata (edits applied noted)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#osnap-streamfunction-201408-202207-2025-nc">OSNAP_Streamfunction_201408_202207_2025.nc</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Dataset Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Dataset Visualization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Dataset Statistics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Coordinate Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Variable Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Metadata (edits applied noted)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#osnap-gridded-tsv-201408-202207-2025-nc">OSNAP_Gridded_TSV_201408_202207_2025.nc</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id7">Dataset Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">Dataset Statistics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">Coordinate Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">Variable Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">Metadata (edits applied noted)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="move_report.html">MOVE Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samba_report.html">SAMBA Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mocha_report.html">MOCHA Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arcticgateway_report.html">ARCTICGATEWAY Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dso_report.html">DSO Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fbc_report.html">FBC Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fw2015_report.html">FW2015 Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calafat2025_report.html">CALAFAT2025 Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zheng2024_report.html">ZHENG2024 Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wh41n_report.html">WH41N Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="noac47n_report.html">NOAC47N Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nac_report.html">NAC Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sf2021_report.html">SF2021 Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lebras35n_report.html">LEBRAS35N Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="axmoc22s_report.html">AXMOC22S Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="axmoc34s_report.html">AXMOC34S Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovide_report.html">OVIDE Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scotia_report.html">SCOTIA Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#report-features">Report Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#automated-generation">Automated Generation</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/format.html">AMOCatlas data format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/vocabulary.html">amocvocab — variable vocabulary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../amoc_paperfigs-output.html">AMOC Publication Figures</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Repository and API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">GitHub Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../amocatlas.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">amocatlas</span> <span class="pre">API</span></code></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers' guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developers/developer_guide.html">Developer Guide for AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/git_beginners_guide.html">Git for Beginners: Workflow Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/actions.html">Extra GitHub features: Actions &amp; Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/housekeeping.html">Project Maintenance Checklist</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">amocatlas</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Data Sources</a></li>
+      <li class="breadcrumb-item active">OSNAP Datasets</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/reports/osnap_report.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="osnap-datasets">
+<h1>OSNAP Datasets<a class="headerlink" href="#osnap-datasets" title="Link to this heading"></a></h1>
+<p>This report covers all available OSNAP datasets.</p>
+<section id="osnap-moc-mht-mft-timeseries-201408-202207-2025-nc">
+<h2>OSNAP_MOC_MHT_MFT_TimeSeries_201408_202207_2025.nc<a class="headerlink" href="#osnap-moc-mht-mft-timeseries-201408-202207-2025-nc" title="Link to this heading"></a></h2>
+<section id="dataset-overview">
+<h3>Dataset Overview<a class="headerlink" href="#dataset-overview" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Project</strong>: Overturning in the Subpolar North Atlantic Program (OSNAP)</p></li>
+<li><p><strong>Description</strong>: OSNAP transport and hydrographic estimates dataset, 2014-2020</p></li>
+<li><p><strong>DOI</strong>: <a class="reference external" href="https://doi.org/10.35090/gatech/70342">https://doi.org/10.35090/gatech/70342</a></p></li>
+<li><p><strong>Source File</strong>: OSNAP_MOC_MHT_MFT_TimeSeries_201408_202207_2025.nc</p></li>
+<li><p><strong>Data Product</strong>: Time series of MOC, MHT, and MFT (2014-2022)</p></li>
+<li><p><strong>License</strong>: CC-BY-4.0</p></li>
+<li><p><strong>Date Created</strong>: 2025-05-21T15:09:24Z</p></li>
+<li><p><strong>Time Coverage</strong>: 2014-08-01 to 2022-07-01</p></li>
+<li><p><strong>Record Length</strong>: 96 observations (7.9 years)</p></li>
+<li><p><strong>Sampling Frequency</strong>: monthly</p></li>
+</ul>
+<p><strong>Distribution Statement:</strong></p>
+<blockquote>
+<div><p>Any person making use of OSNAP observational data and/or numerical results must communicate with the responsible investigators at the start of the analysis and anticipate that the data collectors will be co-authors of published results. In cases where investigators choose not to be co-authors on publications that rely on their data, the parties responsible for collecting the data and the sponsoring funding agencies should be acknowledged, including reference to any relevant publications by the originating authors describing the data sets and a reference to the data set itself using its DOI. OSNAP data are intended for scholarly use by the academic and scientific community, with the express understanding that any such use will properly acknowledge the originating investigator.</p>
+</div></blockquote>
+<p><strong>Citation:</strong></p>
+<blockquote>
+<div><p>Fu, Y., Lozier, M. S., Bower, A., Burmeister, K., Carrilho Biló, T., Cyr, F., et al. (2025). Characterizing the interannual variability of North Atlantic subpolar overturning. Geophysical Research Letters, 52, e2025GL114672. <a class="reference external" href="https://doi.org/10.1029/2025GL114672">https://doi.org/10.1029/2025GL114672</a></p>
+</div></blockquote>
+<p><strong>Acknowledgement:</strong></p>
+<blockquote>
+<div><p>OSNAP data were collected and made freely available by the OSNAP (Overturning in the Subpolar North Atlantic Program) project and all the national programs that contribute to it (www.o-snap.org).</p>
+</div></blockquote>
+</section>
+<section id="dataset-visualization">
+<h3>Dataset Visualization<a class="headerlink" href="#dataset-visualization" title="Link to this heading"></a></h3>
+<figure class="align-center" id="id12">
+<a class="reference internal image-reference" href="../_images/osnap_moc_mht_mft_timeseries_201408_202207_2025_timeseries.png"><img alt="AMOC time series plot" height="344" src="../_images/osnap_moc_mht_mft_timeseries_201408_202207_2025_timeseries.png" width="946" />
+</a>
+<figcaption>
+<p><span class="caption-text">Time series plot for OSNAP_MOC_MHT_MFT_TIMESERIES_201408_202207_2025 dataset.</span><a class="headerlink" href="#id12" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="dataset-statistics">
+<h3>Dataset Statistics<a class="headerlink" href="#dataset-statistics" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Total Variables</strong>: 18</p></li>
+<li><p><strong>Total Coordinates</strong>: 1</p></li>
+<li><p><strong>Dataset Size</strong>: 0.01 MB</p></li>
+</ul>
+</section>
+<section id="coordinate-information">
+<h3>Coordinate Information<a class="headerlink" href="#coordinate-information" title="Link to this heading"></a></h3>
+<p>The following table shows information about the dataset coordinates in the standardised version, including coordinate name remapping from the original, if any:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Coordinate</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>TIME</strong></p></td>
+<td><p><strong>Time</strong>: Time in days since 1950-01-01</p></td>
+<td><p>seconds since 1970-01-01T00:00:00Z</p></td>
+<td><p>(96,)</p></td>
+<td><p>2014-08-01</p></td>
+<td><p>2022-07-01</p></td>
+<td><p>0.0%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="variable-information">
+<h3>Variable Information<a class="headerlink" href="#variable-information" title="Link to this heading"></a></h3>
+<p>The following table shows the mapping from original variable names to standardized names,
+along with key statistics for each variable.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>MFT_ALL</em> → <strong>MFT</strong></p></td>
+<td><p>Meridional freshwater transport across the full OSNAP array</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(96,)</p></td>
+<td><p>-0.48</p></td>
+<td><p>-0.23</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>MFT_EAST</strong></p></td>
+<td><p><strong>MFTeast</strong>: Meridional freshwater transport across OSNAP East</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(96,)</p></td>
+<td><p>-0.28</p></td>
+<td><p>-0.09</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>MFT_EAST_ERR</strong></p></td>
+<td><p><strong>MFTeast error</strong>: Uncertainty in MFT_EAST</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(96,)</p></td>
+<td><p>0.03</p></td>
+<td><p>0.07</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>MFT_ALL_ERR</em> → <strong>MFT_ERR</strong></p></td>
+<td><p><strong>MFT error</strong>: Uncertainty in MFT</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(96,)</p></td>
+<td><p>0.04</p></td>
+<td><p>0.08</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>MFT_WEST</strong></p></td>
+<td><p><strong>MFTwest</strong>: Meridional freshwater transport across OSNAP West</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(96,)</p></td>
+<td><p>-0.24</p></td>
+<td><p>-0.08</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>MFT_WEST_ERR</strong></p></td>
+<td><p><strong>MFTwest error</strong>: Uncertainty in MFT_WEST</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(96,)</p></td>
+<td><p>0.01</p></td>
+<td><p>0.04</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>MHT_ALL</em> → <strong>MHT</strong></p></td>
+<td><p><strong>MHT</strong>: Meridional heat transport across full OSNAP array</p></td>
+<td><p>PW</p></td>
+<td><p>(96,)</p></td>
+<td><p>0.35</p></td>
+<td><p>0.64</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>MHT_EAST</strong></p></td>
+<td><p><strong>MHT east</strong>: Meridional heat transport across OSNAP East</p></td>
+<td><p>PW</p></td>
+<td><p>(96,)</p></td>
+<td><p>0.28</p></td>
+<td><p>0.57</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>MHT_EAST_ERR</strong></p></td>
+<td><p><strong>MHT east uncertainty</strong>: Uncertainty in MHT_EAST</p></td>
+<td><p>PW</p></td>
+<td><p>(96,)</p></td>
+<td><p>0.07</p></td>
+<td><p>0.15</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>MHT_ALL_ERR</em> → <strong>MHT_ERR</strong></p></td>
+<td><p><strong>MHT uncertainty</strong>: Uncertainty in MHT</p></td>
+<td><p>PW</p></td>
+<td><p>(96,)</p></td>
+<td><p>0.07</p></td>
+<td><p>0.15</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>MHT_WEST</strong></p></td>
+<td><p><strong>MHT west</strong>: Meridional heat transport across OSNAP West</p></td>
+<td><p>PW</p></td>
+<td><p>(96,)</p></td>
+<td><p>0.03</p></td>
+<td><p>0.13</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>MHT_WEST_ERR</strong></p></td>
+<td><p><strong>MHT west uncertainty</strong>: Uncertainty in MHT_WEST</p></td>
+<td><p>PW</p></td>
+<td><p>(96,)</p></td>
+<td><p>0.01</p></td>
+<td><p>0.02</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>MOC_EAST</em> → <strong>MOC_EAST_SIGMA0</strong></p></td>
+<td><p><strong>Eastern MOC_sigma0</strong>: Maximum overturning streamfunction across OSNAP East</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(96,)</p></td>
+<td><p>10.36</p></td>
+<td><p>23.66</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>MOC_EAST_ERR</em> → <strong>MOC_EAST_SIGMA0_ERR</strong></p></td>
+<td><p><strong>Eastern MOC_sigma0 uncertainty</strong>: Uncertainty in MOC_SIGMA0_EAST</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(96,)</p></td>
+<td><p>2.33</p></td>
+<td><p>5.68</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>MOC_ALL</em> → <strong>MOC_SIGMA0</strong></p></td>
+<td><p><strong>MOC_sigma0</strong>: Maximum overturning streamfunction across full OSNAP array</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(96,)</p></td>
+<td><p>7.98</p></td>
+<td><p>25.59</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>MOC_ALL_ERR</em> → <strong>MOC_SIGMA0_ERR</strong></p></td>
+<td><p><strong>MOC_sigma0 uncertainty</strong>: Uncertainty in MOC_ALL</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(96,)</p></td>
+<td><p>2.87</p></td>
+<td><p>5.99</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>MOC_WEST</em> → <strong>MOC_WEST_SIGMA0</strong></p></td>
+<td><p><strong>Western MOC_sigma0</strong>: Maximum overturning streamfunction across OSNAP West</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(96,)</p></td>
+<td><p>0.36</p></td>
+<td><p>7.78</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>MOC_WEST_ERR</em> → <strong>MOC_WEST_SIGMA0_ERR</strong></p></td>
+<td><p><strong>Western MOC_sigma0 uncertainty</strong>: Uncertainty in MOC_WEST</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(96,)</p></td>
+<td><p>0.90</p></td>
+<td><p>3.05</p></td>
+<td><p>0.0%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="metadata-edits-applied-noted">
+<h3>Metadata (edits applied noted)<a class="headerlink" href="#metadata-edits-applied-noted" title="Link to this heading"></a></h3>
+<p>The following metadata describes this dataset:</p>
+<ul class="simple">
+<li><p><strong>Title</strong>: OSNAP MOC MHT MFT time series (2014-2022)</p></li>
+<li><p><strong>Summary</strong>: OSNAP transport and hydrographic estimates dataset, 2014-2020</p></li>
+<li><p><strong>Description*</strong>: OSNAP transport and hydrographic estimates dataset, 2014-2020</p></li>
+<li><p><strong>Program*</strong>: OSNAP</p></li>
+<li><p><strong>Project</strong>: Overturning in the Subpolar North Atlantic Program (OSNAP)</p></li>
+<li><p><strong>License*</strong>: CC-BY-4.0</p></li>
+<li><p><strong>Acknowledgment</strong>: OSNAP data were collected and made freely available by the OSNAP (Overturning in the Subpolar North Atlantic Program) project and all the national programs that contribute to it (www.o-snap.org).</p></li>
+<li><p><strong>Doi*</strong>: <a class="reference external" href="https://doi.org/10.35090/gatech/70342">https://doi.org/10.35090/gatech/70342</a></p></li>
+<li><p><strong>References</strong>: Lozier et al. (2019), Science, doi:10.1126/science.aau6592; Li et al. (2017), JTECH, doi:10.1175/JTECH-D-16-0247.1; Li et al. (2021), Nature Communications, doi:10.1038/s41467-021-23350-2; Fu et al. (2023), Communications Earth &amp; Environment, doi:10.1038/s43247-023-00848-9</p></li>
+<li><p><strong>Weblink*</strong>: <a class="reference external" href="https://www.o-snap.org">https://www.o-snap.org</a></p></li>
+<li><p><strong>Distribution Statement</strong>: Any person making use of OSNAP observational data and/or numerical results must communicate with the responsible investigators at the start of the analysis and anticipate that the data collectors will be co-authors of published results. In cases where investigators choose not to be co-authors on publications that rely on their data, the parties responsible for collecting the data and the sponsoring funding agencies should be acknowledged, including reference to any relevant publications by the originating authors describing the data sets and a reference to the data set itself using its DOI. OSNAP data are intended for scholarly use by the academic and scientific community, with the express understanding that any such use will properly acknowledge the originating investigator.</p></li>
+<li><p><strong>Platform</strong>: mooring</p></li>
+<li><p><strong>Platform Vocabulary</strong>: <a class="reference external" href="https://vocab.nerc.ac.uk/collection/L06/">https://vocab.nerc.ac.uk/collection/L06/</a></p></li>
+<li><p><strong>Data Product*</strong>: Time series of MOC, MHT, and MFT (2014-2022)</p></li>
+<li><p><strong>Time Coverage Start</strong>: 2014-08-01</p></li>
+<li><p><strong>Time Coverage End</strong>: 2022-07-01</p></li>
+<li><p><strong>Contributor Name</strong>: OSNAP investigators, M. Susan Lozier, Yao Fu, Yao Fu, M. Susan Lozier, Amy Bower, Kristin Burmeister, Tiago Carrilho Biló, Frederic Cyr, Stuart A. Cunningham, Brad deYoung, Ahmad Fehmi Dilmahamod, M. Femke de Jong, Nora Fried, N. Penny Holliday, Neil Fraser, William E. Johns, Feili Li, Johannes Karstensen, Robert Pickart, Fiammetta Straneo, Igor Yashayaev</p></li>
+<li><p><strong>Contributor Role</strong>: originator, publisher, publisher, data design, collection and/or processing, , , , , , , , , , , , , , , , ,</p></li>
+<li><p><strong>Contributor Role Vocabulary</strong>: <a class="reference external" href="https://vocab.nerc.ac.uk/collection/G04/current/">https://vocab.nerc.ac.uk/collection/G04/current/</a></p></li>
+<li><p><strong>Contributor Email</strong>: , <a class="reference external" href="mailto:susan&#46;lozier&#37;&#52;&#48;gatech&#46;edu">susan<span>&#46;</span>lozier<span>&#64;</span>gatech<span>&#46;</span>edu</a>, <a class="reference external" href="mailto:yaofu&#37;&#52;&#48;usf&#46;edu">yaofu<span>&#64;</span>usf<span>&#46;</span>edu</a>, <a class="reference external" href="mailto:yaofu&#37;&#52;&#48;usf&#46;edu">yaofu<span>&#64;</span>usf<span>&#46;</span>edu</a>, , , , , , , , , , , , , , , , , ,</p></li>
+<li><p><strong>Contributor Id</strong>: , , <a class="reference external" href="https://orcid.org/0000-0003-2227-3694">https://orcid.org/0000-0003-2227-3694</a>, <a class="reference external" href="https://orcid.org/0000-0003-2227-3694">https://orcid.org/0000-0003-2227-3694</a>, , <a class="reference external" href="https://orcid.org/0000-0003-0902-4984">https://orcid.org/0000-0003-0902-4984</a>, <a class="reference external" href="https://orcid.org/0000-0003-3881-0298">https://orcid.org/0000-0003-3881-0298</a>, <a class="reference external" href="https://orcid.org/0000-0002-4007-5862">https://orcid.org/0000-0002-4007-5862</a>, <a class="reference external" href="https://orcid.org/0000-0002-1581-7502">https://orcid.org/0000-0002-1581-7502</a>, <a class="reference external" href="https://orcid.org/0000-0001-9439-5442">https://orcid.org/0000-0001-9439-5442</a>, <a class="reference external" href="https://scholar.google.com/citations?user=c6SCfzAAAAAJ&amp;hl=en">https://scholar.google.com/citations?user=c6SCfzAAAAAJ&amp;hl=en</a>, <a class="reference external" href="https://orcid.org/0000-0003-1110-940X">https://orcid.org/0000-0003-1110-940X</a>, <a class="reference external" href="https://orcid.org/0000-0001-5683-0570">https://orcid.org/0000-0001-5683-0570</a>, <a class="reference external" href="https://orcid.org/0000-0001-5457-1026">https://orcid.org/0000-0001-5457-1026</a>, <a class="reference external" href="https://orcid.org/0000-0002-9733-8002">https://orcid.org/0000-0002-9733-8002</a>, <a class="reference external" href="https://orcid.org/0000-0002-2171-9060">https://orcid.org/0000-0002-2171-9060</a>, <a class="reference external" href="https://orcid.org/0000-0002-1093-7871">https://orcid.org/0000-0002-1093-7871</a>, <a class="reference external" href="https://orcid.org/0000-0002-3073-9813">https://orcid.org/0000-0002-3073-9813</a>, <a class="reference external" href="https://orcid.org/0000-0001-5044-7079">https://orcid.org/0000-0001-5044-7079</a>, <a class="reference external" href="https://orcid.org/0000-0002-7826-911X">https://orcid.org/0000-0002-7826-911X</a>, <a class="reference external" href="https://orcid.org/0000-0002-1735-2366">https://orcid.org/0000-0002-1735-2366</a>, <a class="reference external" href="https://orcid.org/0000-0002-6976-7803">https://orcid.org/0000-0002-6976-7803</a></p></li>
+<li><p><strong>Contributing Institutions</strong>: Multiple contributing institutions, Georgia Institute of Technology, National Oceanography Centre (Southampton), Woods Hole Oceanographic Institution, Scottish Association for Marine Science (SAMS), Royal Netherlands Institute for Sea Research (NIOZ), Memorial University of Newfoundland, Fisheries and Oceans Canada, Northwest Atlantic Fisheries Centre, Institute of Ocean Sciences (DFO), Scripps Institution of Oceanography, Rosenstiel School of Marine and Atmospheric Science, Rosenstiel School of Marine and Atmospheric Science (University of Miami), Helmholtz Centre for Ocean Research Kiel (GEOMAR), Bedford Institute of Oceanography, Xiamen University - State Key Laboratory of Marine Environmental Science, State Key Laboratory of Marine Environmental Science, University of South Florida</p></li>
+<li><p><strong>Contributing Institutions Vocabulary</strong>: , <a class="reference external" href="https://edmo.seadatanet.org/report/3075">https://edmo.seadatanet.org/report/3075</a>, <a class="reference external" href="https://edmo.seadatanet.org/report/17">https://edmo.seadatanet.org/report/17</a>, <a class="reference external" href="https://edmo.seadatanet.org/report/3844">https://edmo.seadatanet.org/report/3844</a>, <a class="reference external" href="https://edmo.seadatanet.org/report/44">https://edmo.seadatanet.org/report/44</a>, <a class="reference external" href="https://edmo.seadatanet.org/report/630">https://edmo.seadatanet.org/report/630</a>, , <a class="reference external" href="https://edmo.seadatanet.org/report/5370">https://edmo.seadatanet.org/report/5370</a>, <a class="reference external" href="https://edmo.seadatanet.org/report/4157">https://edmo.seadatanet.org/report/4157</a>, <a class="reference external" href="https://edmo.seadatanet.org/report/4155">https://edmo.seadatanet.org/report/4155</a>, <a class="reference external" href="https://edmo.seadatanet.org/report/1390">https://edmo.seadatanet.org/report/1390</a>, , <a class="reference external" href="https://edmo.seadatanet.org/report/1382">https://edmo.seadatanet.org/report/1382</a>, <a class="reference external" href="https://edmo.seadatanet.org/report/2947">https://edmo.seadatanet.org/report/2947</a>, <a class="reference external" href="https://edmo.seadatanet.org/report/1811">https://edmo.seadatanet.org/report/1811</a>, <a class="reference external" href="https://edmo.seadatanet.org/report/2401">https://edmo.seadatanet.org/report/2401</a>, , <a class="reference external" href="https://edmo.seadatanet.org/report/3838">https://edmo.seadatanet.org/report/3838</a></p></li>
+<li><p><strong>Contributing Institutions Role</strong>: , , , , , , , , , , , , , , , , ,</p></li>
+<li><p><strong>Conventions*</strong>: CF-1.8, ACDD-1.3, OceanSITES-1.5</p></li>
+<li><p><strong>featureType*</strong>: timeSeries</p></li>
+<li><p><strong>featureType_vocabulary</strong>: <a class="reference external" href="https://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_features_and_feature_types">https://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_features_and_feature_types</a></p></li>
+<li><p><strong>Source File*</strong>: OSNAP_MOC_MHT_MFT_TimeSeries_201408_202207_2025.nc</p></li>
+<li><p><strong>Source Path*</strong>: ~/.amocatlas_data/OSNAP_MOC_MHT_MFT_TimeSeries_201408_202207_2025.nc</p></li>
+<li><p><strong>Date Created</strong>: 2025-05-21T15:09:24Z</p></li>
+<li><p><strong>Date Modified</strong>: 2026-08-01T00:00:00Z</p></li>
+<li><p><strong>Processing Software</strong>: <a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">http://github.com/AMOCcommunity/amocatlas</a></p></li>
+<li><p><strong>Processing Version</strong>: v0.4.0</p></li>
+<li><p><strong>Processing Datasource*</strong>: osnap55n</p></li>
+<li><p><strong>Applied Variable Mapping</strong>: [Complex metadata structure - 10 items]</p></li>
+<li><p><strong>Data Assembly Center</strong>: Georgia Institute of Technology</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="osnap-streamfunction-201408-202207-2025-nc">
+<h2>OSNAP_Streamfunction_201408_202207_2025.nc<a class="headerlink" href="#osnap-streamfunction-201408-202207-2025-nc" title="Link to this heading"></a></h2>
+<section id="id1">
+<h3>Dataset Overview<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Project</strong>: Overturning in the Subpolar North Atlantic Program (OSNAP)</p></li>
+<li><p><strong>Description</strong>: OSNAP transport and hydrographic estimates dataset, 2014-2020</p></li>
+<li><p><strong>DOI</strong>: <a class="reference external" href="https://doi.org/10.35090/gatech/70342">https://doi.org/10.35090/gatech/70342</a></p></li>
+<li><p><strong>Source File</strong>: OSNAP_Streamfunction_201408_202207_2025.nc</p></li>
+<li><p><strong>Data Product</strong>: Meridional overturning streamfunction (2014-2022)</p></li>
+<li><p><strong>License</strong>: CC-BY-4.0</p></li>
+<li><p><strong>Date Created</strong>: 2025-05-21T15:16:52Z</p></li>
+<li><p><strong>Time Coverage</strong>: 2014-08-01 to 2022-07-01</p></li>
+<li><p><strong>Record Length</strong>: 96 observations (7.9 years)</p></li>
+<li><p><strong>Sampling Frequency</strong>: monthly</p></li>
+</ul>
+<p><strong>Distribution Statement:</strong></p>
+<blockquote>
+<div><p>Any person making use of OSNAP observational data and/or numerical results must communicate with the responsible investigators at the start of the analysis and anticipate that the data collectors will be co-authors of published results. In cases where investigators choose not to be co-authors on publications that rely on their data, the parties responsible for collecting the data and the sponsoring funding agencies should be acknowledged, including reference to any relevant publications by the originating authors describing the data sets and a reference to the data set itself using its DOI. OSNAP data are intended for scholarly use by the academic and scientific community, with the express understanding that any such use will properly acknowledge the originating investigator.</p>
+</div></blockquote>
+<p><strong>Citation:</strong></p>
+<blockquote>
+<div><p>Fu, Y., Lozier, M. S., Bower, A., Burmeister, K., Carrilho Biló, T., Cyr, F., et al. (2025). Characterizing the interannual variability of North Atlantic subpolar overturning. Geophysical Research Letters, 52, e2025GL114672. <a class="reference external" href="https://doi.org/10.1029/2025GL114672">https://doi.org/10.1029/2025GL114672</a></p>
+</div></blockquote>
+<p><strong>Acknowledgement:</strong></p>
+<blockquote>
+<div><p>OSNAP data were collected and made freely available by the OSNAP (Overturning in the Subpolar North Atlantic Program) project and all the national programs that contribute to it (www.o-snap.org).</p>
+</div></blockquote>
+</section>
+<section id="id2">
+<h3>Dataset Visualization<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<figure class="align-center" id="id13">
+<a class="reference internal image-reference" href="../_images/osnap_streamfunction_201408_202207_2025_2d_gridded.png"><img alt="AMOC time series plot" height="465" src="../_images/osnap_streamfunction_201408_202207_2025_2d_gridded.png" width="918" />
+</a>
+<figcaption>
+<p><span class="caption-text">Time series plot for OSNAP_STREAMFUNCTION_201408_202207_2025 dataset.</span><a class="headerlink" href="#id13" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id3">
+<h3>Dataset Statistics<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Total Variables</strong>: 3</p></li>
+<li><p><strong>Total Coordinates</strong>: 2</p></li>
+<li><p><strong>Dataset Size</strong>: 1.06 MB</p></li>
+</ul>
+</section>
+<section id="id4">
+<h3>Coordinate Information<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p>The following table shows information about the dataset coordinates in the standardised version, including coordinate name remapping from the original, if any:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Coordinate</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>LEVEL</em> → <strong>SIGMA0</strong></p></td>
+<td><p><strong>Sigma0</strong>: Potential density anomaly to 1000 kg/m3, surface reference</p></td>
+<td><p>kg m-3</p></td>
+<td><p>(481,)</p></td>
+<td><p>23.30</p></td>
+<td><p>28.10</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>TIME</strong></p></td>
+<td><p><strong>Time</strong>: Start date of each monthly period</p></td>
+<td><p>seconds since 1970-01-01T00:00:00Z</p></td>
+<td><p>(96,)</p></td>
+<td><p>2014-08-01</p></td>
+<td><p>2022-07-01</p></td>
+<td><p>0.0%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id5">
+<h3>Variable Information<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<p>The following table shows the mapping from original variable names to standardized names,
+along with key statistics for each variable.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>T_ALL</em> → <strong>PSI_SIGMA0</strong></p></td>
+<td><p><strong>Streamfunction</strong>: Streamfunction in σθ coordinates across full OSNAP</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(481, 96)</p></td>
+<td><p>-5.16</p></td>
+<td><p>25.34</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>T_EAST</em> → <strong>PSI_SIGMA0_EAST</strong></p></td>
+<td><p><strong>Streamfunction east</strong>: Streamfunction in σθ at OSNAP East</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(481, 96)</p></td>
+<td><p>-1.77</p></td>
+<td><p>23.82</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>T_WEST</em> → <strong>PSI_SIGMA0_WEST</strong></p></td>
+<td><p><strong>Streamfunction west</strong>: Streamfunction in σθ at OSNAP West</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(481, 96)</p></td>
+<td><p>-5.72</p></td>
+<td><p>7.67</p></td>
+<td><p>0.0%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id6">
+<h3>Metadata (edits applied noted)<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<p>The following metadata describes this dataset:</p>
+<ul class="simple">
+<li><p><strong>Title</strong>: OSNAP Streamfunction (2014-2022)</p></li>
+<li><p><strong>Summary</strong>: OSNAP transport and hydrographic estimates dataset, 2014-2020</p></li>
+<li><p><strong>Description*</strong>: OSNAP transport and hydrographic estimates dataset, 2014-2020</p></li>
+<li><p><strong>Program*</strong>: OSNAP</p></li>
+<li><p><strong>Project</strong>: Overturning in the Subpolar North Atlantic Program (OSNAP)</p></li>
+<li><p><strong>License*</strong>: CC-BY-4.0</p></li>
+<li><p><strong>Acknowledgment</strong>: OSNAP data were collected and made freely available by the OSNAP (Overturning in the Subpolar North Atlantic Program) project and all the national programs that contribute to it (www.o-snap.org).</p></li>
+<li><p><strong>Doi*</strong>: <a class="reference external" href="https://doi.org/10.35090/gatech/70342">https://doi.org/10.35090/gatech/70342</a></p></li>
+<li><p><strong>References</strong>: Lozier et al. (2019), Science, doi:10.1126/science.aau6592; Li et al. (2017), JTECH, doi:10.1175/JTECH-D-16-0247.1; Li et al. (2021), Nature Communications, doi:10.1038/s41467-021-23350-2; Fu et al. (2023), Communications Earth &amp; Environment, doi:10.1038/s43247-023-00848-9</p></li>
+<li><p><strong>Weblink*</strong>: <a class="reference external" href="https://www.o-snap.org">https://www.o-snap.org</a></p></li>
+<li><p><strong>Distribution Statement</strong>: Any person making use of OSNAP observational data and/or numerical results must communicate with the responsible investigators at the start of the analysis and anticipate that the data collectors will be co-authors of published results. In cases where investigators choose not to be co-authors on publications that rely on their data, the parties responsible for collecting the data and the sponsoring funding agencies should be acknowledged, including reference to any relevant publications by the originating authors describing the data sets and a reference to the data set itself using its DOI. OSNAP data are intended for scholarly use by the academic and scientific community, with the express understanding that any such use will properly acknowledge the originating investigator.</p></li>
+<li><p><strong>Platform</strong>: mooring</p></li>
+<li><p><strong>Platform Vocabulary</strong>: <a class="reference external" href="https://vocab.nerc.ac.uk/collection/L06/">https://vocab.nerc.ac.uk/collection/L06/</a></p></li>
+<li><p><strong>Data Product*</strong>: Meridional overturning streamfunction (2014-2022)</p></li>
+<li><p><strong>Time Coverage Start</strong>: 2014-08-01</p></li>
+<li><p><strong>Time Coverage End</strong>: 2022-07-01</p></li>
+<li><p><strong>Contributor Name</strong>: OSNAP investigators, M. Susan Lozier, Yao Fu, Yao Fu, M. Susan Lozier, Amy Bower, Kristin Burmeister, Tiago Carrilho Biló, Frederic Cyr, Stuart A. Cunningham, Brad deYoung, Ahmad Fehmi Dilmahamod, M. Femke de Jong, Nora Fried, N. Penny Holliday, Neil Fraser, William E. Johns, Feili Li, Johannes Karstensen, Robert Pickart, Fiammetta Straneo, Igor Yashayaev</p></li>
+<li><p><strong>Contributor Role</strong>: originator, publisher, publisher, data design, collection and/or processing, , , , , , , , , , , , , , , , ,</p></li>
+<li><p><strong>Contributor Role Vocabulary</strong>: <a class="reference external" href="https://vocab.nerc.ac.uk/collection/G04/current/">https://vocab.nerc.ac.uk/collection/G04/current/</a></p></li>
+<li><p><strong>Contributor Email</strong>: , <a class="reference external" href="mailto:susan&#46;lozier&#37;&#52;&#48;gatech&#46;edu">susan<span>&#46;</span>lozier<span>&#64;</span>gatech<span>&#46;</span>edu</a>, <a class="reference external" href="mailto:yaofu&#37;&#52;&#48;usf&#46;edu">yaofu<span>&#64;</span>usf<span>&#46;</span>edu</a>, <a class="reference external" href="mailto:yaofu&#37;&#52;&#48;usf&#46;edu">yaofu<span>&#64;</span>usf<span>&#46;</span>edu</a>, , , , , , , , , , , , , , , , , ,</p></li>
+<li><p><strong>Contributor Id</strong>: , , <a class="reference external" href="https://orcid.org/0000-0003-2227-3694">https://orcid.org/0000-0003-2227-3694</a>, <a class="reference external" href="https://orcid.org/0000-0003-2227-3694">https://orcid.org/0000-0003-2227-3694</a>, , <a class="reference external" href="https://orcid.org/0000-0003-0902-4984">https://orcid.org/0000-0003-0902-4984</a>, <a class="reference external" href="https://orcid.org/0000-0003-3881-0298">https://orcid.org/0000-0003-3881-0298</a>, <a class="reference external" href="https://orcid.org/0000-0002-4007-5862">https://orcid.org/0000-0002-4007-5862</a>, <a class="reference external" href="https://orcid.org/0000-0002-1581-7502">https://orcid.org/0000-0002-1581-7502</a>, <a class="reference external" href="https://orcid.org/0000-0001-9439-5442">https://orcid.org/0000-0001-9439-5442</a>, <a class="reference external" href="https://scholar.google.com/citations?user=c6SCfzAAAAAJ&amp;hl=en">https://scholar.google.com/citations?user=c6SCfzAAAAAJ&amp;hl=en</a>, <a class="reference external" href="https://orcid.org/0000-0003-1110-940X">https://orcid.org/0000-0003-1110-940X</a>, <a class="reference external" href="https://orcid.org/0000-0001-5683-0570">https://orcid.org/0000-0001-5683-0570</a>, <a class="reference external" href="https://orcid.org/0000-0001-5457-1026">https://orcid.org/0000-0001-5457-1026</a>, <a class="reference external" href="https://orcid.org/0000-0002-9733-8002">https://orcid.org/0000-0002-9733-8002</a>, <a class="reference external" href="https://orcid.org/0000-0002-2171-9060">https://orcid.org/0000-0002-2171-9060</a>, <a class="reference external" href="https://orcid.org/0000-0002-1093-7871">https://orcid.org/0000-0002-1093-7871</a>, <a class="reference external" href="https://orcid.org/0000-0002-3073-9813">https://orcid.org/0000-0002-3073-9813</a>, <a class="reference external" href="https://orcid.org/0000-0001-5044-7079">https://orcid.org/0000-0001-5044-7079</a>, <a class="reference external" href="https://orcid.org/0000-0002-7826-911X">https://orcid.org/0000-0002-7826-911X</a>, <a class="reference external" href="https://orcid.org/0000-0002-1735-2366">https://orcid.org/0000-0002-1735-2366</a>, <a class="reference external" href="https://orcid.org/0000-0002-6976-7803">https://orcid.org/0000-0002-6976-7803</a></p></li>
+<li><p><strong>Contributing Institutions</strong>: Multiple contributing institutions, Georgia Institute of Technology, National Oceanography Centre (Southampton), Woods Hole Oceanographic Institution, Scottish Association for Marine Science (SAMS), Royal Netherlands Institute for Sea Research (NIOZ), Memorial University of Newfoundland, Fisheries and Oceans Canada, Northwest Atlantic Fisheries Centre, Institute of Ocean Sciences (DFO), Scripps Institution of Oceanography, Rosenstiel School of Marine and Atmospheric Science, Rosenstiel School of Marine and Atmospheric Science (University of Miami), Helmholtz Centre for Ocean Research Kiel (GEOMAR), Bedford Institute of Oceanography, Xiamen University - State Key Laboratory of Marine Environmental Science, State Key Laboratory of Marine Environmental Science, University of South Florida</p></li>
+<li><p><strong>Contributing Institutions Vocabulary</strong>: , <a class="reference external" href="https://edmo.seadatanet.org/report/3075">https://edmo.seadatanet.org/report/3075</a>, <a class="reference external" href="https://edmo.seadatanet.org/report/17">https://edmo.seadatanet.org/report/17</a>, <a class="reference external" href="https://edmo.seadatanet.org/report/3844">https://edmo.seadatanet.org/report/3844</a>, <a class="reference external" href="https://edmo.seadatanet.org/report/44">https://edmo.seadatanet.org/report/44</a>, <a class="reference external" href="https://edmo.seadatanet.org/report/630">https://edmo.seadatanet.org/report/630</a>, , <a class="reference external" href="https://edmo.seadatanet.org/report/5370">https://edmo.seadatanet.org/report/5370</a>, <a class="reference external" href="https://edmo.seadatanet.org/report/4157">https://edmo.seadatanet.org/report/4157</a>, <a class="reference external" href="https://edmo.seadatanet.org/report/4155">https://edmo.seadatanet.org/report/4155</a>, <a class="reference external" href="https://edmo.seadatanet.org/report/1390">https://edmo.seadatanet.org/report/1390</a>, , <a class="reference external" href="https://edmo.seadatanet.org/report/1382">https://edmo.seadatanet.org/report/1382</a>, <a class="reference external" href="https://edmo.seadatanet.org/report/2947">https://edmo.seadatanet.org/report/2947</a>, <a class="reference external" href="https://edmo.seadatanet.org/report/1811">https://edmo.seadatanet.org/report/1811</a>, <a class="reference external" href="https://edmo.seadatanet.org/report/2401">https://edmo.seadatanet.org/report/2401</a>, , <a class="reference external" href="https://edmo.seadatanet.org/report/3838">https://edmo.seadatanet.org/report/3838</a></p></li>
+<li><p><strong>Contributing Institutions Role</strong>: , , , , , , , , , , , , , , , , ,</p></li>
+<li><p><strong>Conventions*</strong>: CF-1.8, ACDD-1.3, OceanSITES-1.5</p></li>
+<li><p><strong>featureType*</strong>: timeSeriesProfile</p></li>
+<li><p><strong>featureType_vocabulary</strong>: <a class="reference external" href="https://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_features_and_feature_types">https://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_features_and_feature_types</a></p></li>
+<li><p><strong>Source File*</strong>: OSNAP_Streamfunction_201408_202207_2025.nc</p></li>
+<li><p><strong>Source Path*</strong>: ~/.amocatlas_data/OSNAP_Streamfunction_201408_202207_2025.nc</p></li>
+<li><p><strong>Date Created</strong>: 2025-05-21T15:16:52Z</p></li>
+<li><p><strong>Date Modified</strong>: 2026-08-01T00:00:00Z</p></li>
+<li><p><strong>Processing Software</strong>: <a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">http://github.com/AMOCcommunity/amocatlas</a></p></li>
+<li><p><strong>Processing Version</strong>: v0.4.0</p></li>
+<li><p><strong>Processing Datasource*</strong>: osnap55n</p></li>
+<li><p><strong>Applied Variable Mapping</strong>: {‘LEVEL’: ‘SIGMA0’, ‘T_ALL’: ‘PSI_SIGMA0’, ‘T_WEST’: ‘PSI_SIGMA0_WEST’, ‘T_EAST’: ‘PSI_SIGMA0_EAST’}</p></li>
+<li><p><strong>Data Assembly Center</strong>: Georgia Institute of Technology</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="osnap-gridded-tsv-201408-202207-2025-nc">
+<h2>OSNAP_Gridded_TSV_201408_202207_2025.nc<a class="headerlink" href="#osnap-gridded-tsv-201408-202207-2025-nc" title="Link to this heading"></a></h2>
+<section id="id7">
+<h3>Dataset Overview<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Project</strong>: Overturning in the Subpolar North Atlantic Program (OSNAP)</p></li>
+<li><p><strong>Description</strong>: OSNAP transport and hydrographic estimates dataset, 2014-2020</p></li>
+<li><p><strong>DOI</strong>: <a class="reference external" href="https://doi.org/10.35090/gatech/70342">https://doi.org/10.35090/gatech/70342</a></p></li>
+<li><p><strong>Source File</strong>: OSNAP_Gridded_TSV_201408_202207_2025.nc</p></li>
+<li><p><strong>Data Product</strong>: Gridded velocity, temperature, and salinity (2014-2022)</p></li>
+<li><p><strong>License</strong>: CC-BY-4.0</p></li>
+<li><p><strong>Date Created</strong>: 2025-05-21T15:11:05Z</p></li>
+<li><p><strong>Time Coverage</strong>: 2014-08-01 to 2022-07-01</p></li>
+<li><p><strong>Record Length</strong>: 96 observations (7.9 years)</p></li>
+<li><p><strong>Sampling Frequency</strong>: monthly</p></li>
+</ul>
+<p><strong>Distribution Statement:</strong></p>
+<blockquote>
+<div><p>Any person making use of OSNAP observational data and/or numerical results must communicate with the responsible investigators at the start of the analysis and anticipate that the data collectors will be co-authors of published results. In cases where investigators choose not to be co-authors on publications that rely on their data, the parties responsible for collecting the data and the sponsoring funding agencies should be acknowledged, including reference to any relevant publications by the originating authors describing the data sets and a reference to the data set itself using its DOI. OSNAP data are intended for scholarly use by the academic and scientific community, with the express understanding that any such use will properly acknowledge the originating investigator.</p>
+</div></blockquote>
+<p><strong>Citation:</strong></p>
+<blockquote>
+<div><p>Fu, Y., Lozier, M. S., Bower, A., Burmeister, K., Carrilho Biló, T., Cyr, F., et al. (2025). Characterizing the interannual variability of North Atlantic subpolar overturning. Geophysical Research Letters, 52, e2025GL114672. <a class="reference external" href="https://doi.org/10.1029/2025GL114672">https://doi.org/10.1029/2025GL114672</a></p>
+</div></blockquote>
+<p><strong>Acknowledgement:</strong></p>
+<blockquote>
+<div><p>OSNAP data were collected and made freely available by the OSNAP (Overturning in the Subpolar North Atlantic Program) project and all the national programs that contribute to it (www.o-snap.org).</p>
+</div></blockquote>
+</section>
+<section id="id8">
+<h3>Dataset Statistics<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Total Variables</strong>: 3</p></li>
+<li><p><strong>Total Coordinates</strong>: 4</p></li>
+<li><p><strong>Dataset Size</strong>: 55.97 MB</p></li>
+</ul>
+</section>
+<section id="id9">
+<h3>Coordinate Information<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<p>The following table shows information about the dataset coordinates in the standardised version, including coordinate name remapping from the original, if any:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Coordinate</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>DEPTH</strong></p></td>
+<td><p><strong>Depth</strong>:  Depth below surface of the water</p></td>
+<td><p>m</p></td>
+<td><p>(199,)</p></td>
+<td><p>15.00</p></td>
+<td><p>3975.00</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>LATITUDE</strong></p></td>
+<td><p><strong>Latitude</strong>: Latitude north (WGS84)</p></td>
+<td><p>degree_north</p></td>
+<td><p>(256,)</p></td>
+<td><p>52.02</p></td>
+<td><p>60.23</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>LONGITUDE</strong></p></td>
+<td><p><strong>Longitude</strong>: Longitude east (WGS84)</p></td>
+<td><p>degree_east</p></td>
+<td><p>(256,)</p></td>
+<td><p>-56.88</p></td>
+<td><p>-6.12</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>TIME</strong></p></td>
+<td><p><strong>Time</strong>: Start date of each monthly period</p></td>
+<td><p>seconds since 1970-01-01T00:00:00Z</p></td>
+<td><p>(96,)</p></td>
+<td><p>2014-08-01</p></td>
+<td><p>2022-07-01</p></td>
+<td><p>0.0%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id10">
+<h3>Variable Information<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<p>The following table shows the mapping from original variable names to standardized names,
+along with key statistics for each variable.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>SAL</em> → <strong>PSAL</strong></p></td>
+<td><p><strong>Salinity</strong>: Practical salinity along OSNAP</p></td>
+<td><p>1</p></td>
+<td><p>(96, 199, 256)</p></td>
+<td><p>31.13</p></td>
+<td><p>35.59</p></td>
+<td><p>13.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>TEMP</strong></p></td>
+<td><p><strong>Temperature</strong>: In-situ temperature along OSNAP</p></td>
+<td><p>degree_C</p></td>
+<td><p>(96, 199, 256)</p></td>
+<td><p>-4.23</p></td>
+<td><p>14.73</p></td>
+<td><p>13.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>VELO</em> → <strong>VCUR</strong></p></td>
+<td><p><strong>Velocity</strong>: Cross-sectional velocity along OSNAP</p></td>
+<td><p>m s-1</p></td>
+<td><p>(96, 199, 256)</p></td>
+<td><p>-0.82</p></td>
+<td><p>0.77</p></td>
+<td><p>13.0%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id11">
+<h3>Metadata (edits applied noted)<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<p>The following metadata describes this dataset:</p>
+<ul class="simple">
+<li><p><strong>Title</strong>: OSNAP Gridded Temperature Salinity and Velocity data 2014-2020</p></li>
+<li><p><strong>Summary</strong>: OSNAP transport and hydrographic estimates dataset, 2014-2020</p></li>
+<li><p><strong>Description*</strong>: OSNAP transport and hydrographic estimates dataset, 2014-2020</p></li>
+<li><p><strong>Program*</strong>: OSNAP</p></li>
+<li><p><strong>Project</strong>: Overturning in the Subpolar North Atlantic Program (OSNAP)</p></li>
+<li><p><strong>License*</strong>: CC-BY-4.0</p></li>
+<li><p><strong>Acknowledgment</strong>: OSNAP data were collected and made freely available by the OSNAP (Overturning in the Subpolar North Atlantic Program) project and all the national programs that contribute to it (www.o-snap.org).</p></li>
+<li><p><strong>Doi*</strong>: <a class="reference external" href="https://doi.org/10.35090/gatech/70342">https://doi.org/10.35090/gatech/70342</a></p></li>
+<li><p><strong>References</strong>: Lozier et al. (2019), Science, doi:10.1126/science.aau6592; Li et al. (2017), JTECH, doi:10.1175/JTECH-D-16-0247.1; Li et al. (2021), Nature Communications, doi:10.1038/s41467-021-23350-2; Fu et al. (2023), Communications Earth &amp; Environment, doi:10.1038/s43247-023-00848-9</p></li>
+<li><p><strong>Weblink*</strong>: <a class="reference external" href="https://www.o-snap.org">https://www.o-snap.org</a></p></li>
+<li><p><strong>Distribution Statement</strong>: Any person making use of OSNAP observational data and/or numerical results must communicate with the responsible investigators at the start of the analysis and anticipate that the data collectors will be co-authors of published results. In cases where investigators choose not to be co-authors on publications that rely on their data, the parties responsible for collecting the data and the sponsoring funding agencies should be acknowledged, including reference to any relevant publications by the originating authors describing the data sets and a reference to the data set itself using its DOI. OSNAP data are intended for scholarly use by the academic and scientific community, with the express understanding that any such use will properly acknowledge the originating investigator.</p></li>
+<li><p><strong>Platform</strong>: mooring</p></li>
+<li><p><strong>Platform Vocabulary</strong>: <a class="reference external" href="https://vocab.nerc.ac.uk/collection/L06/">https://vocab.nerc.ac.uk/collection/L06/</a></p></li>
+<li><p><strong>Data Product*</strong>: Gridded velocity, temperature, and salinity (2014-2022)</p></li>
+<li><p><strong>Time Coverage Start</strong>: 2014-08-01</p></li>
+<li><p><strong>Time Coverage End</strong>: 2022-07-01</p></li>
+<li><p><strong>Contributor Name</strong>: OSNAP investigators, M. Susan Lozier, Yao Fu, Yao Fu, M. Susan Lozier, Amy Bower, Kristin Burmeister, Tiago Carrilho Biló, Frederic Cyr, Stuart A. Cunningham, Brad deYoung, Ahmad Fehmi Dilmahamod, M. Femke de Jong, Nora Fried, N. Penny Holliday, Neil Fraser, William E. Johns, Feili Li, Johannes Karstensen, Robert Pickart, Fiammetta Straneo, Igor Yashayaev</p></li>
+<li><p><strong>Contributor Role</strong>: originator, publisher, publisher, data design, collection and/or processing, , , , , , , , , , , , , , , , ,</p></li>
+<li><p><strong>Contributor Role Vocabulary</strong>: <a class="reference external" href="https://vocab.nerc.ac.uk/collection/G04/current/">https://vocab.nerc.ac.uk/collection/G04/current/</a></p></li>
+<li><p><strong>Contributor Email</strong>: , <a class="reference external" href="mailto:susan&#46;lozier&#37;&#52;&#48;gatech&#46;edu">susan<span>&#46;</span>lozier<span>&#64;</span>gatech<span>&#46;</span>edu</a>, <a class="reference external" href="mailto:yaofu&#37;&#52;&#48;usf&#46;edu">yaofu<span>&#64;</span>usf<span>&#46;</span>edu</a>, <a class="reference external" href="mailto:yaofu&#37;&#52;&#48;usf&#46;edu">yaofu<span>&#64;</span>usf<span>&#46;</span>edu</a>, , , , , , , , , , , , , , , , , ,</p></li>
+<li><p><strong>Contributor Id</strong>: , , <a class="reference external" href="https://orcid.org/0000-0003-2227-3694">https://orcid.org/0000-0003-2227-3694</a>, <a class="reference external" href="https://orcid.org/0000-0003-2227-3694">https://orcid.org/0000-0003-2227-3694</a>, , <a class="reference external" href="https://orcid.org/0000-0003-0902-4984">https://orcid.org/0000-0003-0902-4984</a>, <a class="reference external" href="https://orcid.org/0000-0003-3881-0298">https://orcid.org/0000-0003-3881-0298</a>, <a class="reference external" href="https://orcid.org/0000-0002-4007-5862">https://orcid.org/0000-0002-4007-5862</a>, <a class="reference external" href="https://orcid.org/0000-0002-1581-7502">https://orcid.org/0000-0002-1581-7502</a>, <a class="reference external" href="https://orcid.org/0000-0001-9439-5442">https://orcid.org/0000-0001-9439-5442</a>, <a class="reference external" href="https://scholar.google.com/citations?user=c6SCfzAAAAAJ&amp;hl=en">https://scholar.google.com/citations?user=c6SCfzAAAAAJ&amp;hl=en</a>, <a class="reference external" href="https://orcid.org/0000-0003-1110-940X">https://orcid.org/0000-0003-1110-940X</a>, <a class="reference external" href="https://orcid.org/0000-0001-5683-0570">https://orcid.org/0000-0001-5683-0570</a>, <a class="reference external" href="https://orcid.org/0000-0001-5457-1026">https://orcid.org/0000-0001-5457-1026</a>, <a class="reference external" href="https://orcid.org/0000-0002-9733-8002">https://orcid.org/0000-0002-9733-8002</a>, <a class="reference external" href="https://orcid.org/0000-0002-2171-9060">https://orcid.org/0000-0002-2171-9060</a>, <a class="reference external" href="https://orcid.org/0000-0002-1093-7871">https://orcid.org/0000-0002-1093-7871</a>, <a class="reference external" href="https://orcid.org/0000-0002-3073-9813">https://orcid.org/0000-0002-3073-9813</a>, <a class="reference external" href="https://orcid.org/0000-0001-5044-7079">https://orcid.org/0000-0001-5044-7079</a>, <a class="reference external" href="https://orcid.org/0000-0002-7826-911X">https://orcid.org/0000-0002-7826-911X</a>, <a class="reference external" href="https://orcid.org/0000-0002-1735-2366">https://orcid.org/0000-0002-1735-2366</a>, <a class="reference external" href="https://orcid.org/0000-0002-6976-7803">https://orcid.org/0000-0002-6976-7803</a></p></li>
+<li><p><strong>Contributing Institutions</strong>: Multiple contributing institutions, Georgia Institute of Technology, National Oceanography Centre (Southampton), Woods Hole Oceanographic Institution, Scottish Association for Marine Science (SAMS), Royal Netherlands Institute for Sea Research (NIOZ), Memorial University of Newfoundland, Fisheries and Oceans Canada, Northwest Atlantic Fisheries Centre, Institute of Ocean Sciences (DFO), Scripps Institution of Oceanography, Rosenstiel School of Marine and Atmospheric Science, Rosenstiel School of Marine and Atmospheric Science (University of Miami), Helmholtz Centre for Ocean Research Kiel (GEOMAR), Bedford Institute of Oceanography, Xiamen University - State Key Laboratory of Marine Environmental Science, State Key Laboratory of Marine Environmental Science, University of South Florida</p></li>
+<li><p><strong>Contributing Institutions Vocabulary</strong>: , <a class="reference external" href="https://edmo.seadatanet.org/report/3075">https://edmo.seadatanet.org/report/3075</a>, <a class="reference external" href="https://edmo.seadatanet.org/report/17">https://edmo.seadatanet.org/report/17</a>, <a class="reference external" href="https://edmo.seadatanet.org/report/3844">https://edmo.seadatanet.org/report/3844</a>, <a class="reference external" href="https://edmo.seadatanet.org/report/44">https://edmo.seadatanet.org/report/44</a>, <a class="reference external" href="https://edmo.seadatanet.org/report/630">https://edmo.seadatanet.org/report/630</a>, , <a class="reference external" href="https://edmo.seadatanet.org/report/5370">https://edmo.seadatanet.org/report/5370</a>, <a class="reference external" href="https://edmo.seadatanet.org/report/4157">https://edmo.seadatanet.org/report/4157</a>, <a class="reference external" href="https://edmo.seadatanet.org/report/4155">https://edmo.seadatanet.org/report/4155</a>, <a class="reference external" href="https://edmo.seadatanet.org/report/1390">https://edmo.seadatanet.org/report/1390</a>, , <a class="reference external" href="https://edmo.seadatanet.org/report/1382">https://edmo.seadatanet.org/report/1382</a>, <a class="reference external" href="https://edmo.seadatanet.org/report/2947">https://edmo.seadatanet.org/report/2947</a>, <a class="reference external" href="https://edmo.seadatanet.org/report/1811">https://edmo.seadatanet.org/report/1811</a>, <a class="reference external" href="https://edmo.seadatanet.org/report/2401">https://edmo.seadatanet.org/report/2401</a>, , <a class="reference external" href="https://edmo.seadatanet.org/report/3838">https://edmo.seadatanet.org/report/3838</a></p></li>
+<li><p><strong>Contributing Institutions Role</strong>: , , , , , , , , , , , , , , , , ,</p></li>
+<li><p><strong>Conventions*</strong>: CF-1.8, ACDD-1.3, OceanSITES-1.5</p></li>
+<li><p><strong>featureType*</strong>: timeSeriesProfile</p></li>
+<li><p><strong>featureType_vocabulary</strong>: <a class="reference external" href="https://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_features_and_feature_types">https://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_features_and_feature_types</a></p></li>
+<li><p><strong>Source File*</strong>: OSNAP_Gridded_TSV_201408_202207_2025.nc</p></li>
+<li><p><strong>Source Path*</strong>: ~/.amocatlas_data/OSNAP_Gridded_TSV_201408_202207_2025.nc</p></li>
+<li><p><strong>Date Created</strong>: 2025-05-21T15:11:05Z</p></li>
+<li><p><strong>Date Modified</strong>: 2026-08-01T00:00:00Z</p></li>
+<li><p><strong>Processing Software</strong>: <a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">http://github.com/AMOCcommunity/amocatlas</a></p></li>
+<li><p><strong>Processing Version</strong>: v0.4.0</p></li>
+<li><p><strong>Processing Datasource*</strong>: osnap55n</p></li>
+<li><p><strong>Applied Variable Mapping</strong>: {‘SAL’: ‘PSAL’, ‘VELO’: ‘VCUR’}</p></li>
+<li><p><strong>Url*</strong>: <a class="reference external" href="https://repository.gatech.edu/bitstreams/af6a47f7-f705-49b4-a64f-5cd086b9b9fb/download">https://repository.gatech.edu/bitstreams/af6a47f7-f705-49b4-a64f-5cd086b9b9fb/download</a></p></li>
+<li><p><strong>Size*</strong>: 55.98 MB</p></li>
+<li><p><strong>Data Assembly Center</strong>: Georgia Institute of Technology</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="rapid_report.html" class="btn btn-neutral float-left" title="RAPID Datasets" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="move_report.html" class="btn btn-neutral float-right" title="MOVE Datasets" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Eleanor Frajka-Williams, Isabelle Schmitz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

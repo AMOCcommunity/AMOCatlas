@@ -1,0 +1,977 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARCTICGATEWAY Datasets &mdash; amocatlas 0.4.0.post1.dev10 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=1078e4cb" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=6d4c28d6"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="DSO Datasets" href="dso_report.html" />
+    <link rel="prev" title="MOCHA Datasets" href="mocha_report.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            amocatlas
+              <img src="../_static/logo.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ / Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Demo notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../demo-output.html">AMOCatlas demo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dataset Reports</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Data Sources</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="rapid_report.html">RAPID Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="osnap_report.html">OSNAP Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="move_report.html">MOVE Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samba_report.html">SAMBA Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mocha_report.html">MOCHA Datasets</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ARCTICGATEWAY Datasets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#adjusted-fulldepth-barentsseaopening-adjusted-v-fulldepth-nc">Adjusted_fulldepth/BarentsSeaOpening_adjusted_v_fulldepth.nc</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dataset-overview">Dataset Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dataset-statistics">Dataset Statistics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#coordinate-information">Coordinate Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#variable-information">Variable Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#metadata-edits-applied-noted">Metadata (edits applied noted)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#adjusted-fulldepth-beringstrait-adjusted-v-fulldepth-nc">Adjusted_fulldepth/BeringStrait_adjusted_v_fulldepth.nc</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Dataset Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Dataset Statistics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Coordinate Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Variable Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Metadata (edits applied noted)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#adjusted-fulldepth-davisstrait-adjusted-v-fulldepth-nc">Adjusted_fulldepth/DavisStrait_adjusted_v_fulldepth.nc</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Dataset Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">Dataset Statistics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">Coordinate Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">Variable Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">Metadata (edits applied noted)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#adjusted-fulldepth-framstrait-adjusted-v-fulldepth-nc">Adjusted_fulldepth/FramStrait_adjusted_v_fulldepth.nc</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id11">Dataset Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">Dataset Statistics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id13">Coordinate Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id14">Variable Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id15">Metadata (edits applied noted)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dso_report.html">DSO Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fbc_report.html">FBC Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fw2015_report.html">FW2015 Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calafat2025_report.html">CALAFAT2025 Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zheng2024_report.html">ZHENG2024 Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wh41n_report.html">WH41N Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="noac47n_report.html">NOAC47N Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nac_report.html">NAC Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sf2021_report.html">SF2021 Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lebras35n_report.html">LEBRAS35N Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="axmoc22s_report.html">AXMOC22S Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="axmoc34s_report.html">AXMOC34S Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovide_report.html">OVIDE Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scotia_report.html">SCOTIA Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#report-features">Report Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#automated-generation">Automated Generation</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/format.html">AMOCatlas data format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/vocabulary.html">amocvocab — variable vocabulary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../amoc_paperfigs-output.html">AMOC Publication Figures</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Repository and API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">GitHub Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../amocatlas.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">amocatlas</span> <span class="pre">API</span></code></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers' guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developers/developer_guide.html">Developer Guide for AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/git_beginners_guide.html">Git for Beginners: Workflow Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/actions.html">Extra GitHub features: Actions &amp; Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/housekeeping.html">Project Maintenance Checklist</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">amocatlas</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Data Sources</a></li>
+      <li class="breadcrumb-item active">ARCTICGATEWAY Datasets</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/reports/arcticgateway_report.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="arcticgateway-datasets">
+<h1>ARCTICGATEWAY Datasets<a class="headerlink" href="#arcticgateway-datasets" title="Link to this heading"></a></h1>
+<p>This report covers all available ARCTICGATEWAY datasets.</p>
+<section id="adjusted-fulldepth-barentsseaopening-adjusted-v-fulldepth-nc">
+<h2>Adjusted_fulldepth/BarentsSeaOpening_adjusted_v_fulldepth.nc<a class="headerlink" href="#adjusted-fulldepth-barentsseaopening-adjusted-v-fulldepth-nc" title="Link to this heading"></a></h2>
+<section id="dataset-overview">
+<h3>Dataset Overview<a class="headerlink" href="#dataset-overview" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Project</strong>: Explaining and predicting the ocean conveyor belt, The Fram Strait Arctic Outflow Observatory</p></li>
+<li><p><strong>Description</strong>: Input data and adjusted data derived with an inverse model of ocean velocity, temperature and salinity obtained from ocean moorings and hydrography from the four main Arctic Gateways Fram Strait, Barents Sea Opening, Bering Strait and Davis Strait</p></li>
+<li><p><strong>DOI</strong>: <a class="reference external" href="https://doi.org/10.21334/npolar.2025.80b69907">https://doi.org/10.21334/npolar.2025.80b69907</a></p></li>
+<li><p><strong>Source File</strong>: Adjusted_fulldepth/BarentsSeaOpening_adjusted_v_fulldepth.nc</p></li>
+<li><p><strong>Data Product</strong>: Pan-Arctic Gateway transports since 2004 - Barents Sea Opening</p></li>
+<li><p><strong>License</strong>: CC-BY-4.0</p></li>
+<li><p><strong>Date Created</strong>: 2025-10-31T23:55:53Z</p></li>
+<li><p><strong>Time Coverage</strong>: 2004-10-15 to 2022-05-15</p></li>
+<li><p><strong>Record Length</strong>: 212 observations (17.6 years)</p></li>
+<li><p><strong>Sampling Frequency</strong>: monthly</p></li>
+</ul>
+<p><strong>Citation:</strong></p>
+<blockquote>
+<div><p>Fredriksen, H., de Steur, L., von Appen, W., Ingvaldsen, R., McPherson, R., Lee, C., Lenetsky, J., &amp; Woodgate, R. (2025). Pan-Arctic Gateway transports since 2004 [Dataset]. Norwegian Polar Institute. <a class="reference external" href="https://doi.org/10.21334/NPOLAR.2025.80B69907">https://doi.org/10.21334/NPOLAR.2025.80B69907</a></p>
+</div></blockquote>
+<p><strong>Acknowledgement:</strong></p>
+<blockquote>
+<div><p>This work is funded by the European Union as part of the EPOC project (Explaining and Predicting the Ocean Conveyor; grant number: 101059547). Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union. Neither the European Union nor the granting authority can be held responsible for them.</p>
+</div></blockquote>
+</section>
+<section id="dataset-statistics">
+<h3>Dataset Statistics<a class="headerlink" href="#dataset-statistics" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Total Variables</strong>: 3</p></li>
+<li><p><strong>Total Coordinates</strong>: 4</p></li>
+<li><p><strong>Dataset Size</strong>: 181.15 MB</p></li>
+</ul>
+</section>
+<section id="coordinate-information">
+<h3>Coordinate Information<a class="headerlink" href="#coordinate-information" title="Link to this heading"></a></h3>
+<p>The following table shows information about the dataset coordinates in the standardised version, including coordinate name remapping from the original, if any:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Coordinate</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>depth</em> → <strong>DEPTH</strong></p></td>
+<td><p><strong>Depth</strong>:  Depth below surface of the water</p></td>
+<td><p>m</p></td>
+<td><p>(122,)</p></td>
+<td><p>0.00</p></td>
+<td><p>484.00</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>lat</em> → <strong>LATITUDE</strong></p></td>
+<td><p><strong>Latitude</strong>: Latitude north (WGS84)</p></td>
+<td><p>degree_north</p></td>
+<td><p>(306,)</p></td>
+<td><p>69.48</p></td>
+<td><p>77.70</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>lon</em> → <strong>LONGITUDE</strong></p></td>
+<td><p><strong>Longitude</strong>: Longitude east (WGS84)</p></td>
+<td><p>degree_east</p></td>
+<td><p>(306,)</p></td>
+<td><p>18.35</p></td>
+<td><p>20.31</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>time</em> → <strong>TIME</strong></p></td>
+<td><p><strong>Time</strong>: Time in datetime format</p></td>
+<td><p>seconds since 1970-01-01T00:00:00Z</p></td>
+<td><p>(212,)</p></td>
+<td><p>2004-10-15</p></td>
+<td><p>2022-05-15</p></td>
+<td><p>0.0%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="variable-information">
+<h3>Variable Information<a class="headerlink" href="#variable-information" title="Link to this heading"></a></h3>
+<p>The following table shows the mapping from original variable names to standardized names,
+along with key statistics for each variable.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>CT</strong></p></td>
+<td><p><strong>Cons. Temperature</strong>: Conservative Temperature (TEOS-10)</p></td>
+<td><p>degree_C</p></td>
+<td><p>(212, 122, 306)</p></td>
+<td><p>-2.40</p></td>
+<td><p>12.68</p></td>
+<td><p>45.1%</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>SA</strong></p></td>
+<td><p><strong>Abs. Salinity</strong>: Absolute Salinity (TEOS-10)</p></td>
+<td><p>g kg-1</p></td>
+<td><p>(212, 122, 306)</p></td>
+<td><p>33.41</p></td>
+<td><p>35.41</p></td>
+<td><p>45.1%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>v</em> → <strong>VCUR</strong></p></td>
+<td><p><strong>V Velocity</strong>: Northward Velocity component</p></td>
+<td><p>m s-1</p></td>
+<td><p>(212, 122, 306)</p></td>
+<td><p>-0.10</p></td>
+<td><p>0.16</p></td>
+<td><p>45.1%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="metadata-edits-applied-noted">
+<h3>Metadata (edits applied noted)<a class="headerlink" href="#metadata-edits-applied-noted" title="Link to this heading"></a></h3>
+<p>The following metadata describes this dataset:</p>
+<ul class="simple">
+<li><p><strong>Title</strong>: Pan-Arctic Gateway transports since 2004</p></li>
+<li><p><strong>Summary</strong>: Input data and adjusted data derived with an inverse model of ocean velocity, temperature and salinity obtained from ocean moorings and hydrography from the four main Arctic Gateways Fram Strait, Barents Sea Opening, Bering Strait and Davis Strait</p></li>
+<li><p><strong>Description*</strong>: Input data and adjusted data derived with an inverse model of ocean velocity, temperature and salinity obtained from ocean moorings and hydrography from the four main Arctic Gateways Fram Strait, Barents Sea Opening, Bering Strait and Davis Strait</p></li>
+<li><p><strong>Program*</strong>: Pan-Arctic Gateway transports since 2004</p></li>
+<li><p><strong>Project</strong>: Explaining and predicting the ocean conveyor belt, The Fram Strait Arctic Outflow Observatory</p></li>
+<li><p><strong>Source</strong>: Mooring and CTD data</p></li>
+<li><p><strong>License*</strong>: CC-BY-4.0</p></li>
+<li><p><strong>Acknowledgment</strong>: This work is funded by the European Union as part of the EPOC project (Explaining and Predicting the Ocean Conveyor; grant number: 101059547). Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union. Neither the European Union nor the granting authority can be held responsible for them.</p></li>
+<li><p><strong>Doi</strong>: <a class="reference external" href="https://doi.org/10.21334/npolar.2025.80b69907">https://doi.org/10.21334/npolar.2025.80b69907</a></p></li>
+<li><p><strong>Weblink*</strong>: <a class="reference external" href="https://doi.org/10.21334/NPOLAR.2025.80B69907">https://doi.org/10.21334/NPOLAR.2025.80B69907</a></p></li>
+<li><p><strong>Data Product*</strong>: Pan-Arctic Gateway transports since 2004 - Barents Sea Opening</p></li>
+<li><p><strong>Time Coverage Start*</strong>: 2004-10-15</p></li>
+<li><p><strong>Time Coverage End*</strong>: 2022-05-15</p></li>
+<li><p><strong>Contributor Name*</strong>: Norwegian Polar Institute (NPI), Norwegian Polar Institute (NPI), Hege-Beate Fredriksen, Laura de Steur</p></li>
+<li><p><strong>Contributor Role*</strong>: originator, publisher, originator, principalInvestigator</p></li>
+<li><p><strong>Contributor Role Vocabulary*</strong>: <a class="reference external" href="https://vocab.nerc.ac.uk/collection/G04/current/">https://vocab.nerc.ac.uk/collection/G04/current/</a></p></li>
+<li><p><strong>Contributor Email</strong>: <a class="reference external" href="mailto:post&#37;&#52;&#48;npolar&#46;no">post<span>&#64;</span>npolar<span>&#46;</span>no</a>, <a class="reference external" href="mailto:post&#37;&#52;&#48;npolar&#46;no">post<span>&#64;</span>npolar<span>&#46;</span>no</a>, ,</p></li>
+<li><p><strong>Contributor Id</strong>: <a class="reference external" href="https://www.npolar.no">https://www.npolar.no</a>, <a class="reference external" href="https://www.npolar.no">https://www.npolar.no</a>, <a class="reference external" href="https://orcid.org/0000-0002-3598-4076">https://orcid.org/0000-0002-3598-4076</a>, <a class="reference external" href="https://orcid.org/0000-0002-6043-7920">https://orcid.org/0000-0002-6043-7920</a></p></li>
+<li><p><strong>Contributing Institutions*</strong>: Norwegian Polar Institute (NPI), Alfred Wegener Institute (AWI), Institute for Marine Research (Bergen), Applied Physics Laboratory (University of Washington)</p></li>
+<li><p><strong>Contributing Institutions Vocabulary</strong>: <a class="reference external" href="https://edmo.seadatanet.org/report/1349">https://edmo.seadatanet.org/report/1349</a>, <a class="reference external" href="https://edmo.seadatanet.org/report/1368">https://edmo.seadatanet.org/report/1368</a>, <a class="reference external" href="https://edmo.seadatanet.org/report/1351">https://edmo.seadatanet.org/report/1351</a>, <a class="reference external" href="https://edmo.seadatanet.org/report/1554">https://edmo.seadatanet.org/report/1554</a></p></li>
+<li><p><strong>Contributing Institutions Role*</strong>: publisher, , ,</p></li>
+<li><p><strong>Conventions*</strong>: , OceanSITES-1.5</p></li>
+<li><p><strong>featureType*</strong>: timeSeriesProfile</p></li>
+<li><p><strong>featureType_vocabulary</strong>: <a class="reference external" href="https://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_features_and_feature_types">https://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_features_and_feature_types</a></p></li>
+<li><p><strong>Source File*</strong>: Adjusted_fulldepth/BarentsSeaOpening_adjusted_v_fulldepth.nc</p></li>
+<li><p><strong>Source Path*</strong>: ~/.amocatlas_data/Adjusted_fulldepth/BarentsSeaOpening_adjusted_v_fulldepth.nc</p></li>
+<li><p><strong>Source Url*</strong>: <a class="reference external" href="https://doi.org/10.21334/NPOLAR.2025.80B69907">https://doi.org/10.21334/NPOLAR.2025.80B69907</a></p></li>
+<li><p><strong>Date Created</strong>: 2025-10-31T23:55:53Z</p></li>
+<li><p><strong>Date Modified</strong>: 2026-08-01T00:00:00Z</p></li>
+<li><p><strong>Processing Software</strong>: <a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">http://github.com/AMOCcommunity/amocatlas</a></p></li>
+<li><p><strong>Processing Version</strong>: v0.4.0</p></li>
+<li><p><strong>Processing Datasource*</strong>: arcticgateway</p></li>
+<li><p><strong>Product Version</strong>: v0</p></li>
+<li><p><strong>Applied Variable Mapping</strong>: {‘time’: ‘TIME’, ‘depth’: ‘DEPTH’, ‘lon’: ‘LONGITUDE’, ‘lat’: ‘LATITUDE’, ‘v’: ‘VCUR’, ‘TIME’: ‘TIME’, ‘DEPTH’: ‘DEPTH’}</p></li>
+<li><p><strong>Gateway</strong>: BarentsSeaOpening</p></li>
+<li><p><strong>Adjustments</strong>: v is adjusted by a constant monthly value obtained from the inverse model, for all grid cells in a segment</p></li>
+<li><p><strong>Depth Limit</strong>: None</p></li>
+<li><p><strong>Segments Format</strong>: Python dictionary converted to a string. The slices can be applied in xarray coordinate selection</p></li>
+<li><p><strong>Segments</strong>: {‘BSOsouth’: {‘long_name’: ‘South of Bear Island’, ‘lat_slice’: slice(74.45, None, None)}, ‘BSOnorth’: {‘long_name’: ‘North of Bear Island’, ‘lat_slice’: slice(None, 74.45, None)}}</p></li>
+<li><p><strong>Project Website</strong>: <a class="reference external" href="https://epoc-eu.org">https://epoc-eu.org</a></p></li>
+<li><p><strong>Data Set Language</strong>: eng</p></li>
+<li><p><strong>Data Assembly Center</strong>: NO/NPI</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="adjusted-fulldepth-beringstrait-adjusted-v-fulldepth-nc">
+<h2>Adjusted_fulldepth/BeringStrait_adjusted_v_fulldepth.nc<a class="headerlink" href="#adjusted-fulldepth-beringstrait-adjusted-v-fulldepth-nc" title="Link to this heading"></a></h2>
+<section id="id1">
+<h3>Dataset Overview<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Project</strong>: Explaining and predicting the ocean conveyor belt, The Fram Strait Arctic Outflow Observatory</p></li>
+<li><p><strong>Description</strong>: Input data and adjusted data derived with an inverse model of ocean velocity, temperature and salinity obtained from ocean moorings and hydrography from the four main Arctic Gateways Fram Strait, Barents Sea Opening, Bering Strait and Davis Strait</p></li>
+<li><p><strong>DOI</strong>: <a class="reference external" href="https://doi.org/10.21334/npolar.2025.80b69907">https://doi.org/10.21334/npolar.2025.80b69907</a></p></li>
+<li><p><strong>Source File</strong>: Adjusted_fulldepth/BeringStrait_adjusted_v_fulldepth.nc</p></li>
+<li><p><strong>Data Product</strong>: Pan-Arctic Gateway transports since 2004 - Bering Strait</p></li>
+<li><p><strong>License</strong>: CC-BY-4.0</p></li>
+<li><p><strong>Date Created</strong>: 2025-10-31T23:55:53Z</p></li>
+<li><p><strong>Time Coverage</strong>: 2004-10-15 to 2022-05-15</p></li>
+<li><p><strong>Record Length</strong>: 212 observations (17.6 years)</p></li>
+<li><p><strong>Sampling Frequency</strong>: monthly</p></li>
+</ul>
+<p><strong>Citation:</strong></p>
+<blockquote>
+<div><p>Fredriksen, H., de Steur, L., von Appen, W., Ingvaldsen, R., McPherson, R., Lee, C., Lenetsky, J., &amp; Woodgate, R. (2025). Pan-Arctic Gateway transports since 2004 [Dataset]. Norwegian Polar Institute. <a class="reference external" href="https://doi.org/10.21334/NPOLAR.2025.80B69907">https://doi.org/10.21334/NPOLAR.2025.80B69907</a></p>
+</div></blockquote>
+<p><strong>Acknowledgement:</strong></p>
+<blockquote>
+<div><p>This work is funded by the European Union as part of the EPOC project (Explaining and Predicting the Ocean Conveyor; grant number: 101059547). Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union. Neither the European Union nor the granting authority can be held responsible for them.</p>
+</div></blockquote>
+</section>
+<section id="id2">
+<h3>Dataset Statistics<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Total Variables</strong>: 3</p></li>
+<li><p><strong>Total Coordinates</strong>: 4</p></li>
+<li><p><strong>Dataset Size</strong>: 2.56 MB</p></li>
+</ul>
+</section>
+<section id="id3">
+<h3>Coordinate Information<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<p>The following table shows information about the dataset coordinates in the standardised version, including coordinate name remapping from the original, if any:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Coordinate</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>depth</em> → <strong>DEPTH</strong></p></td>
+<td><p><strong>Depth</strong>:  Depth below surface of the water</p></td>
+<td><p>m</p></td>
+<td><p>(16,)</p></td>
+<td><p>0.00</p></td>
+<td><p>60.00</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>lat</em> → <strong>LATITUDE</strong></p></td>
+<td><p><strong>Latitude</strong>: Latitude north (WGS84)</p></td>
+<td><p>degree_north</p></td>
+<td><p>(33,)</p></td>
+<td><p>65.69</p></td>
+<td><p>66.01</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>lon</em> → <strong>LONGITUDE</strong></p></td>
+<td><p><strong>Longitude</strong>: Longitude east (WGS84)</p></td>
+<td><p>degree_east</p></td>
+<td><p>(33,)</p></td>
+<td><p>-169.67</p></td>
+<td><p>-168.11</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>time</em> → <strong>TIME</strong></p></td>
+<td><p>Time</p></td>
+<td><p>seconds since 1970-01-01T00:00:00Z</p></td>
+<td><p>(212,)</p></td>
+<td><p>2004-10-15</p></td>
+<td><p>2022-05-15</p></td>
+<td><p>0.0%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id4">
+<h3>Variable Information<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p>The following table shows the mapping from original variable names to standardized names,
+along with key statistics for each variable.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>CT</strong></p></td>
+<td><p><strong>Cons. Temperature</strong>: Conservative Temperature (TEOS-10)</p></td>
+<td><p>degree_C</p></td>
+<td><p>(212, 16, 33)</p></td>
+<td><p>-1.83</p></td>
+<td><p>5.44</p></td>
+<td><p>6.2%</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>SA</strong></p></td>
+<td><p><strong>Abs. Salinity</strong>: Absolute Salinity (TEOS-10)</p></td>
+<td><p>g kg-1</p></td>
+<td><p>(212, 16, 33)</p></td>
+<td><p>31.17</p></td>
+<td><p>33.56</p></td>
+<td><p>6.2%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>v</em> → <strong>VCUR</strong></p></td>
+<td><p><strong>V Velocity</strong>: Northward Velocity component</p></td>
+<td><p>m s-1</p></td>
+<td><p>(212, 16, 33)</p></td>
+<td><p>-0.08</p></td>
+<td><p>0.37</p></td>
+<td><p>6.2%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id5">
+<h3>Metadata (edits applied noted)<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<p>The following metadata describes this dataset:</p>
+<ul class="simple">
+<li><p><strong>Title</strong>: Pan-Arctic Gateway transports since 2004</p></li>
+<li><p><strong>Summary</strong>: Input data and adjusted data derived with an inverse model of ocean velocity, temperature and salinity obtained from ocean moorings and hydrography from the four main Arctic Gateways Fram Strait, Barents Sea Opening, Bering Strait and Davis Strait</p></li>
+<li><p><strong>Description*</strong>: Input data and adjusted data derived with an inverse model of ocean velocity, temperature and salinity obtained from ocean moorings and hydrography from the four main Arctic Gateways Fram Strait, Barents Sea Opening, Bering Strait and Davis Strait</p></li>
+<li><p><strong>Program*</strong>: Pan-Arctic Gateway transports since 2004</p></li>
+<li><p><strong>Project</strong>: Explaining and predicting the ocean conveyor belt, The Fram Strait Arctic Outflow Observatory</p></li>
+<li><p><strong>Source</strong>: Mooring and CTD data</p></li>
+<li><p><strong>License*</strong>: CC-BY-4.0</p></li>
+<li><p><strong>Acknowledgment</strong>: This work is funded by the European Union as part of the EPOC project (Explaining and Predicting the Ocean Conveyor; grant number: 101059547). Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union. Neither the European Union nor the granting authority can be held responsible for them.</p></li>
+<li><p><strong>Doi</strong>: <a class="reference external" href="https://doi.org/10.21334/npolar.2025.80b69907">https://doi.org/10.21334/npolar.2025.80b69907</a></p></li>
+<li><p><strong>Weblink*</strong>: <a class="reference external" href="https://doi.org/10.21334/NPOLAR.2025.80B69907">https://doi.org/10.21334/NPOLAR.2025.80B69907</a></p></li>
+<li><p><strong>Data Product*</strong>: Pan-Arctic Gateway transports since 2004 - Bering Strait</p></li>
+<li><p><strong>Time Coverage Start*</strong>: 2004-10-15</p></li>
+<li><p><strong>Time Coverage End*</strong>: 2022-05-15</p></li>
+<li><p><strong>Contributor Name*</strong>: Norwegian Polar Institute (NPI), Norwegian Polar Institute (NPI), Hege-Beate Fredriksen, Laura de Steur</p></li>
+<li><p><strong>Contributor Role*</strong>: originator, publisher, originator, principalInvestigator</p></li>
+<li><p><strong>Contributor Role Vocabulary*</strong>: <a class="reference external" href="https://vocab.nerc.ac.uk/collection/G04/current/">https://vocab.nerc.ac.uk/collection/G04/current/</a></p></li>
+<li><p><strong>Contributor Email</strong>: <a class="reference external" href="mailto:post&#37;&#52;&#48;npolar&#46;no">post<span>&#64;</span>npolar<span>&#46;</span>no</a>, <a class="reference external" href="mailto:post&#37;&#52;&#48;npolar&#46;no">post<span>&#64;</span>npolar<span>&#46;</span>no</a>, ,</p></li>
+<li><p><strong>Contributor Id</strong>: <a class="reference external" href="https://www.npolar.no">https://www.npolar.no</a>, <a class="reference external" href="https://www.npolar.no">https://www.npolar.no</a>, <a class="reference external" href="https://orcid.org/0000-0002-3598-4076">https://orcid.org/0000-0002-3598-4076</a>, <a class="reference external" href="https://orcid.org/0000-0002-6043-7920">https://orcid.org/0000-0002-6043-7920</a></p></li>
+<li><p><strong>Contributing Institutions*</strong>: Norwegian Polar Institute (NPI), Alfred Wegener Institute (AWI), Institute for Marine Research (Bergen), Applied Physics Laboratory (University of Washington)</p></li>
+<li><p><strong>Contributing Institutions Vocabulary</strong>: <a class="reference external" href="https://edmo.seadatanet.org/report/1349">https://edmo.seadatanet.org/report/1349</a>, <a class="reference external" href="https://edmo.seadatanet.org/report/1368">https://edmo.seadatanet.org/report/1368</a>, <a class="reference external" href="https://edmo.seadatanet.org/report/1351">https://edmo.seadatanet.org/report/1351</a>, <a class="reference external" href="https://edmo.seadatanet.org/report/1554">https://edmo.seadatanet.org/report/1554</a></p></li>
+<li><p><strong>Contributing Institutions Role*</strong>: publisher, , ,</p></li>
+<li><p><strong>Conventions*</strong>: , OceanSITES-1.5</p></li>
+<li><p><strong>featureType*</strong>: timeSeriesProfile</p></li>
+<li><p><strong>featureType_vocabulary</strong>: <a class="reference external" href="https://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_features_and_feature_types">https://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_features_and_feature_types</a></p></li>
+<li><p><strong>Source File*</strong>: Adjusted_fulldepth/BeringStrait_adjusted_v_fulldepth.nc</p></li>
+<li><p><strong>Source Path*</strong>: ~/.amocatlas_data/Adjusted_fulldepth/BeringStrait_adjusted_v_fulldepth.nc</p></li>
+<li><p><strong>Source Url*</strong>: <a class="reference external" href="https://doi.org/10.21334/NPOLAR.2025.80B69907">https://doi.org/10.21334/NPOLAR.2025.80B69907</a></p></li>
+<li><p><strong>Date Created</strong>: 2025-10-31T23:55:53Z</p></li>
+<li><p><strong>Date Modified</strong>: 2026-08-01T00:00:00Z</p></li>
+<li><p><strong>Processing Software</strong>: <a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">http://github.com/AMOCcommunity/amocatlas</a></p></li>
+<li><p><strong>Processing Version</strong>: v0.4.0</p></li>
+<li><p><strong>Processing Datasource*</strong>: arcticgateway</p></li>
+<li><p><strong>Product Version</strong>: v0</p></li>
+<li><p><strong>Applied Variable Mapping</strong>: {‘time’: ‘TIME’, ‘depth’: ‘DEPTH’, ‘lon’: ‘LONGITUDE’, ‘lat’: ‘LATITUDE’, ‘v’: ‘VCUR’, ‘TIME’: ‘TIME’, ‘DEPTH’: ‘DEPTH’}</p></li>
+<li><p><strong>Gateway</strong>: BeringStrait</p></li>
+<li><p><strong>Adjustments</strong>: v is adjusted by a constant monthly value obtained from the inverse model, for all grid cells in a segment</p></li>
+<li><p><strong>Depth Limit</strong>: None</p></li>
+<li><p><strong>Segments Format</strong>: Python dictionary converted to a string. The slices can be applied in xarray coordinate selection</p></li>
+<li><p><strong>Segments</strong>: {‘BS’: {‘long_name’: ‘Bering Strait’, ‘lon_slice’: slice(None, None, None)}}</p></li>
+<li><p><strong>Project Website</strong>: <a class="reference external" href="https://epoc-eu.org">https://epoc-eu.org</a></p></li>
+<li><p><strong>Data Set Language</strong>: eng</p></li>
+<li><p><strong>Data Assembly Center</strong>: NO/NPI</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="adjusted-fulldepth-davisstrait-adjusted-v-fulldepth-nc">
+<h2>Adjusted_fulldepth/DavisStrait_adjusted_v_fulldepth.nc<a class="headerlink" href="#adjusted-fulldepth-davisstrait-adjusted-v-fulldepth-nc" title="Link to this heading"></a></h2>
+<section id="id6">
+<h3>Dataset Overview<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Project</strong>: Explaining and predicting the ocean conveyor belt, The Fram Strait Arctic Outflow Observatory</p></li>
+<li><p><strong>Description</strong>: Input data and adjusted data derived with an inverse model of ocean velocity, temperature and salinity obtained from ocean moorings and hydrography from the four main Arctic Gateways Fram Strait, Barents Sea Opening, Bering Strait and Davis Strait</p></li>
+<li><p><strong>DOI</strong>: <a class="reference external" href="https://doi.org/10.21334/npolar.2025.80b69907">https://doi.org/10.21334/npolar.2025.80b69907</a></p></li>
+<li><p><strong>Source File</strong>: Adjusted_fulldepth/DavisStrait_adjusted_v_fulldepth.nc</p></li>
+<li><p><strong>Data Product</strong>: Pan-Arctic Gateway transports since 2004 - Davis Strait</p></li>
+<li><p><strong>License</strong>: CC-BY-4.0</p></li>
+<li><p><strong>Date Created</strong>: 2025-10-31T23:55:53Z</p></li>
+<li><p><strong>Time Coverage</strong>: 2004-10-15 to 2022-05-15</p></li>
+<li><p><strong>Record Length</strong>: 212 observations (17.6 years)</p></li>
+<li><p><strong>Sampling Frequency</strong>: monthly</p></li>
+</ul>
+<p><strong>Citation:</strong></p>
+<blockquote>
+<div><p>Fredriksen, H., de Steur, L., von Appen, W., Ingvaldsen, R., McPherson, R., Lee, C., Lenetsky, J., &amp; Woodgate, R. (2025). Pan-Arctic Gateway transports since 2004 [Dataset]. Norwegian Polar Institute. <a class="reference external" href="https://doi.org/10.21334/NPOLAR.2025.80B69907">https://doi.org/10.21334/NPOLAR.2025.80B69907</a></p>
+</div></blockquote>
+<p><strong>Acknowledgement:</strong></p>
+<blockquote>
+<div><p>This work is funded by the European Union as part of the EPOC project (Explaining and Predicting the Ocean Conveyor; grant number: 101059547). Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union. Neither the European Union nor the granting authority can be held responsible for them.</p>
+</div></blockquote>
+</section>
+<section id="id7">
+<h3>Dataset Statistics<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Total Variables</strong>: 3</p></li>
+<li><p><strong>Total Coordinates</strong>: 4</p></li>
+<li><p><strong>Dataset Size</strong>: 159.52 MB</p></li>
+</ul>
+</section>
+<section id="id8">
+<h3>Coordinate Information<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<p>The following table shows information about the dataset coordinates in the standardised version, including coordinate name remapping from the original, if any:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Coordinate</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>depth</em> → <strong>DEPTH</strong></p></td>
+<td><p><strong>Depth</strong>:  Depth below surface of the water</p></td>
+<td><p>m</p></td>
+<td><p>(263,)</p></td>
+<td><p>0.00</p></td>
+<td><p>1048.00</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>lat</em> → <strong>LATITUDE</strong></p></td>
+<td><p><strong>Latitude</strong>: Latitude north (WGS84)</p></td>
+<td><p>degree_north</p></td>
+<td><p>(125,)</p></td>
+<td><p>66.67</p></td>
+<td><p>67.32</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>lon</em> → <strong>LONGITUDE</strong></p></td>
+<td><p><strong>Longitude</strong>: Longitude east (WGS84)</p></td>
+<td><p>degree_east</p></td>
+<td><p>(125,)</p></td>
+<td><p>-61.26</p></td>
+<td><p>-53.87</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>time</em> → <strong>TIME</strong></p></td>
+<td><p>Time</p></td>
+<td><p>seconds since 1970-01-01T00:00:00Z</p></td>
+<td><p>(212,)</p></td>
+<td><p>2004-10-15</p></td>
+<td><p>2022-05-15</p></td>
+<td><p>0.0%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id9">
+<h3>Variable Information<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<p>The following table shows the mapping from original variable names to standardized names,
+along with key statistics for each variable.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>CT</strong></p></td>
+<td><p><strong>Cons. Temperature</strong>: Conservative Temperature (TEOS-10)</p></td>
+<td><p>degree_C</p></td>
+<td><p>(212, 263, 125)</p></td>
+<td><p>-1.75</p></td>
+<td><p>6.74</p></td>
+<td><p>0.4%</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>SA</strong></p></td>
+<td><p><strong>Abs. Salinity</strong>: Absolute Salinity (TEOS-10)</p></td>
+<td><p>g kg-1</p></td>
+<td><p>(212, 263, 125)</p></td>
+<td><p>30.12</p></td>
+<td><p>35.25</p></td>
+<td><p>0.4%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>v</em> → <strong>VCUR</strong></p></td>
+<td><p><strong>V Velocity</strong>: Northward Velocity component</p></td>
+<td><p>m s-1</p></td>
+<td><p>(212, 263, 125)</p></td>
+<td><p>-0.44</p></td>
+<td><p>0.19</p></td>
+<td><p>0.4%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id10">
+<h3>Metadata (edits applied noted)<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<p>The following metadata describes this dataset:</p>
+<ul class="simple">
+<li><p><strong>Title</strong>: Pan-Arctic Gateway transports since 2004</p></li>
+<li><p><strong>Summary</strong>: Input data and adjusted data derived with an inverse model of ocean velocity, temperature and salinity obtained from ocean moorings and hydrography from the four main Arctic Gateways Fram Strait, Barents Sea Opening, Bering Strait and Davis Strait</p></li>
+<li><p><strong>Description*</strong>: Input data and adjusted data derived with an inverse model of ocean velocity, temperature and salinity obtained from ocean moorings and hydrography from the four main Arctic Gateways Fram Strait, Barents Sea Opening, Bering Strait and Davis Strait</p></li>
+<li><p><strong>Program*</strong>: Pan-Arctic Gateway transports since 2004</p></li>
+<li><p><strong>Project</strong>: Explaining and predicting the ocean conveyor belt, The Fram Strait Arctic Outflow Observatory</p></li>
+<li><p><strong>Source</strong>: Mooring and CTD data</p></li>
+<li><p><strong>License*</strong>: CC-BY-4.0</p></li>
+<li><p><strong>Acknowledgment</strong>: This work is funded by the European Union as part of the EPOC project (Explaining and Predicting the Ocean Conveyor; grant number: 101059547). Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union. Neither the European Union nor the granting authority can be held responsible for them.</p></li>
+<li><p><strong>Doi</strong>: <a class="reference external" href="https://doi.org/10.21334/npolar.2025.80b69907">https://doi.org/10.21334/npolar.2025.80b69907</a></p></li>
+<li><p><strong>Weblink*</strong>: <a class="reference external" href="https://doi.org/10.21334/NPOLAR.2025.80B69907">https://doi.org/10.21334/NPOLAR.2025.80B69907</a></p></li>
+<li><p><strong>Data Product*</strong>: Pan-Arctic Gateway transports since 2004 - Davis Strait</p></li>
+<li><p><strong>Time Coverage Start*</strong>: 2004-10-15</p></li>
+<li><p><strong>Time Coverage End*</strong>: 2022-05-15</p></li>
+<li><p><strong>Contributor Name*</strong>: Norwegian Polar Institute (NPI), Norwegian Polar Institute (NPI), Hege-Beate Fredriksen, Laura de Steur</p></li>
+<li><p><strong>Contributor Role*</strong>: originator, publisher, originator, principalInvestigator</p></li>
+<li><p><strong>Contributor Role Vocabulary*</strong>: <a class="reference external" href="https://vocab.nerc.ac.uk/collection/G04/current/">https://vocab.nerc.ac.uk/collection/G04/current/</a></p></li>
+<li><p><strong>Contributor Email</strong>: <a class="reference external" href="mailto:post&#37;&#52;&#48;npolar&#46;no">post<span>&#64;</span>npolar<span>&#46;</span>no</a>, <a class="reference external" href="mailto:post&#37;&#52;&#48;npolar&#46;no">post<span>&#64;</span>npolar<span>&#46;</span>no</a>, ,</p></li>
+<li><p><strong>Contributor Id</strong>: <a class="reference external" href="https://www.npolar.no">https://www.npolar.no</a>, <a class="reference external" href="https://www.npolar.no">https://www.npolar.no</a>, <a class="reference external" href="https://orcid.org/0000-0002-3598-4076">https://orcid.org/0000-0002-3598-4076</a>, <a class="reference external" href="https://orcid.org/0000-0002-6043-7920">https://orcid.org/0000-0002-6043-7920</a></p></li>
+<li><p><strong>Contributing Institutions*</strong>: Norwegian Polar Institute (NPI), Alfred Wegener Institute (AWI), Institute for Marine Research (Bergen), Applied Physics Laboratory (University of Washington)</p></li>
+<li><p><strong>Contributing Institutions Vocabulary</strong>: <a class="reference external" href="https://edmo.seadatanet.org/report/1349">https://edmo.seadatanet.org/report/1349</a>, <a class="reference external" href="https://edmo.seadatanet.org/report/1368">https://edmo.seadatanet.org/report/1368</a>, <a class="reference external" href="https://edmo.seadatanet.org/report/1351">https://edmo.seadatanet.org/report/1351</a>, <a class="reference external" href="https://edmo.seadatanet.org/report/1554">https://edmo.seadatanet.org/report/1554</a></p></li>
+<li><p><strong>Contributing Institutions Role*</strong>: publisher, , ,</p></li>
+<li><p><strong>Conventions*</strong>: , OceanSITES-1.5</p></li>
+<li><p><strong>featureType*</strong>: timeSeriesProfile</p></li>
+<li><p><strong>featureType_vocabulary</strong>: <a class="reference external" href="https://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_features_and_feature_types">https://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_features_and_feature_types</a></p></li>
+<li><p><strong>Source File*</strong>: Adjusted_fulldepth/DavisStrait_adjusted_v_fulldepth.nc</p></li>
+<li><p><strong>Source Path*</strong>: ~/.amocatlas_data/Adjusted_fulldepth/DavisStrait_adjusted_v_fulldepth.nc</p></li>
+<li><p><strong>Source Url*</strong>: <a class="reference external" href="https://doi.org/10.21334/NPOLAR.2025.80B69907">https://doi.org/10.21334/NPOLAR.2025.80B69907</a></p></li>
+<li><p><strong>Date Created</strong>: 2025-10-31T23:55:53Z</p></li>
+<li><p><strong>Date Modified</strong>: 2026-08-01T00:00:00Z</p></li>
+<li><p><strong>Processing Software</strong>: <a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">http://github.com/AMOCcommunity/amocatlas</a></p></li>
+<li><p><strong>Processing Version</strong>: v0.4.0</p></li>
+<li><p><strong>Processing Datasource*</strong>: arcticgateway</p></li>
+<li><p><strong>Product Version</strong>: v0</p></li>
+<li><p><strong>Applied Variable Mapping</strong>: {‘time’: ‘TIME’, ‘depth’: ‘DEPTH’, ‘lon’: ‘LONGITUDE’, ‘lat’: ‘LATITUDE’, ‘v’: ‘VCUR’, ‘TIME’: ‘TIME’, ‘DEPTH’: ‘DEPTH’}</p></li>
+<li><p><strong>Gateway</strong>: DavisStrait</p></li>
+<li><p><strong>Adjustments</strong>: v is adjusted by a constant monthly value obtained from the inverse model, for all grid cells in a segment</p></li>
+<li><p><strong>Depth Limit</strong>: None</p></li>
+<li><p><strong>Segments Format</strong>: Python dictionary converted to a string. The slices can be applied in xarray coordinate selection</p></li>
+<li><p><strong>Segments</strong>: {‘WDS’: {‘long_name’: ‘Western Davis Strait’, ‘lon_slice’: slice(None, -57.6, None)}, ‘EDS’: {‘long_name’: ‘Eastern Davis Strait’, ‘lon_slice’: slice(-57.6, None, None)}}</p></li>
+<li><p><strong>Project Website</strong>: <a class="reference external" href="https://epoc-eu.org">https://epoc-eu.org</a></p></li>
+<li><p><strong>Data Set Language</strong>: eng</p></li>
+<li><p><strong>Data Assembly Center</strong>: NO/NPI</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="adjusted-fulldepth-framstrait-adjusted-v-fulldepth-nc">
+<h2>Adjusted_fulldepth/FramStrait_adjusted_v_fulldepth.nc<a class="headerlink" href="#adjusted-fulldepth-framstrait-adjusted-v-fulldepth-nc" title="Link to this heading"></a></h2>
+<section id="id11">
+<h3>Dataset Overview<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Project</strong>: Explaining and predicting the ocean conveyor belt, The Fram Strait Arctic Outflow Observatory</p></li>
+<li><p><strong>Description</strong>: Input data and adjusted data derived with an inverse model of ocean velocity, temperature and salinity obtained from ocean moorings and hydrography from the four main Arctic Gateways Fram Strait, Barents Sea Opening, Bering Strait and Davis Strait</p></li>
+<li><p><strong>DOI</strong>: <a class="reference external" href="https://doi.org/10.21334/npolar.2025.80b69907">https://doi.org/10.21334/npolar.2025.80b69907</a></p></li>
+<li><p><strong>Source File</strong>: Adjusted_fulldepth/FramStrait_adjusted_v_fulldepth.nc</p></li>
+<li><p><strong>Data Product</strong>: Pan-Arctic Gateway transports since 2004 - Fram Strait</p></li>
+<li><p><strong>License</strong>: CC-BY-4.0</p></li>
+<li><p><strong>Date Created</strong>: 2025-10-31T23:55:53Z</p></li>
+<li><p><strong>Time Coverage</strong>: 2004-10-15 to 2022-05-15</p></li>
+<li><p><strong>Record Length</strong>: 212 observations (17.6 years)</p></li>
+<li><p><strong>Sampling Frequency</strong>: monthly</p></li>
+</ul>
+<p><strong>Citation:</strong></p>
+<blockquote>
+<div><p>Fredriksen, H., de Steur, L., von Appen, W., Ingvaldsen, R., McPherson, R., Lee, C., Lenetsky, J., &amp; Woodgate, R. (2025). Pan-Arctic Gateway transports since 2004 [Dataset]. Norwegian Polar Institute. <a class="reference external" href="https://doi.org/10.21334/NPOLAR.2025.80B69907">https://doi.org/10.21334/NPOLAR.2025.80B69907</a></p>
+</div></blockquote>
+<p><strong>Acknowledgement:</strong></p>
+<blockquote>
+<div><p>This work is funded by the European Union as part of the EPOC project (Explaining and Predicting the Ocean Conveyor; grant number: 101059547). Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union. Neither the European Union nor the granting authority can be held responsible for them.</p>
+</div></blockquote>
+</section>
+<section id="id12">
+<h3>Dataset Statistics<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Total Variables</strong>: 3</p></li>
+<li><p><strong>Total Coordinates</strong>: 4</p></li>
+<li><p><strong>Dataset Size</strong>: 755.07 MB</p></li>
+</ul>
+</section>
+<section id="id13">
+<h3>Coordinate Information<a class="headerlink" href="#id13" title="Link to this heading"></a></h3>
+<p>The following table shows information about the dataset coordinates in the standardised version, including coordinate name remapping from the original, if any:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Coordinate</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>depth</em> → <strong>DEPTH</strong></p></td>
+<td><p><strong>Depth</strong>:  Depth below surface of the water</p></td>
+<td><p>m</p></td>
+<td><p>(665,)</p></td>
+<td><p>0.00</p></td>
+<td><p>2656.00</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>lat</em> → <strong>LATITUDE</strong></p></td>
+<td><p><strong>Latitude</strong>: Latitude north (WGS84)</p></td>
+<td><p>degree_north</p></td>
+<td><p>()</p></td>
+<td><p>78.83</p></td>
+<td><p>78.83</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>lon</em> → <strong>LONGITUDE</strong></p></td>
+<td><p><strong>Longitude</strong>: Longitude east (WGS84)</p></td>
+<td><p>degree_east</p></td>
+<td><p>(234,)</p></td>
+<td><p>-20.55</p></td>
+<td><p>11.87</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>time</em> → <strong>TIME</strong></p></td>
+<td><p>Time</p></td>
+<td><p>seconds since 1970-01-01T00:00:00Z</p></td>
+<td><p>(212,)</p></td>
+<td><p>2004-10-15</p></td>
+<td><p>2022-05-15</p></td>
+<td><p>0.0%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id14">
+<h3>Variable Information<a class="headerlink" href="#id14" title="Link to this heading"></a></h3>
+<p>The following table shows the mapping from original variable names to standardized names,
+along with key statistics for each variable.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>CT</strong></p></td>
+<td><p><strong>Cons. Temperature</strong>: Conservative Temperature (TEOS-10)</p></td>
+<td><p>degree_C</p></td>
+<td><p>(212, 665, 234)</p></td>
+<td><p>-2.74</p></td>
+<td><p>7.34</p></td>
+<td><p>5.7%</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>SA</strong></p></td>
+<td><p><strong>Abs. Salinity</strong>: Absolute Salinity (TEOS-10)</p></td>
+<td><p>g kg-1</p></td>
+<td><p>(212, 665, 234)</p></td>
+<td><p>27.84</p></td>
+<td><p>35.67</p></td>
+<td><p>5.7%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>v</em> → <strong>VCUR</strong></p></td>
+<td><p><strong>V Velocity</strong>: Northward Velocity component</p></td>
+<td><p>m s-1</p></td>
+<td><p>(212, 665, 234)</p></td>
+<td><p>-0.49</p></td>
+<td><p>0.43</p></td>
+<td><p>5.7%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id15">
+<h3>Metadata (edits applied noted)<a class="headerlink" href="#id15" title="Link to this heading"></a></h3>
+<p>The following metadata describes this dataset:</p>
+<ul class="simple">
+<li><p><strong>Title</strong>: Pan-Arctic Gateway transports since 2004</p></li>
+<li><p><strong>Summary</strong>: Input data and adjusted data derived with an inverse model of ocean velocity, temperature and salinity obtained from ocean moorings and hydrography from the four main Arctic Gateways Fram Strait, Barents Sea Opening, Bering Strait and Davis Strait</p></li>
+<li><p><strong>Description*</strong>: Input data and adjusted data derived with an inverse model of ocean velocity, temperature and salinity obtained from ocean moorings and hydrography from the four main Arctic Gateways Fram Strait, Barents Sea Opening, Bering Strait and Davis Strait</p></li>
+<li><p><strong>Program*</strong>: Pan-Arctic Gateway transports since 2004</p></li>
+<li><p><strong>Project</strong>: Explaining and predicting the ocean conveyor belt, The Fram Strait Arctic Outflow Observatory</p></li>
+<li><p><strong>Source</strong>: Mooring and CTD data</p></li>
+<li><p><strong>License*</strong>: CC-BY-4.0</p></li>
+<li><p><strong>Acknowledgment</strong>: This work is funded by the European Union as part of the EPOC project (Explaining and Predicting the Ocean Conveyor; grant number: 101059547). Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union. Neither the European Union nor the granting authority can be held responsible for them.</p></li>
+<li><p><strong>Doi</strong>: <a class="reference external" href="https://doi.org/10.21334/npolar.2025.80b69907">https://doi.org/10.21334/npolar.2025.80b69907</a></p></li>
+<li><p><strong>Weblink*</strong>: <a class="reference external" href="https://doi.org/10.21334/NPOLAR.2025.80B69907">https://doi.org/10.21334/NPOLAR.2025.80B69907</a></p></li>
+<li><p><strong>Data Product*</strong>: Pan-Arctic Gateway transports since 2004 - Fram Strait</p></li>
+<li><p><strong>Time Coverage Start*</strong>: 2004-10-15</p></li>
+<li><p><strong>Time Coverage End*</strong>: 2022-05-15</p></li>
+<li><p><strong>Contributor Name*</strong>: Norwegian Polar Institute (NPI), Norwegian Polar Institute (NPI), Hege-Beate Fredriksen, Laura de Steur</p></li>
+<li><p><strong>Contributor Role*</strong>: originator, publisher, originator, principalInvestigator</p></li>
+<li><p><strong>Contributor Role Vocabulary*</strong>: <a class="reference external" href="https://vocab.nerc.ac.uk/collection/G04/current/">https://vocab.nerc.ac.uk/collection/G04/current/</a></p></li>
+<li><p><strong>Contributor Email</strong>: <a class="reference external" href="mailto:post&#37;&#52;&#48;npolar&#46;no">post<span>&#64;</span>npolar<span>&#46;</span>no</a>, <a class="reference external" href="mailto:post&#37;&#52;&#48;npolar&#46;no">post<span>&#64;</span>npolar<span>&#46;</span>no</a>, ,</p></li>
+<li><p><strong>Contributor Id</strong>: <a class="reference external" href="https://www.npolar.no">https://www.npolar.no</a>, <a class="reference external" href="https://www.npolar.no">https://www.npolar.no</a>, <a class="reference external" href="https://orcid.org/0000-0002-3598-4076">https://orcid.org/0000-0002-3598-4076</a>, <a class="reference external" href="https://orcid.org/0000-0002-6043-7920">https://orcid.org/0000-0002-6043-7920</a></p></li>
+<li><p><strong>Contributing Institutions*</strong>: Norwegian Polar Institute (NPI), Alfred Wegener Institute (AWI), Institute for Marine Research (Bergen), Applied Physics Laboratory (University of Washington)</p></li>
+<li><p><strong>Contributing Institutions Vocabulary</strong>: <a class="reference external" href="https://edmo.seadatanet.org/report/1349">https://edmo.seadatanet.org/report/1349</a>, <a class="reference external" href="https://edmo.seadatanet.org/report/1368">https://edmo.seadatanet.org/report/1368</a>, <a class="reference external" href="https://edmo.seadatanet.org/report/1351">https://edmo.seadatanet.org/report/1351</a>, <a class="reference external" href="https://edmo.seadatanet.org/report/1554">https://edmo.seadatanet.org/report/1554</a></p></li>
+<li><p><strong>Contributing Institutions Role*</strong>: publisher, , ,</p></li>
+<li><p><strong>Conventions*</strong>: , OceanSITES-1.5</p></li>
+<li><p><strong>featureType*</strong>: timeSeriesProfile</p></li>
+<li><p><strong>featureType_vocabulary</strong>: <a class="reference external" href="https://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_features_and_feature_types">https://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_features_and_feature_types</a></p></li>
+<li><p><strong>Source File*</strong>: Adjusted_fulldepth/FramStrait_adjusted_v_fulldepth.nc</p></li>
+<li><p><strong>Source Path*</strong>: ~/.amocatlas_data/Adjusted_fulldepth/FramStrait_adjusted_v_fulldepth.nc</p></li>
+<li><p><strong>Source Url*</strong>: <a class="reference external" href="https://doi.org/10.21334/NPOLAR.2025.80B69907">https://doi.org/10.21334/NPOLAR.2025.80B69907</a></p></li>
+<li><p><strong>Date Created</strong>: 2025-10-31T23:55:53Z</p></li>
+<li><p><strong>Date Modified</strong>: 2026-08-01T00:00:00Z</p></li>
+<li><p><strong>Processing Software</strong>: <a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">http://github.com/AMOCcommunity/amocatlas</a></p></li>
+<li><p><strong>Processing Version</strong>: v0.4.0</p></li>
+<li><p><strong>Processing Datasource*</strong>: arcticgateway</p></li>
+<li><p><strong>Product Version</strong>: v0</p></li>
+<li><p><strong>Applied Variable Mapping</strong>: {‘time’: ‘TIME’, ‘depth’: ‘DEPTH’, ‘lon’: ‘LONGITUDE’, ‘lat’: ‘LATITUDE’, ‘v’: ‘VCUR’, ‘TIME’: ‘TIME’, ‘DEPTH’: ‘DEPTH’}</p></li>
+<li><p><strong>Gateway</strong>: FramStrait</p></li>
+<li><p><strong>Adjustments</strong>: v is adjusted by a constant monthly value obtained from the inverse model, for all grid cells in a segment</p></li>
+<li><p><strong>Depth Limit</strong>: None</p></li>
+<li><p><strong>Segments Format</strong>: Python dictionary converted to a string. The slices can be applied in xarray coordinate selection</p></li>
+<li><p><strong>Segments</strong>: {‘EGS’: {‘long_name’: ‘East Greenland Shelf’, ‘lon_slice’: slice(None, -10.6, None)}, ‘EGC’: {‘long_name’: ‘East Greenland Current’, ‘lon_slice’: slice(-10.6, -0.6, None)}, ‘CFS’: {‘long_name’: ‘Central Fram Strait’, ‘lon_slice’: slice(-0.6, 5.1, None)}, ‘WSC’: {‘long_name’: ‘West Spitsbergen Current’, ‘lon_slice’: slice(5.1, 8.805, None)}, ‘WSS’: {‘long_name’: ‘West Spitsbergen Shelf’, ‘lon_slice’: slice(8.805, None, None)}}</p></li>
+<li><p><strong>Project Website</strong>: <a class="reference external" href="https://epoc-eu.org">https://epoc-eu.org</a></p></li>
+<li><p><strong>Data Set Language</strong>: eng</p></li>
+<li><p><strong>Data Assembly Center</strong>: NO/NPI</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="mocha_report.html" class="btn btn-neutral float-left" title="MOCHA Datasets" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="dso_report.html" class="btn btn-neutral float-right" title="DSO Datasets" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Eleanor Frajka-Williams, Isabelle Schmitz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

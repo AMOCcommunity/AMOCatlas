@@ -1,0 +1,665 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>standardise &mdash; amocatlas 0.4.0.post1.dev10 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=1078e4cb" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=6d4c28d6"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="utilities" href="utilities.html" />
+    <link rel="prev" title="tools" href="tools.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            amocatlas
+              <img src="_static/logo.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ / Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Demo notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="demo-output.html">AMOCatlas demo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dataset Reports</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reports/index.html">Data Sources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reference/format.html">AMOCatlas data format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/vocabulary.html">amocvocab — variable vocabulary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="amoc_paperfigs-output.html">AMOC Publication Figures</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Repository and API</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">GitHub Repo</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="amocatlas.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">amocatlas</span> <span class="pre">API</span></code></a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="read.html">read module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_sources.html">data_sources package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotters.html">plotters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="writers.html">writers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html">tools</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">standardise</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.standardise.clean_metadata"><code class="docutils literal notranslate"><span class="pre">clean_metadata()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.standardise.get_dynamic_version"><code class="docutils literal notranslate"><span class="pre">get_dynamic_version()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.standardise.merge_metadata_aliases"><code class="docutils literal notranslate"><span class="pre">merge_metadata_aliases()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.standardise.normalize_and_add_vocabulary"><code class="docutils literal notranslate"><span class="pre">normalize_and_add_vocabulary()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.standardise.reorder_metadata"><code class="docutils literal notranslate"><span class="pre">reorder_metadata()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.standardise.resolve_metadata_conflict"><code class="docutils literal notranslate"><span class="pre">resolve_metadata_conflict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.standardise.standardise_41n"><code class="docutils literal notranslate"><span class="pre">standardise_41n()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.standardise.standardise_47n"><code class="docutils literal notranslate"><span class="pre">standardise_47n()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.standardise.standardise_arcticgateway"><code class="docutils literal notranslate"><span class="pre">standardise_arcticgateway()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.standardise.standardise_array"><code class="docutils literal notranslate"><span class="pre">standardise_array()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.standardise.standardise_axmoc22s"><code class="docutils literal notranslate"><span class="pre">standardise_axmoc22s()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.standardise.standardise_axmoc34s"><code class="docutils literal notranslate"><span class="pre">standardise_axmoc34s()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.standardise.standardise_calafat2025"><code class="docutils literal notranslate"><span class="pre">standardise_calafat2025()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.standardise.standardise_data"><code class="docutils literal notranslate"><span class="pre">standardise_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.standardise.standardise_dso"><code class="docutils literal notranslate"><span class="pre">standardise_dso()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.standardise.standardise_fbc"><code class="docutils literal notranslate"><span class="pre">standardise_fbc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.standardise.standardise_fw2015"><code class="docutils literal notranslate"><span class="pre">standardise_fw2015()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.standardise.standardise_lebras35n"><code class="docutils literal notranslate"><span class="pre">standardise_lebras35n()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.standardise.standardise_mocha"><code class="docutils literal notranslate"><span class="pre">standardise_mocha()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.standardise.standardise_move"><code class="docutils literal notranslate"><span class="pre">standardise_move()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.standardise.standardise_nac"><code class="docutils literal notranslate"><span class="pre">standardise_nac()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.standardise.standardise_osnap"><code class="docutils literal notranslate"><span class="pre">standardise_osnap()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.standardise.standardise_rapid"><code class="docutils literal notranslate"><span class="pre">standardise_rapid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.standardise.standardise_samba"><code class="docutils literal notranslate"><span class="pre">standardise_samba()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.standardise.standardise_sf2021"><code class="docutils literal notranslate"><span class="pre">standardise_sf2021()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.standardise.standardise_zheng2024"><code class="docutils literal notranslate"><span class="pre">standardise_zheng2024()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.standardise.standardize_depth_coordinate"><code class="docutils literal notranslate"><span class="pre">standardize_depth_coordinate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.standardise.standardize_latitude_coordinate"><code class="docutils literal notranslate"><span class="pre">standardize_latitude_coordinate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.standardise.standardize_longitude_coordinate"><code class="docutils literal notranslate"><span class="pre">standardize_longitude_coordinate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.standardise.standardize_sigma0_coordinate"><code class="docutils literal notranslate"><span class="pre">standardize_sigma0_coordinate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.standardise.standardize_time_coordinate"><code class="docutils literal notranslate"><span class="pre">standardize_time_coordinate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.standardise.standardize_units"><code class="docutils literal notranslate"><span class="pre">standardize_units()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="utilities.html">utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers' guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="developers/developer_guide.html">Developer Guide for AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developers/git_beginners_guide.html">Git for Beginners: Workflow Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developers/actions.html">Extra GitHub features: Actions &amp; Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developers/housekeeping.html">Project Maintenance Checklist</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">amocatlas</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="amocatlas.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">amocatlas</span> <span class="pre">API</span></code></a></li>
+      <li class="breadcrumb-item active">standardise</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/standardise.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="standardise">
+<h1>standardise<a class="headerlink" href="#standardise" title="Link to this heading"></a></h1>
+<p>Functions to apply naming conventions, units, and metadata standards to datasets.</p>
+<p id="module-amocatlas.standardise">Standardisation functions for AMOC observing array datasets.</p>
+<p>These functions take raw loaded datasets and:
+- Rename variables to standard names
+- Add variable-level metadata
+- Add or update global attributes
+- Prepare datasets for downstream analysis</p>
+<p>Currently implemented:
+- SAMBA</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.standardise.clean_metadata">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.standardise.</span></span><span class="sig-name descname"><span class="pre">clean_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attrs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preferred_keys</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="_modules/amocatlas/standardise.html#clean_metadata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.standardise.clean_metadata" title="Link to this definition"></a></dt>
+<dd><p>Clean up a metadata dictionary.</p>
+<ul class="simple">
+<li><p>Normalize key casing</p></li>
+<li><p>Merge aliases with identical values</p></li>
+<li><p>Apply standard naming (via preferred_keys mapping)</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.standardise.get_dynamic_version">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.standardise.</span></span><span class="sig-name descname"><span class="pre">get_dynamic_version</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/amocatlas/standardise.html#get_dynamic_version"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.standardise.get_dynamic_version" title="Link to this definition"></a></dt>
+<dd><p>Get the actual software version using multiple detection methods.</p>
+<p>Priority:
+1. Git describe (for development in git repo)
+2. Installed package version (for pip/conda installs)
+3. Fallback to __version__ file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Software version string</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.standardise.merge_metadata_aliases">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.standardise.</span></span><span class="sig-name descname"><span class="pre">merge_metadata_aliases</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attrs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preferred_keys</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="_modules/amocatlas/standardise.html#merge_metadata_aliases"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.standardise.merge_metadata_aliases" title="Link to this definition"></a></dt>
+<dd><p>Consolidate and rename metadata keys case‑insensitively (except featureType),
+using preferred_keys to map aliases to canonical names.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>attrs</strong> (<em>dict</em>) – Metadata dictionary with potential duplicates.</p></li>
+<li><p><strong>preferred_keys</strong> (<em>dict</em>) – Mapping of lowercase alias keys to preferred canonical keys.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Metadata dictionary with duplicates merged and keys renamed.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.standardise.normalize_and_add_vocabulary">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.standardise.</span></span><span class="sig-name descname"><span class="pre">normalize_and_add_vocabulary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attrs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalizations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="_modules/amocatlas/standardise.html#normalize_and_add_vocabulary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.standardise.normalize_and_add_vocabulary" title="Link to this definition"></a></dt>
+<dd><p>For each (attr, (value_map, vocab_url)) in <cite>normalizations</cite>.</p>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="simple">
+<dt>If <cite>attr</cite> exists in attrs:</dt><dd><ul>
+<li><p>Map attrs[attr] using value_map (or leave it if unmapped)</p></li>
+<li><p>Add attrs[f”{attr}_vocabulary”] = vocab_url</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>attrs</strong> (<em>dict</em>) – Metadata attributes, already cleaned &amp; renamed.</p></li>
+<li><p><strong>normalizations</strong> (<em>dict</em>) – Keys are canonical attr names (e.g. “platform”), values are
+(value_map, vocabulary_url) tuples.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>attrs with normalized values and added &lt;attr&gt;_vocabulary entries.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.standardise.reorder_metadata">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.standardise.</span></span><span class="sig-name descname"><span class="pre">reorder_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attrs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="_modules/amocatlas/standardise.html#reorder_metadata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.standardise.reorder_metadata" title="Link to this definition"></a></dt>
+<dd><p>Return a new dict with keys ordered according to the OG1.0 global‐attribute list.
+Any attrs not in the spec list are appended at the end, in their original order.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.standardise.resolve_metadata_conflict">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.standardise.</span></span><span class="sig-name descname"><span class="pre">resolve_metadata_conflict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">existing_value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">existing_source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'unknown'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'unknown'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/amocatlas/standardise.html#resolve_metadata_conflict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.standardise.resolve_metadata_conflict" title="Link to this definition"></a></dt>
+<dd><p>Resolve metadata conflicts using field-typed logic.</p>
+<p>Resolution rules:</p>
+<ol class="arabic simple">
+<li><p>If values are identical, return without warning</p></li>
+<li><p>If one is empty/whitespace and other isn’t, use non-empty</p></li>
+<li><p>For typed fields (numbers, dates, identifiers): keep the source-of-truth
+(existing) value and warn if the values genuinely differ; never compare by length</p></li>
+<li><p>For free text: keep the longer value (logged, not warned, to avoid noise)</p></li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>str</em>) – Metadata key name</p></li>
+<li><p><strong>existing_value</strong> (<em>str</em>) – Current value</p></li>
+<li><p><strong>new_value</strong> (<em>str</em>) – New value attempting to override</p></li>
+<li><p><strong>existing_source</strong> (<em>str</em>) – Description of where existing value came from</p></li>
+<li><p><strong>new_source</strong> (<em>str</em>) – Description of where new value came from</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The resolved value to use</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.standardise.standardise_41n">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.standardise.</span></span><span class="sig-name descname"><span class="pre">standardise_41n</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span></span></span><a class="reference internal" href="_modules/amocatlas/standardise.html#standardise_41n"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.standardise.standardise_41n" title="Link to this definition"></a></dt>
+<dd><p>Standardise 41N array dataset to consistent format.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.standardise.standardise_47n">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.standardise.</span></span><span class="sig-name descname"><span class="pre">standardise_47n</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span></span></span><a class="reference internal" href="_modules/amocatlas/standardise.html#standardise_47n"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.standardise.standardise_47n" title="Link to this definition"></a></dt>
+<dd><p>Standardise 47N array dataset to a consistent format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ds</strong> (<em>xr.Dataset</em>) – Raw 47N array dataset to standardise.</p></li>
+<li><p><strong>file_name</strong> (<em>str</em>) – Original filename associated with the dataset, used for metadata.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Standardised dataset with consistent metadata and formatting for the 47N array.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xr.Dataset</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.standardise.standardise_arcticgateway">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.standardise.</span></span><span class="sig-name descname"><span class="pre">standardise_arcticgateway</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span></span></span><a class="reference internal" href="_modules/amocatlas/standardise.html#standardise_arcticgateway"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.standardise.standardise_arcticgateway" title="Link to this definition"></a></dt>
+<dd><p>Standardise Arctic Gateway array dataset to consistent format.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.standardise.standardise_array">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.standardise.</span></span><span class="sig-name descname"><span class="pre">standardise_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span></span></span><a class="reference internal" href="_modules/amocatlas/standardise.html#standardise_array"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.standardise.standardise_array" title="Link to this definition"></a></dt>
+<dd><p>Standardise a mooring array dataset using YAML-based metadata.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version This: </span>function is deprecated. Use <a class="reference internal" href="#amocatlas.standardise.standardise_data" title="amocatlas.standardise.standardise_data"><code class="xref py py-func docutils literal notranslate"><span class="pre">standardise_data()</span></code></a> instead.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ds</strong> (<em>xr.Dataset</em>) – Raw dataset loaded from a reader with amocatlas_datasource metadata.</p></li>
+<li><p><strong>file_name</strong> (<em>str</em>) – Filename (e.g., ‘moc_transports.nc’) expected to match ds.attrs[“source_file”].</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Standardised dataset with renamed variables and enriched metadata.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xr.Dataset</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.standardise.standardise_axmoc22s">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.standardise.</span></span><span class="sig-name descname"><span class="pre">standardise_axmoc22s</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span></span></span><a class="reference internal" href="_modules/amocatlas/standardise.html#standardise_axmoc22s"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.standardise.standardise_axmoc22s" title="Link to this definition"></a></dt>
+<dd><p>Standardise AXMOC22S array dataset to consistent format.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.standardise.standardise_axmoc34s">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.standardise.</span></span><span class="sig-name descname"><span class="pre">standardise_axmoc34s</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span></span></span><a class="reference internal" href="_modules/amocatlas/standardise.html#standardise_axmoc34s"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.standardise.standardise_axmoc34s" title="Link to this definition"></a></dt>
+<dd><p>Standardise AXMOC34S array dataset to consistent format.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.standardise.standardise_calafat2025">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.standardise.</span></span><span class="sig-name descname"><span class="pre">standardise_calafat2025</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span></span></span><a class="reference internal" href="_modules/amocatlas/standardise.html#standardise_calafat2025"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.standardise.standardise_calafat2025" title="Link to this definition"></a></dt>
+<dd><p>Standardise CALAFAT2025 array dataset to consistent format.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.standardise.standardise_data">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.standardise.</span></span><span class="sig-name descname"><span class="pre">standardise_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span></span></span><a class="reference internal" href="_modules/amocatlas/standardise.html#standardise_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.standardise.standardise_data" title="Link to this definition"></a></dt>
+<dd><p>Standardise a dataset using YAML-based metadata.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ds</strong> (<em>xr.Dataset</em>) – Raw dataset loaded from a reader with amocatlas_datasource metadata.</p></li>
+<li><p><strong>file_name</strong> (<em>str</em>) – Filename (e.g., ‘moc_transports.nc’) expected to match ds.attrs[“source_file”].</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Standardised dataset with renamed variables and enriched metadata.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xr.Dataset</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – If file_name does not match ds.attrs[“source_file”].</p></li>
+<li><p><strong>ValueError</strong> – If amocatlas_datasource is not found in dataset metadata.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.standardise.standardise_dso">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.standardise.</span></span><span class="sig-name descname"><span class="pre">standardise_dso</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span></span></span><a class="reference internal" href="_modules/amocatlas/standardise.html#standardise_dso"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.standardise.standardise_dso" title="Link to this definition"></a></dt>
+<dd><p>Standardise DSO array dataset to consistent format.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.standardise.standardise_fbc">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.standardise.</span></span><span class="sig-name descname"><span class="pre">standardise_fbc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span></span></span><a class="reference internal" href="_modules/amocatlas/standardise.html#standardise_fbc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.standardise.standardise_fbc" title="Link to this definition"></a></dt>
+<dd><p>Standardise FBC array dataset to consistent format.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.standardise.standardise_fw2015">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.standardise.</span></span><span class="sig-name descname"><span class="pre">standardise_fw2015</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span></span></span><a class="reference internal" href="_modules/amocatlas/standardise.html#standardise_fw2015"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.standardise.standardise_fw2015" title="Link to this definition"></a></dt>
+<dd><p>Standardise FW2015 array dataset to consistent format.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.standardise.standardise_lebras35n">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.standardise.</span></span><span class="sig-name descname"><span class="pre">standardise_lebras35n</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span></span></span><a class="reference internal" href="_modules/amocatlas/standardise.html#standardise_lebras35n"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.standardise.standardise_lebras35n" title="Link to this definition"></a></dt>
+<dd><p>Standardise LEBRAS35N array dataset to consistent format.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.standardise.standardise_mocha">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.standardise.</span></span><span class="sig-name descname"><span class="pre">standardise_mocha</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span></span></span><a class="reference internal" href="_modules/amocatlas/standardise.html#standardise_mocha"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.standardise.standardise_mocha" title="Link to this definition"></a></dt>
+<dd><p>Standardise MOCHA array dataset to consistent format.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.standardise.standardise_move">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.standardise.</span></span><span class="sig-name descname"><span class="pre">standardise_move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span></span></span><a class="reference internal" href="_modules/amocatlas/standardise.html#standardise_move"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.standardise.standardise_move" title="Link to this definition"></a></dt>
+<dd><p>Standardise MOVE array dataset to consistent format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ds</strong> (<em>xr.Dataset</em>) – Raw MOVE dataset to standardise.</p></li>
+<li><p><strong>file_name</strong> (<em>str</em>) – Original filename for metadata.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Standardised dataset with consistent metadata and formatting.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xr.Dataset</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.standardise.standardise_nac">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.standardise.</span></span><span class="sig-name descname"><span class="pre">standardise_nac</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span></span></span><a class="reference internal" href="_modules/amocatlas/standardise.html#standardise_nac"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.standardise.standardise_nac" title="Link to this definition"></a></dt>
+<dd><p>Standardise NAC array dataset to consistent format.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.standardise.standardise_osnap">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.standardise.</span></span><span class="sig-name descname"><span class="pre">standardise_osnap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span></span></span><a class="reference internal" href="_modules/amocatlas/standardise.html#standardise_osnap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.standardise.standardise_osnap" title="Link to this definition"></a></dt>
+<dd><p>Standardise OSNAP array dataset to consistent format.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.standardise.standardise_rapid">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.standardise.</span></span><span class="sig-name descname"><span class="pre">standardise_rapid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span></span></span><a class="reference internal" href="_modules/amocatlas/standardise.html#standardise_rapid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.standardise.standardise_rapid" title="Link to this definition"></a></dt>
+<dd><p>Standardise RAPID array dataset to consistent format.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version This: </span>function is deprecated. Use <a class="reference internal" href="#amocatlas.standardise.standardise_data" title="amocatlas.standardise.standardise_data"><code class="xref py py-func docutils literal notranslate"><span class="pre">standardise_data()</span></code></a> instead.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ds</strong> (<em>xr.Dataset</em>) – Raw RAPID dataset to standardise.</p></li>
+<li><p><strong>file_name</strong> (<em>str</em>) – Original filename for metadata.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Standardised dataset with consistent metadata and formatting.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xr.Dataset</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.standardise.standardise_samba">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.standardise.</span></span><span class="sig-name descname"><span class="pre">standardise_samba</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span></span></span><a class="reference internal" href="_modules/amocatlas/standardise.html#standardise_samba"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.standardise.standardise_samba" title="Link to this definition"></a></dt>
+<dd><p>Standardise SAMBA array dataset to consistent format.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version This: </span>function is deprecated. Use <a class="reference internal" href="#amocatlas.standardise.standardise_data" title="amocatlas.standardise.standardise_data"><code class="xref py py-func docutils literal notranslate"><span class="pre">standardise_data()</span></code></a> instead.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ds</strong> (<em>xr.Dataset</em>) – Raw SAMBA dataset to standardise.</p></li>
+<li><p><strong>file_name</strong> (<em>str</em>) – Original filename for metadata.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Standardised dataset with consistent metadata and formatting.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xr.Dataset</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.standardise.standardise_sf2021">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.standardise.</span></span><span class="sig-name descname"><span class="pre">standardise_sf2021</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span></span></span><a class="reference internal" href="_modules/amocatlas/standardise.html#standardise_sf2021"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.standardise.standardise_sf2021" title="Link to this definition"></a></dt>
+<dd><p>Standardise SF2021 array dataset to consistent format.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.standardise.standardise_zheng2024">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.standardise.</span></span><span class="sig-name descname"><span class="pre">standardise_zheng2024</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span></span></span><a class="reference internal" href="_modules/amocatlas/standardise.html#standardise_zheng2024"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.standardise.standardise_zheng2024" title="Link to this definition"></a></dt>
+<dd><p>Standardise ZHENG2024 array dataset to consistent format.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.standardise.standardize_depth_coordinate">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.standardise.</span></span><span class="sig-name descname"><span class="pre">standardize_depth_coordinate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dataset</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span></span></span><a class="reference internal" href="_modules/amocatlas/standardise.html#standardize_depth_coordinate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.standardise.standardize_depth_coordinate" title="Link to this definition"></a></dt>
+<dd><p>Standardize DEPTH coordinate to comply with AMOCatlas specifications.</p>
+<p>All datasets with a DEPTH coordinate should have standardized attributes:
+- data type: double
+- long_name: “Depth below surface of the water”
+- standard_name: “depth”
+- units: “meters”</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ds</strong> (<em>xr.Dataset</em>) – Dataset to standardize DEPTH coordinate for.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dataset with standardized DEPTH coordinate attributes.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xr.Dataset</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.standardise.standardize_latitude_coordinate">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.standardise.</span></span><span class="sig-name descname"><span class="pre">standardize_latitude_coordinate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dataset</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span></span></span><a class="reference internal" href="_modules/amocatlas/standardise.html#standardize_latitude_coordinate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.standardise.standardize_latitude_coordinate" title="Link to this definition"></a></dt>
+<dd><p>Standardize LATITUDE coordinate to comply with AMOCatlas specifications.</p>
+<p>All datasets with a LATITUDE coordinate should have standardized attributes:
+- data type: double
+- long_name: “Latitude north (WGS84)”
+- standard_name: “latitude”
+- units: “degree_north”</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ds</strong> (<em>xr.Dataset</em>) – Dataset to standardize LATITUDE coordinate for.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dataset with standardized LATITUDE coordinate attributes.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xr.Dataset</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.standardise.standardize_longitude_coordinate">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.standardise.</span></span><span class="sig-name descname"><span class="pre">standardize_longitude_coordinate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dataset</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span></span></span><a class="reference internal" href="_modules/amocatlas/standardise.html#standardize_longitude_coordinate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.standardise.standardize_longitude_coordinate" title="Link to this definition"></a></dt>
+<dd><p>Standardize LONGITUDE coordinate to comply with AMOCatlas specifications.</p>
+<p>All datasets with a LONGITUDE coordinate should have standardized attributes:
+- data type: double
+- long_name: “longitude east (WGS84)”
+- standard_name: “longitude”
+- units: “degree_east”</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ds</strong> (<em>xr.Dataset</em>) – Dataset to standardize LONGITUDE coordinate for.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dataset with standardized LONGITUDE coordinate attributes.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xr.Dataset</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.standardise.standardize_sigma0_coordinate">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.standardise.</span></span><span class="sig-name descname"><span class="pre">standardize_sigma0_coordinate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dataset</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span></span></span><a class="reference internal" href="_modules/amocatlas/standardise.html#standardize_sigma0_coordinate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.standardise.standardize_sigma0_coordinate" title="Link to this definition"></a></dt>
+<dd><p>Standardize SIGMA0 coordinate to comply with AMOCatlas specifications.</p>
+<p>All datasets with a SIGMA0 coordinate should have standardized attributes:
+- data type: double
+- long_name: “Potential density anomaly to 1000 kg/m3, surface reference”
+- standard_name: “sea_water_sigma_theta”
+- units: “kg m-3”</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ds</strong> (<em>xr.Dataset</em>) – Dataset to standardize SIGMA0 coordinate for.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dataset with standardized SIGMA0 coordinate attributes.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xr.Dataset</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.standardise.standardize_time_coordinate">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.standardise.</span></span><span class="sig-name descname"><span class="pre">standardize_time_coordinate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dataset</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span></span></span><a class="reference internal" href="_modules/amocatlas/standardise.html#standardize_time_coordinate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.standardise.standardize_time_coordinate" title="Link to this definition"></a></dt>
+<dd><p>Standardize TIME coordinate to comply with AMOCatlas specifications.</p>
+<p>All datasets with a TIME coordinate should have standardized attributes:
+- data type: datetime64[ns]
+- long_name: “Time elapsed since 1970-01-01T00:00:00Z”
+- standard_name: “time”
+- calendar: “gregorian”
+- units: “seconds since 1970-01-01T00:00:00Z”
+- vocabulary: “<a class="reference external" href="http://vocab.nerc.ac.uk/collection/OG1/current/TIME/">http://vocab.nerc.ac.uk/collection/OG1/current/TIME/</a>”</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ds</strong> (<em>xr.Dataset</em>) – Dataset to standardize TIME coordinate for.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dataset with standardized TIME coordinate attributes.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xr.Dataset</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.standardise.standardize_units">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.standardise.</span></span><span class="sig-name descname"><span class="pre">standardize_units</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dataset</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span></span></span><a class="reference internal" href="_modules/amocatlas/standardise.html#standardize_units"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.standardise.standardize_units" title="Link to this definition"></a></dt>
+<dd><p>Standardize variable units throughout the dataset.</p>
+<p>Uses the unit mapping from utilities module.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ds</strong> (<em>xr.Dataset</em>) – Dataset to standardize units for.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dataset with standardized variable units.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xr.Dataset</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tools.html" class="btn btn-neutral float-left" title="tools" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="utilities.html" class="btn btn-neutral float-right" title="utilities" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Eleanor Frajka-Williams, Isabelle Schmitz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

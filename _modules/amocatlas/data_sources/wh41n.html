@@ -1,0 +1,427 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>amocatlas.data_sources.wh41n &mdash; amocatlas 0.4.0.post1.dev10 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=1078e4cb" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=6d4c28d6"></script>
+      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../../../about.html" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            amocatlas
+              <img src="../../../_static/logo.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../about.html">About AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../about.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../about.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../faq.html">FAQ / Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Demo notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../demo-output.html">AMOCatlas demo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dataset Reports</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../reports/index.html">Data Sources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/format.html">AMOCatlas data format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/vocabulary.html">amocvocab — variable vocabulary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../amoc_paperfigs-output.html">AMOC Publication Figures</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Repository and API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">GitHub Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../amocatlas.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">amocatlas</span> <span class="pre">API</span></code></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers' guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers/developer_guide.html">Developer Guide for AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers/git_beginners_guide.html">Git for Beginners: Workflow Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers/actions.html">Extra GitHub features: Actions &amp; Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers/housekeeping.html">Project Maintenance Checklist</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">amocatlas</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">amocatlas.data_sources.wh41n</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for amocatlas.data_sources.wh41n</h1><div class="highlight"><pre>
+<span></span><span class="sd">"""41°N array data reader for AMOCatlas.</span>
+
+<span class="sd">This module provides functions to read and process data from the 41°N</span>
+<span class="sd">observing array in the North Atlantic. This array monitors the Atlantic</span>
+<span class="sd">Meridional Overturning Circulation and associated heat transport at the</span>
+<span class="sd">northern boundary of the subtropical gyre.</span>
+<span class="sd">"""</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pandas.errors</span><span class="w"> </span><span class="kn">import</span> <span class="n">EmptyDataError</span><span class="p">,</span> <span class="n">ParserError</span>
+
+<span class="c1"># Import the modules used</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">amocatlas</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span><span class="p">,</span> <span class="n">utilities</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">amocatlas.logger</span><span class="w"> </span><span class="kn">import</span> <span class="n">log_error</span><span class="p">,</span> <span class="n">log_info</span><span class="p">,</span> <span class="n">log_warning</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">amocatlas.reader_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">ReaderUtils</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">amocatlas.utilities</span><span class="w"> </span><span class="kn">import</span> <span class="n">apply_defaults</span>
+
+<span class="n">log</span> <span class="o">=</span> <span class="n">logger</span><span class="o">.</span><span class="n">log</span>  <span class="c1"># Use the global logger</span>
+
+<span class="c1"># Datasource identifier for automatic standardization</span>
+<span class="n">DATASOURCE_ID</span> <span class="o">=</span> <span class="s2">"wh41n"</span>
+
+<span class="c1"># Default list of 41N data files</span>
+<span class="n">WH41N_DEFAULT_FILES</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"hobbs_willis_amoc41N_tseries.txt"</span><span class="p">,</span>
+    <span class="s2">"trans_ARGO_ERA5.nc"</span><span class="p">,</span>
+    <span class="s2">"Q_ARGO_obs_dens_2000depth_ERA5.nc"</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">A41N_TRANSPORT_FILES</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"hobbs_willis_amoc41N_tseries.txt"</span><span class="p">]</span>
+<span class="n">A41N_DEFAULT_SOURCE</span> <span class="o">=</span> <span class="s2">"https://zenodo.org/records/18238115/files/"</span>
+
+<span class="n">A41N_METADATA</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"project"</span><span class="p">:</span> <span class="s2">"Atlantic Meridional Overturning Circulation Near 41N from Altimetry and Argo Observations"</span><span class="p">,</span>
+    <span class="s2">"weblink"</span><span class="p">:</span> <span class="s2">"https://zenodo.org/records/18238115"</span><span class="p">,</span>
+    <span class="s2">"comment"</span><span class="p">:</span> <span class="s2">"Dataset accessed and processed via http://github.com/AMOCcommunity/amocatlas"</span><span class="p">,</span>
+    <span class="s2">"doi"</span><span class="p">:</span> <span class="s2">"10.5281/zenodo.8170365"</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">A41N_FILE_METADATA</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"hobbs_willis_amoc41N_tseries.txt"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"data_product"</span><span class="p">:</span> <span class="s2">"Transport time series of Ekman volume, Northward geostrophc, Meridional Overturning volume and Meridional Overturning Heat"</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">"trans_Argo_ERA5.nc"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"data_product"</span><span class="p">:</span> <span class="s2">"Time series of geostrophic transport as a function of latitude, longitude, depth and time, for the upper 2000 m for latitudes near 41 N and time series of Ekman Transport and Overturning Transport"</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">"Q_ARGO_obs_dens_2000depth_ERA5.nc"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"data_product"</span><span class="p">:</span> <span class="s2">"Time series of heat transport based on various assumptions about the temperature of the ocean for depths below 2000m"</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+
+
+<div class="viewcode-block" id="read_41n">
+<a class="viewcode-back" href="../../../data_sources.html#amocatlas.data_sources.read_41n">[docs]</a>
+<span class="nd">@apply_defaults</span><span class="p">(</span><span class="n">A41N_DEFAULT_SOURCE</span><span class="p">,</span> <span class="n">WH41N_DEFAULT_FILES</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_41n</span><span class="p">(</span>
+    <span class="c1">##    source: str,</span>
+    <span class="n">source</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">file_list</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+    <span class="n">transport_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">data_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">redownload</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">track_added_attrs</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">"""Load the 41N transport datasets from a URL or local file path into xarray Datasets.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    source : str, optional</span>
+<span class="sd">        Local path to the data directory (remote source is handled per-file).</span>
+<span class="sd">    file_list : str or list of str, optional</span>
+<span class="sd">        Filename or list of filenames to process.</span>
+<span class="sd">        Defaults to 41N_DEFAULT_FILES.</span>
+<span class="sd">    transport_only : bool, optional</span>
+<span class="sd">        If True, restrict to transport files only.</span>
+<span class="sd">    data_dir : str, Path or None, optional</span>
+<span class="sd">        Optional local data directory.</span>
+<span class="sd">    redownload : bool, optional</span>
+<span class="sd">        If True, force redownload of the data.</span>
+<span class="sd">    track_added_attrs : bool, optional</span>
+<span class="sd">        If True, track which attributes were added during metadata enrichment.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list of xr.Dataset</span>
+<span class="sd">        List of loaded xarray datasets with basic inline and file-specific metadata.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ValueError</span>
+<span class="sd">        If no source is provided for a file and no default URL mapping is found.</span>
+<span class="sd">    FileNotFoundError</span>
+<span class="sd">        If the file cannot be downloaded or does not exist locally.</span>
+
+<span class="sd">    """</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"Starting to read 41N dataset"</span><span class="p">)</span>
+
+    <span class="c1"># Load YAML metadata with fallback</span>
+    <span class="n">global_metadata</span><span class="p">,</span> <span class="n">yaml_file_metadata</span> <span class="o">=</span> <span class="n">ReaderUtils</span><span class="o">.</span><span class="n">load_array_metadata_with_fallback</span><span class="p">(</span>
+        <span class="n">DATASOURCE_ID</span><span class="p">,</span> <span class="n">A41N_METADATA</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Ensure file_list has a default</span>
+    <span class="k">if</span> <span class="n">file_list</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">file_list</span> <span class="o">=</span> <span class="n">WH41N_DEFAULT_FILES</span>
+    <span class="k">if</span> <span class="n">transport_only</span><span class="p">:</span>
+        <span class="n">file_list</span> <span class="o">=</span> <span class="n">A41N_TRANSPORT_FILES</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">file_list</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">file_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">file_list</span><span class="p">]</span>
+    <span class="c1"># Determine the local storage path</span>
+    <span class="n">local_data_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span> <span class="k">if</span> <span class="n">data_dir</span> <span class="k">else</span> <span class="n">utilities</span><span class="o">.</span><span class="n">get_default_data_dir</span><span class="p">()</span>
+    <span class="n">local_data_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Print information about files being loaded</span>
+    <span class="n">ReaderUtils</span><span class="o">.</span><span class="n">print_loading_info</span><span class="p">(</span><span class="n">file_list</span><span class="p">,</span> <span class="n">DATASOURCE_ID</span><span class="p">,</span> <span class="n">A41N_FILE_METADATA</span><span class="p">)</span>
+
+    <span class="n">datasets</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">added_attrs_per_dataset</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">track_added_attrs</span> <span class="k">else</span> <span class="kc">None</span>
+    <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">file_list</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">".txt"</span><span class="p">)</span> <span class="ow">or</span> <span class="n">file</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">".nc"</span><span class="p">)):</span>
+            <span class="n">log_warning</span><span class="p">(</span><span class="s2">"Skipping unsupported file type : </span><span class="si">%s</span><span class="s2">"</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+            <span class="k">continue</span>
+
+        <span class="n">download_url</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">source</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">'/'</span><span class="p">)</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2">"</span> <span class="k">if</span> <span class="n">utilities</span><span class="o">.</span><span class="n">is_valid_url</span><span class="p">(</span><span class="n">source</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="p">)</span>
+
+        <span class="n">file_path</span> <span class="o">=</span> <span class="n">utilities</span><span class="o">.</span><span class="n">resolve_file_path</span><span class="p">(</span>
+            <span class="n">file_name</span><span class="o">=</span><span class="n">file</span><span class="p">,</span>
+            <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span>
+            <span class="n">download_url</span><span class="o">=</span><span class="n">download_url</span><span class="p">,</span>
+            <span class="n">local_data_dir</span><span class="o">=</span><span class="n">local_data_dir</span><span class="p">,</span>
+            <span class="n">redownload</span><span class="o">=</span><span class="n">redownload</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Open dataset</span>
+
+        <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">".nc"</span><span class="p">):</span>
+            <span class="c1"># file .nc</span>
+            <span class="c1"># Use ReaderUtils for consistent dataset loading</span>
+            <span class="n">ds</span> <span class="o">=</span> <span class="n">ReaderUtils</span><span class="o">.</span><span class="n">safe_load_dataset</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+
+            <span class="c1"># Fix time coordinate for ARGO files: convert YYYYMM to datetime</span>
+            <span class="k">if</span> <span class="p">(</span><span class="s2">"trans_ARGO_ERA5"</span> <span class="ow">in</span> <span class="n">file</span> <span class="ow">or</span> <span class="s2">"Q_ARGO"</span> <span class="ow">in</span> <span class="n">file</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">"time"</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">coords</span><span class="p">:</span>
+                <span class="n">time_data</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s2">"time"</span><span class="p">]</span>
+                <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span>
+                    <span class="n">time_data</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="s2">"dtype"</span>
+                <span class="p">)</span> <span class="ow">and</span> <span class="n">time_data</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">kind</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"i"</span><span class="p">,</span> <span class="s2">"u"</span><span class="p">]:</span>
+                    <span class="c1"># Check if values look like YYYYMM format</span>
+                    <span class="n">first_val</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">time_data</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                    <span class="k">if</span> <span class="mi">200000</span> <span class="o">&lt;=</span> <span class="n">first_val</span> <span class="o">&lt;=</span> <span class="mi">250000</span><span class="p">:</span>  <span class="c1"># YYYYMM range check</span>
+                        <span class="n">log_info</span><span class="p">(</span>
+                            <span class="sa">f</span><span class="s2">"Converting YYYYMM time format to datetime for </span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2">"</span>
+                        <span class="p">)</span>
+
+                        <span class="c1"># Convert YYYYMM to datetime</span>
+                        <span class="n">yyyymm_values</span> <span class="o">=</span> <span class="n">time_data</span><span class="o">.</span><span class="n">values</span>
+                        <span class="n">datetime_values</span> <span class="o">=</span> <span class="p">[]</span>
+                        <span class="k">for</span> <span class="n">yyyymm</span> <span class="ow">in</span> <span class="n">yyyymm_values</span><span class="p">:</span>
+                            <span class="n">year</span> <span class="o">=</span> <span class="n">yyyymm</span> <span class="o">//</span> <span class="mi">100</span>
+                            <span class="n">month</span> <span class="o">=</span> <span class="n">yyyymm</span> <span class="o">%</span> <span class="mi">100</span>
+                            <span class="c1"># Use 15th of month as representative date</span>
+                            <span class="n">dt</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+                            <span class="n">datetime_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dt</span><span class="p">)</span>
+
+                        <span class="c1"># Replace time coordinate with TIME and convert to standard format</span>
+                        <span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s2">"time"</span><span class="p">:</span> <span class="s2">"TIME"</span><span class="p">})</span>
+                        <span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">assign_coords</span><span class="p">(</span><span class="n">TIME</span><span class="o">=</span><span class="n">datetime_values</span><span class="p">)</span>
+
+                        <span class="c1"># Add proper TIME coordinate attributes</span>
+                        <span class="n">ds</span><span class="p">[</span><span class="s2">"TIME"</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+                            <span class="p">{</span>
+                                <span class="s2">"long_name"</span><span class="p">:</span> <span class="s2">"Time"</span><span class="p">,</span>
+                                <span class="s2">"standard_name"</span><span class="p">:</span> <span class="s2">"time"</span><span class="p">,</span>
+                                <span class="s2">"calendar"</span><span class="p">:</span> <span class="s2">"gregorian"</span><span class="p">,</span>
+                                <span class="s2">"units"</span><span class="p">:</span> <span class="s2">"datetime64[ns]"</span><span class="p">,</span>
+                            <span class="p">}</span>
+                        <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># file .txt - handle both old format (with % comments) and new CSV format</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">column_names</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">utilities</span><span class="o">.</span><span class="n">parse_ascii_header</span><span class="p">(</span>
+                    <span class="n">file_path</span><span class="p">,</span> <span class="n">comment_char</span><span class="o">=</span><span class="s2">"%"</span>
+                <span class="p">)</span>
+                <span class="n">df</span> <span class="o">=</span> <span class="n">utilities</span><span class="o">.</span><span class="n">read_ascii_file</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">comment_char</span><span class="o">=</span><span class="s2">"%"</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">column_names</span><span class="p">:</span>
+                    <span class="c1"># Old format with % comment headers - use parsed column names</span>
+                    <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">column_names</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># New CSV format (v5) - file starts directly with header line</span>
+                    <span class="c1"># Re-read as proper CSV to get correct column parsing</span>
+                    <span class="n">df</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+                    <span class="c1"># Ensure we have the expected 5 columns</span>
+                    <span class="n">expected_columns</span> <span class="o">=</span> <span class="p">[</span>
+                        <span class="s2">"Decimal year"</span><span class="p">,</span>
+                        <span class="s2">"Ekman (Sv)"</span><span class="p">,</span>
+                        <span class="s2">"Geos (Sv)"</span><span class="p">,</span>
+                        <span class="s2">"MOC (Sv)"</span><span class="p">,</span>
+                        <span class="s2">"MOC (PW)"</span><span class="p">,</span>
+                    <span class="p">]</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">expected_columns</span><span class="p">):</span>
+                        <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">expected_columns</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">log_error</span><span class="p">(</span>
+                            <span class="s2">"Unexpected number of columns (</span><span class="si">%d</span><span class="s2">) in CSV file </span><span class="si">%s</span><span class="s2">"</span><span class="p">,</span>
+                            <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">),</span>
+                            <span class="n">file</span><span class="p">,</span>
+                        <span class="p">)</span>
+                        <span class="c1"># Use expected columns anyway as fallback</span>
+                        <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">expected_columns</span><span class="p">[:</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)]</span>
+            <span class="k">except</span> <span class="p">(</span><span class="ne">OSError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">,</span> <span class="ne">KeyError</span><span class="p">,</span> <span class="n">EmptyDataError</span><span class="p">,</span> <span class="n">ParserError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">log_error</span><span class="p">(</span><span class="s2">"Failed to parse ASCII file: </span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">"</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">"Failed to parse ASCII file: </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span>
+                <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
+            <span class="c1"># Time handling</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+                    <span class="k">lambda</span> <span class="n">col</span><span class="p">:</span> <span class="p">(</span>
+                        <span class="n">col</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">","</span><span class="p">,</span> <span class="s2">""</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+                <span class="c1"># df['Decimal year'] = df['Decimal year'].astype(str).str.replace(',', '',regex=False).astype(float)</span>
+                <span class="n">df</span><span class="p">[</span><span class="s2">"TIME"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"Decimal year"</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+                    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span>
+                        <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+                        <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span>
+                            <span class="n">days</span><span class="o">=</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+                            <span class="o">*</span> <span class="p">(</span>
+                                <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+                                <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+                            <span class="p">)</span><span class="o">.</span><span class="n">days</span>
+                        <span class="p">)</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+                <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"Decimal year"</span><span class="p">])</span>
+                <span class="n">ds</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">"TIME"</span><span class="p">)</span><span class="o">.</span><span class="n">to_xarray</span><span class="p">()</span>
+            <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">KeyError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">,</span> <span class="ne">AttributeError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">log_error</span><span class="p">(</span>
+                    <span class="s2">"Failed to convert DataFrame to xarray Dataset for </span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">"</span><span class="p">,</span>
+                    <span class="n">file</span><span class="p">,</span>
+                    <span class="n">e</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">"Failed to convert DataFrame to xarray Dataset for </span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+                <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
+
+        <span class="c1"># Use ReaderUtils for consistent metadata attachment (for all file types)</span>
+        <span class="n">file_metadata</span> <span class="o">=</span> <span class="n">yaml_file_metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">A41N_FILE_METADATA</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="p">{}))</span>
+        <span class="k">if</span> <span class="n">track_added_attrs</span><span class="p">:</span>
+            <span class="c1"># Attach metadata with tracking</span>
+            <span class="n">ds</span><span class="p">,</span> <span class="n">attr_changes</span> <span class="o">=</span> <span class="n">ReaderUtils</span><span class="o">.</span><span class="n">attach_metadata_with_tracking</span><span class="p">(</span>
+                <span class="n">ds</span><span class="p">,</span>
+                <span class="n">file</span><span class="p">,</span>
+                <span class="n">file_path</span><span class="p">,</span>
+                <span class="n">global_metadata</span><span class="p">,</span>
+                <span class="n">yaml_file_metadata</span><span class="p">,</span>
+                <span class="n">file_metadata</span><span class="p">,</span>
+                <span class="n">DATASOURCE_ID</span><span class="p">,</span>
+                <span class="n">track_added_attrs</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">added_attrs_per_dataset</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">attr_changes</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Standard metadata attachment without tracking</span>
+            <span class="n">ds</span> <span class="o">=</span> <span class="n">ReaderUtils</span><span class="o">.</span><span class="n">attach_metadata_with_tracking</span><span class="p">(</span>
+                <span class="n">ds</span><span class="p">,</span>
+                <span class="n">file</span><span class="p">,</span>
+                <span class="n">file_path</span><span class="p">,</span>
+                <span class="n">global_metadata</span><span class="p">,</span>
+                <span class="n">yaml_file_metadata</span><span class="p">,</span>
+                <span class="n">file_metadata</span><span class="p">,</span>
+                <span class="n">DATASOURCE_ID</span><span class="p">,</span>
+                <span class="n">track_added_attrs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="n">datasets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">datasets</span><span class="p">:</span>
+        <span class="n">log_error</span><span class="p">(</span><span class="s2">"No valid 41N files in </span><span class="si">%s</span><span class="s2">"</span><span class="p">,</span> <span class="n">file_list</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"No valid data files found in </span><span class="si">{</span><span class="n">file_list</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+    <span class="n">log_info</span><span class="p">(</span><span class="s2">"Successfully loaded </span><span class="si">%d</span><span class="s2"> 41N dataset(s)"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">datasets</span><span class="p">))</span>
+    <span class="c1"># Handle track_added_attrs parameter</span>
+
+    <span class="k">if</span> <span class="n">track_added_attrs</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">added_attrs_per_dataset</span>
+    <span class="k">return</span> <span class="n">datasets</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Eleanor Frajka-Williams, Isabelle Schmitz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

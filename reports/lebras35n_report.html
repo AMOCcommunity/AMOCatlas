@@ -1,0 +1,584 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LEBRAS35N Datasets &mdash; amocatlas 0.4.0.post1.dev10 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=1078e4cb" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=6d4c28d6"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="AXMOC22S Datasets" href="axmoc22s_report.html" />
+    <link rel="prev" title="SF2021 Datasets" href="sf2021_report.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            amocatlas
+              <img src="../_static/logo.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ / Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Demo notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../demo-output.html">AMOCatlas demo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dataset Reports</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Data Sources</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="rapid_report.html">RAPID Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="osnap_report.html">OSNAP Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="move_report.html">MOVE Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samba_report.html">SAMBA Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mocha_report.html">MOCHA Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arcticgateway_report.html">ARCTICGATEWAY Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dso_report.html">DSO Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fbc_report.html">FBC Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fw2015_report.html">FW2015 Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calafat2025_report.html">CALAFAT2025 Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zheng2024_report.html">ZHENG2024 Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wh41n_report.html">WH41N Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="noac47n_report.html">NOAC47N Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nac_report.html">NAC Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sf2021_report.html">SF2021 Datasets</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">LEBRAS35N Datasets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#amoc35n-nc">AMOC35N.nc</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dataset-overview">Dataset Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dataset-visualization">Dataset Visualization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dataset-statistics">Dataset Statistics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#coordinate-information">Coordinate Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#variable-information">Variable Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#metadata-edits-applied-noted">Metadata (edits applied noted)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#amoc35n-gridded-velocities-nc">AMOC35N_gridded_velocities.nc</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Dataset Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Dataset Statistics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Coordinate Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Variable Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Metadata (edits applied noted)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="axmoc22s_report.html">AXMOC22S Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="axmoc34s_report.html">AXMOC34S Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ovide_report.html">OVIDE Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scotia_report.html">SCOTIA Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#report-features">Report Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#automated-generation">Automated Generation</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/format.html">AMOCatlas data format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/vocabulary.html">amocvocab — variable vocabulary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../amoc_paperfigs-output.html">AMOC Publication Figures</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Repository and API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">GitHub Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../amocatlas.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">amocatlas</span> <span class="pre">API</span></code></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers' guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developers/developer_guide.html">Developer Guide for AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/git_beginners_guide.html">Git for Beginners: Workflow Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/actions.html">Extra GitHub features: Actions &amp; Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/housekeeping.html">Project Maintenance Checklist</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">amocatlas</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Data Sources</a></li>
+      <li class="breadcrumb-item active">LEBRAS35N Datasets</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/reports/lebras35n_report.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="lebras35n-datasets">
+<h1>LEBRAS35N Datasets<a class="headerlink" href="#lebras35n-datasets" title="Link to this heading"></a></h1>
+<p>This report covers all available LEBRAS35N datasets.</p>
+<section id="amoc35n-nc">
+<h2>AMOC35N.nc<a class="headerlink" href="#amoc35n-nc" title="Link to this heading"></a></h2>
+<section id="dataset-overview">
+<h3>Dataset Overview<a class="headerlink" href="#dataset-overview" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Project</strong>: I. Le Bras, J. Willis, J. Fenty: The Atlantic Meridional Overturning Circulation at 35°N From Deep Moorings, Floats, and Satellite Altimeter</p></li>
+<li><p><strong>Description</strong>: The Atlantic meridional overturning circulation at 35N from deep moorings, floats, and satellite altimeter</p></li>
+<li><p><strong>Source File</strong>: AMOC35N.nc</p></li>
+<li><p><strong>Data Product</strong>: AMOC transport at 35N from deep moorings, floats, and satellite altimeter</p></li>
+<li><p><strong>License</strong>: CC-BY-4.0</p></li>
+<li><p><strong>Time Coverage</strong>: 2004-05-16 to 2014-04-17</p></li>
+<li><p><strong>Record Length</strong>: 120 observations (9.9 years)</p></li>
+<li><p><strong>Sampling Frequency</strong>: monthly</p></li>
+</ul>
+<p><strong>Citation:</strong></p>
+<blockquote>
+<div><p>Le Bras, I. A.-A, Willis, J., &amp; Fenty, I. (2023). The Atlantic meridional overturning circulation at 35°N from deep moorings, floats, and satellite altimeter. Geophysical Research Letters, 50, e2022GL101931. <a class="reference external" href="https://doi.org/10.1029/2022GL101931">https://doi.org/10.1029/2022GL101931</a></p>
+</div></blockquote>
+<p><strong>Acknowledgement:</strong></p>
+<blockquote>
+<div><p>ILB and JW gratefully acknowledge the National Aeronautics and Space Administration Grant 80NSSC20K0421. This work was done in part at the Jet Propulsion Laboratory, California Institute of Technology under a contract from NASA. The Argo float data were collected and made freely available by the International Argo Program and the national programs that contribute to it (<a class="reference external" href="https://argo.ucsd.edu,https://www.ocean-ops.org">https://argo.ucsd.edu,https://www.ocean-ops.org</a>). The Argo Program is part of the Global Ocean Observing System. ECCO is supported by NASA’s Physical Oceanography, Modeling Analysis and Prediction, and Cryosphere programs. We thank John Toole, Magdalena Andres, and the many other scientists and mariners who went to sea to collect the in situ observational data, particularly through the Line W program.</p>
+</div></blockquote>
+</section>
+<section id="dataset-visualization">
+<h3>Dataset Visualization<a class="headerlink" href="#dataset-visualization" title="Link to this heading"></a></h3>
+<figure class="align-center" id="id6">
+<a class="reference internal image-reference" href="../_images/amoc35n_2d_gridded.png"><img alt="AMOC time series plot" height="464" src="../_images/amoc35n_2d_gridded.png" width="922" />
+</a>
+<figcaption>
+<p><span class="caption-text">Time series plot for AMOC35N dataset.</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="dataset-statistics">
+<h3>Dataset Statistics<a class="headerlink" href="#dataset-statistics" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Total Variables</strong>: 4</p></li>
+<li><p><strong>Total Coordinates</strong>: 4</p></li>
+<li><p><strong>Dataset Size</strong>: 0.53 MB</p></li>
+</ul>
+</section>
+<section id="coordinate-information">
+<h3>Coordinate Information<a class="headerlink" href="#coordinate-information" title="Link to this heading"></a></h3>
+<p>The following table shows information about the dataset coordinates in the standardised version, including coordinate name remapping from the original, if any:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Coordinate</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>depth</em> → <strong>DEPTH</strong></p></td>
+<td><p><strong>Depth</strong>:  Depth below surface of the water</p></td>
+<td><p>m</p></td>
+<td><p>(560,)</p></td>
+<td><p>0.00</p></td>
+<td><p>5590.00</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>pressure</em> → <strong>PRESSURE</strong></p></td>
+<td><p>No description available</p></td>
+<td><p>unknown</p></td>
+<td><p>(560,)</p></td>
+<td><p>0.00</p></td>
+<td><p>4757.83</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>date</em> → <strong>TIME</strong></p></td>
+<td><p><strong>Time</strong>: Time of each observation in datetime format</p></td>
+<td><p>seconds since 1970-01-01T00:00:00Z</p></td>
+<td><p>(120,)</p></td>
+<td><p>2004-05-16</p></td>
+<td><p>2014-04-17</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>time</em> → <strong>TIME_FRACTION</strong></p></td>
+<td><p><strong>Time in year.fraction of year</strong>: Time of each observation which starts with the year and is followed by the fraction of the year that has passed at the time of the observation. For example, 2004.5 would correspond to June 30, 2004.</p></td>
+<td><p>year.fractionofyear</p></td>
+<td><p>(120,)</p></td>
+<td><p>2004.38</p></td>
+<td><p>2014.29</p></td>
+<td><p>0.0%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="variable-information">
+<h3>Variable Information<a class="headerlink" href="#variable-information" title="Link to this heading"></a></h3>
+<p>The following table shows the mapping from original variable names to standardized names,
+along with key statistics for each variable.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>MOCdepth</em> → <strong>MOC</strong></p></td>
+<td><p><strong>ocean meridional overturning streamfunction</strong>: AMOC transport time series in depth space</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(120,)</p></td>
+<td><p>8.72</p></td>
+<td><p>21.21</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>MOCsigma</em> → <strong>MOC_SIGMA2</strong></p></td>
+<td><p><strong>ocean meridional overturning streamfunction</strong>: AMOC transport time series in density space, with potential density referenced to 2000m</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(120,)</p></td>
+<td><p>10.88</p></td>
+<td><p>23.60</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>psi</em> → <strong>PSI_Z</strong></p></td>
+<td><p><strong>ocean meridional overturning streamfunction</strong>: Integrated across-basin transport streamfunction in depth space</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(120, 560)</p></td>
+<td><p>-5.76</p></td>
+<td><p>19.66</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Ekman</em> → <strong>TRANS_EKMAN</strong></p></td>
+<td><p><strong>Ekman transport</strong>: Ekman transport time series at 35N derived from CCMP</p></td>
+<td><p>sverdrup</p></td>
+<td><p>(120,)</p></td>
+<td><p>-8.86</p></td>
+<td><p>2.28</p></td>
+<td><p>0.0%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="metadata-edits-applied-noted">
+<h3>Metadata (edits applied noted)<a class="headerlink" href="#metadata-edits-applied-noted" title="Link to this heading"></a></h3>
+<p>The following metadata describes this dataset:</p>
+<ul class="simple">
+<li><p><strong>Summary</strong>: The Atlantic meridional overturning circulation at 35N from deep moorings, floats, and satellite altimeter</p></li>
+<li><p><strong>Description*</strong>: The Atlantic meridional overturning circulation at 35N from deep moorings, floats, and satellite altimeter</p></li>
+<li><p><strong>Program*</strong>: AMOC at 35°N</p></li>
+<li><p><strong>Project*</strong>: I. Le Bras, J. Willis, J. Fenty: The Atlantic Meridional Overturning Circulation at 35°N From Deep Moorings, Floats, and Satellite Altimeter</p></li>
+<li><p><strong>License*</strong>: CC-BY-4.0</p></li>
+<li><p><strong>Acknowledgment*</strong>: ILB and JW gratefully acknowledge the National Aeronautics and Space Administration Grant 80NSSC20K0421. This work was done in part at the Jet Propulsion Laboratory, California Institute of Technology under a contract from NASA. The Argo float data were collected and made freely available by the International Argo Program and the national programs that contribute to it (<a class="reference external" href="https://argo.ucsd.edu,https://www.ocean-ops.org">https://argo.ucsd.edu,https://www.ocean-ops.org</a>). The Argo Program is part of the Global Ocean Observing System. ECCO is supported by NASA’s Physical Oceanography, Modeling Analysis and Prediction, and Cryosphere programs. We thank John Toole, Magdalena Andres, and the many other scientists and mariners who went to sea to collect the in situ observational data, particularly through the Line W program.</p></li>
+<li><p><strong>Weblink*</strong>: <a class="reference external" href="https://zenodo.org/records/7262142">https://zenodo.org/records/7262142</a></p></li>
+<li><p><strong>Data Product*</strong>: AMOC transport at 35N from deep moorings, floats, and satellite altimeter</p></li>
+<li><p><strong>Time Coverage Start*</strong>: 2004-05-16</p></li>
+<li><p><strong>Time Coverage End*</strong>: 2014-04-17</p></li>
+<li><p><strong>Contributing Institutions*</strong>: Woodshole Oceanographic Institution (WHOI), Jet Propulsion Laboratory (JPL) at California Institute of Technology</p></li>
+<li><p><strong>Contributing Institutions Vocabulary</strong>: ,</p></li>
+<li><p><strong>Contributing Institutions Role</strong>: ,</p></li>
+<li><p><strong>Conventions</strong>: CF-1.8, ACDD-1.3, OceanSITES-1.5</p></li>
+<li><p><strong>featureType*</strong>: timeSeries</p></li>
+<li><p><strong>featureType_vocabulary</strong>: <a class="reference external" href="https://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_features_and_feature_types">https://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_features_and_feature_types</a></p></li>
+<li><p><strong>Source File*</strong>: AMOC35N.nc</p></li>
+<li><p><strong>Source Path*</strong>: ~/.amocatlas_data/AMOC35N.nc</p></li>
+<li><p><strong>Source Url*</strong>: <a class="reference external" href="https://zenodo.org/records/7262142/files/">https://zenodo.org/records/7262142/files/</a></p></li>
+<li><p><strong>Date Modified</strong>: 2026-08-01T00:00:00Z</p></li>
+<li><p><strong>Processing Software</strong>: <a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">http://github.com/AMOCcommunity/amocatlas</a></p></li>
+<li><p><strong>Processing Version</strong>: v0.4.0</p></li>
+<li><p><strong>Processing Datasource*</strong>: lebras35n</p></li>
+<li><p><strong>Applied Variable Mapping</strong>: [Complex metadata structure - 11 items]</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="amoc35n-gridded-velocities-nc">
+<h2>AMOC35N_gridded_velocities.nc<a class="headerlink" href="#amoc35n-gridded-velocities-nc" title="Link to this heading"></a></h2>
+<section id="id1">
+<h3>Dataset Overview<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Project</strong>: I. Le Bras, J. Willis, J. Fenty: The Atlantic Meridional Overturning Circulation at 35°N From Deep Moorings, Floats, and Satellite Altimeter</p></li>
+<li><p><strong>Description</strong>: The Atlantic meridional overturning circulation at 35N from deep moorings, floats, and satellite altimeter</p></li>
+<li><p><strong>Source File</strong>: AMOC35N_gridded_velocities.nc</p></li>
+<li><p><strong>Data Product</strong>: Gridded velocities at 35N from deep moorings, floats, and satellite altimeter</p></li>
+<li><p><strong>License</strong>: CC-BY-4.0</p></li>
+<li><p><strong>Time Coverage</strong>: 2004-05-16 to 2014-04-17</p></li>
+<li><p><strong>Record Length</strong>: 120 observations (9.9 years)</p></li>
+<li><p><strong>Sampling Frequency</strong>: monthly</p></li>
+</ul>
+<p><strong>Citation:</strong></p>
+<blockquote>
+<div><p>Le Bras, I. A.-A, Willis, J., &amp; Fenty, I. (2023). The Atlantic meridional overturning circulation at 35°N from deep moorings, floats, and satellite altimeter. Geophysical Research Letters, 50, e2022GL101931. <a class="reference external" href="https://doi.org/10.1029/2022GL101931">https://doi.org/10.1029/2022GL101931</a></p>
+</div></blockquote>
+<p><strong>Acknowledgement:</strong></p>
+<blockquote>
+<div><p>ILB and JW gratefully acknowledge the National Aeronautics and Space Administration Grant 80NSSC20K0421. This work was done in part at the Jet Propulsion Laboratory, California Institute of Technology under a contract from NASA. The Argo float data were collected and made freely available by the International Argo Program and the national programs that contribute to it (<a class="reference external" href="https://argo.ucsd.edu,https://www.ocean-ops.org">https://argo.ucsd.edu,https://www.ocean-ops.org</a>). The Argo Program is part of the Global Ocean Observing System. ECCO is supported by NASA’s Physical Oceanography, Modeling Analysis and Prediction, and Cryosphere programs. We thank John Toole, Magdalena Andres, and the many other scientists and mariners who went to sea to collect the in situ observational data, particularly through the Line W program.</p>
+</div></blockquote>
+</section>
+<section id="id2">
+<h3>Dataset Statistics<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Total Variables</strong>: 4</p></li>
+<li><p><strong>Total Coordinates</strong>: 7</p></li>
+<li><p><strong>Dataset Size</strong>: 288.32 MB</p></li>
+</ul>
+</section>
+<section id="id3">
+<h3>Coordinate Information<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<p>The following table shows information about the dataset coordinates in the standardised version, including coordinate name remapping from the original, if any:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Coordinate</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>depth</em> → <strong>DEPTH</strong></p></td>
+<td><p><strong>Depth</strong>:  Depth below surface of the water</p></td>
+<td><p>m</p></td>
+<td><p>(560,)</p></td>
+<td><p>0.00</p></td>
+<td><p>5590.00</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>distance</em> → <strong>DISTANCE</strong></p></td>
+<td><p>No description available</p></td>
+<td><p>unknown</p></td>
+<td><p>(280,)</p></td>
+<td><p>0.00</p></td>
+<td><p>6163.93</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>lat</em> → <strong>LATITUDE</strong></p></td>
+<td><p><strong>Latitude</strong>: Latitude north (WGS84)</p></td>
+<td><p>degree_north</p></td>
+<td><p>(280,)</p></td>
+<td><p>35.00</p></td>
+<td><p>40.27</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>lon</em> → <strong>LONGITUDE</strong></p></td>
+<td><p><strong>Longitude</strong>: Longitude east (WGS84)</p></td>
+<td><p>degree_east</p></td>
+<td><p>(280,)</p></td>
+<td><p>-70.20</p></td>
+<td><p>-6.12</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>pressure</em> → <strong>PRESSURE</strong></p></td>
+<td><p>No description available</p></td>
+<td><p>unknown</p></td>
+<td><p>(560,)</p></td>
+<td><p>0.00</p></td>
+<td><p>4757.83</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>date</em> → <strong>TIME</strong></p></td>
+<td><p>Time</p></td>
+<td><p>seconds since 1970-01-01T00:00:00Z</p></td>
+<td><p>(120,)</p></td>
+<td><p>2004-05-16</p></td>
+<td><p>2014-04-17</p></td>
+<td><p>0.0%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>time</em> → <strong>TIME_FRACTION</strong></p></td>
+<td><p>No description available</p></td>
+<td><p>unknown</p></td>
+<td><p>(120,)</p></td>
+<td><p>2004.38</p></td>
+<td><p>2014.29</p></td>
+<td><p>0.0%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id4">
+<h3>Variable Information<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p>The following table shows the mapping from original variable names to standardized names,
+along with key statistics for each variable.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Min Value</p></th>
+<th class="head"><p>Max Value</p></th>
+<th class="head"><p>Missing %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><em>area</em> → <strong>AREA</strong></p></td>
+<td><p><strong>Grid cell area</strong>: Area of each grid cell in the gridded velocity product</p></td>
+<td><p>m^2</p></td>
+<td><p>(280, 560)</p></td>
+<td><p>85083.94</p></td>
+<td><p>227713.82</p></td>
+<td><p>0.4%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>bathymetry</em> → <strong>BATHYMETRY</strong></p></td>
+<td><p><strong>Bathymetry</strong>: Gridded bathymetry through the section</p></td>
+<td><p>m</p></td>
+<td><p>(280,)</p></td>
+<td><p>-5621.35</p></td>
+<td><p>-66.07</p></td>
+<td><p>0.4%</p></td>
+</tr>
+<tr class="row-even"><td><p><em>sigma2</em> → <strong>SIGMA2</strong></p></td>
+<td><p><strong>Potential density referenced to 2000m</strong>: Gridded potential density time series referenced to 2000m through the section</p></td>
+<td><p>kg/m^3</p></td>
+<td><p>(560, 280, 120)</p></td>
+<td><p>30.66</p></td>
+<td><p>37.11</p></td>
+<td><p>28.2%</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>vg</em> → <strong>V_GEOSTROPHIC</strong></p></td>
+<td><p><strong>Geostrophic velocity</strong>: Gridded geostrophic velocity time series through the section</p></td>
+<td><p>m s-1</p></td>
+<td><p>(560, 280, 120)</p></td>
+<td><p>-0.51</p></td>
+<td><p>1.48</p></td>
+<td><p>28.5%</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id5">
+<h3>Metadata (edits applied noted)<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<p>The following metadata describes this dataset:</p>
+<ul class="simple">
+<li><p><strong>Summary</strong>: The Atlantic meridional overturning circulation at 35N from deep moorings, floats, and satellite altimeter</p></li>
+<li><p><strong>Description*</strong>: The Atlantic meridional overturning circulation at 35N from deep moorings, floats, and satellite altimeter</p></li>
+<li><p><strong>Program*</strong>: AMOC at 35°N</p></li>
+<li><p><strong>Project*</strong>: I. Le Bras, J. Willis, J. Fenty: The Atlantic Meridional Overturning Circulation at 35°N From Deep Moorings, Floats, and Satellite Altimeter</p></li>
+<li><p><strong>License*</strong>: CC-BY-4.0</p></li>
+<li><p><strong>Acknowledgment*</strong>: ILB and JW gratefully acknowledge the National Aeronautics and Space Administration Grant 80NSSC20K0421. This work was done in part at the Jet Propulsion Laboratory, California Institute of Technology under a contract from NASA. The Argo float data were collected and made freely available by the International Argo Program and the national programs that contribute to it (<a class="reference external" href="https://argo.ucsd.edu,https://www.ocean-ops.org">https://argo.ucsd.edu,https://www.ocean-ops.org</a>). The Argo Program is part of the Global Ocean Observing System. ECCO is supported by NASA’s Physical Oceanography, Modeling Analysis and Prediction, and Cryosphere programs. We thank John Toole, Magdalena Andres, and the many other scientists and mariners who went to sea to collect the in situ observational data, particularly through the Line W program.</p></li>
+<li><p><strong>Weblink*</strong>: <a class="reference external" href="https://zenodo.org/records/7262142">https://zenodo.org/records/7262142</a></p></li>
+<li><p><strong>Data Product*</strong>: Gridded velocities at 35N from deep moorings, floats, and satellite altimeter</p></li>
+<li><p><strong>Time Coverage Start*</strong>: 2004-05-16</p></li>
+<li><p><strong>Time Coverage End*</strong>: 2014-04-17</p></li>
+<li><p><strong>Contributing Institutions*</strong>: Woodshole Oceanographic Institution (WHOI), Jet Propulsion Laboratory (JPL) at California Institute of Technology</p></li>
+<li><p><strong>Contributing Institutions Vocabulary</strong>: ,</p></li>
+<li><p><strong>Contributing Institutions Role</strong>: ,</p></li>
+<li><p><strong>Conventions</strong>: CF-1.8, ACDD-1.3, OceanSITES-1.5</p></li>
+<li><p><strong>featureType*</strong>: timeSeries</p></li>
+<li><p><strong>featureType_vocabulary</strong>: <a class="reference external" href="https://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_features_and_feature_types">https://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_features_and_feature_types</a></p></li>
+<li><p><strong>Source File*</strong>: AMOC35N_gridded_velocities.nc</p></li>
+<li><p><strong>Source Path*</strong>: ~/.amocatlas_data/AMOC35N_gridded_velocities.nc</p></li>
+<li><p><strong>Source Url*</strong>: <a class="reference external" href="https://zenodo.org/records/7262142/files/">https://zenodo.org/records/7262142/files/</a></p></li>
+<li><p><strong>Date Modified</strong>: 2026-08-01T00:00:00Z</p></li>
+<li><p><strong>Processing Software</strong>: <a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">http://github.com/AMOCcommunity/amocatlas</a></p></li>
+<li><p><strong>Processing Version</strong>: v0.4.0</p></li>
+<li><p><strong>Processing Datasource*</strong>: lebras35n</p></li>
+<li><p><strong>Applied Variable Mapping</strong>: [Complex metadata structure - 18 items]</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="sf2021_report.html" class="btn btn-neutral float-left" title="SF2021 Datasets" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="axmoc22s_report.html" class="btn btn-neutral float-right" title="AXMOC22S Datasets" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Eleanor Frajka-Williams, Isabelle Schmitz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

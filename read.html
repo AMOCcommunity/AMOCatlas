@@ -1,0 +1,963 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>read module &mdash; amocatlas 0.4.0.post1.dev10 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=1078e4cb" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=6d4c28d6"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="data_sources package" href="data_sources.html" />
+    <link rel="prev" title="amocatlas API" href="amocatlas.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            amocatlas
+              <img src="_static/logo.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ / Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Demo notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="demo-output.html">AMOCatlas demo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dataset Reports</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reports/index.html">Data Sources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reference/format.html">AMOCatlas data format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/vocabulary.html">amocvocab — variable vocabulary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="amoc_paperfigs-output.html">AMOC Publication Figures</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Repository and API</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">GitHub Repo</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="amocatlas.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">amocatlas</span> <span class="pre">API</span></code></a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">read module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#key-features">Key Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#quick-examples">Quick Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#available-array-functions">Available Array Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#amocatlas.read.rapid"><code class="docutils literal notranslate"><span class="pre">rapid()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#amocatlas.read.move"><code class="docutils literal notranslate"><span class="pre">move()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#amocatlas.read.osnap"><code class="docutils literal notranslate"><span class="pre">osnap()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#amocatlas.read.samba"><code class="docutils literal notranslate"><span class="pre">samba()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#amocatlas.read.arcticgateway"><code class="docutils literal notranslate"><span class="pre">arcticgateway()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#amocatlas.read.fw2015"><code class="docutils literal notranslate"><span class="pre">fw2015()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#amocatlas.read.mocha"><code class="docutils literal notranslate"><span class="pre">mocha()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#amocatlas.read.wh41n"><code class="docutils literal notranslate"><span class="pre">wh41n()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#amocatlas.read.dso"><code class="docutils literal notranslate"><span class="pre">dso()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#amocatlas.read.noac47n"><code class="docutils literal notranslate"><span class="pre">noac47n()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#amocatlas.read.fbc"><code class="docutils literal notranslate"><span class="pre">fbc()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#amocatlas.read.calafat2025"><code class="docutils literal notranslate"><span class="pre">calafat2025()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#amocatlas.read.zheng2024"><code class="docutils literal notranslate"><span class="pre">zheng2024()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#amocatlas.read.nac"><code class="docutils literal notranslate"><span class="pre">nac()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#amocatlas.read.sf2021"><code class="docutils literal notranslate"><span class="pre">sf2021()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#amocatlas.read.lebras35n"><code class="docutils literal notranslate"><span class="pre">lebras35n()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#amocatlas.read.axmoc22s"><code class="docutils literal notranslate"><span class="pre">axmoc22s()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#amocatlas.read.axmoc34s"><code class="docutils literal notranslate"><span class="pre">axmoc34s()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="data_sources.html">data_sources package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotters.html">plotters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="writers.html">writers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html">tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standardise.html">standardise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utilities.html">utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers' guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="developers/developer_guide.html">Developer Guide for AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developers/git_beginners_guide.html">Git for Beginners: Workflow Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developers/actions.html">Extra GitHub features: Actions &amp; Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developers/housekeeping.html">Project Maintenance Checklist</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">amocatlas</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="amocatlas.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">amocatlas</span> <span class="pre">API</span></code></a></li>
+      <li class="breadcrumb-item active">read module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/read.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="read-module">
+<h1>read module<a class="headerlink" href="#read-module" title="Link to this heading"></a></h1>
+<p>The intuitive API for AMOCatlas (v0.2.0+). Returns standardized, analysis-ready data by default.</p>
+<section id="key-features">
+<h2>Key Features<a class="headerlink" href="#key-features" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Standardized by default</strong>: Consistent variable names, metadata, and units following oceanographic conventions</p></li>
+<li><p><strong>Single dataset return</strong>: Returns one dataset by default (most common use case)</p></li>
+<li><p><strong>IDE-friendly</strong>: Autocompletion support for array names and parameters</p></li>
+<li><p><strong>Flexible</strong>: Use <code class="docutils literal notranslate"><span class="pre">raw=True</span></code> to get data in original file formats when needed</p></li>
+</ul>
+</section>
+<section id="quick-examples">
+<h2>Quick Examples<a class="headerlink" href="#quick-examples" title="Link to this heading"></a></h2>
+<p>Basic usage (recommended):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">amocatlas</span><span class="w"> </span><span class="kn">import</span> <span class="n">read</span>
+
+<span class="c1"># Get standardized, analysis-ready data</span>
+<span class="n">rapid_data</span> <span class="o">=</span> <span class="n">read</span><span class="o">.</span><span class="n">rapid</span><span class="p">()</span>                    <span class="c1"># Single dataset</span>
+<span class="n">osnap_data</span> <span class="o">=</span> <span class="n">read</span><span class="o">.</span><span class="n">osnap</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s2">"2025"</span><span class="p">)</span>      <span class="c1"># Version parameter</span>
+
+<span class="c1"># Get all files for power users</span>
+<span class="n">all_rapid</span> <span class="o">=</span> <span class="n">read</span><span class="o">.</span><span class="n">rapid</span><span class="p">(</span><span class="n">all_files</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>       <span class="c1"># List of datasets</span>
+
+<span class="c1"># Get raw data when needed</span>
+<span class="n">raw_data</span> <span class="o">=</span> <span class="n">read</span><span class="o">.</span><span class="n">rapid</span><span class="p">(</span><span class="n">raw</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>              <span class="c1"># Original format</span>
+</pre></div>
+</div>
+</section>
+<section id="available-array-functions">
+<h2>Available Array Functions<a class="headerlink" href="#available-array-functions" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.read.rapid">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.read.</span></span><span class="sig-name descname"><span class="pre">rapid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transport_only</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">redownload</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_added_attrs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Dataset</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#amocatlas.read.rapid" title="Link to this definition"></a></dt>
+<dd><p>Load RAPID 26°N array data.</p>
+<p>By default, returns standardized, analysis-ready data with consistent variable names,
+metadata, and units following oceanographic conventions. Use raw=True to get data
+in original format from the source files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> (<em>str</em><em>, </em><em>Path</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – URL or local path to the data source.</p></li>
+<li><p><strong>file_list</strong> (<em>str</em><em>, </em><em>list</em><em> of </em><em>str</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – Specific files to load. Defaults to transport files.</p></li>
+<li><p><strong>transport_only</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, load only transport data. Default: True.</p></li>
+<li><p><strong>all_files</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, return list of all datasets. If False, return single dataset. Default: False.</p></li>
+<li><p><strong>raw</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, return data in original format without standardization.
+If False (default), apply standardization for analysis-ready data.</p></li>
+<li><p><strong>data_dir</strong> (<em>str</em><em>, </em><em>Path</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – Local directory for data storage.</p></li>
+<li><p><strong>redownload</strong> (<em>bool</em><em>, </em><em>optional</em>) – Force redownload of data. Default: False.</p></li>
+<li><p><strong>version</strong> (<em>str</em><em>, </em><em>optional</em>) – Dataset version (ignored for this array). Default: None.</p></li>
+<li><p><strong>track_added_attrs</strong> (<em>bool</em><em>, </em><em>optional</em>) – <strong>INTERNAL USE ONLY</strong> - Track which attributes were added during metadata
+enrichment. When True, embeds a temporary ‘_amocatlas_metadata_changes’
+attribute in each returned dataset containing {“added”: […], “modified”: […]}.
+This attribute should be extracted and removed by calling code (e.g., report
+generation). Not intended for end users. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Standardized dataset (default) or raw dataset if raw=True.
+Single dataset by default, or list of datasets if all_files=True.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xr.Dataset or list of xr.Dataset</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Standardization includes:
+- Consistent variable names across arrays
+- Proper CF-compliant metadata and attributes
+- Standardized units following oceanographic conventions
+- Additional quality control and formatting</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.read.move">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.read.</span></span><span class="sig-name descname"><span class="pre">move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transport_only</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">redownload</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_added_attrs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Dataset</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#amocatlas.read.move" title="Link to this definition"></a></dt>
+<dd><p>Load MOVE 16°N array data.</p>
+<p>By default, returns standardized, analysis-ready data with consistent variable names,
+metadata, and units following oceanographic conventions. Use raw=True to get data
+in original format from the source files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> (<em>str</em><em>, </em><em>Path</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – URL or local path to the data source.</p></li>
+<li><p><strong>file_list</strong> (<em>str</em><em>, </em><em>list</em><em> of </em><em>str</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – Specific files to load. Defaults to transport files.</p></li>
+<li><p><strong>transport_only</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, load only transport data. Default: True.</p></li>
+<li><p><strong>all_files</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, return list of all datasets. If False, return single dataset. Default: False.</p></li>
+<li><p><strong>raw</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, return data in original format without standardization.
+If False (default), apply standardization for analysis-ready data.</p></li>
+<li><p><strong>data_dir</strong> (<em>str</em><em>, </em><em>Path</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – Local directory for data storage.</p></li>
+<li><p><strong>redownload</strong> (<em>bool</em><em>, </em><em>optional</em>) – Force redownload of data. Default: False.</p></li>
+<li><p><strong>version</strong> (<em>str</em><em>, </em><em>optional</em>) – Dataset version (ignored for this array). Default: None.</p></li>
+<li><p><strong>track_added_attrs</strong> (<em>bool</em><em>, </em><em>optional</em>) – <strong>INTERNAL USE ONLY</strong> - Track which attributes were added during metadata
+enrichment. When True, embeds a temporary ‘_amocatlas_metadata_changes’
+attribute in each returned dataset containing {“added”: […], “modified”: […]}.
+This attribute should be extracted and removed by calling code (e.g., report
+generation). Not intended for end users. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Standardized dataset (default) or raw dataset if raw=True.
+Single dataset by default, or list of datasets if all_files=True.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xr.Dataset or list of xr.Dataset</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Standardization includes:
+- Consistent variable names across arrays
+- Proper CF-compliant metadata and attributes
+- Standardized units following oceanographic conventions
+- Additional quality control and formatting</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.read.osnap">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.read.</span></span><span class="sig-name descname"><span class="pre">osnap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transport_only</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">redownload</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_added_attrs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Dataset</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#amocatlas.read.osnap" title="Link to this definition"></a></dt>
+<dd><p>Load OSNAP array data.</p>
+<p>By default, returns standardized, analysis-ready data with consistent variable names,
+metadata, and units following oceanographic conventions. Use raw=True to get data
+in original format from the source files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> (<em>str</em><em>, </em><em>Path</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – URL or local path to the data source.</p></li>
+<li><p><strong>file_list</strong> (<em>str</em><em>, </em><em>list</em><em> of </em><em>str</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – Specific files to load. Defaults to transport files.</p></li>
+<li><p><strong>transport_only</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, load only transport data. Default: True.</p></li>
+<li><p><strong>all_files</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, return list of all datasets. If False, return single dataset. Default: False.</p></li>
+<li><p><strong>raw</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, return data in original format without standardization.
+If False (default), apply standardization for analysis-ready data.</p></li>
+<li><p><strong>data_dir</strong> (<em>str</em><em>, </em><em>Path</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – Local directory for data storage.</p></li>
+<li><p><strong>redownload</strong> (<em>bool</em><em>, </em><em>optional</em>) – Force redownload of data. Default: False.</p></li>
+<li><p><strong>version</strong> (<em>str</em><em>, </em><em>optional</em>) – Dataset version (used for version selection). Default: None.</p></li>
+<li><p><strong>track_added_attrs</strong> (<em>bool</em><em>, </em><em>optional</em>) – <strong>INTERNAL USE ONLY</strong> - Track which attributes were added during metadata
+enrichment. When True, embeds a temporary ‘_amocatlas_metadata_changes’
+attribute in each returned dataset containing {“added”: […], “modified”: […]}.
+This attribute should be extracted and removed by calling code (e.g., report
+generation). Not intended for end users. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Standardized dataset (default) or raw dataset if raw=True.
+Single dataset by default, or list of datasets if all_files=True.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xr.Dataset or list of xr.Dataset</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Standardization includes:
+- Consistent variable names across arrays
+- Proper CF-compliant metadata and attributes
+- Standardized units following oceanographic conventions
+- Additional quality control and formatting</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.read.samba">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.read.</span></span><span class="sig-name descname"><span class="pre">samba</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transport_only</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">redownload</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_added_attrs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Dataset</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#amocatlas.read.samba" title="Link to this definition"></a></dt>
+<dd><p>Load SAMBA 34.5°S array data.</p>
+<p>By default, returns standardized, analysis-ready data with consistent variable names,
+metadata, and units following oceanographic conventions. Use raw=True to get data
+in original format from the source files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> (<em>str</em><em>, </em><em>Path</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – URL or local path to the data source.</p></li>
+<li><p><strong>file_list</strong> (<em>str</em><em>, </em><em>list</em><em> of </em><em>str</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – Specific files to load. Defaults to transport files.</p></li>
+<li><p><strong>transport_only</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, load only transport data. Default: True.</p></li>
+<li><p><strong>all_files</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, return list of all datasets. If False, return single dataset. Default: False.</p></li>
+<li><p><strong>raw</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, return data in original format without standardization.
+If False (default), apply standardization for analysis-ready data.</p></li>
+<li><p><strong>data_dir</strong> (<em>str</em><em>, </em><em>Path</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – Local directory for data storage.</p></li>
+<li><p><strong>redownload</strong> (<em>bool</em><em>, </em><em>optional</em>) – Force redownload of data. Default: False.</p></li>
+<li><p><strong>version</strong> (<em>str</em><em>, </em><em>optional</em>) – Dataset version (ignored for this array). Default: None.</p></li>
+<li><p><strong>track_added_attrs</strong> (<em>bool</em><em>, </em><em>optional</em>) – <strong>INTERNAL USE ONLY</strong> - Track which attributes were added during metadata
+enrichment. When True, embeds a temporary ‘_amocatlas_metadata_changes’
+attribute in each returned dataset containing {“added”: […], “modified”: […]}.
+This attribute should be extracted and removed by calling code (e.g., report
+generation). Not intended for end users. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Standardized dataset (default) or raw dataset if raw=True.
+Single dataset by default, or list of datasets if all_files=True.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xr.Dataset or list of xr.Dataset</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Standardization includes:
+- Consistent variable names across arrays
+- Proper CF-compliant metadata and attributes
+- Standardized units following oceanographic conventions
+- Additional quality control and formatting</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.read.arcticgateway">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.read.</span></span><span class="sig-name descname"><span class="pre">arcticgateway</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transport_only</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">redownload</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_added_attrs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Dataset</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#amocatlas.read.arcticgateway" title="Link to this definition"></a></dt>
+<dd><p>Load Arctic Gateway array data.</p>
+<p>By default, returns standardized, analysis-ready data with consistent variable names,
+metadata, and units following oceanographic conventions. Use raw=True to get data
+in original format from the source files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> (<em>str</em><em>, </em><em>Path</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – URL or local path to the data source.</p></li>
+<li><p><strong>file_list</strong> (<em>str</em><em>, </em><em>list</em><em> of </em><em>str</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – Specific files to load. Defaults to transport files.</p></li>
+<li><p><strong>transport_only</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, load only transport data. Default: True.</p></li>
+<li><p><strong>all_files</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, return list of all datasets. If False, return single dataset. Default: False.</p></li>
+<li><p><strong>raw</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, return data in original format without standardization.
+If False (default), apply standardization for analysis-ready data.</p></li>
+<li><p><strong>data_dir</strong> (<em>str</em><em>, </em><em>Path</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – Local directory for data storage.</p></li>
+<li><p><strong>redownload</strong> (<em>bool</em><em>, </em><em>optional</em>) – Force redownload of data. Default: False.</p></li>
+<li><p><strong>version</strong> (<em>str</em><em>, </em><em>optional</em>) – Dataset version (ignored for this array). Default: None.</p></li>
+<li><p><strong>track_added_attrs</strong> (<em>bool</em><em>, </em><em>optional</em>) – <strong>INTERNAL USE ONLY</strong> - Track which attributes were added during metadata
+enrichment. When True, embeds a temporary ‘_amocatlas_metadata_changes’
+attribute in each returned dataset containing {“added”: […], “modified”: […]}.
+This attribute should be extracted and removed by calling code (e.g., report
+generation). Not intended for end users. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Standardized dataset (default) or raw dataset if raw=True.
+Single dataset by default, or list of datasets if all_files=True.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xr.Dataset or list of xr.Dataset</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Standardization includes:
+- Consistent variable names across arrays
+- Proper CF-compliant metadata and attributes
+- Standardized units following oceanographic conventions
+- Additional quality control and formatting</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.read.fw2015">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.read.</span></span><span class="sig-name descname"><span class="pre">fw2015</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transport_only</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">redownload</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_added_attrs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Dataset</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#amocatlas.read.fw2015" title="Link to this definition"></a></dt>
+<dd><p>Load Frajka-Williams 2015 array data.</p>
+<p>By default, returns standardized, analysis-ready data with consistent variable names,
+metadata, and units following oceanographic conventions. Use raw=True to get data
+in original format from the source files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> (<em>str</em><em>, </em><em>Path</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – URL or local path to the data source.</p></li>
+<li><p><strong>file_list</strong> (<em>str</em><em>, </em><em>list</em><em> of </em><em>str</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – Specific files to load. Defaults to transport files.</p></li>
+<li><p><strong>transport_only</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, load only transport data. Default: True.</p></li>
+<li><p><strong>all_files</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, return list of all datasets. If False, return single dataset. Default: False.</p></li>
+<li><p><strong>raw</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, return data in original format without standardization.
+If False (default), apply standardization for analysis-ready data.</p></li>
+<li><p><strong>data_dir</strong> (<em>str</em><em>, </em><em>Path</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – Local directory for data storage.</p></li>
+<li><p><strong>redownload</strong> (<em>bool</em><em>, </em><em>optional</em>) – Force redownload of data. Default: False.</p></li>
+<li><p><strong>version</strong> (<em>str</em><em>, </em><em>optional</em>) – Dataset version (ignored for this array). Default: None.</p></li>
+<li><p><strong>track_added_attrs</strong> (<em>bool</em><em>, </em><em>optional</em>) – <strong>INTERNAL USE ONLY</strong> - Track which attributes were added during metadata
+enrichment. When True, embeds a temporary ‘_amocatlas_metadata_changes’
+attribute in each returned dataset containing {“added”: […], “modified”: […]}.
+This attribute should be extracted and removed by calling code (e.g., report
+generation). Not intended for end users. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Standardized dataset (default) or raw dataset if raw=True.
+Single dataset by default, or list of datasets if all_files=True.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xr.Dataset or list of xr.Dataset</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Standardization includes:
+- Consistent variable names across arrays
+- Proper CF-compliant metadata and attributes
+- Standardized units following oceanographic conventions
+- Additional quality control and formatting</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.read.mocha">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.read.</span></span><span class="sig-name descname"><span class="pre">mocha</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transport_only</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">redownload</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_added_attrs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Dataset</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#amocatlas.read.mocha" title="Link to this definition"></a></dt>
+<dd><p>Load MOCHA array data.</p>
+<p>By default, returns standardized, analysis-ready data with consistent variable names,
+metadata, and units following oceanographic conventions. Use raw=True to get data
+in original format from the source files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> (<em>str</em><em>, </em><em>Path</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – URL or local path to the data source.</p></li>
+<li><p><strong>file_list</strong> (<em>str</em><em>, </em><em>list</em><em> of </em><em>str</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – Specific files to load. Defaults to transport files.</p></li>
+<li><p><strong>transport_only</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, load only transport data. Default: True.</p></li>
+<li><p><strong>all_files</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, return list of all datasets. If False, return single dataset. Default: False.</p></li>
+<li><p><strong>raw</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, return data in original format without standardization.
+If False (default), apply standardization for analysis-ready data.</p></li>
+<li><p><strong>data_dir</strong> (<em>str</em><em>, </em><em>Path</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – Local directory for data storage.</p></li>
+<li><p><strong>redownload</strong> (<em>bool</em><em>, </em><em>optional</em>) – Force redownload of data. Default: False.</p></li>
+<li><p><strong>version</strong> (<em>str</em><em>, </em><em>optional</em>) – Dataset version (ignored for this array). Default: None.</p></li>
+<li><p><strong>track_added_attrs</strong> (<em>bool</em><em>, </em><em>optional</em>) – <strong>INTERNAL USE ONLY</strong> - Track which attributes were added during metadata
+enrichment. When True, embeds a temporary ‘_amocatlas_metadata_changes’
+attribute in each returned dataset containing {“added”: […], “modified”: […]}.
+This attribute should be extracted and removed by calling code (e.g., report
+generation). Not intended for end users. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Standardized dataset (default) or raw dataset if raw=True.
+Single dataset by default, or list of datasets if all_files=True.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xr.Dataset or list of xr.Dataset</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Standardization includes:
+- Consistent variable names across arrays
+- Proper CF-compliant metadata and attributes
+- Standardized units following oceanographic conventions
+- Additional quality control and formatting</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.read.wh41n">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.read.</span></span><span class="sig-name descname"><span class="pre">wh41n</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transport_only</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">redownload</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_added_attrs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Dataset</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#amocatlas.read.wh41n" title="Link to this definition"></a></dt>
+<dd><p>Load 41°N array data.</p>
+<p>By default, returns standardized, analysis-ready data with consistent variable names,
+metadata, and units following oceanographic conventions. Use raw=True to get data
+in original format from the source files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> (<em>str</em><em>, </em><em>Path</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – URL or local path to the data source.</p></li>
+<li><p><strong>file_list</strong> (<em>str</em><em>, </em><em>list</em><em> of </em><em>str</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – Specific files to load. Defaults to transport files.</p></li>
+<li><p><strong>transport_only</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, load only transport data. Default: True.</p></li>
+<li><p><strong>all_files</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, return list of all datasets. If False, return single dataset. Default: False.</p></li>
+<li><p><strong>raw</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, return data in original format without standardization.
+If False (default), apply standardization for analysis-ready data.</p></li>
+<li><p><strong>data_dir</strong> (<em>str</em><em>, </em><em>Path</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – Local directory for data storage.</p></li>
+<li><p><strong>redownload</strong> (<em>bool</em><em>, </em><em>optional</em>) – Force redownload of data. Default: False.</p></li>
+<li><p><strong>version</strong> (<em>str</em><em>, </em><em>optional</em>) – Dataset version (ignored for this array). Default: None.</p></li>
+<li><p><strong>track_added_attrs</strong> (<em>bool</em><em>, </em><em>optional</em>) – <strong>INTERNAL USE ONLY</strong> - Track which attributes were added during metadata
+enrichment. When True, embeds a temporary ‘_amocatlas_metadata_changes’
+attribute in each returned dataset containing {“added”: […], “modified”: […]}.
+This attribute should be extracted and removed by calling code (e.g., report
+generation). Not intended for end users. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Standardized dataset (default) or raw dataset if raw=True.
+Single dataset by default, or list of datasets if all_files=True.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xr.Dataset or list of xr.Dataset</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Standardization includes:
+- Consistent variable names across arrays
+- Proper CF-compliant metadata and attributes
+- Standardized units following oceanographic conventions
+- Additional quality control and formatting</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.read.dso">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.read.</span></span><span class="sig-name descname"><span class="pre">dso</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transport_only</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">redownload</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_added_attrs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Dataset</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#amocatlas.read.dso" title="Link to this definition"></a></dt>
+<dd><p>Load Denmark Strait Overflow array data.</p>
+<p>By default, returns standardized, analysis-ready data with consistent variable names,
+metadata, and units following oceanographic conventions. Use raw=True to get data
+in original format from the source files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> (<em>str</em><em>, </em><em>Path</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – URL or local path to the data source.</p></li>
+<li><p><strong>file_list</strong> (<em>str</em><em>, </em><em>list</em><em> of </em><em>str</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – Specific files to load. Defaults to transport files.</p></li>
+<li><p><strong>transport_only</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, load only transport data. Default: True.</p></li>
+<li><p><strong>all_files</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, return list of all datasets. If False, return single dataset. Default: False.</p></li>
+<li><p><strong>raw</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, return data in original format without standardization.
+If False (default), apply standardization for analysis-ready data.</p></li>
+<li><p><strong>data_dir</strong> (<em>str</em><em>, </em><em>Path</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – Local directory for data storage.</p></li>
+<li><p><strong>redownload</strong> (<em>bool</em><em>, </em><em>optional</em>) – Force redownload of data. Default: False.</p></li>
+<li><p><strong>version</strong> (<em>str</em><em>, </em><em>optional</em>) – Dataset version (ignored for this array). Default: None.</p></li>
+<li><p><strong>track_added_attrs</strong> (<em>bool</em><em>, </em><em>optional</em>) – <strong>INTERNAL USE ONLY</strong> - Track which attributes were added during metadata
+enrichment. When True, embeds a temporary ‘_amocatlas_metadata_changes’
+attribute in each returned dataset containing {“added”: […], “modified”: […]}.
+This attribute should be extracted and removed by calling code (e.g., report
+generation). Not intended for end users. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Standardized dataset (default) or raw dataset if raw=True.
+Single dataset by default, or list of datasets if all_files=True.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xr.Dataset or list of xr.Dataset</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Standardization includes:
+- Consistent variable names across arrays
+- Proper CF-compliant metadata and attributes
+- Standardized units following oceanographic conventions
+- Additional quality control and formatting</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.read.noac47n">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.read.</span></span><span class="sig-name descname"><span class="pre">noac47n</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transport_only</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">redownload</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_added_attrs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Dataset</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#amocatlas.read.noac47n" title="Link to this definition"></a></dt>
+<dd><p>Load 47°N array data.</p>
+<p>By default, returns standardized, analysis-ready data with consistent variable names,
+metadata, and units following oceanographic conventions. Use raw=True to get data
+in original format from the source files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> (<em>str</em><em>, </em><em>Path</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – URL or local path to the data source.</p></li>
+<li><p><strong>file_list</strong> (<em>str</em><em>, </em><em>list</em><em> of </em><em>str</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – Specific files to load. Defaults to transport files.</p></li>
+<li><p><strong>transport_only</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, load only transport data. Default: True.</p></li>
+<li><p><strong>all_files</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, return list of all datasets. If False, return single dataset. Default: False.</p></li>
+<li><p><strong>raw</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, return data in original format without standardization.
+If False (default), apply standardization for analysis-ready data.</p></li>
+<li><p><strong>data_dir</strong> (<em>str</em><em>, </em><em>Path</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – Local directory for data storage.</p></li>
+<li><p><strong>redownload</strong> (<em>bool</em><em>, </em><em>optional</em>) – Force redownload of data. Default: False.</p></li>
+<li><p><strong>version</strong> (<em>str</em><em>, </em><em>optional</em>) – Dataset version (ignored for this array). Default: None.</p></li>
+<li><p><strong>track_added_attrs</strong> (<em>bool</em><em>, </em><em>optional</em>) – <strong>INTERNAL USE ONLY</strong> - Track which attributes were added during metadata
+enrichment. When True, embeds a temporary ‘_amocatlas_metadata_changes’
+attribute in each returned dataset containing {“added”: […], “modified”: […]}.
+This attribute should be extracted and removed by calling code (e.g., report
+generation). Not intended for end users. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Standardized dataset (default) or raw dataset if raw=True.
+Single dataset by default, or list of datasets if all_files=True.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xr.Dataset or list of xr.Dataset</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Standardization includes:
+- Consistent variable names across arrays
+- Proper CF-compliant metadata and attributes
+- Standardized units following oceanographic conventions
+- Additional quality control and formatting</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.read.fbc">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.read.</span></span><span class="sig-name descname"><span class="pre">fbc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transport_only</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">redownload</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_added_attrs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Dataset</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#amocatlas.read.fbc" title="Link to this definition"></a></dt>
+<dd><p>Load Faroe Bank Channel array data.</p>
+<p>By default, returns standardized, analysis-ready data with consistent variable names,
+metadata, and units following oceanographic conventions. Use raw=True to get data
+in original format from the source files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> (<em>str</em><em>, </em><em>Path</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – URL or local path to the data source.</p></li>
+<li><p><strong>file_list</strong> (<em>str</em><em>, </em><em>list</em><em> of </em><em>str</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – Specific files to load. Defaults to transport files.</p></li>
+<li><p><strong>transport_only</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, load only transport data. Default: True.</p></li>
+<li><p><strong>all_files</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, return list of all datasets. If False, return single dataset. Default: False.</p></li>
+<li><p><strong>raw</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, return data in original format without standardization.
+If False (default), apply standardization for analysis-ready data.</p></li>
+<li><p><strong>data_dir</strong> (<em>str</em><em>, </em><em>Path</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – Local directory for data storage.</p></li>
+<li><p><strong>redownload</strong> (<em>bool</em><em>, </em><em>optional</em>) – Force redownload of data. Default: False.</p></li>
+<li><p><strong>version</strong> (<em>str</em><em>, </em><em>optional</em>) – Dataset version (ignored for this array). Default: None.</p></li>
+<li><p><strong>track_added_attrs</strong> (<em>bool</em><em>, </em><em>optional</em>) – <strong>INTERNAL USE ONLY</strong> - Track which attributes were added during metadata
+enrichment. When True, embeds a temporary ‘_amocatlas_metadata_changes’
+attribute in each returned dataset containing {“added”: […], “modified”: […]}.
+This attribute should be extracted and removed by calling code (e.g., report
+generation). Not intended for end users. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Standardized dataset (default) or raw dataset if raw=True.
+Single dataset by default, or list of datasets if all_files=True.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xr.Dataset or list of xr.Dataset</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Standardization includes:
+- Consistent variable names across arrays
+- Proper CF-compliant metadata and attributes
+- Standardized units following oceanographic conventions
+- Additional quality control and formatting</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.read.calafat2025">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.read.</span></span><span class="sig-name descname"><span class="pre">calafat2025</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transport_only</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">redownload</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_added_attrs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Dataset</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#amocatlas.read.calafat2025" title="Link to this definition"></a></dt>
+<dd><p>Load Calafat et al. 2025 array data.</p>
+<p>By default, returns standardized, analysis-ready data with consistent variable names,
+metadata, and units following oceanographic conventions. Use raw=True to get data
+in original format from the source files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> (<em>str</em><em>, </em><em>Path</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – URL or local path to the data source.</p></li>
+<li><p><strong>file_list</strong> (<em>str</em><em>, </em><em>list</em><em> of </em><em>str</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – Specific files to load. Defaults to transport files.</p></li>
+<li><p><strong>transport_only</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, load only transport data. Default: True.</p></li>
+<li><p><strong>all_files</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, return list of all datasets. If False, return single dataset. Default: False.</p></li>
+<li><p><strong>raw</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, return data in original format without standardization.
+If False (default), apply standardization for analysis-ready data.</p></li>
+<li><p><strong>data_dir</strong> (<em>str</em><em>, </em><em>Path</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – Local directory for data storage.</p></li>
+<li><p><strong>redownload</strong> (<em>bool</em><em>, </em><em>optional</em>) – Force redownload of data. Default: False.</p></li>
+<li><p><strong>version</strong> (<em>str</em><em>, </em><em>optional</em>) – Dataset version (ignored for this array). Default: None.</p></li>
+<li><p><strong>track_added_attrs</strong> (<em>bool</em><em>, </em><em>optional</em>) – <strong>INTERNAL USE ONLY</strong> - Track which attributes were added during metadata
+enrichment. When True, embeds a temporary ‘_amocatlas_metadata_changes’
+attribute in each returned dataset containing {“added”: […], “modified”: […]}.
+This attribute should be extracted and removed by calling code (e.g., report
+generation). Not intended for end users. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Standardized dataset (default) or raw dataset if raw=True.
+Single dataset by default, or list of datasets if all_files=True.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xr.Dataset or list of xr.Dataset</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Standardization includes:
+- Consistent variable names across arrays
+- Proper CF-compliant metadata and attributes
+- Standardized units following oceanographic conventions
+- Additional quality control and formatting</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.read.zheng2024">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.read.</span></span><span class="sig-name descname"><span class="pre">zheng2024</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transport_only</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">redownload</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_added_attrs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Dataset</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#amocatlas.read.zheng2024" title="Link to this definition"></a></dt>
+<dd><p>Load Zheng et al. 2024 array data.</p>
+<p>By default, returns standardized, analysis-ready data with consistent variable names,
+metadata, and units following oceanographic conventions. Use raw=True to get data
+in original format from the source files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> (<em>str</em><em>, </em><em>Path</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – URL or local path to the data source.</p></li>
+<li><p><strong>file_list</strong> (<em>str</em><em>, </em><em>list</em><em> of </em><em>str</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – Specific files to load. Defaults to transport files.</p></li>
+<li><p><strong>transport_only</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, load only transport data. Default: True.</p></li>
+<li><p><strong>all_files</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, return list of all datasets. If False, return single dataset. Default: False.</p></li>
+<li><p><strong>raw</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, return data in original format without standardization.
+If False (default), apply standardization for analysis-ready data.</p></li>
+<li><p><strong>data_dir</strong> (<em>str</em><em>, </em><em>Path</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – Local directory for data storage.</p></li>
+<li><p><strong>redownload</strong> (<em>bool</em><em>, </em><em>optional</em>) – Force redownload of data. Default: False.</p></li>
+<li><p><strong>version</strong> (<em>str</em><em>, </em><em>optional</em>) – Dataset version (ignored for this array). Default: None.</p></li>
+<li><p><strong>track_added_attrs</strong> (<em>bool</em><em>, </em><em>optional</em>) – <strong>INTERNAL USE ONLY</strong> - Track which attributes were added during metadata
+enrichment. When True, embeds a temporary ‘_amocatlas_metadata_changes’
+attribute in each returned dataset containing {“added”: […], “modified”: […]}.
+This attribute should be extracted and removed by calling code (e.g., report
+generation). Not intended for end users. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Standardized dataset (default) or raw dataset if raw=True.
+Single dataset by default, or list of datasets if all_files=True.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xr.Dataset or list of xr.Dataset</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Standardization includes:
+- Consistent variable names across arrays
+- Proper CF-compliant metadata and attributes
+- Standardized units following oceanographic conventions
+- Additional quality control and formatting</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.read.nac">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.read.</span></span><span class="sig-name descname"><span class="pre">nac</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transport_only</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">redownload</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_added_attrs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Dataset</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#amocatlas.read.nac" title="Link to this definition"></a></dt>
+<dd><p>Load North Atlantic Current array data.</p>
+<p>By default, returns standardized, analysis-ready data with consistent variable names,
+metadata, and units following oceanographic conventions. Use raw=True to get data
+in original format from the source files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> (<em>str</em><em>, </em><em>Path</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – URL or local path to the data source.</p></li>
+<li><p><strong>file_list</strong> (<em>str</em><em>, </em><em>list</em><em> of </em><em>str</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – Specific files to load. Defaults to transport files.</p></li>
+<li><p><strong>transport_only</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, load only transport data. Default: True.</p></li>
+<li><p><strong>all_files</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, return list of all datasets. If False, return single dataset. Default: False.</p></li>
+<li><p><strong>raw</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, return data in original format without standardization.
+If False (default), apply standardization for analysis-ready data.</p></li>
+<li><p><strong>data_dir</strong> (<em>str</em><em>, </em><em>Path</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – Local directory for data storage.</p></li>
+<li><p><strong>redownload</strong> (<em>bool</em><em>, </em><em>optional</em>) – Force redownload of data. Default: False.</p></li>
+<li><p><strong>version</strong> (<em>str</em><em>, </em><em>optional</em>) – Dataset version (ignored for this array). Default: None.</p></li>
+<li><p><strong>track_added_attrs</strong> (<em>bool</em><em>, </em><em>optional</em>) – <strong>INTERNAL USE ONLY</strong> - Track which attributes were added during metadata
+enrichment. When True, embeds a temporary ‘_amocatlas_metadata_changes’
+attribute in each returned dataset containing {“added”: […], “modified”: […]}.
+This attribute should be extracted and removed by calling code (e.g., report
+generation). Not intended for end users. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Standardized dataset (default) or raw dataset if raw=True.
+Single dataset by default, or list of datasets if all_files=True.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xr.Dataset or list of xr.Dataset</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Standardization includes:
+- Consistent variable names across arrays
+- Proper CF-compliant metadata and attributes
+- Standardized units following oceanographic conventions
+- Additional quality control and formatting</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.read.sf2021">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.read.</span></span><span class="sig-name descname"><span class="pre">sf2021</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transport_only</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">redownload</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_added_attrs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Dataset</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#amocatlas.read.sf2021" title="Link to this definition"></a></dt>
+<dd><p>Load Sanchez-Franks et al. 2021 array data.</p>
+<p>By default, returns standardized, analysis-ready data with consistent variable names,
+metadata, and units following oceanographic conventions. Use raw=True to get data
+in original format from the source files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> (<em>str</em><em>, </em><em>Path</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – URL or local path to the data source.</p></li>
+<li><p><strong>file_list</strong> (<em>str</em><em>, </em><em>list</em><em> of </em><em>str</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – Specific files to load. Defaults to transport files.</p></li>
+<li><p><strong>transport_only</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, load only transport data. Default: True.</p></li>
+<li><p><strong>all_files</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, return list of all datasets. If False, return single dataset. Default: False.</p></li>
+<li><p><strong>raw</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, return data in original format without standardization.
+If False (default), apply standardization for analysis-ready data.</p></li>
+<li><p><strong>data_dir</strong> (<em>str</em><em>, </em><em>Path</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – Local directory for data storage.</p></li>
+<li><p><strong>redownload</strong> (<em>bool</em><em>, </em><em>optional</em>) – Force redownload of data. Default: False.</p></li>
+<li><p><strong>version</strong> (<em>str</em><em>, </em><em>optional</em>) – Dataset version (ignored for this array). Default: None.</p></li>
+<li><p><strong>track_added_attrs</strong> (<em>bool</em><em>, </em><em>optional</em>) – <strong>INTERNAL USE ONLY</strong> - Track which attributes were added during metadata
+enrichment. When True, embeds a temporary ‘_amocatlas_metadata_changes’
+attribute in each returned dataset containing {“added”: […], “modified”: […]}.
+This attribute should be extracted and removed by calling code (e.g., report
+generation). Not intended for end users. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Standardized dataset (default) or raw dataset if raw=True.
+Single dataset by default, or list of datasets if all_files=True.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xr.Dataset or list of xr.Dataset</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Standardization includes:
+- Consistent variable names across arrays
+- Proper CF-compliant metadata and attributes
+- Standardized units following oceanographic conventions
+- Additional quality control and formatting</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.read.lebras35n">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.read.</span></span><span class="sig-name descname"><span class="pre">lebras35n</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transport_only</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">redownload</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_added_attrs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Dataset</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#amocatlas.read.lebras35n" title="Link to this definition"></a></dt>
+<dd><p>Load Le Bras et al. 2023 at 35°N array data.</p>
+<p>By default, returns standardized, analysis-ready data with consistent variable names,
+metadata, and units following oceanographic conventions. Use raw=True to get data
+in original format from the source files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> (<em>str</em><em>, </em><em>Path</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – URL or local path to the data source.</p></li>
+<li><p><strong>file_list</strong> (<em>str</em><em>, </em><em>list</em><em> of </em><em>str</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – Specific files to load. Defaults to transport files.</p></li>
+<li><p><strong>transport_only</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, load only transport data. Default: True.</p></li>
+<li><p><strong>all_files</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, return list of all datasets. If False, return single dataset. Default: False.</p></li>
+<li><p><strong>raw</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, return data in original format without standardization.
+If False (default), apply standardization for analysis-ready data.</p></li>
+<li><p><strong>data_dir</strong> (<em>str</em><em>, </em><em>Path</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – Local directory for data storage.</p></li>
+<li><p><strong>redownload</strong> (<em>bool</em><em>, </em><em>optional</em>) – Force redownload of data. Default: False.</p></li>
+<li><p><strong>version</strong> (<em>str</em><em>, </em><em>optional</em>) – Dataset version (ignored for this array). Default: None.</p></li>
+<li><p><strong>track_added_attrs</strong> (<em>bool</em><em>, </em><em>optional</em>) – <strong>INTERNAL USE ONLY</strong> - Track which attributes were added during metadata
+enrichment. When True, embeds a temporary ‘_amocatlas_metadata_changes’
+attribute in each returned dataset containing {“added”: […], “modified”: […]}.
+This attribute should be extracted and removed by calling code (e.g., report
+generation). Not intended for end users. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Standardized dataset (default) or raw dataset if raw=True.
+Single dataset by default, or list of datasets if all_files=True.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xr.Dataset or list of xr.Dataset</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Standardization includes:
+- Consistent variable names across arrays
+- Proper CF-compliant metadata and attributes
+- Standardized units following oceanographic conventions
+- Additional quality control and formatting</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.read.axmoc22s">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.read.</span></span><span class="sig-name descname"><span class="pre">axmoc22s</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transport_only</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">redownload</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_added_attrs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Dataset</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#amocatlas.read.axmoc22s" title="Link to this definition"></a></dt>
+<dd><p>Load AXMOC 22.5°S array data.</p>
+<p>By default, returns standardized, analysis-ready data with consistent variable names,
+metadata, and units following oceanographic conventions. Use raw=True to get data
+in original format from the source files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> (<em>str</em><em>, </em><em>Path</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – URL or local path to the data source.</p></li>
+<li><p><strong>file_list</strong> (<em>str</em><em>, </em><em>list</em><em> of </em><em>str</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – Specific files to load. Defaults to transport files.</p></li>
+<li><p><strong>transport_only</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, load only transport data. Default: True.</p></li>
+<li><p><strong>all_files</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, return list of all datasets. If False, return single dataset. Default: False.</p></li>
+<li><p><strong>raw</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, return data in original format without standardization.
+If False (default), apply standardization for analysis-ready data.</p></li>
+<li><p><strong>data_dir</strong> (<em>str</em><em>, </em><em>Path</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – Local directory for data storage.</p></li>
+<li><p><strong>redownload</strong> (<em>bool</em><em>, </em><em>optional</em>) – Force redownload of data. Default: False.</p></li>
+<li><p><strong>version</strong> (<em>str</em><em>, </em><em>optional</em>) – Dataset version (ignored for this array). Default: None.</p></li>
+<li><p><strong>track_added_attrs</strong> (<em>bool</em><em>, </em><em>optional</em>) – <strong>INTERNAL USE ONLY</strong> - Track which attributes were added during metadata
+enrichment. When True, embeds a temporary ‘_amocatlas_metadata_changes’
+attribute in each returned dataset containing {“added”: […], “modified”: […]}.
+This attribute should be extracted and removed by calling code (e.g., report
+generation). Not intended for end users. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Standardized dataset (default) or raw dataset if raw=True.
+Single dataset by default, or list of datasets if all_files=True.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xr.Dataset or list of xr.Dataset</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Standardization includes:
+- Consistent variable names across arrays
+- Proper CF-compliant metadata and attributes
+- Standardized units following oceanographic conventions
+- Additional quality control and formatting</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.read.axmoc34s">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.read.</span></span><span class="sig-name descname"><span class="pre">axmoc34s</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transport_only</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">redownload</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_added_attrs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dataset</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Dataset</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#amocatlas.read.axmoc34s" title="Link to this definition"></a></dt>
+<dd><p>Load AXMOC 34.5°S array data.</p>
+<p>By default, returns standardized, analysis-ready data with consistent variable names,
+metadata, and units following oceanographic conventions. Use raw=True to get data
+in original format from the source files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> (<em>str</em><em>, </em><em>Path</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – URL or local path to the data source.</p></li>
+<li><p><strong>file_list</strong> (<em>str</em><em>, </em><em>list</em><em> of </em><em>str</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – Specific files to load. Defaults to transport files.</p></li>
+<li><p><strong>transport_only</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, load only transport data. Default: True.</p></li>
+<li><p><strong>all_files</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, return list of all datasets. If False, return single dataset. Default: False.</p></li>
+<li><p><strong>raw</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, return data in original format without standardization.
+If False (default), apply standardization for analysis-ready data.</p></li>
+<li><p><strong>data_dir</strong> (<em>str</em><em>, </em><em>Path</em><em>, or </em><em>None</em><em>, </em><em>optional</em>) – Local directory for data storage.</p></li>
+<li><p><strong>redownload</strong> (<em>bool</em><em>, </em><em>optional</em>) – Force redownload of data. Default: False.</p></li>
+<li><p><strong>version</strong> (<em>str</em><em>, </em><em>optional</em>) – Dataset version (ignored for this array). Default: None.</p></li>
+<li><p><strong>track_added_attrs</strong> (<em>bool</em><em>, </em><em>optional</em>) – <strong>INTERNAL USE ONLY</strong> - Track which attributes were added during metadata
+enrichment. When True, embeds a temporary ‘_amocatlas_metadata_changes’
+attribute in each returned dataset containing {“added”: […], “modified”: […]}.
+This attribute should be extracted and removed by calling code (e.g., report
+generation). Not intended for end users. Default: False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Standardized dataset (default) or raw dataset if raw=True.
+Single dataset by default, or list of datasets if all_files=True.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>xr.Dataset or list of xr.Dataset</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Standardization includes:
+- Consistent variable names across arrays
+- Proper CF-compliant metadata and attributes
+- Standardized units following oceanographic conventions
+- Additional quality control and formatting</p>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="amocatlas.html" class="btn btn-neutral float-left" title="amocatlas API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="data_sources.html" class="btn btn-neutral float-right" title="data_sources package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Eleanor Frajka-Williams, Isabelle Schmitz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

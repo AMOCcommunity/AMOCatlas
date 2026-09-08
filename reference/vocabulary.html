@@ -1,0 +1,258 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>amocvocab — variable vocabulary &mdash; amocatlas 0.4.0.post1.dev10 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=1078e4cb" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=6d4c28d6"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="AMOC Publication Figures" href="../amoc_paperfigs-output.html" />
+    <link rel="prev" title="AMOCatlas data format" href="format.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            amocatlas
+              <img src="../_static/logo.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ / Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Demo notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../demo-output.html">AMOCatlas demo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dataset Reports</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reports/index.html">Data Sources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="format.html">AMOCatlas data format</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">amocvocab — variable vocabulary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#quantities">Quantities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#qualifiers">Qualifiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#decompositions">Decompositions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../amoc_paperfigs-output.html">AMOC Publication Figures</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Repository and API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">GitHub Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../amocatlas.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">amocatlas</span> <span class="pre">API</span></code></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers' guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developers/developer_guide.html">Developer Guide for AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/git_beginners_guide.html">Git for Beginners: Workflow Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/actions.html">Extra GitHub features: Actions &amp; Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/housekeeping.html">Project Maintenance Checklist</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">amocatlas</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">amocvocab — variable vocabulary</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/reference/vocabulary.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="amocvocab-variable-vocabulary">
+<h1>amocvocab — variable vocabulary<a class="headerlink" href="#amocvocab-variable-vocabulary" title="Link to this heading"></a></h1>
+<p>Version <strong>0.1</strong>, checked against CF standard-name table <strong>v94 (2026-06-09)</strong>. This table is generated from <code class="docutils literal notranslate"><span class="pre">amocatlas/vocabulary/amocvocab.yml</span></code>.</p>
+<p>Each quantity carries a CF <code class="docutils literal notranslate"><span class="pre">standard_name</span></code> only when an exact CF name exists whose canonical units are convertible to the reported units; otherwise the standard name is null and the nearest CF concept, if any, is noted. See the <a class="reference internal" href="format.html"><span class="doc">AMOCatlas data format</span></a> conformance statement for how these are written into files.</p>
+<section id="quantities">
+<h2>Quantities<a class="headerlink" href="#quantities" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Long name</p></th>
+<th class="head"><p>Kind</p></th>
+<th class="head"><p>CF standard_name</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Status</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">MOC</span></code></p></td>
+<td><p>ocean meridional overturning streamfunction</p></td>
+<td><p>overturning_streamfunction</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ocean_meridional_overturning_streamfunction</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sverdrup</span></code></p></td>
+<td><p>current</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">MHT</span></code></p></td>
+<td><p>northward ocean heat transport</p></td>
+<td><p>heat_transport</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">northward_ocean_heat_transport</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">petawatt</span></code></p></td>
+<td><p>current</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">MHT_OT</span></code></p></td>
+<td><p>northward ocean heat transport due to overturning</p></td>
+<td><p>heat_transport</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">northward_ocean_heat_transport_due_to_overturning</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">petawatt</span></code></p></td>
+<td><p>current</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">MHT_GYRE</span></code></p></td>
+<td><p>northward ocean heat transport due to gyre</p></td>
+<td><p>heat_transport</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">northward_ocean_heat_transport_due_to_gyre</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">petawatt</span></code></p></td>
+<td><p>current</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">MHT_EKMAN</span></code></p></td>
+<td><p>northward ocean heat transport due to Ekman transport</p></td>
+<td><p>heat_transport</p></td>
+<td><p>none (nearest <code class="docutils literal notranslate"><span class="pre">northward_ocean_heat_transport</span></code>)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">petawatt</span></code></p></td>
+<td><p>current</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">MFT</span></code></p></td>
+<td><p>northward ocean freshwater transport</p></td>
+<td><p>freshwater_transport</p></td>
+<td><p>units-incompatible (nearest <code class="docutils literal notranslate"><span class="pre">northward_ocean_freshwater_transport</span></code>)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sverdrup</span></code></p></td>
+<td><p>current</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="qualifiers">
+<h2>Qualifiers<a class="headerlink" href="#qualifiers" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Code</p></th>
+<th class="head"><p>Class</p></th>
+<th class="head"><p>Order</p></th>
+<th class="head"><p>Definition</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">OT</span></code></p></td>
+<td><p>component</p></td>
+<td><p>1</p></td>
+<td><p>Overturning (zonally averaged) component of a section transport, associated with the vertical-mean overturning circulation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">GYRE</span></code></p></td>
+<td><p>component</p></td>
+<td><p>1</p></td>
+<td><p>Gyre (zonally varying) component of a section transport, associated with the horizontal circulation.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">EKMAN</span></code></p></td>
+<td><p>component</p></td>
+<td><p>1</p></td>
+<td><p>Wind-driven Ekman component of a transport.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="decompositions">
+<h2>Decompositions<a class="headerlink" href="#decompositions" title="Link to this heading"></a></h2>
+<p>All decompositions are <strong>provisional</strong> in this release: the component partition is verified where a closure check is recorded, but the scheme reference is not yet pinned.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Decomposition</p></th>
+<th class="head"><p>Of</p></th>
+<th class="head"><p>Components</p></th>
+<th class="head"><p>Closure</p></th>
+<th class="head"><p>Status</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">overturning_gyre</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MHT</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MHT_OT</span></code>, <code class="docutils literal notranslate"><span class="pre">MHT_GYRE</span></code></p></td>
+<td><p>exact</p></td>
+<td><p>provisional</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="format.html" class="btn btn-neutral float-left" title="AMOCatlas data format" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../amoc_paperfigs-output.html" class="btn btn-neutral float-right" title="AMOC Publication Figures" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Eleanor Frajka-Williams, Isabelle Schmitz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

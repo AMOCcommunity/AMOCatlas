@@ -1,0 +1,369 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Developer Guide for AMOCatlas &mdash; amocatlas 0.4.0.post1.dev10 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=1078e4cb" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=6d4c28d6"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Git for Beginners: Workflow Guide" href="git_beginners_guide.html" />
+    <link rel="prev" title="utilities" href="../utilities.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            amocatlas
+              <img src="../_static/logo.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ / Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Demo notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../demo-output.html">AMOCatlas demo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dataset Reports</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reports/index.html">Data Sources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/format.html">AMOCatlas data format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/vocabulary.html">amocvocab — variable vocabulary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../amoc_paperfigs-output.html">AMOC Publication Figures</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Repository and API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">GitHub Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../amocatlas.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">amocatlas</span> <span class="pre">API</span></code></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers' guide</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Developer Guide for AMOCatlas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#quickstart">Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#project-overview">Project overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#core-architecture">Core architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#package-level-imports">Package-level imports</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#development-environment">Development environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-a-new-data-reader">Adding a new data reader</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#adding-visualisation-functions">Adding visualisation functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#code-standards">Code standards</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#testing">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#git-workflow">Git workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#resources">Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="git_beginners_guide.html">Git for Beginners: Workflow Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions.html">Extra GitHub features: Actions &amp; Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="housekeeping.html">Project Maintenance Checklist</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">amocatlas</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Developer Guide for AMOCatlas</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/developers/developer_guide.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="developer-guide-for-amocatlas">
+<h1>Developer Guide for AMOCatlas<a class="headerlink" href="#developer-guide-for-amocatlas" title="Link to this heading"></a></h1>
+<p>This guide covers how to contribute to AMOCatlas: setting up an environment, adding a new
+data reader, code standards, and testing.</p>
+<p><strong>Contents:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#quickstart"><span class="std std-ref">Quickstart</span></a></p></li>
+<li><p><a class="reference internal" href="#project-overview"><span class="std std-ref">Project overview</span></a></p></li>
+<li><p><a class="reference internal" href="#development-environment"><span class="std std-ref">Development environment</span></a></p></li>
+<li><p><a class="reference internal" href="#adding-a-new-data-reader"><span class="std std-ref">Adding a new data reader</span></a></p></li>
+<li><p><a class="reference internal" href="#code-standards"><span class="std std-ref">Code standards</span></a></p></li>
+<li><p><a class="reference internal" href="#testing"><span class="std std-ref">Testing</span></a></p></li>
+<li><p><a class="reference internal" href="#git-workflow"><span class="std std-ref">Git workflow</span></a></p></li>
+</ul>
+<p>For a step-by-step Git walkthrough see <a class="reference internal" href="git_beginners_guide.html"><span class="doc">Git for Beginners: Workflow Guide</span></a>; for CI/CD and releases see
+<a class="reference internal" href="actions.html"><span class="doc">Extra GitHub features: Actions &amp; Pages</span></a>; for maintenance tasks see <a class="reference internal" href="housekeeping.html"><span class="doc">Project Maintenance Checklist</span></a>.</p>
+<hr class="docutils" />
+<section id="quickstart">
+<h2>Quickstart<a class="headerlink" href="#quickstart" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Fork on GitHub, then clone your fork</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/YOUR_USERNAME/amocatlas.git
+<span class="nb">cd</span><span class="w"> </span>amocatlas
+
+<span class="c1"># 2. Set up a development environment</span>
+python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+<span class="nb">source</span><span class="w"> </span>venv/bin/activate<span class="w">            </span><span class="c1"># Windows: venv\Scripts\activate</span>
+pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">".[dev]"</span>
+
+<span class="c1"># 3. Branch, change, test</span>
+git<span class="w"> </span>switch<span class="w"> </span>-c<span class="w"> </span>yourname-feature
+pytest<span class="w"> </span>-m<span class="w"> </span><span class="s2">"not slow"</span>
+ruff<span class="w"> </span>check<span class="w"> </span>.<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>ruff<span class="w"> </span>format<span class="w"> </span>.
+
+<span class="c1"># 4. Commit and push, then open a PR on GitHub</span>
+git<span class="w"> </span>commit<span class="w"> </span>-am<span class="w"> </span><span class="s2">"feat: describe your change"</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>yourname-feature
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="project-overview">
+<h2>Project overview<a class="headerlink" href="#project-overview" title="Link to this heading"></a></h2>
+<p>AMOCatlas provides unified access to data from AMOC observing arrays and related estimates,
+standardising variable names, units, and metadata across sources. It creates no new science
+data: it re-serves the values published by each source with consistent formatting and
+provenance.</p>
+<section id="core-architecture">
+<h3>Core architecture<a class="headerlink" href="#core-architecture" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>amocatlas/
+├── read.py              # Recommended API — read.rapid(), read.osnap(), ...
+├── readers.py           # Legacy API — load_dataset(), load_sample_dataset()
+├── reader_utils.py      # Shared helpers for the individual readers
+├── data_sources/        # One module per array/product (rapid26n.py, osnap55n.py, ...)
+├── metadata/            # Per-array YAML metadata + array_schema.json
+├── standardise.py       # Naming, units, and metadata standardisation
+├── contributors.py      # Contributor / institution consolidation
+├── convert.py           # Conversion to the AC1 output format
+├── compliance_checker.py# AC1 format compliance checks
+├── defaults.py          # Default configs and canonical attribute order
+├── utilities.py         # Downloads, parsing, validation
+├── plotters.py          # Visualisation (matplotlib + optional PyGMT)
+├── tools.py             # Analysis / calculation functions
+├── writers.py           # Data export
+├── report.py            # Per-dataset report generator
+└── logger.py            # Structured logging
+</pre></div>
+</div>
+<p><strong>Data flow:</strong> <code class="docutils literal notranslate"><span class="pre">read.rapid()</span></code> (or the legacy <code class="docutils literal notranslate"><span class="pre">readers.load_dataset(&quot;rapid&quot;)</span></code>) resolves the array
+name through <code class="docutils literal notranslate"><span class="pre">_get_reader()</span></code> in <code class="docutils literal notranslate"><span class="pre">readers.py</span></code>, which calls the matching <code class="docutils literal notranslate"><span class="pre">read_&lt;array&gt;()</span></code> function in
+<code class="docutils literal notranslate"><span class="pre">data_sources/</span></code>. That reader downloads and caches the source files, standardises them, and returns
+one or more <code class="docutils literal notranslate"><span class="pre">xarray.Dataset</span></code> objects.</p>
+</section>
+<section id="package-level-imports">
+<h3>Package-level imports<a class="headerlink" href="#package-level-imports" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">amocatlas/__init__.py</span></code> imports the submodules (<code class="docutils literal notranslate"><span class="pre">readers</span></code>, <code class="docutils literal notranslate"><span class="pre">plotters</span></code>, <code class="docutils literal notranslate"><span class="pre">compliance_checker</span></code>,
+<code class="docutils literal notranslate"><span class="pre">convert</span></code>, …) so that <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">amocatlas</span> <span class="pre">import</span> <span class="pre">compliance_checker</span></code> works and attributes like
+<code class="docutils literal notranslate"><span class="pre">plotters.HAS_PYGMT</span></code> are reachable without importing each module by its full path.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="development-environment">
+<h2>Development environment<a class="headerlink" href="#development-environment" title="Link to this heading"></a></h2>
+<p><strong>Prerequisites:</strong> Python ≥ 3.10, Git, and (optional) PyGMT for publication figures.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/AMOCcommunity/amocatlas.git
+<span class="nb">cd</span><span class="w"> </span>amocatlas
+python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+<span class="nb">source</span><span class="w"> </span>venv/bin/activate
+pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">".[dev]"</span><span class="w">               </span><span class="c1"># editable install, runtime + dev tools</span>
+pytest<span class="w"> </span>-m<span class="w"> </span><span class="s2">"not slow"</span><span class="w">                  </span><span class="c1"># confirm the setup</span>
+</pre></div>
+</div>
+<p><strong>Tooling:</strong> Ruff (linting, import order, and formatting; 88-char lines), pytest (tests +
+coverage), Sphinx (docs).</p>
+<p><strong>PyGMT</strong> is optional and can be awkward to install; prefer conda-forge
+(<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">pygmt</span> <span class="pre">-c</span> <span class="pre">conda-forge</span></code>) or see the
+<a class="reference external" href="https://www.pygmt.org/latest/install.html">PyGMT install guide</a>. All non-PyGMT functionality
+works without it.</p>
+</section>
+<hr class="docutils" />
+<section id="adding-a-new-data-reader">
+<h2>Adding a new data reader<a class="headerlink" href="#adding-a-new-data-reader" title="Link to this heading"></a></h2>
+<p>This is the most common contribution. To add an array called <code class="docutils literal notranslate"><span class="pre">newarray</span></code>:</p>
+<ol class="arabic">
+<li><p><strong>Create the reader</strong> <code class="docutils literal notranslate"><span class="pre">amocatlas/data_sources/newarray.py</span></code> with a <code class="docutils literal notranslate"><span class="pre">read_newarray()</span></code> function
+that returns a list of standardised datasets:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">"""Reader for NEWARRAY data."""</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">amocatlas.logger</span><span class="w"> </span><span class="kn">import</span> <span class="n">log_info</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">read_newarray</span><span class="p">(</span><span class="n">source</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">"""Read NEWARRAY data and return standardised datasets."""</span>
+    <span class="n">log_info</span><span class="p">(</span><span class="s2">"Loading NEWARRAY data..."</span><span class="p">)</span>
+    <span class="c1"># download, parse, standardise</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">dataset</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Export it</strong> from <code class="docutils literal notranslate"><span class="pre">amocatlas/data_sources/__init__.py</span></code> (add the import and list it in
+<code class="docutils literal notranslate"><span class="pre">__all__</span></code>).</p></li>
+<li><p><strong>Expose the modern API</strong> in <code class="docutils literal notranslate"><span class="pre">amocatlas/read.py</span></code>: import <code class="docutils literal notranslate"><span class="pre">read_newarray</span></code> from <code class="docutils literal notranslate"><span class="pre">.data_sources</span></code>,
+add a <code class="docutils literal notranslate"><span class="pre">read.newarray()</span></code> wrapper following the existing readers, and add <code class="docutils literal notranslate"><span class="pre">&quot;newarray&quot;</span></code> to
+<code class="docutils literal notranslate"><span class="pre">__all__</span></code>. (The legacy <code class="docutils literal notranslate"><span class="pre">readers.load_dataset</span></code> API is deprecated; new arrays are exposed only
+through <code class="docutils literal notranslate"><span class="pre">read.*</span></code>.)</p></li>
+<li><p><strong>Add metadata</strong> at <code class="docutils literal notranslate"><span class="pre">amocatlas/metadata/newarray.yml</span></code> (title, contributors, institutions,
+licence, citation) so the dataset is enriched and passes the schema in
+<code class="docutils literal notranslate"><span class="pre">metadata/array_schema.json</span></code>.</p></li>
+<li><p><strong>Add tests</strong> in <code class="docutils literal notranslate"><span class="pre">tests/</span></code> (fast, mocked tests plus an optional <code class="docutils literal notranslate"><span class="pre">&#64;pytest.mark.slow</span></code> integration
+test).</p></li>
+</ol>
+<section id="adding-visualisation-functions">
+<h3>Adding visualisation functions<a class="headerlink" href="#adding-visualisation-functions" title="Link to this heading"></a></h3>
+<p>Add plotting functions to <code class="docutils literal notranslate"><span class="pre">amocatlas/plotters.py</span></code>. PyGMT functions must call <code class="docutils literal notranslate"><span class="pre">_check_pygmt()</span></code> for a
+graceful fallback when PyGMT is absent, return a <code class="docutils literal notranslate"><span class="pre">pygmt.Figure</span></code>, and stamp the figure with
+<code class="docutils literal notranslate"><span class="pre">_add_amocatlas_timestamp(fig)</span></code>.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="code-standards">
+<h2>Code standards<a class="headerlink" href="#code-standards" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Type hints</strong> on all public function parameters and return values.</p></li>
+<li><p><strong>NumPy-style docstrings</strong> on all public functions (Parameters, Returns, and Raises where
+relevant).</p></li>
+<li><p><strong>Naming:</strong> <code class="docutils literal notranslate"><span class="pre">snake_case</span></code> for functions/variables; <code class="docutils literal notranslate"><span class="pre">ALL_CAPS</span></code> for xarray data variables
+(e.g. <code class="docutils literal notranslate"><span class="pre">MOC</span></code>, <code class="docutils literal notranslate"><span class="pre">TRANS</span></code>, <code class="docutils literal notranslate"><span class="pre">MHT</span></code>, <code class="docutils literal notranslate"><span class="pre">TIME</span></code>).</p></li>
+<li><p><strong>Line length</strong> 88; imports ordered by Ruff.</p></li>
+<li><p><strong>Units</strong> always live in variable attributes, never in variable names. Use the full word
+<code class="docutils literal notranslate"><span class="pre">Sverdrup</span></code> (not <code class="docutils literal notranslate"><span class="pre">Sv</span></code>, which collides with sieverts).</p></li>
+<li><p><strong>Attributes</strong> are <code class="docutils literal notranslate"><span class="pre">lowercase_with_underscores</span></code>, following OceanSITES conventions, with a few
+variable-attribute additions adopted from OceanGliders OG1 where they do not conflict with
+OceanSITES.</p></li>
+</ul>
+<p>Run before committing:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ruff<span class="w"> </span>format<span class="w"> </span>amocatlas/<span class="w"> </span>tests/
+ruff<span class="w"> </span>check<span class="w"> </span>amocatlas/<span class="w"> </span>tests/
+pytest<span class="w"> </span>-m<span class="w"> </span><span class="s2">"not slow"</span><span class="w"> </span>--cov<span class="o">=</span>amocatlas
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="testing">
+<h2>Testing<a class="headerlink" href="#testing" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>-m<span class="w"> </span><span class="s2">"not slow"</span><span class="w">                              </span><span class="c1"># fast tests (CI set)</span>
+pytest<span class="w">                                            </span><span class="c1"># all tests, incl. slow integration</span>
+pytest<span class="w"> </span>--cov<span class="o">=</span>amocatlas<span class="w"> </span>--cov-report<span class="w"> </span>term-missing<span class="w">  </span><span class="c1"># coverage</span>
+pytest<span class="w"> </span>tests/test_readers.py::test_load_sample_dataset_rapid<span class="w">  </span><span class="c1"># a single test</span>
+</pre></div>
+</div>
+<p>Place tests in <code class="docutils literal notranslate"><span class="pre">tests/</span></code> named <code class="docutils literal notranslate"><span class="pre">test_*.py</span></code>. Fast, mocked tests run in CI; mark network/integration
+tests with <code class="docutils literal notranslate"><span class="pre">&#64;pytest.mark.slow</span></code> (excluded from CI, expected before a PR). Use sample datasets for
+fast tests:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">amocatlas</span><span class="w"> </span><span class="kn">import</span> <span class="n">readers</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_load_sample_dataset</span><span class="p">():</span>
+    <span class="n">ds</span> <span class="o">=</span> <span class="n">readers</span><span class="o">.</span><span class="n">load_sample_dataset</span><span class="p">(</span><span class="s2">"rapid"</span><span class="p">)</span>  <span class="c1"># raw sample, original variable names</span>
+    <span class="k">assert</span> <span class="n">ds</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+    <span class="k">assert</span> <span class="s2">"time"</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">variables</span>
+</pre></div>
+</div>
+<p>CI runs the fast tests on Windows, macOS, and Linux across supported Python versions on pull
+requests and pushes to <code class="docutils literal notranslate"><span class="pre">main</span></code>; see the Actions tab for results.</p>
+</section>
+<hr class="docutils" />
+<section id="git-workflow">
+<h2>Git workflow<a class="headerlink" href="#git-workflow" title="Link to this heading"></a></h2>
+<p>Full step-by-step instructions (with screenshots) are in <a class="reference internal" href="git_beginners_guide.html"><span class="doc">Git for Beginners: Workflow Guide</span></a>. In short:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># One-time: point at the upstream repo</span>
+git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>upstream<span class="w"> </span>https://github.com/AMOCcommunity/amocatlas.git
+
+<span class="c1"># Keep your fork current</span>
+git<span class="w"> </span>switch<span class="w"> </span>main<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>fetch<span class="w"> </span>upstream<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>merge<span class="w"> </span>upstream/main<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+
+<span class="c1"># Work on a branch, never on main</span>
+git<span class="w"> </span>switch<span class="w"> </span>-c<span class="w"> </span>fix-osnap-metadata
+</pre></div>
+</div>
+<p>Use <a class="reference external" href="https://www.conventionalcommits.org/">conventional commit</a> prefixes in commit messages:
+<code class="docutils literal notranslate"><span class="pre">feat:</span></code>, <code class="docutils literal notranslate"><span class="pre">fix:</span></code>, <code class="docutils literal notranslate"><span class="pre">docs:</span></code>, <code class="docutils literal notranslate"><span class="pre">style:</span></code>, <code class="docutils literal notranslate"><span class="pre">refactor:</span></code>, <code class="docutils literal notranslate"><span class="pre">test:</span></code>, <code class="docutils literal notranslate"><span class="pre">chore:</span></code>. Push your branch and open a PR
+targeting <code class="docutils literal notranslate"><span class="pre">AMOCcommunity/amocatlas:main</span></code>; address review feedback, then merge once approved.</p>
+</section>
+<hr class="docutils" />
+<section id="resources">
+<h2>Resources<a class="headerlink" href="#resources" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://amoccommunity.github.io/amocatlas/">Documentation</a></p></li>
+<li><p><a class="reference external" href="https://github.com/AMOCcommunity/amocatlas">GitHub repository</a></p></li>
+<li><p><a class="reference external" href="https://github.com/AMOCcommunity/amocatlas/issues">Issue tracker</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../utilities.html" class="btn btn-neutral float-left" title="utilities" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="git_beginners_guide.html" class="btn btn-neutral float-right" title="Git for Beginners: Workflow Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Eleanor Frajka-Williams, Isabelle Schmitz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

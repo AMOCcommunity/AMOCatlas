@@ -1,0 +1,460 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AMOCatlas data format &mdash; amocatlas 0.4.0.post1.dev10 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=1078e4cb" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=6d4c28d6"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="amocvocab — variable vocabulary" href="vocabulary.html" />
+    <link rel="prev" title="SCOTIA Datasets" href="../reports/scotia_report.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            amocatlas
+              <img src="../_static/logo.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ / Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Demo notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../demo-output.html">AMOCatlas demo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dataset Reports</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reports/index.html">Data Sources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">AMOCatlas data format</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#which-part-of-oceansites-applies">Which part of OceanSITES applies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#file-naming">File naming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dimensions-and-coordinates">Dimensions and coordinates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#units">Units</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#global-attributes">Global attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#variables">Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#worked-example-cdl">Worked example (CDL)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vocabulary.html">amocvocab — variable vocabulary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../amoc_paperfigs-output.html">AMOC Publication Figures</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Repository and API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">GitHub Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../amocatlas.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">amocatlas</span> <span class="pre">API</span></code></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers' guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developers/developer_guide.html">Developer Guide for AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/git_beginners_guide.html">Git for Beginners: Workflow Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/actions.html">Extra GitHub features: Actions &amp; Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers/housekeeping.html">Project Maintenance Checklist</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">amocatlas</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">AMOCatlas data format</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/reference/format.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="amocatlas-data-format">
+<h1>AMOCatlas data format<a class="headerlink" href="#amocatlas-data-format" title="Link to this heading"></a></h1>
+<p>AMOCatlas writes <strong>OceanSITES-compliant NetCDF files</strong>, following the OceanSITES Data Format
+Reference Manual (v1.4). It adds no bespoke file format. Its one addition is a controlled
+<strong>short-name vocabulary</strong> for AMOC observing-array quantities (transports, streamfunctions,
+component decompositions) that OceanSITES does not define — published separately as <code class="docutils literal notranslate"><span class="pre">amocvocab</span></code>
+(see <a class="reference internal" href="vocabulary.html"><span class="doc">amocvocab — variable vocabulary</span></a>).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This supersedes the earlier “AC-0.1 format”. AMOCatlas does not define a variant of OceanSITES
+with documented deviations; its products conform to OceanSITES section 4.2, and the extension is
+a variable vocabulary, not a format. <code class="docutils literal notranslate"><span class="pre">AC1</span></code>/<code class="docutils literal notranslate"><span class="pre">AC-0.1</span></code> remains only as a deprecated alias in the
+code for one release.</p>
+</div>
+<section id="which-part-of-oceansites-applies">
+<h2>Which part of OceanSITES applies<a class="headerlink" href="#which-part-of-oceansites-applies" title="Link to this heading"></a></h2>
+<p>The OceanSITES manual has two scopes. <strong>Section 2</strong> (“NetCDF Data Format for Primary Observational
+Data”) governs <em>“individual deployments of moorings, or sometimes repeat ship visits”</em> — raw
+single-deployment data, with required <code class="docutils literal notranslate"><span class="pre">site_code</span></code>, <code class="docutils literal notranslate"><span class="pre">platform_code</span></code>, <code class="docutils literal notranslate"><span class="pre">data_mode</span></code>, a <code class="docutils literal notranslate"><span class="pre">DEPTH</span></code>
+coordinate, and QC flags on every variable.</p>
+<p><strong>AMOCatlas holds none of that.</strong> Every AMOCatlas product is a merged, gridded, or derived quantity,
+which the manual handles separately in <strong>section 4.2</strong> (“Data products from OceanSITES data”), and
+deliberately loosely. AMOCatlas therefore conforms to section 4.2, and the section-2 deployment
+requirements do not apply.</p>
+<p>Section 4.2 recognises three kinds of higher-level file, and AMOCatlas’s holdings are entirely these:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 12.0%" />
+<col style="width: 88.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>Description and AMOCatlas examples</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>LTS</strong></p></td>
+<td><p>Long time series — multiple deployments concatenated at native resolution (e.g. RAPID
+<code class="docutils literal notranslate"><span class="pre">moc_transports</span></code>, MOVE, SAMBA).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>GRD</strong></p></td>
+<td><p>Gridded — binned, averaged, or interpolated onto a grid other than native (e.g. OSNAP gridded
+T/S, RAPID <code class="docutils literal notranslate"><span class="pre">ts_gridded</span></code>).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>DPR</strong></p></td>
+<td><p>Derived product — <em>“derived from multiple sites or some other higher-order processing”</em> (every
+transport time series and streamfunction, FW2015, Zheng 2024, Calafat 2025).</p></td>
+</tr>
+</tbody>
+</table>
+<p>Section 4.2.1 states the full requirement set, and it is short:</p>
+<ul class="simple">
+<li><p>NetCDF.</p></li>
+<li><p><strong>CF conventions</strong> — a <code class="docutils literal notranslate"><span class="pre">standard_name</span></code> is required <em>when one exists in the CF table</em> and its
+canonical units are convertible to the reported units; it is omitted otherwise — both when no CF
+name exists, and when a CF name fits the concept but its canonical units are not convertible (for
+example a freshwater transport in <code class="docutils literal notranslate"><span class="pre">sverdrup</span></code> against CF’s <code class="docutils literal notranslate"><span class="pre">kg</span> <span class="pre">s-1</span></code>, which would misrepresent
+the units). A CF name is never invented.</p></li>
+<li><p><strong>ACDD</strong> discovery metadata.</p></li>
+<li><p>Section-2 deployment attributes are <em>“possible and welcome, as long as they make sense for the data
+product in question”</em> — i.e. optional, and dropped where they do not apply.</p></li>
+<li><p>A list of the lower-level files a product was derived from, with their versions, in <code class="docutils literal notranslate"><span class="pre">history</span></code> or
+<code class="docutils literal notranslate"><span class="pre">comment</span></code>.</p></li>
+<li><p>QC flags are <em>“not strictly required”</em> for gridded or derived data.</p></li>
+<li><p>Information on data mode is <em>“not strictly required”</em> for gridded or derived data.</p></li>
+</ul>
+</section>
+<section id="file-naming">
+<h2>File naming<a class="headerlink" href="#file-naming" title="Link to this heading"></a></h2>
+<p>AMOCatlas follows the OceanSITES section 4.2.2 higher-level naming convention:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">OS_</span><span class="p">[</span><span class="n">PSPANCode</span><span class="p">]</span><span class="n">_</span><span class="p">[</span><span class="n">StartEndCode</span><span class="p">]</span><span class="n">_</span><span class="p">[</span><span class="n">ContentType</span><span class="p">]</span><span class="n">_</span><span class="p">[</span><span class="n">PARTX</span><span class="p">]</span><span class="o">.</span><span class="n">nc</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OS</span></code> — the OceanSITES prefix.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PSPANCode</span></code> — <em>“Deployment, platform, site, project, array, or network code.”</em> The manual’s
+instruction: <em>“if all data are from one deployment of one platform, the platform and deployment
+code should be used. Else, move down the sequence terms until one is found that is unique and
+appropriate for all data in the file.”</em> For AMOCatlas an <strong>array or network</strong> code is the right
+choice — e.g. <code class="docutils literal notranslate"><span class="pre">RAPID26N</span></code>, <code class="docutils literal notranslate"><span class="pre">OSNAP</span></code>, <code class="docutils literal notranslate"><span class="pre">MOVE16N</span></code>. This is the documented behaviour for
+multi-platform data, not a deviation, and there is no <code class="docutils literal notranslate"><span class="pre">site_code</span></code> requirement on a section-4.2
+file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">StartEndCode</span></code> — the time span, e.g. <code class="docutils literal notranslate"><span class="pre">20040402-20240327</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ContentType</span></code> — a <strong>three-letter</strong> code, one of <code class="docutils literal notranslate"><span class="pre">LTS</span></code> / <code class="docutils literal notranslate"><span class="pre">GRD</span></code> / <code class="docutils literal notranslate"><span class="pre">DPR</span></code>, distinguished from
+the one-letter deployment modes (<code class="docutils literal notranslate"><span class="pre">R</span></code>/<code class="docutils literal notranslate"><span class="pre">P</span></code>/<code class="docutils literal notranslate"><span class="pre">D</span></code>) of section-2 files.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PARTX</span></code> — a free content/resolution tag, e.g. <code class="docutils literal notranslate"><span class="pre">transports_T12H</span></code>.</p></li>
+</ul>
+<p>Example: <code class="docutils literal notranslate"><span class="pre">OS_RAPID26N_20040402-20240327_DPR_transports_T12H.nc</span></code>.</p>
+</section>
+<section id="dimensions-and-coordinates">
+<h2>Dimensions and coordinates<a class="headerlink" href="#dimensions-and-coordinates" title="Link to this heading"></a></h2>
+<p>Coordinates use uppercase names. A <code class="docutils literal notranslate"><span class="pre">standard_name</span></code> and <code class="docutils literal notranslate"><span class="pre">units</span></code> are always set so that files are
+machine-identifiable regardless of the coordinate variable name.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 18.0%" />
+<col style="width: 26.0%" />
+<col style="width: 16.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Coordinate</p></th>
+<th class="head"><p>CF standard_name</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">TIME</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">time</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">seconds</span> <span class="pre">since</span> <span class="pre">1970-01-01T00:00:00Z</span></code></p></td>
+<td><p>Time coordinate (written from <code class="docutils literal notranslate"><span class="pre">datetime64[ns]</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">LATITUDE</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">latitude</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">degree_north</span></code></p></td>
+<td><p>Latitude, positive north (WGS84).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">LONGITUDE</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">longitude</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">degree_east</span></code></p></td>
+<td><p>Longitude, positive east (WGS84).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">DEPTH</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">depth</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">m</span></code></p></td>
+<td><p>Depth below sea surface, positive downward.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">PRESSURE</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sea_water_pressure</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dbar</span></code></p></td>
+<td><p>Pressure coordinate.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">SIGMA0</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sea_water_sigma_theta</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">kg</span> <span class="pre">m-3</span></code></p></td>
+<td><p>Potential density anomaly (σ₀); set <code class="docutils literal notranslate"><span class="pre">reference_pressure</span> <span class="pre">=</span> <span class="pre">0</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SIGMA2</span></code></p></td>
+<td><p>(none — see note)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">kg</span> <span class="pre">m-3</span></code></p></td>
+<td><p>Potential density anomaly (σ₂); set <code class="docutils literal notranslate"><span class="pre">reference_pressure</span> <span class="pre">=</span> <span class="pre">2000</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>CF has no standard name for σ₂. <code class="docutils literal notranslate"><span class="pre">SIGMA2</span></code> therefore omits <code class="docutils literal notranslate"><span class="pre">standard_name</span></code> and carries its
+meaning in <code class="docutils literal notranslate"><span class="pre">long_name</span></code> plus <code class="docutils literal notranslate"><span class="pre">reference_pressure</span> <span class="pre">=</span> <span class="pre">2000</span></code>. <code class="docutils literal notranslate"><span class="pre">sea_water_sigma_theta</span></code> is used for
+σ₀ only.</p>
+</div>
+<p>Basin-wide transports have no single position. AMOCatlas gives the array latitude as a scalar
+coordinate where it is meaningful (a zonal section at 26°N genuinely has one) and expresses the zonal
+extent through <code class="docutils literal notranslate"><span class="pre">geospatial_lon_min</span></code> / <code class="docutils literal notranslate"><span class="pre">geospatial_lon_max</span></code>; it does <strong>not</strong> fabricate a single
+<code class="docutils literal notranslate"><span class="pre">LATITUDE</span></code> value for a section that spans a range.</p>
+</section>
+<section id="units">
+<h2>Units<a class="headerlink" href="#units" title="Link to this heading"></a></h2>
+<p>Units follow UDUNITS-2 so that they parse and convert. Preferred units:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 34.0%" />
+<col style="width: 22.0%" />
+<col style="width: 44.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Quantity</p></th>
+<th class="head"><p>Unit</p></th>
+<th class="head"><p>Rationale</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Volume transport (MOC, section transports)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sverdrup</span></code></p></td>
+<td><p>Full spelling; <code class="docutils literal notranslate"><span class="pre">Sv</span></code> is the sievert and does not convert to a volume flux.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Heat transport</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PW</span></code></p></td>
+<td><p>Appropriate scale for oceanic heat transport (petawatts).</p></td>
+</tr>
+<tr class="row-even"><td><p>Freshwater transport</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sverdrup</span></code></p></td>
+<td><p>See note below on <code class="docutils literal notranslate"><span class="pre">standard_name</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Temperature</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">degree_C</span></code></p></td>
+<td><p>CF-compliant.</p></td>
+</tr>
+<tr class="row-even"><td><p>Practical salinity</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+<td><p>Dimensionless.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Density / potential density</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">kg</span> <span class="pre">m-3</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Velocity</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">m</span> <span class="pre">s-1</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Pressure</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dbar</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Depth</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">m</span></code></p></td>
+<td><p>Positive downward.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The unit string is lowercase <code class="docutils literal notranslate"><span class="pre">sverdrup</span></code>. This is the form UDUNITS-2 recognises (it defines
+<code class="docutils literal notranslate"><span class="pre">sverdrup</span></code> = <code class="docutils literal notranslate"><span class="pre">1e6</span> <span class="pre">m3</span> <span class="pre">s-1</span></code>; the capitalised <code class="docutils literal notranslate"><span class="pre">Sverdrup</span></code> does <strong>not</strong> parse), and it follows the
+UDUNITS convention that spelled-out unit names are lowercase while only person-derived symbols are
+capitalised. The name “Sverdrup” (after Harald Sverdrup) is still capitalised in prose.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Freshwater transport omits ``standard_name``.</strong> CF’s <code class="docutils literal notranslate"><span class="pre">northward_ocean_freshwater_transport</span></code> has
+canonical units <code class="docutils literal notranslate"><span class="pre">kg</span> <span class="pre">s-1</span></code> (a mass flux). AMOCatlas reports meridional freshwater transport in
+<code class="docutils literal notranslate"><span class="pre">Sverdrup</span></code> (a volume flux), which is not convertible to <code class="docutils literal notranslate"><span class="pre">kg</span> <span class="pre">s-1</span></code>; pairing the two would be
+rejected by any CF checker. AMOCatlas therefore reports the value in <code class="docutils literal notranslate"><span class="pre">Sverdrup</span></code> and omits the
+<code class="docutils literal notranslate"><span class="pre">standard_name</span></code>, carrying the meaning in <code class="docutils literal notranslate"><span class="pre">long_name</span></code>. The same applies to any <code class="docutils literal notranslate"><span class="pre">_ERR</span></code> twin.</p>
+</div>
+</section>
+<section id="global-attributes">
+<h2>Global attributes<a class="headerlink" href="#global-attributes" title="Link to this heading"></a></h2>
+<p>Global attributes are grouped by where the requirement comes from. AMOCatlas does not require the
+section-2 deployment attributes (<code class="docutils literal notranslate"><span class="pre">site_code</span></code>, <code class="docutils literal notranslate"><span class="pre">platform_code</span></code>, <code class="docutils literal notranslate"><span class="pre">data_mode</span></code>).</p>
+<p><strong>ACDD-required (discovery):</strong> <code class="docutils literal notranslate"><span class="pre">title</span></code>, <code class="docutils literal notranslate"><span class="pre">summary</span></code>, <code class="docutils literal notranslate"><span class="pre">Conventions</span></code>, <code class="docutils literal notranslate"><span class="pre">date_created</span></code>,
+<code class="docutils literal notranslate"><span class="pre">time_coverage_start</span></code>, <code class="docutils literal notranslate"><span class="pre">time_coverage_end</span></code>, <code class="docutils literal notranslate"><span class="pre">geospatial_lat_min</span></code> / <code class="docutils literal notranslate"><span class="pre">_lat_max</span></code> /
+<code class="docutils literal notranslate"><span class="pre">geospatial_lon_min</span></code> / <code class="docutils literal notranslate"><span class="pre">_lon_max</span></code>.</p>
+<p><strong>OceanSITES-recommended (where they make sense):</strong> <code class="docutils literal notranslate"><span class="pre">array</span></code>, <code class="docutils literal notranslate"><span class="pre">naming_authority</span></code>, <code class="docutils literal notranslate"><span class="pre">id</span></code>
+(the filename without <code class="docutils literal notranslate"><span class="pre">.nc</span></code>), <code class="docutils literal notranslate"><span class="pre">featureType</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>.</p>
+<p><strong>AMOCatlas-specific (provenance and attribution):</strong> <code class="docutils literal notranslate"><span class="pre">contributor_name</span></code>, <code class="docutils literal notranslate"><span class="pre">contributor_email</span></code>,
+<code class="docutils literal notranslate"><span class="pre">contributor_role</span></code> (NERC G04 / ISO 19115 <code class="docutils literal notranslate"><span class="pre">CI_RoleCode</span></code>), <code class="docutils literal notranslate"><span class="pre">contributing_institutions</span></code> and their
+EDMO codes, <code class="docutils literal notranslate"><span class="pre">source_acknowledgement</span></code>, <code class="docutils literal notranslate"><span class="pre">source_doi</span></code>, <code class="docutils literal notranslate"><span class="pre">amocatlas_version</span></code>, and a <code class="docutils literal notranslate"><span class="pre">history</span></code> entry
+recording the source files and versions the product was derived from (section 4.2.1).</p>
+</section>
+<section id="variables">
+<h2>Variables<a class="headerlink" href="#variables" title="Link to this heading"></a></h2>
+<p>Data variables use uppercase names (e.g. <code class="docutils literal notranslate"><span class="pre">MOC</span></code>, <code class="docutils literal notranslate"><span class="pre">TRANS</span></code>, <code class="docutils literal notranslate"><span class="pre">MHT</span></code>). Each carries <code class="docutils literal notranslate"><span class="pre">long_name</span></code> and
+<code class="docutils literal notranslate"><span class="pre">units</span></code>; a <code class="docutils literal notranslate"><span class="pre">standard_name</span></code> is set <strong>only</strong> when a matching CF standard name exists, and is
+otherwise omitted rather than guessed. The short names, their CF <code class="docutils literal notranslate"><span class="pre">standard_name</span></code> (or the explicit
+absence of one), units, and definitions are the content of <a class="reference internal" href="vocabulary.html"><span class="doc">amocvocab — variable vocabulary</span></a> (the <code class="docutils literal notranslate"><span class="pre">amocvocab</span></code>
+registry).</p>
+</section>
+<section id="worked-example-cdl">
+<h2>Worked example (CDL)<a class="headerlink" href="#worked-example-cdl" title="Link to this heading"></a></h2>
+<p>A derived-product (<code class="docutils literal notranslate"><span class="pre">DPR</span></code>) transport file, conforming to section 4.2 — note the absence of
+<code class="docutils literal notranslate"><span class="pre">site_code</span></code> / <code class="docutils literal notranslate"><span class="pre">platform_code</span></code> / <code class="docutils literal notranslate"><span class="pre">data_mode</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">netcdf</span> <span class="n">OS_RAPID26N_20040402</span><span class="o">-</span><span class="mi">20240327</span><span class="n">_DPR_transports_T12H</span> <span class="p">{</span>
+<span class="n">dimensions</span><span class="p">:</span>
+    <span class="n">TIME</span> <span class="o">=</span> <span class="n">UNLIMITED</span> <span class="p">;</span>
+<span class="n">variables</span><span class="p">:</span>
+    <span class="n">double</span> <span class="n">TIME</span><span class="p">(</span><span class="n">TIME</span><span class="p">)</span> <span class="p">;</span>
+        <span class="n">TIME</span><span class="p">:</span><span class="n">standard_name</span> <span class="o">=</span> <span class="s2">"time"</span> <span class="p">;</span>
+        <span class="n">TIME</span><span class="p">:</span><span class="n">units</span> <span class="o">=</span> <span class="s2">"seconds since 1970-01-01T00:00:00Z"</span> <span class="p">;</span>
+        <span class="n">TIME</span><span class="p">:</span><span class="n">axis</span> <span class="o">=</span> <span class="s2">"T"</span> <span class="p">;</span>
+    <span class="nb">float</span> <span class="n">LATITUDE</span> <span class="p">;</span>
+        <span class="n">LATITUDE</span><span class="p">:</span><span class="n">standard_name</span> <span class="o">=</span> <span class="s2">"latitude"</span> <span class="p">;</span>
+        <span class="n">LATITUDE</span><span class="p">:</span><span class="n">units</span> <span class="o">=</span> <span class="s2">"degree_north"</span> <span class="p">;</span>
+        <span class="n">LATITUDE</span><span class="p">:</span><span class="n">axis</span> <span class="o">=</span> <span class="s2">"Y"</span> <span class="p">;</span>
+    <span class="nb">float</span> <span class="n">MOC</span><span class="p">(</span><span class="n">TIME</span><span class="p">)</span> <span class="p">;</span>
+        <span class="n">MOC</span><span class="p">:</span><span class="n">long_name</span> <span class="o">=</span> <span class="s2">"Atlantic meridional overturning circulation transport"</span> <span class="p">;</span>
+        <span class="n">MOC</span><span class="p">:</span><span class="n">standard_name</span> <span class="o">=</span> <span class="s2">"ocean_meridional_overturning_streamfunction"</span> <span class="p">;</span>
+        <span class="n">MOC</span><span class="p">:</span><span class="n">units</span> <span class="o">=</span> <span class="s2">"sverdrup"</span> <span class="p">;</span>
+        <span class="n">MOC</span><span class="p">:</span><span class="n">_FillValue</span> <span class="o">=</span> <span class="n">NaNf</span> <span class="p">;</span>
+    <span class="nb">float</span> <span class="n">MFT</span><span class="p">(</span><span class="n">TIME</span><span class="p">)</span> <span class="p">;</span>
+        <span class="n">MFT</span><span class="p">:</span><span class="n">long_name</span> <span class="o">=</span> <span class="s2">"Meridional freshwater transport"</span> <span class="p">;</span>
+        <span class="n">MFT</span><span class="p">:</span><span class="n">units</span> <span class="o">=</span> <span class="s2">"sverdrup"</span> <span class="p">;</span>              <span class="o">//</span> <span class="n">no</span> <span class="n">standard_name</span><span class="p">:</span> <span class="n">sverdrup</span> <span class="ow">not</span> <span class="n">convertible</span> <span class="n">to</span> <span class="n">CF</span> <span class="n">kg</span> <span class="n">s</span><span class="o">-</span><span class="mi">1</span>
+        <span class="n">MFT</span><span class="p">:</span><span class="n">_FillValue</span> <span class="o">=</span> <span class="n">NaNf</span> <span class="p">;</span>
+
+<span class="o">//</span> <span class="k">global</span> <span class="n">attributes</span><span class="p">:</span>
+        <span class="p">:</span><span class="n">Conventions</span> <span class="o">=</span> <span class="s2">"CF-1.8, ACDD-1.3, OceanSITES-1.4"</span> <span class="p">;</span>
+        <span class="p">:</span><span class="n">featureType</span> <span class="o">=</span> <span class="s2">"timeSeries"</span> <span class="p">;</span>
+        <span class="p">:</span><span class="n">array</span> <span class="o">=</span> <span class="s2">"RAPID"</span> <span class="p">;</span>
+        <span class="p">:</span><span class="n">naming_authority</span> <span class="o">=</span> <span class="s2">"io.github.amoccommunity"</span> <span class="p">;</span>
+        <span class="p">:</span><span class="nb">id</span> <span class="o">=</span> <span class="s2">"OS_RAPID26N_20040402-20240327_DPR_transports_T12H"</span> <span class="p">;</span>
+        <span class="p">:</span><span class="n">title</span> <span class="o">=</span> <span class="s2">"RAPID-MOCHA transport time series at 26°N"</span> <span class="p">;</span>
+        <span class="p">:</span><span class="n">summary</span> <span class="o">=</span> <span class="s2">"Meridional overturning and component transports derived from the RAPID array at 26°N."</span> <span class="p">;</span>
+        <span class="p">:</span><span class="n">geospatial_lat_min</span> <span class="o">=</span> <span class="mf">26.0</span> <span class="p">;</span>
+        <span class="p">:</span><span class="n">geospatial_lat_max</span> <span class="o">=</span> <span class="mf">26.0</span> <span class="p">;</span>
+        <span class="p">:</span><span class="n">geospatial_lon_min</span> <span class="o">=</span> <span class="o">-</span><span class="mf">80.0</span> <span class="p">;</span>
+        <span class="p">:</span><span class="n">geospatial_lon_max</span> <span class="o">=</span> <span class="o">-</span><span class="mf">13.0</span> <span class="p">;</span>
+        <span class="p">:</span><span class="n">time_coverage_start</span> <span class="o">=</span> <span class="s2">"2004-04-02T00:00:00Z"</span> <span class="p">;</span>
+        <span class="p">:</span><span class="n">time_coverage_end</span> <span class="o">=</span> <span class="s2">"2024-03-27T23:59:59Z"</span> <span class="p">;</span>
+        <span class="p">:</span><span class="n">contributor_name</span> <span class="o">=</span> <span class="s2">"..."</span> <span class="p">;</span>
+        <span class="p">:</span><span class="n">contributor_role</span> <span class="o">=</span> <span class="s2">"principalInvestigator"</span> <span class="p">;</span>
+        <span class="p">:</span><span class="n">source_doi</span> <span class="o">=</span> <span class="s2">"..."</span> <span class="p">;</span>
+        <span class="p">:</span><span class="n">date_created</span> <span class="o">=</span> <span class="s2">"..."</span> <span class="p">;</span>
+        <span class="p">:</span><span class="n">history</span> <span class="o">=</span> <span class="s2">"... : derived from RAPID moc_transports v2023.1 using amocatlas"</span> <span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>OceanSITES Data Format Reference Manual v1.4 — the authoritative document, included with AMOCatlas
+at <a class="reference download internal" download="" href="../_downloads/1dbb84d3ab8d3815a7eb1a490587e153/oceansites_data_format_reference_manual.pdf"><code class="xref download docutils literal notranslate"><span class="pre">oceansites_data_format_reference_manual.pdf</span></code></a>.</p></li>
+<li><p><a class="reference external" href="https://cfconventions.org/cf-conventions/cf-conventions.html">CF Conventions</a></p></li>
+<li><p><a class="reference external" href="https://cfconventions.org/Data/cf-standard-names/current/build/cf-standard-name-table.html">CF Standard Name Table</a></p></li>
+<li><p><a class="reference external" href="https://wiki.esipfed.org/Attribute_Convention_for_Data_Discovery_1-3">ACDD 1.3</a></p></li>
+<li><p><a class="reference external" href="https://docs.unidata.ucar.edu/udunits/current/">UDUNITS-2</a> — units grammar and the base/derived
+unit database.</p></li>
+<li><p><cite>Ferret ``udunits.dat`</cite> &lt;<a class="reference external" href="https://ferret.pmel.noaa.gov/Ferret/documentation/udunits.dat">https://ferret.pmel.noaa.gov/Ferret/documentation/udunits.dat</a>&gt;`_ — a
+reference units database defining oceanographic units. Note <code class="docutils literal notranslate"><span class="pre">sverdrup</span></code> (<code class="docutils literal notranslate"><span class="pre">1e6</span> <span class="pre">m3</span> <span class="pre">s-1</span></code>) is defined
+in the UDUNITS-2 database itself (lowercase); <code class="docutils literal notranslate"><span class="pre">Sv</span></code> is the sievert and does not convert to a volume
+flux.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../reports/scotia_report.html" class="btn btn-neutral float-left" title="SCOTIA Datasets" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="vocabulary.html" class="btn btn-neutral float-right" title="amocvocab — variable vocabulary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Eleanor Frajka-Williams, Isabelle Schmitz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

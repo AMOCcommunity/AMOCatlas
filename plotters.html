@@ -1,0 +1,575 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>plotters &mdash; amocatlas 0.4.0.post1.dev10 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=1078e4cb" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=6d4c28d6"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="writers" href="writers.html" />
+    <link rel="prev" title="data_sources package" href="data_sources.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            amocatlas
+              <img src="_static/logo.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ / Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Demo notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="demo-output.html">AMOCatlas demo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dataset Reports</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reports/index.html">Data Sources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="reference/format.html">AMOCatlas data format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/vocabulary.html">amocvocab — variable vocabulary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="amoc_paperfigs-output.html">AMOC Publication Figures</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Repository and API</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">GitHub Repo</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="amocatlas.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">amocatlas</span> <span class="pre">API</span></code></a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="read.html">read module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_sources.html">data_sources package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">plotters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.plotters.format_units_for_plotting"><code class="docutils literal notranslate"><span class="pre">format_units_for_plotting()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.plotters.format_variable_name_for_plotting"><code class="docutils literal notranslate"><span class="pre">format_variable_name_for_plotting()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.plotters.monthly_resample"><code class="docutils literal notranslate"><span class="pre">monthly_resample()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.plotters.plot_all_moc_overlaid_pygmt"><code class="docutils literal notranslate"><span class="pre">plot_all_moc_overlaid_pygmt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.plotters.plot_all_moc_pygmt"><code class="docutils literal notranslate"><span class="pre">plot_all_moc_pygmt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.plotters.plot_amoc_2d_data"><code class="docutils literal notranslate"><span class="pre">plot_amoc_2d_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.plotters.plot_amoc_timeseries"><code class="docutils literal notranslate"><span class="pre">plot_amoc_timeseries()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.plotters.plot_bryden2005_pygmt"><code class="docutils literal notranslate"><span class="pre">plot_bryden2005_pygmt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.plotters.plot_moc_timeseries_pygmt"><code class="docutils literal notranslate"><span class="pre">plot_moc_timeseries_pygmt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.plotters.plot_monthly_anomalies"><code class="docutils literal notranslate"><span class="pre">plot_monthly_anomalies()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.plotters.plot_osnap_components_pygmt"><code class="docutils literal notranslate"><span class="pre">plot_osnap_components_pygmt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.plotters.plot_rapid_components_pygmt"><code class="docutils literal notranslate"><span class="pre">plot_rapid_components_pygmt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.plotters.show_attributes"><code class="docutils literal notranslate"><span class="pre">show_attributes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.plotters.show_contents"><code class="docutils literal notranslate"><span class="pre">show_contents()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.plotters.show_variables"><code class="docutils literal notranslate"><span class="pre">show_variables()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#amocatlas.plotters.show_variables_by_dimension"><code class="docutils literal notranslate"><span class="pre">show_variables_by_dimension()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="writers.html">writers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html">tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="standardise.html">standardise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utilities.html">utilities</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers' guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="developers/developer_guide.html">Developer Guide for AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developers/git_beginners_guide.html">Git for Beginners: Workflow Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developers/actions.html">Extra GitHub features: Actions &amp; Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developers/housekeeping.html">Project Maintenance Checklist</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">amocatlas</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="amocatlas.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">amocatlas</span> <span class="pre">API</span></code></a></li>
+      <li class="breadcrumb-item active">plotters</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/plotters.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="plotters">
+<h1>plotters<a class="headerlink" href="#plotters" title="Link to this heading"></a></h1>
+<p>Tools for visualising AMOC time series and transport data.</p>
+<p id="module-amocatlas.plotters">AMOCatlas plotting functions for visualization and publication figures.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.plotters.format_units_for_plotting">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.plotters.</span></span><span class="sig-name descname"><span class="pre">format_units_for_plotting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/amocatlas/plotters.html#format_units_for_plotting"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.plotters.format_units_for_plotting" title="Link to this definition"></a></dt>
+<dd><p>Convert verbose units to concise plotting format.</p>
+<p>Translates full unit names to standard abbreviations commonly
+used in oceanographic plots and publications.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>units</strong> (<em>str</em>) – Full unit string (e.g., from netCDF attributes).</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Abbreviated unit string suitable for plot labels.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">format_units_for_plotting</span><span class="p">(</span><span class="s2">"Sverdrup"</span><span class="p">)</span>
+<span class="go">'Sv'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">format_units_for_plotting</span><span class="p">(</span><span class="s2">"degrees_north"</span><span class="p">)</span>
+<span class="go">'°N'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">format_units_for_plotting</span><span class="p">(</span><span class="s2">"degrees_Celsius"</span><span class="p">)</span>
+<span class="go">'°C'</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.plotters.format_variable_name_for_plotting">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.plotters.</span></span><span class="sig-name descname"><span class="pre">format_variable_name_for_plotting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/amocatlas/plotters.html#format_variable_name_for_plotting"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.plotters.format_variable_name_for_plotting" title="Link to this definition"></a></dt>
+<dd><p>Convert variable names with subscripts to matplotlib LaTeX format.</p>
+<p>This function translates variable naming patterns that include Greek letters
+and other subscripts into proper matplotlib LaTeX syntax for publication-quality plots.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – Variable name that may contain subscript patterns.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Variable name formatted with matplotlib LaTeX syntax for subscripts.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">format_variable_name_for_plotting</span><span class="p">(</span><span class="s2">"MOC_sigma0"</span><span class="p">)</span>
+<span class="go">'MOC$_{\\sigma_0}$'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">format_variable_name_for_plotting</span><span class="p">(</span><span class="s2">"MOC_z"</span><span class="p">)</span>
+<span class="go">'MOC$_{z}$'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">format_variable_name_for_plotting</span><span class="p">(</span><span class="s2">"density_theta"</span><span class="p">)</span>
+<span class="go">'density$_{\\theta}$'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">format_variable_name_for_plotting</span><span class="p">(</span><span class="s2">"temp_ref"</span><span class="p">)</span>
+<span class="go">'temp$_{ref}$'</span>
+</pre></div>
+</div>
+<p class="rubric">Notes</p>
+<p>The function converts patterns with underscores to LaTeX subscripts:
+- Single letters: MOC_z → MOC$_{z}$
+- Greek patterns: MOC_sigma → MOC$_{\sigma}$
+- Numbers: MOC_sigma0 → MOC$_{\sigma_0}$
+- Multiple parts: Only the first underscore pattern is converted</p>
+<p>Matplotlib subscript syntax: $_{text}$</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.plotters.monthly_resample">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.plotters.</span></span><span class="sig-name descname"><span class="pre">monthly_resample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">da</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataArray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataArray</span></span></span><a class="reference internal" href="_modules/amocatlas/plotters.html#monthly_resample"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.plotters.monthly_resample" title="Link to this definition"></a></dt>
+<dd><p>Resample to monthly mean if time is datetime-like and spacing ~monthly.
+If time is float-year, just pass through as-is (no interpolation).</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.plotters.plot_all_moc_overlaid_pygmt">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.plotters.</span></span><span class="sig-name descname"><span class="pre">plot_all_moc_overlaid_pygmt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">osnap_df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rapid_df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">move_df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">samba_df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filtered</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pygmt.Figure</span></span></span><a class="reference internal" href="_modules/amocatlas/plotters.html#plot_all_moc_overlaid_pygmt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.plotters.plot_all_moc_overlaid_pygmt" title="Link to this definition"></a></dt>
+<dd><p>Plot all MOC time series overlaid using separate coordinate systems.</p>
+<p>This creates overlaid plots with different y-ranges for MOC data vs SAMBA anomaly,
+similar to the original moc_tseries_pygmt notebook with shiftflag=False.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>osnap_df</strong> (<em>pandas.DataFrame</em>) – OSNAP MOC data with ‘time_num’ and ‘moc’/’moc_filtered’.</p></li>
+<li><p><strong>rapid_df</strong> (<em>pandas.DataFrame</em>) – RAPID MOC data with ‘time_num’ and ‘moc’/’moc_filtered’.</p></li>
+<li><p><strong>move_df</strong> (<em>pandas.DataFrame</em>) – MOVE MOC data with ‘time_num’ and ‘moc’/’moc_filtered’.</p></li>
+<li><p><strong>samba_df</strong> (<em>pandas.DataFrame</em>) – SAMBA MOC data with ‘time_num’ and ‘moc’/’moc_filtered’.</p></li>
+<li><p><strong>filtered</strong> (<em>bool</em><em>, </em><em>default False</em>) – Whether to plot filtered data (True) or original data (False).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>PyGMT figure object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pygmt.Figure</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ImportError</strong> – If PyGMT is not installed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.plotters.plot_all_moc_pygmt">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.plotters.</span></span><span class="sig-name descname"><span class="pre">plot_all_moc_pygmt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">osnap_df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rapid_df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">move_df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">samba_df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filtered</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pygmt.Figure</span></span></span><a class="reference internal" href="_modules/amocatlas/plotters.html#plot_all_moc_pygmt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.plotters.plot_all_moc_pygmt" title="Link to this definition"></a></dt>
+<dd><p>Plot all MOC time series (OSNAP, RAPID, MOVE, SAMBA) in a stacked PyGMT figure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>osnap_df</strong> (<em>pandas.DataFrame</em>) – OSNAP MOC data with ‘time_num’ and ‘moc’/’moc_filtered’.</p></li>
+<li><p><strong>rapid_df</strong> (<em>pandas.DataFrame</em>) – RAPID MOC data with ‘time_num’ and ‘moc’/’moc_filtered’.</p></li>
+<li><p><strong>move_df</strong> (<em>pandas.DataFrame</em>) – MOVE MOC data with ‘time_num’ and ‘moc’/’moc_filtered’.</p></li>
+<li><p><strong>samba_df</strong> (<em>pandas.DataFrame</em>) – SAMBA MOC data with ‘time_num’ and ‘moc’/’moc_filtered’.</p></li>
+<li><p><strong>filtered</strong> (<em>bool</em><em>, </em><em>default False</em>) – Whether to plot filtered data (True) or original data (False).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>PyGMT figure object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pygmt.Figure</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ImportError</strong> – If PyGMT is not installed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.plotters.plot_amoc_2d_data">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.plotters.</span></span><span class="sig-name descname"><span class="pre">plot_amoc_2d_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dataset</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">DataArray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">varname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'AMOC</span> <span class="pre">2D</span> <span class="pre">Data'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylabel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_limits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Timestamp</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Timestamp</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">(12,</span> <span class="pre">6)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colormap</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'RdBu_r'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vmin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vmax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Figure</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Axes</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/amocatlas/plotters.html#plot_amoc_2d_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.plotters.plot_amoc_2d_data" title="Link to this definition"></a></dt>
+<dd><p>Plot 2D AMOC data with time on x-axis and depth/other coordinate on y-axis.</p>
+<p>This function creates a color-filled contour plot suitable for visualizing
+2D oceanographic data such as MOC streamfunction vs depth and time, or
+temperature profiles over time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>xr.Dataset</em><em> or </em><em>xr.DataArray</em>) – Dataset or DataArray containing 2D data to plot.</p></li>
+<li><p><strong>varname</strong> (<em>str</em><em>, </em><em>optional</em>) – Variable name to extract from dataset. Not needed if DataArray is passed.</p></li>
+<li><p><strong>title</strong> (<em>str</em>) – Title of the plot.</p></li>
+<li><p><strong>ylabel</strong> (<em>str</em><em>, </em><em>optional</em>) – Label for the y-axis (vertical coordinate). If None, inferred from data attributes.</p></li>
+<li><p><strong>time_limits</strong> (<em>tuple</em><em> of </em><em>str</em><em> or </em><em>pd.Timestamp</em><em>, </em><em>optional</em>) – X-axis time limits (start, end).</p></li>
+<li><p><strong>ylim</strong> (<em>tuple</em><em> of </em><em>float</em><em>, </em><em>optional</em>) – Y-axis limits (min, max).</p></li>
+<li><p><strong>figsize</strong> (<em>tuple</em>) – Size of the figure.</p></li>
+<li><p><strong>colormap</strong> (<em>str</em>) – Colormap for the 2D data. Default is ‘RdBu_r’ (polar colormap).</p></li>
+<li><p><strong>vmin</strong> (<em>float</em><em>, </em><em>optional</em>) – Minimum value for color scale. If None, inferred from data.</p></li>
+<li><p><strong>vmax</strong> (<em>float</em><em>, </em><em>optional</em>) – Maximum value for color scale. If None, inferred from data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The matplotlib figure and axes objects.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[plt.Figure, plt.Axes]</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If data doesn’t have the required dimensions or if TIME coordinate is missing.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.plotters.plot_amoc_timeseries">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.plotters.</span></span><span class="sig-name descname"><span class="pre">plot_amoc_timeseries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Dataset</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">DataArray</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Dataset</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">DataArray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">varnames</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'AMOC</span> <span class="pre">Time</span> <span class="pre">Series'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylabel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_limits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Timestamp</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Timestamp</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">(10,</span> <span class="pre">3)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resample_monthly</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_raw</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat_idx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">region_idx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">posterior_stat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'mean'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Figure</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Axes</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/amocatlas/plotters.html#plot_amoc_timeseries"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.plotters.plot_amoc_timeseries" title="Link to this definition"></a></dt>
+<dd><p>Plot original and optionally monthly-averaged AMOC time series for one or more datasets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>list</em><em> of </em><em>xarray.Dataset</em><em> or </em><em>xarray.DataArray</em>) – List of datasets or DataArrays to plot.</p></li>
+<li><p><strong>varnames</strong> (<em>list</em><em> of </em><em>str</em><em>, </em><em>optional</em>) – List of variable names to extract from each dataset. Not needed if DataArrays are passed.</p></li>
+<li><p><strong>labels</strong> (<em>list</em><em> of </em><em>str</em><em>, </em><em>optional</em>) – Labels for the legend.</p></li>
+<li><p><strong>colors</strong> (<em>list</em><em> of </em><em>str</em><em>, </em><em>optional</em>) – Colors for monthly-averaged plots.</p></li>
+<li><p><strong>title</strong> (<em>str</em>) – Title of the plot.</p></li>
+<li><p><strong>ylabel</strong> (<em>str</em><em>, </em><em>optional</em>) – Label for the y-axis. If None, inferred from attributes.</p></li>
+<li><p><strong>time_limits</strong> (<em>tuple</em><em> of </em><em>str</em><em> or </em><em>pd.Timestamp</em><em>, </em><em>optional</em>) – X-axis time limits (start, end).</p></li>
+<li><p><strong>ylim</strong> (<em>tuple</em><em> of </em><em>float</em><em>, </em><em>optional</em>) – Y-axis limits (min, max).</p></li>
+<li><p><strong>figsize</strong> (<em>tuple</em>) – Size of the figure.</p></li>
+<li><p><strong>resample_monthly</strong> (<em>bool</em>) – If True, monthly averages are computed and plotted.</p></li>
+<li><p><strong>plot_raw</strong> (<em>bool</em>) – If True, raw data is plotted.</p></li>
+<li><p><strong>lat_idx</strong> (<em>int</em><em>, </em><em>optional</em>) – Latitude index to select when dataset has a ‘lat’ dimension.
+Required if dataset contains ‘lat’ dimension with posterior samples.</p></li>
+<li><p><strong>region_idx</strong> (<em>int</em><em>, </em><em>optional</em>) – Region index to select when dataset has a ‘number_regions’ dimension.
+Required if dataset contains ‘number_regions’ dimension with posterior samples.</p></li>
+<li><p><strong>posterior_stat</strong> (<em>str</em><em>, </em><em>default &quot;mean&quot;</em>) – Statistic to use when collapsing posterior samples dimension.
+Options are “mean” or “median”.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.plotters.plot_bryden2005_pygmt">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.plotters.</span></span><span class="sig-name descname"><span class="pre">plot_bryden2005_pygmt</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pygmt.Figure</span></span></span><a class="reference internal" href="_modules/amocatlas/plotters.html#plot_bryden2005_pygmt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.plotters.plot_bryden2005_pygmt" title="Link to this definition"></a></dt>
+<dd><p>Plot Bryden et al. 2005 historical AMOC estimates using PyGMT.</p>
+<p>Creates a plot of the historical AMOC estimates from Bryden et al. (2005)
+showing the decline from 1957 to 2004. This provides historical context
+for modern observational time series.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>PyGMT figure object.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>pygmt.Figure</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ImportError</strong> – If PyGMT is not installed.</p>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<p>Bryden, H. L., Longworth, H. R., &amp; Cunningham, S. A. (2005).
+Slowing of the Atlantic meridional overturning circulation at 25°N.
+Nature, 438(7068), 655-657.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.plotters.plot_moc_timeseries_pygmt">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.plotters.</span></span><span class="sig-name descname"><span class="pre">plot_moc_timeseries_pygmt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'moc'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'MOC</span> <span class="pre">(Sv)'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pygmt.Figure</span></span></span><a class="reference internal" href="_modules/amocatlas/plotters.html#plot_moc_timeseries_pygmt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.plotters.plot_moc_timeseries_pygmt" title="Link to this definition"></a></dt>
+<dd><p>Plot MOC time series using PyGMT with publication-quality styling.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pandas.DataFrame</em>) – DataFrame with ‘time_num’ (decimal years) and data columns.</p></li>
+<li><p><strong>column</strong> (<em>str</em><em>, </em><em>default &quot;moc&quot;</em>) – Name of the column to plot.</p></li>
+<li><p><strong>label</strong> (<em>str</em><em>, </em><em>default &quot;MOC</em><em> (</em><em>Sv</em><em>)</em><em>&quot;</em>) – Y-axis label for the plot.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>PyGMT figure object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pygmt.Figure</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ImportError</strong> – If PyGMT is not installed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.plotters.plot_monthly_anomalies">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.plotters.</span></span><span class="sig-name descname"><span class="pre">plot_monthly_anomalies</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Figure</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Axes</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/amocatlas/plotters.html#plot_monthly_anomalies"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.plotters.plot_monthly_anomalies" title="Link to this definition"></a></dt>
+<dd><p>Plot the monthly anomalies for various datasets.</p>
+<p>Pass keyword arguments in the form: <cite>label_name_data</cite>, <cite>label_name_label</cite>.</p>
+<dl class="simple">
+<dt>For example:</dt><dd><p>osnap_data = standardOSNAP[0][“MOC_all”], osnap_label = “OSNAP”
+…</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.plotters.plot_osnap_components_pygmt">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.plotters.</span></span><span class="sig-name descname"><span class="pre">plot_osnap_components_pygmt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pygmt.Figure</span></span></span><a class="reference internal" href="_modules/amocatlas/plotters.html#plot_osnap_components_pygmt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.plotters.plot_osnap_components_pygmt" title="Link to this definition"></a></dt>
+<dd><p>Plot OSNAP MOC components with shaded error bands using PyGMT.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>pandas.DataFrame</em><em> or </em><em>dict</em>) – Must contain:
+- time_num (decimal years)
+- MOC_SIGMA0, MOC_EAST_SIGMA0, MOC_WEST_SIGMA0 (or legacy MOC_ALL, MOC_EAST, MOC_WEST)
+- MOC_EAST_SIGMA0_ERR, MOC_WEST_SIGMA0_ERR (or legacy MOC_EAST_ERR, MOC_WEST_ERR)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>PyGMT figure object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pygmt.Figure</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ImportError</strong> – If PyGMT is not installed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.plotters.plot_rapid_components_pygmt">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.plotters.</span></span><span class="sig-name descname"><span class="pre">plot_rapid_components_pygmt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pygmt.Figure</span></span></span><a class="reference internal" href="_modules/amocatlas/plotters.html#plot_rapid_components_pygmt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.plotters.plot_rapid_components_pygmt" title="Link to this definition"></a></dt>
+<dd><p>Plot RAPID MOC and component transports using PyGMT.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>pandas.DataFrame</em>) – Must include:
+- ‘time_num’
+- ‘moc_mar_hc10’ (total MOC)
+- ‘t_gs10’ (Florida Current)
+- ‘t_ek10’ (Ekman)
+- ‘t_umo10’ (upper mid-ocean)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>PyGMT figure object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pygmt.Figure</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ImportError</strong> – If PyGMT is not installed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.plotters.show_attributes">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.plotters.</span></span><span class="sig-name descname"><span class="pre">show_attributes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Dataset</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/amocatlas/plotters.html#show_attributes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.plotters.show_attributes" title="Link to this definition"></a></dt>
+<dd><p>Processes an xarray Dataset or a netCDF file, extracts attribute information,
+and returns a DataFrame with details about the attributes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>str</em><em> or </em><em>xr.Dataset</em>) – The input data, either a file path to a netCDF file or an xarray Dataset.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A DataFrame containing the following columns:
+- Attribute: The name of the attribute.
+- Value: The value of the attribute.
+- DType: The data type of the attribute.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the input data is not a file path (str) or an xarray Dataset.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.plotters.show_contents">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.plotters.</span></span><span class="sig-name descname"><span class="pre">show_contents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">content_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'variables'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Styler</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/amocatlas/plotters.html#show_contents"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.plotters.show_contents" title="Link to this definition"></a></dt>
+<dd><p>Wrapper function to show contents of an xarray Dataset or a netCDF file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>str</em><em> or </em><em>xr.Dataset</em>) – The input data, either a file path to a netCDF file or an xarray Dataset.</p></li>
+<li><p><strong>content_type</strong> (<em>str</em><em>, </em><em>optional</em>) – The type of content to show, either ‘variables’ (or ‘vars’) or ‘attributes’ (or ‘attrs’).
+Default is ‘variables’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A styled DataFrame with details about the variables or attributes.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.io.formats.style.Styler or pandas.DataFrame</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>TypeError</strong> – If the input data is not a file path (str) or an xarray Dataset.</p></li>
+<li><p><strong>ValueError</strong> – If the content_type is not ‘variables’ (or ‘vars’) or ‘attributes’ (or ‘attrs’).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.plotters.show_variables">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.plotters.</span></span><span class="sig-name descname"><span class="pre">show_variables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Dataset</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Styler</span></span></span><a class="reference internal" href="_modules/amocatlas/plotters.html#show_variables"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.plotters.show_variables" title="Link to this definition"></a></dt>
+<dd><p>Processes an xarray Dataset or a netCDF file, extracts variable information,
+and returns a styled DataFrame with details about the variables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>str</em><em> or </em><em>xr.Dataset</em>) – The input data, either a file path to a netCDF file or an xarray Dataset.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A styled DataFrame containing the following columns:
+- dims: The dimension of the variable (or “string” if it is a string type).
+- name: The name of the variable.
+- units: The units of the variable (if available).
+- comment: Any additional comments about the variable (if available).
+- standard_name: The standard name of the variable (if available).
+- dtype: The data type of the variable.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.io.formats.style.Styler</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the input data is not a file path (str) or an xarray Dataset.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="amocatlas.plotters.show_variables_by_dimension">
+<span class="sig-prename descclassname"><span class="pre">amocatlas.plotters.</span></span><span class="sig-name descname"><span class="pre">show_variables_by_dimension</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dimension_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'trajectory'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Styler</span></span></span><a class="reference internal" href="_modules/amocatlas/plotters.html#show_variables_by_dimension"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#amocatlas.plotters.show_variables_by_dimension" title="Link to this definition"></a></dt>
+<dd><p>Extracts variable information from an xarray Dataset or a netCDF file and returns a styled DataFrame
+with details about the variables filtered by a specific dimension.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>str</em><em> or </em><em>xr.Dataset</em>) – The input data, either a file path to a netCDF file or an xarray Dataset.</p></li>
+<li><p><strong>dimension_name</strong> (<em>str</em><em>, </em><em>optional</em>) – The name of the dimension to filter variables by, by default “trajectory”.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A styled DataFrame containing the following columns:
+- dims: The dimension of the variable (or “string” if it is a string type).
+- name: The name of the variable.
+- units: The units of the variable (if available).
+- comment: Any additional comments about the variable (if available).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.io.formats.style.Styler</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>TypeError</strong> – If the input data is not a file path (str) or an xarray Dataset.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="data_sources.html" class="btn btn-neutral float-left" title="data_sources package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="writers.html" class="btn btn-neutral float-right" title="writers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Eleanor Frajka-Williams, Isabelle Schmitz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,411 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>amocatlas.data_sources.samba34s &mdash; amocatlas 0.4.0.post1.dev10 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=1078e4cb" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=6d4c28d6"></script>
+      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="../../../about.html" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            amocatlas
+              <img src="../../../_static/logo.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../about.html">About AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../about.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../about.html#getting-started">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../faq.html">FAQ / Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Demo notebooks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../demo-output.html">AMOCatlas demo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dataset Reports</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../reports/index.html">Data Sources</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/format.html">AMOCatlas data format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/vocabulary.html">amocvocab — variable vocabulary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../amoc_paperfigs-output.html">AMOC Publication Figures</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Repository and API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://github.com/AMOCcommunity/amocatlas">GitHub Repo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../amocatlas.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">amocatlas</span> <span class="pre">API</span></code></a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers' guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers/developer_guide.html">Developer Guide for AMOCatlas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers/git_beginners_guide.html">Git for Beginners: Workflow Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers/actions.html">Extra GitHub features: Actions &amp; Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers/housekeeping.html">Project Maintenance Checklist</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">amocatlas</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">amocatlas.data_sources.samba34s</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for amocatlas.data_sources.samba34s</h1><div class="highlight"><pre>
+<span></span><span class="sd">"""SAMBA array data reader for AMOCatlas.</span>
+
+<span class="sd">This module provides functions to read and process data from the SAMBA</span>
+<span class="sd">(South Atlantic Meridional Overturning Circulation) observing array</span>
+<span class="sd">located at 34.5°S.</span>
+<span class="sd">"""</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">amocatlas</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span><span class="p">,</span> <span class="n">utilities</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">amocatlas.logger</span><span class="w"> </span><span class="kn">import</span> <span class="n">log_debug</span><span class="p">,</span> <span class="n">log_error</span><span class="p">,</span> <span class="n">log_info</span><span class="p">,</span> <span class="n">log_warning</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">amocatlas.reader_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">ReaderUtils</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">amocatlas.utilities</span><span class="w"> </span><span class="kn">import</span> <span class="n">apply_defaults</span><span class="p">,</span> <span class="n">sanitize_variable_name</span>
+
+<span class="n">log</span> <span class="o">=</span> <span class="n">logger</span><span class="o">.</span><span class="n">log</span>  <span class="c1"># Use the global logger</span>
+
+<span class="c1"># Datasource identifier for automatic standardization</span>
+<span class="n">DATASOURCE_ID</span> <span class="o">=</span> <span class="s2">"samba34s"</span>
+
+<span class="c1"># Default file list</span>
+<span class="n">SAMBA_DEFAULT_FILES</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"Upper_Abyssal_Transport_Anomalies.txt"</span><span class="p">,</span>
+    <span class="s2">"MOC_TotalAnomaly_and_constituents.asc"</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">SAMBA_TRANSPORT_FILES</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"Upper_Abyssal_Transport_Anomalies.txt"</span><span class="p">,</span>
+    <span class="s2">"MOC_TotalAnomaly_and_constituents.asc"</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="c1"># Mapping of filenames to remote URLs</span>
+<span class="n">SAMBA_FILE_URLS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"Upper_Abyssal_Transport_Anomalies.txt"</span><span class="p">:</span> <span class="s2">"ftp://ftp.aoml.noaa.gov/phod/pub/SAM/2020_Kersale_etal_ScienceAdvances/Upper_Abyssal_Transport_Anomalies.txt"</span><span class="p">,</span>
+    <span class="s2">"MOC_TotalAnomaly_and_constituents.asc"</span><span class="p">:</span> <span class="s2">"https://www.aoml.noaa.gov/phod/SAMOC_international/documents/MOC_TotalAnomaly_and_constituents.asc"</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="c1"># Global metadata for SAMBA</span>
+<span class="n">SAMBA_METADATA</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"description"</span><span class="p">:</span> <span class="s2">"SAMBA 34S transport estimates dataset"</span><span class="p">,</span>
+    <span class="s2">"project"</span><span class="p">:</span> <span class="s2">"South Atlantic MOC Basin-wide Array (SAMBA)"</span><span class="p">,</span>
+    <span class="s2">"weblink"</span><span class="p">:</span> <span class="s2">"https://www.aoml.noaa.gov/phod/SAMOC_international/"</span><span class="p">,</span>
+    <span class="s2">"comment"</span><span class="p">:</span> <span class="s2">"Dataset accessed and processed via http://github.com/AMOCcommunity/amocatlas"</span><span class="p">,</span>
+    <span class="s2">"acknowledgement"</span><span class="p">:</span> <span class="s2">"SAMBA data were collected and made freely available by the SAMOC international project and contributing national programs."</span><span class="p">,</span>
+    <span class="c1"># Add DOI here when available</span>
+<span class="p">}</span>
+
+<span class="c1"># File-specific metadata placeholders</span>
+<span class="n">SAMBA_FILE_METADATA</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"Upper_Abyssal_Transport_Anomalies.txt"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"data_product"</span><span class="p">:</span> <span class="s2">"Daily volume transport anomaly estimates for the upper and abyssal cells of the MOC"</span><span class="p">,</span>
+        <span class="s2">"acknowledgement"</span><span class="p">:</span> <span class="s2">"M. Kersalé et al., Highly variable upper and abyssal overturning cells in the South Atlantic. Sci. Adv. 6, eaba7573 (2020). DOI: 10.1126/sciadv.aba7573"</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">"MOC_TotalAnomaly_and_constituents.asc"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"data_product"</span><span class="p">:</span> <span class="s2">"Daily travel time values, calibrated to a nominal pressure of 1000 dbar, and bottom pressures from the two PIES/CPIES moorings"</span><span class="p">,</span>
+        <span class="s2">"acknowledgement"</span><span class="p">:</span> <span class="s2">"Meinen, C. S., Speich, S., Piola, A. R., Ansorge, I., Campos, E., Kersalé, M., et al. (2018). Meridional overturning circulation transport variability at 34.5°S during 2009–2017: Baroclinic and barotropic flows and the dueling influence of the boundaries. Geophysical Research Letters, 45, 4180–4188. https://doi.org/10.1029/2018GL077408"</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+
+
+<div class="viewcode-block" id="read_samba">
+<a class="viewcode-back" href="../../../data_sources.html#amocatlas.data_sources.read_samba">[docs]</a>
+<span class="nd">@apply_defaults</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">SAMBA_DEFAULT_FILES</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_samba</span><span class="p">(</span>
+    <span class="n">source</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">file_list</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+    <span class="n">transport_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">data_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">redownload</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">track_added_attrs</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">"""Load the SAMBA transport datasets from remote URL or local file path into xarray Datasets.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    source : str, optional</span>
+<span class="sd">        URL or local path to the dataset directory. If None, will use predefined URLs per file.</span>
+<span class="sd">    file_list : str or list of str, optional</span>
+<span class="sd">        Filename or list of filenames to process.</span>
+<span class="sd">        Defaults to SAMBA_DEFAULT_FILES.</span>
+<span class="sd">    transport_only : bool, optional</span>
+<span class="sd">        If True, restrict to transport files only.</span>
+<span class="sd">    data_dir : str, Path or None, optional</span>
+<span class="sd">        Optional local data directory.</span>
+<span class="sd">    redownload : bool, optional</span>
+<span class="sd">        If True, force redownload of the data.</span>
+<span class="sd">    track_added_attrs : bool, optional</span>
+<span class="sd">        If True, track which attributes were added during metadata enrichment.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list of xr.Dataset</span>
+<span class="sd">        List of loaded xarray datasets with basic inline and file-specific metadata.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ValueError</span>
+<span class="sd">        If no source is provided for a file and no default URL mapping found.</span>
+<span class="sd">    FileNotFoundError</span>
+<span class="sd">        If the file cannot be downloaded or does not exist locally.</span>
+
+<span class="sd">    """</span>
+    <span class="n">log_info</span><span class="p">(</span><span class="s2">"Starting to read SAMBA dataset"</span><span class="p">)</span>
+
+    <span class="c1"># Load YAML metadata with fallback</span>
+    <span class="n">global_metadata</span><span class="p">,</span> <span class="n">yaml_file_metadata</span> <span class="o">=</span> <span class="n">ReaderUtils</span><span class="o">.</span><span class="n">load_array_metadata_with_fallback</span><span class="p">(</span>
+        <span class="n">DATASOURCE_ID</span><span class="p">,</span> <span class="n">SAMBA_METADATA</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Ensure file_list has a default</span>
+    <span class="k">if</span> <span class="n">file_list</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">file_list</span> <span class="o">=</span> <span class="n">SAMBA_DEFAULT_FILES</span>
+    <span class="k">if</span> <span class="n">transport_only</span><span class="p">:</span>
+        <span class="n">file_list</span> <span class="o">=</span> <span class="n">SAMBA_TRANSPORT_FILES</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">file_list</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">file_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">file_list</span><span class="p">]</span>
+
+    <span class="n">local_data_dir</span> <span class="o">=</span> <span class="n">ReaderUtils</span><span class="o">.</span><span class="n">setup_data_directory</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span>
+
+    <span class="c1"># Print information about files being loaded</span>
+    <span class="n">ReaderUtils</span><span class="o">.</span><span class="n">print_loading_info</span><span class="p">(</span><span class="n">file_list</span><span class="p">,</span> <span class="n">DATASOURCE_ID</span><span class="p">,</span> <span class="n">SAMBA_FILE_METADATA</span><span class="p">)</span>
+
+    <span class="n">datasets</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">added_attrs_per_dataset</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">track_added_attrs</span> <span class="k">else</span> <span class="kc">None</span>
+
+    <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">file_list</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">".txt"</span><span class="p">)</span> <span class="ow">or</span> <span class="n">file</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">".asc"</span><span class="p">)):</span>
+            <span class="n">log_warning</span><span class="p">(</span><span class="s2">"Skipping unsupported file type: </span><span class="si">%s</span><span class="s2">"</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+            <span class="k">continue</span>
+
+        <span class="n">download_url</span> <span class="o">=</span> <span class="n">SAMBA_FILE_URLS</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">download_url</span><span class="p">:</span>
+            <span class="n">log_error</span><span class="p">(</span><span class="s2">"No download URL defined for SAMBA file: </span><span class="si">%s</span><span class="s2">"</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"No download URL defined for SAMBA file </span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+        <span class="n">file_path</span> <span class="o">=</span> <span class="n">utilities</span><span class="o">.</span><span class="n">resolve_file_path</span><span class="p">(</span>
+            <span class="n">file_name</span><span class="o">=</span><span class="n">file</span><span class="p">,</span>
+            <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span>
+            <span class="n">download_url</span><span class="o">=</span><span class="n">download_url</span><span class="p">,</span>
+            <span class="n">local_data_dir</span><span class="o">=</span><span class="n">local_data_dir</span><span class="p">,</span>
+            <span class="n">redownload</span><span class="o">=</span><span class="n">redownload</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Parse ASCII file</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">column_names</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">utilities</span><span class="o">.</span><span class="n">parse_ascii_header</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">comment_char</span><span class="o">=</span><span class="s2">"%"</span><span class="p">)</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">utilities</span><span class="o">.</span><span class="n">read_ascii_file</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">comment_char</span><span class="o">=</span><span class="s2">"%"</span><span class="p">)</span>
+
+            <span class="c1"># Sanitize column names to create valid Python identifiers</span>
+            <span class="c1"># This handles cases like "Total MOC anomaly (relative to record-length average of 14.7 Sv)"</span>
+            <span class="n">sanitized_column_names</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="n">sanitize_variable_name</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">column_names</span>
+            <span class="p">]</span>
+            <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">sanitized_column_names</span>
+
+            <span class="c1"># Store original column names mapping for later use in variable mapping</span>
+            <span class="c1"># This enables tracking of original names -&gt; sanitized names -&gt; standardized names</span>
+            <span class="n">original_to_sanitized</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+                <span class="nb">zip</span><span class="p">(</span><span class="n">column_names</span><span class="p">,</span> <span class="n">sanitized_column_names</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span>
+            <span class="ne">OSError</span><span class="p">,</span>
+            <span class="ne">ValueError</span><span class="p">,</span>
+            <span class="ne">KeyError</span><span class="p">,</span>
+            <span class="n">pd</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">EmptyDataError</span><span class="p">,</span>
+            <span class="n">pd</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">ParserError</span><span class="p">,</span>
+        <span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">log_error</span><span class="p">(</span><span class="s2">"Failed to parse ASCII file: </span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">"</span><span class="p">,</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">"Failed to parse ASCII file: </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span>
+            <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
+
+        <span class="c1"># Time handling - use sanitized column names</span>
+        <span class="c1"># Find the sanitized versions of time columns</span>
+        <span class="n">time_cols_needed</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Year"</span><span class="p">,</span> <span class="s2">"Month"</span><span class="p">,</span> <span class="s2">"Day"</span><span class="p">,</span> <span class="s2">"Hour"</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s2">"Upper_Abyssal"</span> <span class="ow">in</span> <span class="n">file</span><span class="p">:</span>
+            <span class="n">time_cols_needed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"Minute"</span><span class="p">)</span>
+
+        <span class="c1"># Map original time column names to their sanitized versions</span>
+        <span class="n">sanitized_time_cols</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">missing_cols</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">time_cols_needed</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">original_to_sanitized</span><span class="p">:</span>
+                <span class="n">sanitized_time_cols</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">original_to_sanitized</span><span class="p">[</span><span class="n">col</span><span class="p">])</span>
+            <span class="k">elif</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+                <span class="n">sanitized_time_cols</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>  <span class="c1"># Fallback if already sanitized</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">missing_cols</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">missing_cols</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Required time columns </span><span class="si">{</span><span class="n">missing_cols</span><span class="si">}</span><span class="s2"> not found in data"</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s2">"Upper_Abyssal"</span> <span class="ow">in</span> <span class="n">file</span><span class="p">:</span>
+                <span class="n">df</span><span class="p">[</span><span class="s2">"TIME"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">sanitized_time_cols</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">df</span><span class="p">[</span><span class="s2">"TIME"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span>
+                    <span class="n">df</span><span class="p">[</span><span class="n">sanitized_time_cols</span><span class="p">[:</span><span class="mi">4</span><span class="p">]]</span>
+                <span class="p">)</span>  <span class="c1"># Year, Month, Day, Hour only</span>
+
+            <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">sanitized_time_cols</span><span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">KeyError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">log_error</span><span class="p">(</span><span class="s2">"Failed to construct TIME column for </span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">"</span><span class="p">,</span> <span class="n">file</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Failed to construct TIME column for </span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
+
+        <span class="c1"># Convert DataFrame to xarray Dataset</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">ds</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">"TIME"</span><span class="p">)</span><span class="o">.</span><span class="n">to_xarray</span><span class="p">()</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">KeyError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">,</span> <span class="ne">AttributeError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">log_error</span><span class="p">(</span>
+                <span class="s2">"Failed to convert DataFrame to xarray Dataset for </span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">"</span><span class="p">,</span>
+                <span class="n">file</span><span class="p">,</span>
+                <span class="n">e</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">"Failed to convert DataFrame to xarray Dataset for </span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+            <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
+
+        <span class="c1"># Attach metadata with optional tracking</span>
+        <span class="k">if</span> <span class="n">track_added_attrs</span><span class="p">:</span>
+            <span class="n">ds</span><span class="p">,</span> <span class="n">attr_changes</span> <span class="o">=</span> <span class="n">ReaderUtils</span><span class="o">.</span><span class="n">attach_metadata_with_tracking</span><span class="p">(</span>
+                <span class="n">ds</span><span class="p">,</span>
+                <span class="n">file</span><span class="p">,</span>
+                <span class="n">file_path</span><span class="p">,</span>
+                <span class="n">global_metadata</span><span class="p">,</span>
+                <span class="n">yaml_file_metadata</span><span class="p">,</span>
+                <span class="n">SAMBA_FILE_METADATA</span><span class="p">,</span>
+                <span class="n">DATASOURCE_ID</span><span class="p">,</span>
+                <span class="n">track_added_attrs</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">added_attrs_per_dataset</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">attr_changes</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">ds</span> <span class="o">=</span> <span class="n">ReaderUtils</span><span class="o">.</span><span class="n">attach_metadata_with_tracking</span><span class="p">(</span>
+                <span class="n">ds</span><span class="p">,</span>
+                <span class="n">file</span><span class="p">,</span>
+                <span class="n">file_path</span><span class="p">,</span>
+                <span class="n">global_metadata</span><span class="p">,</span>
+                <span class="n">yaml_file_metadata</span><span class="p">,</span>
+                <span class="n">SAMBA_FILE_METADATA</span><span class="p">,</span>
+                <span class="n">DATASOURCE_ID</span><span class="p">,</span>
+                <span class="n">track_added_attrs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Update variable_mapping to use sanitized names as keys</span>
+        <span class="c1"># This allows standardization to find the mapping from sanitized names to standard names</span>
+        <span class="k">if</span> <span class="s2">"variable_mapping"</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
+            <span class="n">original_mapping</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">"variable_mapping"</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="n">updated_mapping</span> <span class="o">=</span> <span class="p">{}</span>
+
+            <span class="k">for</span> <span class="n">original_name</span><span class="p">,</span> <span class="n">standard_name</span> <span class="ow">in</span> <span class="n">original_mapping</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="c1"># Find the sanitized version of this original name</span>
+                <span class="n">sanitized_name</span> <span class="o">=</span> <span class="n">original_to_sanitized</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">original_name</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">sanitized_name</span> <span class="ow">and</span> <span class="n">sanitized_name</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">data_vars</span><span class="p">:</span>
+                    <span class="n">updated_mapping</span><span class="p">[</span><span class="n">sanitized_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">standard_name</span>
+                    <span class="n">log_debug</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">"Updated variable mapping: </span><span class="si">{</span><span class="n">original_name</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="n">sanitized_name</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="n">standard_name</span><span class="si">}</span><span class="s2">"</span>
+                    <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># Keep original mapping in case sanitization didn't change it</span>
+                    <span class="n">updated_mapping</span><span class="p">[</span><span class="n">original_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">standard_name</span>
+
+            <span class="n">ds</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">"variable_mapping"</span><span class="p">]</span> <span class="o">=</span> <span class="n">updated_mapping</span>
+
+            <span class="c1"># Store the full mapping chain for reference (useful for reports)</span>
+            <span class="n">ds</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">"original_variable_mapping"</span><span class="p">]</span> <span class="o">=</span> <span class="n">original_mapping</span>
+            <span class="n">ds</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">"sanitization_mapping"</span><span class="p">]</span> <span class="o">=</span> <span class="n">original_to_sanitized</span>
+
+        <span class="n">datasets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
+
+    <span class="c1"># Use ReaderUtils for validation</span>
+    <span class="n">ReaderUtils</span><span class="o">.</span><span class="n">validate_datasets_loaded</span><span class="p">(</span><span class="n">datasets</span><span class="p">,</span> <span class="n">file_list</span><span class="p">)</span>
+
+    <span class="c1"># Handle track_added_attrs parameter</span>
+    <span class="k">if</span> <span class="n">track_added_attrs</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">added_attrs_per_dataset</span>
+    <span class="k">return</span> <span class="n">datasets</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Eleanor Frajka-Williams, Isabelle Schmitz.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
