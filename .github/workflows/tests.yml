@@ -17,9 +17,9 @@ jobs:
     # is green as of this PR; drop the experimental flag to make it a required cell.
     continue-on-error: ${{ matrix.experimental == true }}
     strategy:
-      # Do not cancel the other cells when one fails — a red 3.13 (or a platform
-      # cell) should not hide results from the rest of the matrix.
-      fail-fast: false
+      # A failing supported cell cancels the rest (the ctdcast house style). The
+      # 3.13 cell is continue-on-error, so it never triggers this cancellation.
+      fail-fast: true
       matrix:
         # Ubuntu covers the full Python range; macOS and Windows run one version
         # only (they catch platform issues, not version issues). Coverage is gated

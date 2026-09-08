@@ -90,8 +90,7 @@ files:
     featureType: timeSeriesProfile
     data_product: "RAPID gridded temperature and salinity"
     source_file: ts_gridded.nc
-    source_path: /Users/eddifying/Cloudfree/gitlab-cloudfree/amocatlas/data/ts_gridded.nc
-    variable_mapping: 
+    variable_mapping:
       time: TIME
       TG_west: TEMP_WEST
       TG_east: TEMP_EAST
@@ -161,8 +160,7 @@ files:
     featureType: timeSeriesProfile
     data_product: "RAPID vertical streamfunction time series"
     source_file: moc_vertical.nc
-    source_path: /Users/eddifying/Cloudfree/gitlab-cloudfree/amocatlas/data/moc_vertical.nc
-    variable_mapping: 
+    variable_mapping:
       time: TIME
       depth: DEPTH
       stream_function_mar: PSI_Z
