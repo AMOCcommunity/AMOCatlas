@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-09-08
+
 ### Added
 - New reader for the OVIDE section (`read.ovide()`) (#183)
 - New reader for the SCOTIA overturning array (`read.scotia()`) — the first array served in neutral-density (GAMMA) space (#184)
