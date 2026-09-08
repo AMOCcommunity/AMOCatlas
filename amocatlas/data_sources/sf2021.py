@@ -7,16 +7,15 @@ The components are derived through a dynamically based method.
 """
 
 from pathlib import Path
-from typing import Union
 
 import numpy as np
 import xarray as xr
 
 # Import the modules used
 from amocatlas import logger, utilities
-from amocatlas.logger import log_error, log_info, log_warning, log_debug
-from amocatlas.utilities import apply_defaults
+from amocatlas.logger import log_debug, log_error, log_info, log_warning
 from amocatlas.reader_utils import ReaderUtils
+from amocatlas.utilities import apply_defaults
 
 log = logger.log  # Use the global logger
 
@@ -111,10 +110,10 @@ def _normalize_sf2021_time_coordinate(
 
 @apply_defaults(SF2021_DEFAULT_SOURCE, SF2021_DEFAULT_FILES)
 def read_sf2021(
-    source: Union[str, Path, None],
-    file_list: Union[str, list[str]],
+    source: str | Path | None,
+    file_list: str | list[str],
     transport_only: bool = True,
-    data_dir: Union[str, Path, None] = None,
+    data_dir: str | Path | None = None,
     redownload: bool = False,
     track_added_attrs: bool = False,
 ) -> list[xr.Dataset]:
@@ -247,5 +246,4 @@ def read_sf2021(
 
     if track_added_attrs:
         return datasets, added_attrs_per_dataset
-    else:
-        return datasets
+    return datasets

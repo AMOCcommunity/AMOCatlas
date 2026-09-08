@@ -6,19 +6,18 @@ Meridional Overturning Circulation and associated heat transport at the
 northern boundary of the subtropical gyre.
 """
 
-from pathlib import Path
-from typing import Union
-
-import xarray as xr
 import datetime
+from pathlib import Path
+
 import pandas
+import xarray as xr
 from pandas.errors import EmptyDataError, ParserError
 
 # Import the modules used
 from amocatlas import logger, utilities
 from amocatlas.logger import log_error, log_info, log_warning
-from amocatlas.utilities import apply_defaults
 from amocatlas.reader_utils import ReaderUtils
+from amocatlas.utilities import apply_defaults
 
 log = logger.log  # Use the global logger
 
@@ -57,10 +56,10 @@ A41N_FILE_METADATA = {
 @apply_defaults(A41N_DEFAULT_SOURCE, WH41N_DEFAULT_FILES)
 def read_41n(
     ##    source: str,
-    source: Union[str, Path, None],
-    file_list: Union[str, list[str]],
+    source: str | Path | None,
+    file_list: str | list[str],
     transport_only: bool = True,
-    data_dir: Union[str, Path, None] = None,
+    data_dir: str | Path | None = None,
     redownload: bool = False,
     track_added_attrs: bool = False,
 ) -> list[xr.Dataset]:
@@ -212,14 +211,7 @@ def read_41n(
                         )
                         # Use expected columns anyway as fallback
                         df.columns = expected_columns[: len(df.columns)]
-            except (
-                OSError,
-                IOError,
-                ValueError,
-                KeyError,
-                EmptyDataError,
-                ParserError,
-            ) as e:
+            except (OSError, ValueError, KeyError, EmptyDataError, ParserError) as e:
                 log_error("Failed to parse ASCII file: %s: %s", file_path, e)
                 raise FileNotFoundError(
                     f"Failed to parse ASCII file: {file_path}: {e}"
@@ -295,5 +287,4 @@ def read_41n(
 
     if track_added_attrs:
         return datasets, added_attrs_per_dataset
-    else:
-        return datasets
+    return datasets

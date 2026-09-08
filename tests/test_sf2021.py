@@ -64,8 +64,8 @@ class TestSF2021:
 
     def test_read_returns_dataset_and_tracks_attrs(self, monkeypatch, tmp_path):
         """read_sf2021 returns a Dataset and records tracked attribute changes."""
-        import xarray as xr
         import pandas as pd
+        import xarray as xr
 
         # Minimal Dataset to be returned. Use an explicit DateOffset for
         # yearly frequency to remain compatible with newer pandas versions.
@@ -121,8 +121,8 @@ class TestSF2021:
 
     def test_normalize_sf2021_time_coordinate(self):
         """Test that TIME coordinate is correctly converted from days since 0000-01-01 to datetime64[ns]."""
-        import xarray as xr
         import numpy as np
+        import xarray as xr
 
         # Create a dataset with sat_time as float (days since 0000-01-01)
         # 727945.0 days since 0000-01-01 should be approximately 1993-01-17
@@ -153,8 +153,8 @@ class TestSF2021:
 
     def test_normalize_sf2021_time_coordinate_with_TIME_name(self):
         """Test that TIME coordinate conversion works when variable is already named TIME."""
-        import xarray as xr
         import numpy as np
+        import xarray as xr
 
         # Create a dataset with TIME as float (days since 0000-01-01)
         time_values = np.array([727945.0, 727974.5, 728004.0])

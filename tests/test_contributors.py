@@ -5,6 +5,7 @@ contributor metadata with registry lookups and standardization.
 """
 
 import pytest
+
 from amocatlas import contributors
 
 

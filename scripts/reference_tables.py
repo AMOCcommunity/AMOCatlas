@@ -11,11 +11,11 @@ to ensure accuracy and consistency. This script leverages the existing report.py
 infrastructure to avoid code duplication.
 """
 
-import sys
-from pathlib import Path
-from collections import defaultdict
 import logging
-from typing import Dict, List, Any
+import sys
+from collections import defaultdict
+from pathlib import Path
+from typing import Any
 
 # Add amocatlas to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
@@ -23,12 +23,11 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 import amocatlas.read as read
 from amocatlas.defaults import ARRAY_NAMES
 
-
 # Configure logging to suppress info messages
 logging.getLogger("amocatlas").setLevel(logging.WARNING)
 
 
-def load_all_datasets() -> Dict[str, List]:
+def load_all_datasets() -> dict[str, list]:
     """Load all available datasets using the read API with all_files=True."""
     datasets = {}
 
@@ -51,13 +50,13 @@ def load_all_datasets() -> Dict[str, List]:
                 # Store all datasets for this array
                 datasets[array_name] = all_datasets
 
-        except (AttributeError, ValueError, KeyError, OSError, IOError, TypeError) as e:
+        except (AttributeError, ValueError, KeyError, OSError, TypeError) as e:
             print(f"Warning: Could not load {array_name}: {e}")
 
     return datasets
 
 
-def extract_variable_mappings(datasets: Dict[str, List]) -> Dict[str, Dict[str, Any]]:
+def extract_variable_mappings(datasets: dict[str, list]) -> dict[str, dict[str, Any]]:
     """Extract variable mapping information from datasets."""
     all_mappings = {}
 
@@ -89,8 +88,8 @@ def extract_variable_mappings(datasets: Dict[str, List]) -> Dict[str, Dict[str, 
 
 
 def extract_standardized_variables(
-    datasets: Dict[str, List],
-) -> Dict[str, Dict[str, List]]:
+    datasets: dict[str, list],
+) -> dict[str, dict[str, list]]:
     """Extract standardized variable information across all datasets."""
     standardized_vars = defaultdict(lambda: defaultdict(list))
 
@@ -116,7 +115,7 @@ def extract_standardized_variables(
     return standardized_vars
 
 
-def extract_unit_conversions(datasets: Dict[str, List]) -> Dict[str, Any]:
+def extract_unit_conversions(datasets: dict[str, list]) -> dict[str, Any]:
     """Extract unit conversion information from datasets."""
     unit_conversions = {}
 
@@ -133,7 +132,7 @@ def extract_unit_conversions(datasets: Dict[str, List]) -> Dict[str, Any]:
     return unit_conversions
 
 
-def generate_variable_mapping_table(mappings: Dict[str, Dict[str, Any]]) -> List[str]:
+def generate_variable_mapping_table(mappings: dict[str, dict[str, Any]]) -> list[str]:
     """Generate RST table showing variable mappings across datasets."""
     rst_content = []
 
@@ -261,8 +260,8 @@ def generate_variable_mapping_table(mappings: Dict[str, Dict[str, Any]]) -> List
 
 
 def generate_standardized_variables_table(
-    standardized_vars: Dict[str, Dict[str, List]],
-) -> List[str]:
+    standardized_vars: dict[str, dict[str, list]],
+) -> list[str]:
     """Generate RST table showing standardized variable details."""
     rst_content = []
 
@@ -344,7 +343,7 @@ def generate_standardized_variables_table(
     return rst_content
 
 
-def generate_full_reference_documentation(datasets: Dict[str, List]) -> str:
+def generate_full_reference_documentation(datasets: dict[str, list]) -> str:
     """Generate complete reference documentation."""
     print("Extracting variable mappings...")
     mappings = extract_variable_mappings(datasets)

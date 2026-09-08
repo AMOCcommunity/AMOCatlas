@@ -23,7 +23,6 @@ import json
 import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
-from typing import Optional
 
 HERE = Path(__file__).resolve().parent
 DEFAULT_SUBSET = HERE / "cf_standard_names.json"
@@ -77,7 +76,7 @@ def write_subset(subset: dict, out_path: Path = DEFAULT_SUBSET) -> None:
     )
 
 
-def main(argv: Optional[list] = None) -> int:
+def main(argv: list | None = None) -> int:
     """CLI entry point."""
     ap = argparse.ArgumentParser(description="Derive the committed CF subset.")
     ap.add_argument("--xml", required=True, help="Path to cf-standard-name-table.xml")

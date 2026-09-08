@@ -12,12 +12,13 @@ Key utilities:
 """
 
 from pathlib import Path
-from typing import Dict, List, Union, Any
+from typing import Any
+
 import xarray as xr
 import yaml
 
 from amocatlas import logger, utilities
-from amocatlas.logger import log_info, log_warning, log_error
+from amocatlas.logger import log_error, log_info, log_warning
 
 log = logger.log
 
@@ -86,7 +87,7 @@ class ReaderUtils:
             from .utilities import mask_invalid_values
 
             ds = mask_invalid_values(ds)
-        except (OSError, IOError, ValueError, KeyError) as e:
+        except (OSError, ValueError, KeyError) as e:
             log_error("Failed to open NetCDF file: %s: %s", file_path, e)
             raise FileNotFoundError(
                 f"Failed to open NetCDF file: {file_path}: {e}"
@@ -99,11 +100,11 @@ class ReaderUtils:
         ds: xr.Dataset,
         file_name: str,
         file_path: Path,
-        global_metadata: Dict[str, Any],
-        file_metadata: Dict[str, Any],
+        global_metadata: dict[str, Any],
+        file_metadata: dict[str, Any],
         datasource_id: str = None,
         track_added_attrs: bool = False,
-    ) -> Union[xr.Dataset, tuple[xr.Dataset, Dict[str, List[str]]]]:
+    ) -> xr.Dataset | tuple[xr.Dataset, dict[str, list[str]]]:
         """Attach standard metadata to a dataset with datasource identification.
 
         Parameters
@@ -177,16 +178,15 @@ class ReaderUtils:
                     modified_attrs.append(key)
 
             return ds, {"added": added_attrs, "modified": modified_attrs}
-        else:
-            return ds
+        return ds
 
     @staticmethod
     def prepare_file_list(
-        file_list: Union[str, List[str], None],
-        default_files: List[str],
-        transport_files: List[str],
+        file_list: str | list[str] | None,
+        default_files: list[str],
+        transport_files: list[str],
         transport_only: bool,
-    ) -> List[str]:
+    ) -> list[str]:
         """Prepare the list of files to process.
 
         Parameters
@@ -215,7 +215,7 @@ class ReaderUtils:
         return file_list
 
     @staticmethod
-    def setup_data_directory(data_dir: Union[str, Path, None]) -> Path:
+    def setup_data_directory(data_dir: str | Path | None) -> Path:
         """Set up the local data directory.
 
         Parameters
@@ -236,7 +236,7 @@ class ReaderUtils:
         return local_data_dir
 
     @staticmethod
-    def filter_netcdf_files(file_list: List[str]) -> List[str]:
+    def filter_netcdf_files(file_list: list[str]) -> list[str]:
         """Filter file list to only include NetCDF files.
 
         Parameters
@@ -260,9 +260,9 @@ class ReaderUtils:
 
     @staticmethod
     def print_loading_info(
-        file_list: List[str],
+        file_list: list[str],
         datasource_id: str,
-        file_metadata: Dict[str, Dict[str, Any]],
+        file_metadata: dict[str, dict[str, Any]],
     ) -> None:
         """Print informative output about files being loaded.
 
@@ -289,7 +289,7 @@ class ReaderUtils:
 
     @staticmethod
     def validate_datasets_loaded(
-        datasets: List[xr.Dataset], file_list: List[str]
+        datasets: list[xr.Dataset], file_list: list[str]
     ) -> None:
         """Validate that datasets were successfully loaded.
 
@@ -360,7 +360,7 @@ class ReaderUtils:
         fallback_file_metadata: dict,
         datasource_id: str,
         track_added_attrs: bool = False,
-    ) -> Union[xr.Dataset, tuple[xr.Dataset, dict]]:
+    ) -> xr.Dataset | tuple[xr.Dataset, dict]:
         """Attach metadata to dataset with optional attribute tracking.
 
         Parameters
@@ -406,13 +406,12 @@ class ReaderUtils:
                 track_added_attrs=True,
             )
             return dataset, attr_changes
-        else:
-            dataset = ReaderUtils.attach_standard_metadata(
-                dataset,
-                file,
-                file_path,
-                global_metadata,
-                file_metadata,
-                datasource_id=datasource_id,
-            )
-            return dataset
+        dataset = ReaderUtils.attach_standard_metadata(
+            dataset,
+            file,
+            file_path,
+            global_metadata,
+            file_metadata,
+            datasource_id=datasource_id,
+        )
+        return dataset

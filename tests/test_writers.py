@@ -1,12 +1,13 @@
 """Tests for amocatlas.writers module."""
 
-import tempfile
 import os
+import tempfile
 from pathlib import Path
+
 import numpy as np
 import pandas as pd
-import xarray as xr
 import pytest
+import xarray as xr
 
 from amocatlas import logger, writers
 

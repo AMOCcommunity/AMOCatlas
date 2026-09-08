@@ -7,7 +7,6 @@ Meridional Overturning Circulation.
 """
 
 from pathlib import Path
-from typing import Union
 
 import numpy as np
 import pandas as pd
@@ -16,8 +15,8 @@ import xarray as xr
 # Import the modules used
 from amocatlas import logger, utilities
 from amocatlas.logger import log_error, log_info, log_warning
-from amocatlas.utilities import apply_defaults
 from amocatlas.reader_utils import ReaderUtils
+from amocatlas.utilities import apply_defaults
 
 log = logger.log  # Use the global logger
 
@@ -54,9 +53,9 @@ DSO_FILE_METADATA = {
 def read_dso(
     source: str,
     ##    source: Union[str, Path, None],
-    file_list: Union[str, list[str]],
+    file_list: str | list[str],
     transport_only: bool = True,
-    data_dir: Union[str, Path, None] = None,
+    data_dir: str | Path | None = None,
     redownload: bool = False,
     track_added_attrs: bool = False,
 ) -> list[xr.Dataset]:
@@ -211,5 +210,4 @@ def read_dso(
 
     if track_added_attrs:
         return datasets, added_attrs_per_dataset
-    else:
-        return datasets
+    return datasets

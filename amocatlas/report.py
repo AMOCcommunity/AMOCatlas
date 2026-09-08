@@ -18,19 +18,20 @@ Usage:
 """
 
 import builtins
+from datetime import datetime
+from pathlib import Path
+from typing import Any
+
+import matplotlib
+import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
 import xarray as xr
-from typing import Dict, Any, Optional, List, Union
-from pathlib import Path
-from datetime import datetime
-import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib
 
 matplotlib.use("Agg")  # Use non-interactive backend for automated plotting
 
-from amocatlas import read, plotters
-from amocatlas.logger import log_info, log_debug
+from amocatlas import plotters, read
+from amocatlas.logger import log_debug, log_info
 from amocatlas.utilities import get_project_root
 
 
@@ -70,8 +71,8 @@ class ReportUtils:
 
     @staticmethod
     def extract_contributors_and_institutions(
-        datasets: List[xr.Dataset], array_name: str
-    ) -> Dict[str, List[str]]:
+        datasets: list[xr.Dataset], array_name: str
+    ) -> dict[str, list[str]]:
         """Extract contributor names and institutions from dataset metadata.
 
         Parameters
@@ -117,14 +118,14 @@ class ReportUtils:
                                 institutions.add(inst)
 
         return {
-            "contributors": sorted(list(contributors)),
-            "institutions": sorted(list(institutions)),
+            "contributors": sorted(contributors),
+            "institutions": sorted(institutions),
             "array_source": array_name,
         }
 
     @staticmethod
     def update_contributors_database(
-        contributors_data: Dict[str, List[str]], db_file: Path = None
+        contributors_data: dict[str, list[str]], db_file: Path = None
     ) -> Path:
         """Update the global contributors database file.
 
@@ -141,8 +142,9 @@ class ReportUtils:
             Path to the updated database file
 
         """
-        import yaml
         from pathlib import Path
+
+        import yaml
 
         if db_file is None:
             # Store in project root as YAML
@@ -152,7 +154,7 @@ class ReportUtils:
         database = {}
         if db_file.exists():
             try:
-                with open(db_file, "r", encoding="utf-8") as f:
+                with open(db_file, encoding="utf-8") as f:
                     database = yaml.safe_load(f) or {}
             except (yaml.YAMLError, UnicodeDecodeError):
                 log_info(f"Creating new contributors database at {db_file}")
@@ -183,8 +185,8 @@ class ReportUtils:
         all_institutions.update(contributors_data["institutions"])
 
         # Convert back to sorted lists
-        database["all_contributors"] = sorted(list(all_contributors))
-        database["all_institutions"] = sorted(list(all_institutions))
+        database["all_contributors"] = sorted(all_contributors)
+        database["all_institutions"] = sorted(all_institutions)
 
         # Write updated database with human-friendly YAML format
         with open(db_file, "w", encoding="utf-8") as f:
@@ -217,7 +219,7 @@ class ReportUtils:
 
     @staticmethod
     def handle_yyyymm_time_format(
-        time_data: Union[xr.DataArray, pd.Series, np.ndarray],
+        time_data: xr.DataArray | pd.Series | np.ndarray,
     ) -> pd.Series:
         """Handle YYYYMM time format (e.g., 200201 = February 2002)."""
         try:
@@ -237,7 +239,7 @@ class ReportUtils:
 
     @staticmethod
     def estimate_frequency(
-        median_diff: Union[pd.Timedelta, np.timedelta64, float, int],
+        median_diff: pd.Timedelta | np.timedelta64 | float | int,
     ) -> str:
         """Estimate sampling frequency from median time difference."""
         try:
@@ -271,10 +273,8 @@ class ReportUtils:
                     # Round frequencies close to 60 minutes to hourly
                     if minutes >= 55:
                         return "hourly"
-                    else:
-                        return f"{minutes}min"
-                else:
-                    return "<1H"
+                    return f"{minutes}min"
+                return "<1H"
             except (ValueError, TypeError, ZeroDivisionError):
                 # Handle calculation errors when determining frequency
                 return "<1H"
@@ -284,9 +284,7 @@ class ReportUtils:
             return f"{hours:.1f}H"
         elif 20 <= hours <= 28:
             return "daily"
-        elif 28 <= hours <= 35:
-            return "monthly"
-        elif 720 <= hours <= 760:  # ~30-31 days
+        elif 28 <= hours <= 35 or 720 <= hours <= 760:
             return "monthly"
         elif 2000 <= hours <= 2300:  # ~3 months (quarterly)
             return "3-monthly"
@@ -298,7 +296,7 @@ class ReportUtils:
             return f"{hours:.1f}H"
 
     @staticmethod
-    def compute_dataset_statistics(dataset: xr.Dataset) -> Dict[str, Any]:
+    def compute_dataset_statistics(dataset: xr.Dataset) -> dict[str, Any]:
         """Compute dataset statistics."""
         stats = {
             "total_variables": len(dataset.data_vars),
@@ -390,8 +388,8 @@ class ReportUtils:
 
     @staticmethod
     def safe_time_diff_days(
-        time_max: Union[datetime, pd.Timestamp, np.datetime64, float, int],
-        time_min: Union[datetime, pd.Timestamp, np.datetime64, float, int],
+        time_max: datetime | pd.Timestamp | np.datetime64 | float | int,
+        time_min: datetime | pd.Timestamp | np.datetime64 | float | int,
     ) -> float:
         """Safely calculate time difference in days, handling different data types."""
         try:
@@ -399,79 +397,72 @@ class ReportUtils:
             diff = time_max - time_min
             if hasattr(diff, "days"):
                 return diff.days
-            else:
-                # Handle numeric time values
-                try:
-                    numeric_diff = float(diff)
-                    max_val = max(abs(float(time_max)), abs(float(time_min)))
+            # Handle numeric time values
+            try:
+                numeric_diff = float(diff)
+                max_val = max(abs(float(time_max)), abs(float(time_min)))
 
-                    # Check for obviously invalid/sentinel values (very large negative numbers)
-                    if (
-                        max_val > 1e10
-                    ):  # Very large values likely indicate data corruption
-                        # Return 0 to avoid wildly incorrect time spans
-                        return 0
-
-                    # Check if these look like YYYYMM format (e.g., 200201, 202412)
-                    if 190000 <= max_val <= 300000 and abs(numeric_diff) < 10000:
-                        # Convert YYYYMM to actual dates and calculate difference
-                        try:
-                            # Convert YYYYMM to datetime
-                            min_year = int(time_min) // 100
-                            min_month = int(time_min) % 100
-                            max_year = int(time_max) // 100
-                            max_month = int(time_max) % 100
-
-                            min_date = datetime(min_year, min_month, 1)
-                            max_date = datetime(max_year, max_month, 1)
-
-                            return (max_date - min_date).days
-                        except (ValueError, TypeError):
-                            # Fallback to rough approximation if conversion fails
-                            return abs(numeric_diff) * 30.44
-
-                    # Check if the values look like unix timestamps (> 1e9)
-                    elif max_val > 1e9:
-                        # Assume difference is in seconds, convert to days
-                        return abs(numeric_diff) / 86400.0  # seconds to days
-
-                    # Check if values are small and could be decimal years since some reference
-                    elif max_val < 100:
-                        # Likely decimal years (e.g., 0.95, 1.66)
-                        # These are probably years since 2000 or similar
-                        return abs(numeric_diff) * 365.25
-
-                    else:
-                        # Other numeric formats - be conservative and assume days
-                        return abs(numeric_diff)
-
-                except (ValueError, TypeError):
+                # Check for obviously invalid/sentinel values (very large negative numbers)
+                if max_val > 1e10:  # Very large values likely indicate data corruption
+                    # Return 0 to avoid wildly incorrect time spans
                     return 0
+
+                # Check if these look like YYYYMM format (e.g., 200201, 202412)
+                if 190000 <= max_val <= 300000 and abs(numeric_diff) < 10000:
+                    # Convert YYYYMM to actual dates and calculate difference
+                    try:
+                        # Convert YYYYMM to datetime
+                        min_year = int(time_min) // 100
+                        min_month = int(time_min) % 100
+                        max_year = int(time_max) // 100
+                        max_month = int(time_max) % 100
+
+                        min_date = datetime(min_year, min_month, 1)
+                        max_date = datetime(max_year, max_month, 1)
+
+                        return (max_date - min_date).days
+                    except (ValueError, TypeError):
+                        # Fallback to rough approximation if conversion fails
+                        return abs(numeric_diff) * 30.44
+
+                # Check if the values look like unix timestamps (> 1e9)
+                elif max_val > 1e9:
+                    # Assume difference is in seconds, convert to days
+                    return abs(numeric_diff) / 86400.0  # seconds to days
+
+                # Check if values are small and could be decimal years since some reference
+                elif max_val < 100:
+                    # Likely decimal years (e.g., 0.95, 1.66)
+                    # These are probably years since 2000 or similar
+                    return abs(numeric_diff) * 365.25
+
+                else:
+                    # Other numeric formats - be conservative and assume days
+                    return abs(numeric_diff)
+
+            except (ValueError, TypeError):
+                return 0
         except (AttributeError, ValueError, TypeError, OverflowError):
             # Fallback for any other cases
             return 0
 
     @staticmethod
     def safe_format_date(
-        date_obj: Union[datetime, pd.Timestamp, np.datetime64, float, int, str],
+        date_obj: datetime | pd.Timestamp | np.datetime64 | float | int | str,
     ) -> str:
         """Safely format date, handling different data types."""
         try:
             if hasattr(date_obj, "strftime"):
                 return date_obj.strftime("%Y-%m-%d")
-            else:
-                # Check if this looks like seconds since 1970 (unix timestamp)
-                try:
-                    numeric_val = float(date_obj)
-                    if numeric_val > 1e9:  # Likely seconds since 1970
-                        return pd.to_datetime(numeric_val, unit="s").strftime(
-                            "%Y-%m-%d"
-                        )
-                    else:
-                        # Assume it's a year
-                        return f"{numeric_val:.1f}"
-                except (ValueError, TypeError):
-                    return str(date_obj)
+            # Check if this looks like seconds since 1970 (unix timestamp)
+            try:
+                numeric_val = float(date_obj)
+                if numeric_val > 1e9:  # Likely seconds since 1970
+                    return pd.to_datetime(numeric_val, unit="s").strftime("%Y-%m-%d")
+                # Assume it's a year
+                return f"{numeric_val:.1f}"
+            except (ValueError, TypeError):
+                return str(date_obj)
         except (
             AttributeError,
             ValueError,
@@ -482,7 +473,7 @@ class ReportUtils:
             return str(date_obj)
 
     @staticmethod
-    def analyze_temporal_coverage(dataset: xr.Dataset) -> Dict[str, Any]:
+    def analyze_temporal_coverage(dataset: xr.Dataset) -> dict[str, Any]:
         """Analyze temporal coverage of the dataset."""
         # Find time coordinate
         time_coords = []
@@ -690,8 +681,8 @@ class ReportUtils:
     @staticmethod
     def create_varcoord_table(
         dataset: xr.Dataset,
-        statistics: Dict[str, Any],
-        _metadata: Dict[str, Any],
+        statistics: dict[str, Any],
+        _metadata: dict[str, Any],
         table_type: str = "variables",
     ) -> pd.DataFrame:
         """Create unified variable or coordinate mapping table.
@@ -847,7 +838,7 @@ class ReportUtils:
 
     @staticmethod
     def create_variable_mapping_table(
-        dataset: xr.Dataset, statistics: Dict[str, Any], metadata: Dict[str, Any]
+        dataset: xr.Dataset, statistics: dict[str, Any], metadata: dict[str, Any]
     ) -> pd.DataFrame:
         """Create variable mapping table from dataset metadata and statistics."""
         return ReportUtils.create_varcoord_table(
@@ -855,7 +846,7 @@ class ReportUtils:
         )
 
     @staticmethod
-    def generate_plot(dataset: xr.Dataset, dataset_name: str) -> Optional[str]:
+    def generate_plot(dataset: xr.Dataset, dataset_name: str) -> str | None:
         """Generate a plot for the dataset and return the relative path."""
         try:
             plots_dir = _reports_plots_dir()
@@ -1259,8 +1250,8 @@ class ReportUtils:
                             content_start = j + 3
                             skip_title = False
                             # Continue looking for "Dataset Overview" instead of breaking
-                        elif line.startswith("Dataset Overview") or line.startswith(
-                            "Coordinate Information"
+                        elif line.startswith(
+                            ("Dataset Overview", "Coordinate Information")
                         ):
                             content_start = j
                             break
@@ -1320,7 +1311,7 @@ class ReportUtils:
         return rst_content
 
     @staticmethod
-    def dataframe_to_rst_table(df: pd.DataFrame) -> List[str]:
+    def dataframe_to_rst_table(df: pd.DataFrame) -> list[str]:
         """Convert pandas DataFrame to RST list-table format."""
         if df.empty:
             return ["(No data available)"]
@@ -1475,27 +1466,27 @@ class StandardizedDatasetReport(BaseDatasetReport):
         return self._variable_mapping
 
     @property
-    def statistics(self) -> Dict[str, Any]:
+    def statistics(self) -> dict[str, Any]:
         """Get dataset statistics."""
         if self._statistics is None:
             self._statistics = ReportUtils.compute_dataset_statistics(self.dataset)
         return self._statistics
 
     @property
-    def temporal_info(self) -> Dict[str, Any]:
+    def temporal_info(self) -> dict[str, Any]:
         """Get temporal coverage information."""
         if self._temporal_info is None:
             self._temporal_info = ReportUtils.analyze_temporal_coverage(self.dataset)
         return self._temporal_info
 
     @property
-    def plot_path(self) -> Optional[str]:
+    def plot_path(self) -> str | None:
         """Get path to generated plot."""
         if self._plot_path is None:
             self._plot_path = ReportUtils.generate_plot(self.dataset, self.dataset_name)
         return self._plot_path
 
-    def _compute_statistics(self) -> Dict[str, Any]:
+    def _compute_statistics(self) -> dict[str, Any]:
         """Compute dataset statistics."""
         stats = {
             "total_variables": len(self.dataset.data_vars),
@@ -1561,7 +1552,7 @@ class StandardizedDatasetReport(BaseDatasetReport):
             self._coordinate_info = self._create_coordinate_info_table()
         return self._coordinate_info
 
-    def _analyze_temporal_coverage(self) -> Dict[str, Any]:
+    def _analyze_temporal_coverage(self) -> dict[str, Any]:
         """Analyze temporal coverage of the dataset."""
         # Find time coordinate
         time_coords = []
@@ -1658,26 +1649,23 @@ class StandardizedDatasetReport(BaseDatasetReport):
 
         if hours < 1:
             return f"{int(median_diff.total_seconds() // 60)}min"
-        elif hours < 12:
+        if hours < 12:
             return f"{hours:.1f}H"
-        elif 10 <= hours <= 14:
+        if 10 <= hours <= 14:
             return "12H"
-        elif 20 <= hours <= 28:
+        if 20 <= hours <= 28:
             return "daily"
-        elif 28 <= hours <= 35:
+        if 28 <= hours <= 35 or 720 <= hours <= 760:
             return "monthly"
-        elif 720 <= hours <= 760:  # ~30-31 days
-            return "monthly"
-        elif 2000 <= hours <= 2300:  # ~3 months (quarterly)
+        if 2000 <= hours <= 2300:  # ~3 months (quarterly)
             return "3-monthly"
-        elif 4000 <= hours <= 4500:  # ~6 months
+        if 4000 <= hours <= 4500:  # ~6 months
             return "6-monthly"
-        elif 8000 <= hours <= 9000:  # ~12 months (annual)
+        if 8000 <= hours <= 9000:  # ~12 months (annual)
             return "annual"
-        else:
-            return f"{hours:.1f}H"
+        return f"{hours:.1f}H"
 
-    def _generate_plot(self) -> Optional[str]:
+    def _generate_plot(self) -> str | None:
         """Generate a plot for the dataset and return the path."""
         try:
             plots_dir = _reports_plots_dir()
@@ -1728,7 +1716,6 @@ class StandardizedDatasetReport(BaseDatasetReport):
             TypeError,
             AttributeError,
             OSError,
-            IOError,
             ImportError,
         ) as e:
             log_debug(f"Failed to generate plot for {self.dataset_name}: {e}")
@@ -1743,7 +1730,7 @@ def analyze_standardized_dataset(
     transport_only: bool = True,
     all_files: bool = False,  # noqa: ARG001
     dataset_index: int = 0,  # noqa: ARG001
-) -> Union[StandardizedDatasetReport, List[StandardizedDatasetReport]]:
+) -> StandardizedDatasetReport | list[StandardizedDatasetReport]:
     """Analyze a standardized dataset and return report data with metadata tracking.
 
     Parameters
@@ -1891,10 +1878,7 @@ def generate_dataset_report(
 
     if output_format.lower() == "rst":
         return _generate_rst_report(report_data)
-    else:
-        raise NotImplementedError(
-            f"Output format '{output_format}' not yet implemented"
-        )
+    raise NotImplementedError(f"Output format '{output_format}' not yet implemented")
 
 
 def _generate_rst_report(
@@ -2270,7 +2254,7 @@ def _generate_rst_report(
     return "\n".join(lines)
 
 
-def _dataframe_to_rst_table(df: pd.DataFrame) -> List[str]:
+def _dataframe_to_rst_table(df: pd.DataFrame) -> list[str]:
     """Convert pandas DataFrame to RST table format."""
     if df.empty:
         return ["(No data available)"]
@@ -2390,8 +2374,8 @@ def samba(all_files: bool = True, output_file: str = None) -> str:
 
 
 def all(
-    arrays: List[str] = None, output_dir: str = "docs/source/reports"
-) -> Dict[str, str]:
+    arrays: list[str] = None, output_dir: str = "docs/source/reports"
+) -> dict[str, str]:
     """Generate reports for all available arrays.
 
     Parameters
@@ -2442,7 +2426,6 @@ def all(
             TypeError,
             AttributeError,
             OSError,
-            IOError,
             PermissionError,
         ) as e:
             print(f"Failed to generate report for {array_name}: {e}")

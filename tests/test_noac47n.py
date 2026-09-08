@@ -5,9 +5,10 @@ Tests the basic functionality without complex data loading mocks.
 """
 
 import tempfile
-import pytest
 from pathlib import Path
 from unittest.mock import patch
+
+import pytest
 import xarray as xr
 
 from amocatlas.data_sources import noac47n
@@ -246,17 +247,17 @@ class TestNOAC47N:
                 mock_metadata.return_value = ({}, {})
 
                 # Patch the FILE_URLS to not contain our test file
-                with patch.dict(
-                    "amocatlas.data_sources.noac47n.A47N_FILE_URLS", {}, clear=True
+                with (
+                    patch.dict(
+                        "amocatlas.data_sources.noac47n.A47N_FILE_URLS", {}, clear=True
+                    ),
+                    pytest.raises(ValueError, match="No download URL found for file"),
                 ):
-                    with pytest.raises(
-                        ValueError, match="No download URL found for file"
-                    ):
-                        noac47n.read_47n(
-                            source="https://example.com/",
-                            file_list=["nonexistent_file.tab"],
-                            data_dir=temp_dir,
-                        )
+                    noac47n.read_47n(
+                        source="https://example.com/",
+                        file_list=["nonexistent_file.tab"],
+                        data_dir=temp_dir,
+                    )
 
     def test_read_47n_unsupported_file_type(self):
         """Test handling of unsupported file types."""

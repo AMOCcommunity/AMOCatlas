@@ -8,7 +8,7 @@ import xarray as xr
 from scipy.signal.windows import tukey
 
 from amocatlas import logger
-from amocatlas.logger import log_info, log_debug
+from amocatlas.logger import log_debug, log_info
 
 log = logger.log
 
@@ -190,7 +190,7 @@ def find_best_dtype(var_name: str, da: xr.DataArray) -> np.dtype:
     if var_name[-3:] == "raw" or "int" in str(input_dtype):
         if np.nanmax(da.values) < 2**16 / 2:
             return np.int16
-        elif np.nanmax(da.values) < 2**32 / 2:
+        if np.nanmax(da.values) < 2**32 / 2:
             return np.int32
     if input_dtype == np.float64:
         return np.float32
@@ -242,7 +242,7 @@ def set_best_dtype(ds: xr.Dataset) -> xr.Dataset:
         input_dtype: np.dtype = da.dtype.type
         new_dtype: np.dtype = find_best_dtype(var_name, da)
         for att in ["valid_min", "valid_max"]:
-            if att in da.attrs.keys():
+            if att in da.attrs:
                 da.attrs[att] = np.array(da.attrs[att]).astype(new_dtype)
         if new_dtype == input_dtype:
             continue
@@ -410,8 +410,7 @@ def check_and_bin(df: pd.DataFrame, time_column: str = "time") -> pd.DataFrame:
     median_diff = time_diffs.median()
     if median_diff < 15:
         return bin_average_monthly(df, time_column)
-    else:
-        return df
+    return df
 
 
 def apply_tukey_filter(

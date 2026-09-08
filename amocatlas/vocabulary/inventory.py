@@ -15,9 +15,9 @@ It reads only; it does not write or fabricate.
 from __future__ import annotations
 
 import re
+from collections.abc import Iterator
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Dict, Iterator, List
 
 HERE = Path(__file__).resolve().parent
 METADATA_DIR = HERE.parent / "metadata"
@@ -55,7 +55,7 @@ class ShortName:
     """All occurrences of one standardised short name across arrays."""
 
     name: str
-    occurrences: List[Occurrence] = field(default_factory=list)
+    occurrences: list[Occurrence] = field(default_factory=list)
 
     @property
     def standard_names(self) -> set:
@@ -80,24 +80,24 @@ class ShortName:
         return len(sn) > 1 or len(un) > 1
 
 
-def _iter_array_yaml(metadata_dir: Path) -> "Iterator[Path]":
+def _iter_array_yaml(metadata_dir: Path) -> Iterator[Path]:
     for path in sorted(metadata_dir.glob("*.yml")):
         if path.name in _NON_ARRAY:
             continue
         yield path
 
 
-def build_inventory(metadata_dir: Path = METADATA_DIR) -> Dict[str, ShortName]:
+def build_inventory(metadata_dir: Path = METADATA_DIR) -> dict[str, ShortName]:
     """Return {short_name: ShortName} across all per-array metadata YAMLs."""
     import yaml
 
     from ..utilities import sanitize_variable_name
 
-    result: Dict[str, ShortName] = {}
+    result: dict[str, ShortName] = {}
 
     for path in _iter_array_yaml(metadata_dir):
         array = path.stem
-        with open(path, "r", encoding="utf-8") as fh:
+        with open(path, encoding="utf-8") as fh:
             doc = yaml.safe_load(fh) or {}
         files = doc.get("files") or {}
         for source_file, spec in files.items():
@@ -129,7 +129,7 @@ def build_inventory(metadata_dir: Path = METADATA_DIR) -> Dict[str, ShortName]:
     return dict(sorted(result.items()))
 
 
-def summarize(inventory: Dict[str, ShortName]) -> str:
+def summarize(inventory: dict[str, ShortName]) -> str:
     """Human-readable summary: names, their standard_names/units, and conflicts."""
     lines = [f"{len(inventory)} standardised short names across the arrays.", ""]
     conflicts = [n for n in inventory.values() if n.has_conflict]
@@ -144,7 +144,7 @@ def summarize(inventory: Dict[str, ShortName]) -> str:
     return "\n".join(lines)
 
 
-def _sorted_distinct(values: "set") -> list:
+def _sorted_distinct(values: set) -> list:
     """Sort a set that may contain None (None sorts last)."""
     return sorted(values, key=lambda x: (x is None, x or ""))
 
@@ -164,7 +164,7 @@ def _published_names(vocab_path: Path = DEFAULT_VOCAB) -> set:
 
     if not vocab_path.is_file():
         return set()
-    with open(vocab_path, "r", encoding="utf-8") as fh:
+    with open(vocab_path, encoding="utf-8") as fh:
         doc = yaml.safe_load(fh) or {}
     return set((doc.get("quantities") or {}).keys())
 
@@ -227,7 +227,7 @@ def seed_draft_file(
 
     existing = None
     if draft_path.is_file():
-        with open(draft_path, "r", encoding="utf-8") as fh:
+        with open(draft_path, encoding="utf-8") as fh:
             existing = yaml.safe_load(fh)
     draft = seed_draft(existing, metadata_dir, vocab_path)
     with open(draft_path, "w", encoding="utf-8") as fh:

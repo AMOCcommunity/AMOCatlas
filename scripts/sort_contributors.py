@@ -6,10 +6,11 @@ alphabetically by their last name (extracted from standard_name), and
 rewrites the file with the sorted order while preserving all other content.
 """
 
-import yaml
-from pathlib import Path
 import re
 from collections import OrderedDict
+from pathlib import Path
+
+import yaml
 
 
 def extract_last_name(standard_name: str) -> str:
@@ -17,7 +18,8 @@ def extract_last_name(standard_name: str) -> str:
 
     Simple approach: return the string after the last space.
 
-    Examples:
+    Examples
+    --------
     - "John Smith" -> "Smith"
     - "M. Femke de Jong" -> "Jong"
     - "Tiago Carrilho Biló" -> "Biló"
@@ -49,7 +51,7 @@ def sort_contributors_by_last_name() -> None:
     )
 
     # Read the YAML file
-    with open(registry_file, "r", encoding="utf-8") as f:
+    with open(registry_file, encoding="utf-8") as f:
         data = yaml.safe_load(f)
 
     # Extract contributors section
@@ -80,7 +82,7 @@ def sort_contributors_by_last_name() -> None:
     data["contributors"] = sorted_contributors
 
     # Read the original file to preserve comments and structure
-    with open(registry_file, "r", encoding="utf-8") as f:
+    with open(registry_file, encoding="utf-8") as f:
         original_content = f.read()
 
     # Extract header comments (everything before 'contributors:')
@@ -108,7 +110,7 @@ def sort_contributors_by_last_name() -> None:
             ):
                 continue
             # Check if we've hit the example/footer section
-            elif line.strip().startswith("#") and "example usage" in line.lower():
+            if line.strip().startswith("#") and "example usage" in line.lower():
                 # Found the footer, collect remaining lines
                 footer_lines = lines[lines.index(line) :]
                 break

@@ -6,7 +6,6 @@ This module provides functions to read and process data from the OSNAP
 """
 
 from pathlib import Path
-from typing import Union
 
 import xarray as xr
 
@@ -103,9 +102,9 @@ OSNAP_FILE_METADATA = {
 
 def read_osnap(
     source: str = None,
-    file_list: Union[str, list[str]] = None,
+    file_list: str | list[str] = None,
     transport_only: bool = True,
-    data_dir: Union[str, Path, None] = None,
+    data_dir: str | Path | None = None,
     redownload: bool = False,
     version: str = "2025",
     track_added_attrs: bool = False,
@@ -232,15 +231,14 @@ def read_osnap(
 
     if track_added_attrs:
         return datasets, added_attrs_per_dataset
-    else:
-        return datasets
+    return datasets
 
 
 def read_osnap_2025(
     source: str = None,
-    file_list: Union[str, list[str]] = None,
+    file_list: str | list[str] = None,
     transport_only: bool = True,
-    data_dir: Union[str, Path, None] = None,
+    data_dir: str | Path | None = None,
     redownload: bool = False,
 ) -> list[xr.Dataset]:
     """Load the OSNAP 2025 datasets (2014-2022 coverage) from a URL or local file path.

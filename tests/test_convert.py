@@ -1,9 +1,10 @@
-import tempfile
 import os
-import xarray as xr
-import pytest
+import tempfile
 
-from amocatlas import logger, readers, standardise, convert, compliance_checker, writers
+import pytest
+import xarray as xr
+
+from amocatlas import compliance_checker, convert, logger, readers, standardise, writers
 
 logger.disable_logging()
 

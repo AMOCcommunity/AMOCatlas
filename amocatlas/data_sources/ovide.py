@@ -10,15 +10,14 @@ are served on a single 1993-2015 TIME axis, with the ISAS series NaN before 2002
 """
 
 from pathlib import Path
-from typing import Union
 
 import pandas as pd
 import xarray as xr
 
 from amocatlas import logger, utilities
-from amocatlas.logger import log_error, log_info, log_warning, log_debug
-from amocatlas.utilities import apply_defaults
+from amocatlas.logger import log_debug, log_error, log_info, log_warning
 from amocatlas.reader_utils import ReaderUtils
+from amocatlas.utilities import apply_defaults
 
 log = logger.log
 
@@ -108,10 +107,10 @@ def _merge_ovide_time_axes(ds: xr.Dataset, source_file: str = None) -> xr.Datase
 
 @apply_defaults(OVIDE_DEFAULT_SOURCE, OVIDE_DEFAULT_FILES)
 def read_ovide(
-    source: Union[str, Path, None],
-    file_list: Union[str, list[str]],
+    source: str | Path | None,
+    file_list: str | list[str],
     transport_only: bool = True,
-    data_dir: Union[str, Path, None] = None,
+    data_dir: str | Path | None = None,
     redownload: bool = False,
     track_added_attrs: bool = False,
 ) -> list[xr.Dataset]:

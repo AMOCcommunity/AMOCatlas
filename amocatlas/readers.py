@@ -17,36 +17,36 @@ Main functions:
 - load_sample_dataset(): Load small sample datasets for testing
 """
 
-from pathlib import Path
-from typing import Callable, List, Union
 import warnings
+from collections.abc import Callable
+from pathlib import Path
 
 import pandas as pd
 import xarray as xr
 
 from amocatlas import logger
-from amocatlas.logger import log_info
 from amocatlas.data_sources import (
+    read_41n,
+    read_47n,
+    read_arcticgateway,
+    read_axmoc22s,
+    read_axmoc34s,
+    read_calafat2025,
+    read_dso,
+    read_fbc,
+    read_fw2015,
+    read_lebras35n,
+    read_mocha,
     read_move,
+    read_nac,
     read_osnap,
     read_osnap_2025,
     read_rapid,
     read_samba,
-    read_fw2015,
-    read_mocha,
-    read_41n,
-    read_dso,
-    read_calafat2025,
-    read_zheng2024,
-    read_47n,
-    read_fbc,
-    read_arcticgateway,
-    read_nac,
     read_sf2021,
-    read_lebras35n,
-    read_axmoc22s,
-    read_axmoc34s,
+    read_zheng2024,
 )
+from amocatlas.logger import log_info
 
 log = logger.log
 
@@ -54,7 +54,7 @@ log = logger.log
 server = "https://www.dropbox.com/scl/fo/4bjo8slq1krn5rkhbkyds/AM-EVfSHi8ro7u2y8WAcKyw?rlkey=16nqlykhgkwfyfeodkj274xpc&dl=0"
 
 
-def _get_reader(array_name: str) -> Callable[..., List[xr.Dataset]]:
+def _get_reader(array_name: str) -> Callable[..., list[xr.Dataset]]:
     """Return the reader function for the given array name.
 
     Parameters
@@ -157,9 +157,9 @@ def load_sample_dataset(array_name: str = "rapid") -> xr.Dataset:
 def load_dataset(
     array_name: str,
     source: str = None,
-    file_list: Union[str | list[str]] = None,
+    file_list: str | list[str] = None,
     transport_only: bool = True,
-    data_dir: Union[str, Path, None] = None,
+    data_dir: str | Path | None = None,
     redownload: bool = False,
 ) -> list[xr.Dataset]:
     """Load raw datasets from a selected AMOC observing array.

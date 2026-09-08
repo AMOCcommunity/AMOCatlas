@@ -8,17 +8,16 @@ mooring observations.
 """
 
 from pathlib import Path
-from typing import Union
 
-import xarray as xr
-import scipy.io
-import pandas as pd
 import numpy as np
+import pandas as pd
+import scipy.io
+import xarray as xr
 
 from amocatlas import logger, utilities
 from amocatlas.logger import log_error, log_info, log_warning
-from amocatlas.utilities import apply_defaults
 from amocatlas.reader_utils import ReaderUtils
+from amocatlas.utilities import apply_defaults
 
 log = logger.log  # Use global logger
 
@@ -55,10 +54,10 @@ FW2015_FILE_METADATA = {
 
 @apply_defaults(None, FW2015_DEFAULT_FILES)
 def read_fw2015(
-    source: Union[str, Path, None],
-    file_list: Union[str, list[str]],
+    source: str | Path | None,
+    file_list: str | list[str],
     transport_only: bool = True,
-    data_dir: Union[str, Path, None] = None,
+    data_dir: str | Path | None = None,
     redownload: bool = False,
     track_added_attrs: bool = False,
 ) -> list[xr.Dataset]:
@@ -185,7 +184,7 @@ def read_fw2015(
             ds.attrs["paper"] = recon.paper
             ds.attrs["version"] = recon.version
 
-        except (OSError, IOError, ValueError, KeyError, AttributeError) as e:
+        except (OSError, ValueError, KeyError, AttributeError) as e:
             log.exception("Failed to parse .mat file: %s", file_path)
             raise ValueError(f"Failed to parse .mat file: {file_path}: {e}") from e
 
@@ -228,5 +227,4 @@ def read_fw2015(
 
     if track_added_attrs:
         return datasets, added_attrs_per_dataset
-    else:
-        return datasets
+    return datasets

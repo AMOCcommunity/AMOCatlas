@@ -6,15 +6,14 @@ located at 34.5°S.
 """
 
 from pathlib import Path
-from typing import Union
 
 import pandas as pd
 import xarray as xr
 
 from amocatlas import logger, utilities
-from amocatlas.logger import log_error, log_info, log_warning, log_debug
-from amocatlas.utilities import apply_defaults, sanitize_variable_name
+from amocatlas.logger import log_debug, log_error, log_info, log_warning
 from amocatlas.reader_utils import ReaderUtils
+from amocatlas.utilities import apply_defaults, sanitize_variable_name
 
 log = logger.log  # Use the global logger
 
@@ -61,10 +60,10 @@ SAMBA_FILE_METADATA = {
 
 @apply_defaults(None, SAMBA_DEFAULT_FILES)
 def read_samba(
-    source: Union[str, Path, None],
-    file_list: Union[str, list[str]],
+    source: str | Path | None,
+    file_list: str | list[str],
     transport_only: bool = True,
-    data_dir: Union[str, Path, None] = None,
+    data_dir: str | Path | None = None,
     redownload: bool = False,
     track_added_attrs: bool = False,
 ) -> list[xr.Dataset]:
@@ -159,7 +158,6 @@ def read_samba(
             )
         except (
             OSError,
-            IOError,
             ValueError,
             KeyError,
             pd.errors.EmptyDataError,
@@ -273,5 +271,4 @@ def read_samba(
     # Handle track_added_attrs parameter
     if track_added_attrs:
         return datasets, added_attrs_per_dataset
-    else:
-        return datasets
+    return datasets

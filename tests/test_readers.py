@@ -64,8 +64,9 @@ def test_calafat2025_defaults():
 
 def test_calafat2025_no_download_url():
     """Test CALAFAT2025 error when no download URL is available for a file."""
-    from amocatlas.data_sources import calafat2025
     import tempfile
+
+    from amocatlas.data_sources import calafat2025
 
     with tempfile.TemporaryDirectory() as tmp_dir:
         with pytest.raises(ValueError, match="No download URL found for file"):
@@ -78,9 +79,10 @@ def test_calafat2025_no_download_url():
 
 def test_calafat2025_no_zip_contents():
     """Test CALAFAT2025 error when no zip contents mapping is provided."""
-    from amocatlas.data_sources import calafat2025
     import tempfile
     from unittest.mock import patch
+
+    from amocatlas.data_sources import calafat2025
 
     with tempfile.TemporaryDirectory() as tmp_dir:
         # Mock a fake file with URL but no zip contents mapping
@@ -112,10 +114,11 @@ def test_calafat2025_no_zip_contents():
 
 def test_calafat2025_no_netcdf_in_zip():
     """Test CALAFAT2025 error when zip contains no NetCDF files."""
-    from amocatlas.data_sources import calafat2025
     import tempfile
     import zipfile
     from unittest.mock import patch
+
+    from amocatlas.data_sources import calafat2025
 
     with tempfile.TemporaryDirectory() as tmp_dir:
         # Create a zip file with no .nc files
@@ -123,31 +126,34 @@ def test_calafat2025_no_netcdf_in_zip():
         with zipfile.ZipFile(fake_zip, "w") as zf:
             zf.writestr("README.txt", "test content")
 
-        with patch.object(
-            calafat2025,
-            "CALAFAT2025_FILE_URLS",
-            {"fake.zip": "http://example.com/fake.zip"},
-        ):
-            with patch.object(
+        with (
+            patch.object(
+                calafat2025,
+                "CALAFAT2025_FILE_URLS",
+                {"fake.zip": "http://example.com/fake.zip"},
+            ),
+            patch.object(
                 calafat2025,
                 "CALAFAT2025_ZIP_CONTENTS",
                 {"fake.zip": {"README.txt"}},
-            ):
-                with patch("amocatlas.utilities.resolve_file_path") as mock_resolve:
-                    mock_resolve.return_value = fake_zip
+            ),
+            patch("amocatlas.utilities.resolve_file_path") as mock_resolve,
+        ):
+            mock_resolve.return_value = fake_zip
 
-                    with pytest.raises(FileNotFoundError, match="No NetCDF"):
-                        calafat2025.read_calafat2025(
-                            source=None,
-                            file_list=["fake.zip"],
-                            data_dir=tmp_dir,
-                        )
+            with pytest.raises(FileNotFoundError, match="No NetCDF"):
+                calafat2025.read_calafat2025(
+                    source=None,
+                    file_list=["fake.zip"],
+                    data_dir=tmp_dir,
+                )
 
 
 def test_calafat2025_transport_only_flag():
     """Test CALAFAT2025 transport_only flag functionality."""
-    from amocatlas.data_sources import calafat2025
     from unittest.mock import patch
+
+    from amocatlas.data_sources import calafat2025
 
     # Test that transport_only=True uses transport files
     with patch("amocatlas.data_sources.calafat2025.read_calafat2025") as mock_func:
@@ -167,8 +173,9 @@ def test_calafat2025_transport_only_flag():
 
 def test_calafat2025_string_to_list_conversion():
     """Test CALAFAT2025 converts string file_list to list."""
-    from amocatlas.data_sources import calafat2025
     import tempfile
+
+    from amocatlas.data_sources import calafat2025
 
     with tempfile.TemporaryDirectory() as tmp_dir:
         # This should convert string to list internally before hitting the error
@@ -182,9 +189,10 @@ def test_calafat2025_string_to_list_conversion():
 
 def test_calafat2025_non_zip_file_warning():
     """Test CALAFAT2025 logs warning for non-zip files."""
-    from amocatlas.data_sources import calafat2025
     import tempfile
     from unittest.mock import patch
+
+    from amocatlas.data_sources import calafat2025
 
     with tempfile.TemporaryDirectory() as tmp_dir:
         # Create a fake .nc file to avoid download
@@ -192,23 +200,23 @@ def test_calafat2025_non_zip_file_warning():
         with open(fake_nc, "w") as f:
             f.write("fake content")
 
-        with patch.object(
-            calafat2025,
-            "CALAFAT2025_FILE_URLS",
-            {"fake.nc": "http://example.com/fake.nc"},
+        with (
+            patch.object(
+                calafat2025,
+                "CALAFAT2025_FILE_URLS",
+                {"fake.nc": "http://example.com/fake.nc"},
+            ),
+            patch("amocatlas.utilities.resolve_file_path") as mock_resolve,
         ):
-            with patch("amocatlas.utilities.resolve_file_path") as mock_resolve:
-                mock_resolve.return_value = fake_nc
+            mock_resolve.return_value = fake_nc
 
-                # Should raise because no datasets were processed
-                with pytest.raises(
-                    FileNotFoundError, match="No valid NetCDF files found"
-                ):
-                    calafat2025.read_calafat2025(
-                        source="fake_source",
-                        file_list=["fake.nc"],
-                        data_dir=tmp_dir,
-                    )
+            # Should raise because no datasets were processed
+            with pytest.raises(FileNotFoundError, match="No valid NetCDF files found"):
+                calafat2025.read_calafat2025(
+                    source="fake_source",
+                    file_list=["fake.nc"],
+                    data_dir=tmp_dir,
+                )
 
 
 def test_zheng2024_defaults():
@@ -323,10 +331,10 @@ def test_rapid_sigma_coordinate_integration():
     transformation logic are in test_readers_sigma.py.
     """
     # This test just verifies the integration works - detailed tests are in test_readers_sigma.py
-    from amocatlas.data_sources.rapid26n import read_rapid
-
     # Test that the read_rapid function exists and has the sigma transformation code
     import inspect
+
+    from amocatlas.data_sources.rapid26n import read_rapid
 
     source_lines = inspect.getsource(read_rapid)
 

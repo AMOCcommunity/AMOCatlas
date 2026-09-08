@@ -5,12 +5,12 @@ following the OceanSITES/AC1 specification.
 """
 
 import re
-import xarray as xr
-import numpy as np
+from dataclasses import dataclass, field
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import List, Optional
-from dataclasses import dataclass, field
+
+import numpy as np
+import xarray as xr
 
 
 @dataclass
@@ -18,9 +18,9 @@ class ValidationResult:
     """Container for validation results."""
 
     passed: bool
-    errors: List[str] = field(default_factory=list)
-    warnings: List[str] = field(default_factory=list)
-    file_type: Optional[str] = None
+    errors: list[str] = field(default_factory=list)
+    warnings: list[str] = field(default_factory=list)
+    file_type: str | None = None
 
 
 # Generic AC1 compliance specifications
@@ -234,7 +234,7 @@ class AC1ComplianceChecker:
             # Load dataset
             try:
                 ds = xr.open_dataset(filepath)
-            except (OSError, IOError, ValueError, KeyError) as e:
+            except (OSError, ValueError, KeyError) as e:
                 result.errors.append(f"Failed to open NetCDF file: {e}")
                 result.passed = False
                 return result
@@ -247,14 +247,7 @@ class AC1ComplianceChecker:
 
             ds.close()
 
-        except (
-            OSError,
-            IOError,
-            ValueError,
-            KeyError,
-            AttributeError,
-            RuntimeError,
-        ) as e:
+        except (OSError, ValueError, KeyError, AttributeError, RuntimeError) as e:
             result.errors.append(f"Unexpected error during validation: {e}")
             result.passed = False
 
@@ -263,9 +256,7 @@ class AC1ComplianceChecker:
 
         return result
 
-    def _validate_filename(
-        self, filepath: str, result: ValidationResult
-    ) -> Optional[str]:
+    def _validate_filename(self, filepath: str, result: ValidationResult) -> str | None:
         """Validate filename against OceanSITES convention."""
         filename = Path(filepath).name
 
@@ -346,7 +337,7 @@ class AC1ComplianceChecker:
         if "TIME" not in ds.sizes:
             result.errors.append("TIME dimension is required")
         else:
-            if not ds.sizes["TIME"] == len(ds.TIME):
+            if ds.sizes["TIME"] != len(ds.TIME):
                 result.warnings.append("TIME dimension should be unlimited")
 
     def _validate_array_specific_dimensions(
@@ -662,9 +653,7 @@ class AC1ComplianceChecker:
             expected_url = "https://vocab.nerc.ac.uk/collection/G04/current/"
 
             # Check if it's a valid URL format
-            if not (
-                vocab_url.startswith("http://") or vocab_url.startswith("https://")
-            ):
+            if not (vocab_url.startswith(("http://", "https://"))):
                 result.errors.append(
                     f"contributor_role_vocabulary must be a valid URL, got '{vocab_url}'"
                 )

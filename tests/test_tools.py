@@ -1,9 +1,10 @@
 import pathlib
 import sys
+from datetime import datetime
+
 import numpy as np
 import pandas as pd
 import xarray as xr
-from datetime import datetime
 
 script_dir = pathlib.Path(__file__).parent.absolute()
 parent_dir = script_dir.parents[0]

@@ -1,8 +1,8 @@
 """Tests for amocatlas.logger module."""
 
-import tempfile
 import logging
 import os
+import tempfile
 from pathlib import Path
 
 from amocatlas import logger

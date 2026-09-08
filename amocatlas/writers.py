@@ -8,7 +8,6 @@ with proper compression and metadata formatting.
 
 import json
 from numbers import Number
-from typing import Union
 
 import numpy as np
 import xarray as xr
@@ -38,7 +37,7 @@ def save_dataset(ds: xr.Dataset, output_file: str = "../test.nc") -> bool:
     attributes of unsupported types. See: https://github.com/pydata/xarray/issues/3743
 
     """
-    valid_types: tuple[Union[type, tuple], ...] = (
+    valid_types: tuple[type | tuple, ...] = (
         str,
         int,
         float,
@@ -133,7 +132,7 @@ def save_dataset(ds: xr.Dataset, output_file: str = "../test.nc") -> bool:
                     variable.attrs[k] = str(v)
         try:
             ds_copy.to_netcdf(output_file, format="NETCDF4_CLASSIC", encoding=encoding)
-        except (OSError, IOError, ValueError, RuntimeError) as e:
+        except (OSError, ValueError, RuntimeError) as e:
             print("Failed to save dataset:", e)
             datetime_vars = [
                 var

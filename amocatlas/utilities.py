@@ -8,23 +8,23 @@ This module provides shared utility functions including:
 - Decorator functions for default parameters
 """
 
+import hashlib
+import json
+import os
+import re
+from collections.abc import Callable
 from datetime import datetime, timezone
 from ftplib import FTP
 from functools import wraps
 from importlib import resources
 from pathlib import Path
-from typing import Callable, Dict, List, Optional, Tuple, Union
 from urllib.parse import urlparse
-import hashlib
-import json
-import os
-import re
-import yaml
 
+import numpy as np
 import pandas as pd
 import requests
 import xarray as xr
-import numpy as np
+import yaml
 
 from amocatlas import logger
 from amocatlas.logger import log_debug
@@ -55,7 +55,7 @@ def get_default_data_dir() -> Path:
     return Path.home() / ".amocatlas_data"
 
 
-def set_data_dir(data_dir: Union[str, Path]) -> None:
+def set_data_dir(data_dir: str | Path) -> None:
     """Set the default data directory for AMOCatlas.
 
     This will be used by all readers unless overridden with data_dir parameter.
@@ -108,7 +108,7 @@ def get_data_dir() -> Path:
     return get_default_data_dir()
 
 
-def apply_defaults(default_source: str, default_files: List[str]) -> Callable:
+def apply_defaults(default_source: str, default_files: list[str]) -> Callable:
     """Decorator to apply default values for 'source' and 'file_list' parameters if they are None.
 
     Parameters
@@ -128,8 +128,8 @@ def apply_defaults(default_source: str, default_files: List[str]) -> Callable:
     def decorator(func: Callable) -> Callable:
         @wraps(func)
         def wrapper(
-            source: Optional[str] = None,
-            file_list: Optional[List[str]] = None,
+            source: str | None = None,
+            file_list: list[str] | None = None,
             *args,  # noqa: ANN002
             **kwargs,  # noqa: ANN003
         ) -> Callable:
@@ -164,8 +164,8 @@ def normalize_whitespace(attrs: dict) -> dict:
 
 def resolve_file_path(
     file_name: str,
-    source: Union[str, Path, None],
-    download_url: Optional[str],
+    source: str | Path | None,
+    download_url: str | None,
     local_data_dir: Path,
     redownload: bool = False,
 ) -> Path:
@@ -197,9 +197,8 @@ def resolve_file_path(
         if candidate_file.exists():
             log.info("Using local file: %s", candidate_file)
             return candidate_file
-        else:
-            log.error("Local file not found: %s", candidate_file)
-            raise FileNotFoundError(f"Local file not found: {candidate_file}")
+        log.error("Local file not found: %s", candidate_file)
+        raise FileNotFoundError(f"Local file not found: {candidate_file}")
 
     # Use cached file if available and redownload is False
     cached_file = local_data_dir / file_name
@@ -214,7 +213,7 @@ def resolve_file_path(
             return download_file(
                 download_url, local_data_dir, redownload=redownload, filename=file_name
             )
-        except (OSError, IOError, ConnectionError, TimeoutError) as e:
+        except (OSError, ConnectionError, TimeoutError) as e:
             log.exception("Failed to download %s", download_url)
             raise FileNotFoundError(f"Failed to download {download_url}: {e}") from e
 
@@ -257,7 +256,7 @@ def load_array_metadata(datasource_id: str) -> dict:
 
 def safe_update_attrs(
     ds: xr.Dataset,
-    new_attrs: Dict[str, str],
+    new_attrs: dict[str, str],
     overwrite: bool = False,
     verbose: bool = True,
 ) -> xr.Dataset:
@@ -513,7 +512,7 @@ def download_file(
     # completes, so an interrupted download can never leave a truncated file that a later
     # call would treat as a valid cached copy.
     part_file = local_filename.with_name(local_filename.name + ".part")
-    response_headers: Dict[str, str] = {}
+    response_headers: dict[str, str] = {}
 
     try:
         if parsed_url.scheme in ("http", "https"):
@@ -542,7 +541,7 @@ def download_file(
 
 
 def _write_provenance_sidecar(
-    local_filename: Path, url: str, headers: Dict[str, str]
+    local_filename: Path, url: str, headers: dict[str, str]
 ) -> None:
     """Write a JSON provenance sidecar next to a downloaded file.
 
@@ -575,7 +574,7 @@ def _write_provenance_sidecar(
         log_debug("Could not write provenance sidecar for %s: %s", local_filename, e)
 
 
-def read_provenance(file_path: Union[str, Path]) -> Optional[Dict]:
+def read_provenance(file_path: str | Path) -> dict | None:
     """Return the provenance sidecar for a downloaded file, or None if absent.
 
     Parameters
@@ -604,7 +603,7 @@ def read_provenance(file_path: Union[str, Path]) -> Optional[Dict]:
 def parse_ascii_header(
     file_path: str,
     comment_char: str = "%",
-) -> Tuple[List[str], int]:
+) -> tuple[list[str], int]:
     """Parse the header of an ASCII file to extract column names and the number of header lines.
 
     Header lines are identified by the given comment character (default: '%').
@@ -626,7 +625,7 @@ def parse_ascii_header(
         - The number of header lines to skip.
 
     """
-    column_names: List[str] = []
+    column_names: list[str] = []
     header_line_count: int = 0
 
     with open(file_path) as file:
@@ -703,7 +702,7 @@ def find_data_start(file_path: str) -> int:
 # =============================================================================
 
 
-def get_standard_unit_mappings() -> Dict[str, str]:
+def get_standard_unit_mappings() -> dict[str, str]:
     """Get the mapping of unit variations to standard units.
 
     Uses defaults.PREFERRED_UNITS as target values for standardization.
@@ -835,7 +834,7 @@ def get_standard_unit_mappings() -> Dict[str, str]:
 
 
 def standardize_dataset_units(
-    ds: xr.Dataset, mapping: Optional[Dict[str, str]] = None, log_changes: bool = True
+    ds: xr.Dataset, mapping: dict[str, str] | None = None, log_changes: bool = True
 ) -> xr.Dataset:
     """Standardize units throughout a dataset using the unit mapping rules.
 
@@ -866,7 +865,7 @@ def standardize_dataset_units(
     >>> print(ds_std['transport'].attrs['units'])  # "sverdrup"
 
     """
-    from .logger import log_info, log_debug
+    from .logger import log_debug, log_info
 
     if mapping is None:
         mapping = get_standard_unit_mappings()
@@ -1007,7 +1006,7 @@ def mask_invalid_values(ds: xr.Dataset) -> xr.Dataset:
     >>> # Now extreme values are masked as NaN
 
     """
-    from .logger import log_info, log_debug
+    from .logger import log_debug, log_info
 
     variables_masked = 0
     total_values_masked = 0

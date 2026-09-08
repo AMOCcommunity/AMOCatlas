@@ -26,25 +26,25 @@ Basic Usage:
 
 # Import core modules to make them available at package level
 from . import (
-    readers,
-    read,  # New intuitive API namespace
-    plotters,
-    standardise,
-    utilities,
-    tools,
-    logger,
-    writers,
-    convert,
     compliance_checker,
-    reader_utils,
+    convert,
     data_sources,  # New data sources package
+    logger,
+    plotters,
+    read,  # New intuitive API namespace
+    reader_utils,
+    readers,
+    standardise,
+    tools,
+    utilities,
+    writers,
 )
-
-# Import key utilities at top level for convenience
-from .utilities import set_data_dir, get_data_dir
 
 # Version information
 from ._version import __version__
+
+# Import key utilities at top level for convenience
+from .utilities import get_data_dir, set_data_dir
 
 __all__ = [
     "readers",

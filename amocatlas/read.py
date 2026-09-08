@@ -31,58 +31,59 @@ Custom parameters:
 
 """
 
-from typing import Union, List, Callable
-import xarray as xr
+from collections.abc import Callable
 from pathlib import Path
 
-# Import all the individual readers from the data_sources package
-from .data_sources import (
-    read_rapid,
-    read_move,
-    read_osnap,
-    read_samba,
-    read_fw2015,
-    read_mocha,
-    read_41n,
-    read_dso,
-    read_calafat2025,
-    read_zheng2024,
-    read_47n,
-    read_fbc,
-    read_arcticgateway,
-    read_nac,
-    read_sf2021,
-    read_lebras35n,
-    read_axmoc22s,
-    read_axmoc34s,
-    read_ovide,
-    read_scotia,
-)
-
-# Import file constants for list_files() functionality
-from .data_sources.rapid26n import RAPID_DEFAULT_FILES
-from .data_sources.move16n import MOVE_DEFAULT_FILES
-from .data_sources.osnap55n import OSNAP_DEFAULT_FILES
-from .data_sources.samba34s import SAMBA_DEFAULT_FILES
-from .data_sources.fw2015 import FW2015_DEFAULT_FILES
-from .data_sources.mocha26n import MOCHA_DEFAULT_FILES
-from .data_sources.wh41n import WH41N_DEFAULT_FILES
-from .data_sources.dso import DSO_DEFAULT_FILES
-from .data_sources.calafat2025 import CALAFAT2025_DEFAULT_FILES
-from .data_sources.zheng2024 import ZHENG2024_DEFAULT_FILES
-from .data_sources.noac47n import NOAC47N_DEFAULT_FILES
-from .data_sources.fbc import FBC_DEFAULT_FILES
-from .data_sources.arcticgateway import ARCTIC_DEFAULT_FILES
-from .data_sources.nac import NAC_DEFAULT_FILES
-from .data_sources.sf2021 import SF2021_DEFAULT_FILES
-from .data_sources.lebras35n import LEBRAS35N_DEFAULT_FILES
-from .data_sources.axmoc22s import AXMOC22S_DEFAULT_FILES
-from .data_sources.axmoc34s import AXMOC34S_DEFAULT_FILES
-from .data_sources.ovide import OVIDE_DEFAULT_FILES
-from .data_sources.scotia import SCOTIA_DEFAULT_FILES
+import xarray as xr
 
 # Import standardization functions
 from . import standardise
+
+# Import all the individual readers from the data_sources package
+from .data_sources import (
+    read_41n,
+    read_47n,
+    read_arcticgateway,
+    read_axmoc22s,
+    read_axmoc34s,
+    read_calafat2025,
+    read_dso,
+    read_fbc,
+    read_fw2015,
+    read_lebras35n,
+    read_mocha,
+    read_move,
+    read_nac,
+    read_osnap,
+    read_ovide,
+    read_rapid,
+    read_samba,
+    read_scotia,
+    read_sf2021,
+    read_zheng2024,
+)
+from .data_sources.arcticgateway import ARCTIC_DEFAULT_FILES
+from .data_sources.axmoc22s import AXMOC22S_DEFAULT_FILES
+from .data_sources.axmoc34s import AXMOC34S_DEFAULT_FILES
+from .data_sources.calafat2025 import CALAFAT2025_DEFAULT_FILES
+from .data_sources.dso import DSO_DEFAULT_FILES
+from .data_sources.fbc import FBC_DEFAULT_FILES
+from .data_sources.fw2015 import FW2015_DEFAULT_FILES
+from .data_sources.lebras35n import LEBRAS35N_DEFAULT_FILES
+from .data_sources.mocha26n import MOCHA_DEFAULT_FILES
+from .data_sources.move16n import MOVE_DEFAULT_FILES
+from .data_sources.nac import NAC_DEFAULT_FILES
+from .data_sources.noac47n import NOAC47N_DEFAULT_FILES
+from .data_sources.osnap55n import OSNAP_DEFAULT_FILES
+from .data_sources.ovide import OVIDE_DEFAULT_FILES
+
+# Import file constants for list_files() functionality
+from .data_sources.rapid26n import RAPID_DEFAULT_FILES
+from .data_sources.samba34s import SAMBA_DEFAULT_FILES
+from .data_sources.scotia import SCOTIA_DEFAULT_FILES
+from .data_sources.sf2021 import SF2021_DEFAULT_FILES
+from .data_sources.wh41n import WH41N_DEFAULT_FILES
+from .data_sources.zheng2024 import ZHENG2024_DEFAULT_FILES
 
 # Supported datasource IDs for standardization
 SUPPORTED_STANDARDIZATION = {
@@ -110,10 +111,10 @@ SUPPORTED_STANDARDIZATION = {
 
 
 def _return_single_or_list(
-    datasets: List[xr.Dataset],
+    datasets: list[xr.Dataset],
     all_files: bool,
-    file_list: Union[str, List[str], None] = None,
-) -> Union[xr.Dataset, List[xr.Dataset]]:
+    file_list: str | list[str] | None = None,
+) -> xr.Dataset | list[xr.Dataset]:
     """Helper function to return single dataset or list based on user's request.
 
     Parameters
@@ -157,10 +158,10 @@ def _return_single_or_list(
 def _validate_file_selection_params(
     transport_only: bool,
     all_files: bool,
-    file_list: Union[str, List[str], None],
-    available_files: List[str],
-    transport_files: List[str] = None,  # noqa: ARG001
-) -> tuple[bool, Union[str, List[str], None]]:
+    file_list: str | list[str] | None,
+    available_files: list[str],
+    transport_files: list[str] = None,  # noqa: ARG001
+) -> tuple[bool, str | list[str] | None]:
     """Validate and resolve file selection parameters.
 
     Parameters
@@ -212,17 +213,16 @@ def _validate_file_selection_params(
     # Resolve effective parameters
     if all_files:
         return False, None  # Use all files, transport_only=False
-    elif file_list is not None:
+    if file_list is not None:
         return False, file_list  # Use custom file list, transport_only=False
-    else:
-        return transport_only, None  # Use defaults
+    return transport_only, None  # Use defaults
 
 
 def _create_array_function(
     reader_func: Callable,
     array_name: str,
     supports_version: bool = False,
-    available_files: List[str] = None,
+    available_files: list[str] = None,
 ) -> Callable:
     """Create a uniform API function for an array reader with optional standardization.
 
@@ -251,16 +251,16 @@ def _create_array_function(
     """
 
     def array_function(
-        source: Union[str, Path, None] = None,
-        file_list: Union[str, List[str], None] = None,
+        source: str | Path | None = None,
+        file_list: str | list[str] | None = None,
         transport_only: bool = True,
         all_files: bool = False,
         raw: bool = False,
-        data_dir: Union[str, Path, None] = None,
+        data_dir: str | Path | None = None,
         redownload: bool = False,
         version: str = None,
         track_added_attrs: bool = False,
-    ) -> Union[xr.Dataset, List[xr.Dataset]]:
+    ) -> xr.Dataset | list[xr.Dataset]:
         # TODO: Get transport files for validation - this needs to be implemented properly
         transport_files = None  # We'll need to map this based on reader_func
 
@@ -398,7 +398,7 @@ def _create_array_function(
     """
 
     # Add list_files() method to the function
-    def list_files() -> List[str]:
+    def list_files() -> list[str]:
         """Return list of available files for this array.
 
         Returns
