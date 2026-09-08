@@ -23,6 +23,8 @@ AMOCatlas provides automated reports for all supported datasets so that you can 
    nac_report
    sf2021_report
    lebras35n_report
+   axmoc22s_report
+   axmoc34s_report
    ovide_report
    scotia_report
 
