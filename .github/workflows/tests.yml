@@ -65,4 +65,5 @@ jobs:
       - name: Coverage summary
         # Surface the number on the job page instead of only in the log.
         if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.12'
-        run: echo "Coverage: $(coverage report | tail -1 | awk '{print $NF}')" >> "$GITHUB_STEP_SUMMARY"
+        run: |
+          echo "Coverage: $(coverage report | tail -1 | awk '{print $NF}')" >> "$GITHUB_STEP_SUMMARY"
