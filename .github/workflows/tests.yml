@@ -12,9 +12,9 @@ on:
 jobs:
   job_mytests:
     runs-on: ${{ matrix.os }}
-    # 3.13 is marked experimental (see the matrix): a missing wheel there fails
-    # softly instead of failing the whole check. Drop experimental and add the
-    # 3.13 classifier once the dependency stack has 3.13 wheels.
+    # 3.13 runs as an experimental cell (see the matrix): continue-on-error so a
+    # 3.13-only breakage fails softly rather than failing the whole check. 3.13 CI
+    # is green as of this PR; drop the experimental flag to make it a required cell.
     continue-on-error: ${{ matrix.experimental == true }}
     strategy:
       # Do not cancel the other cells when one fails — a red 3.13 (or a platform
