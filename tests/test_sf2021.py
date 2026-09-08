@@ -79,11 +79,9 @@ class TestSF2021:
 
         monkeypatch.setattr(
             "amocatlas.utilities.resolve_file_path",
-            lambda file_name,
-            source,
-            download_url,
-            local_data_dir,
-            redownload=False: fake_path,
+            lambda file_name, source, download_url, local_data_dir, redownload=False: (
+                fake_path
+            ),
         )
 
         monkeypatch.setattr(

@@ -15,7 +15,7 @@ The basic behaviour is explained in the template repository that this project wa
 
 The way that this project ([http://github.com/AMOCcommunity/amocatlas](http://github.com/AMOCcommunity/amocatlas)) is set up:
 
-- the `docs.yml` attempts to build the documentation which is contained in `docs/source/` and built to `docs/build/`.  It sets up the environment based on `requirements-dev.txt`, installs the project with `pip install`, and builds the documentation including running the `notebooks/demo.ipynb`.
+- the `docs.yml` attempts to build the documentation which is contained in `docs/source/` and built to `docs/build/`.  It installs the project with its `docs` extra (`pip install -e ".[docs]"`, plus the `pandoc` binary), and builds the documentation including copying in the `notebooks/demo.ipynb`.
 
 - the `tests.yml` uses `pytest` to run the tests contained within the `tests/` directory, and it does this on several platforms (windows, mac and linux) and with a couple versions of python.
 
@@ -36,16 +36,16 @@ Before making a PR, you can try to run `demo.ipynb` on your fork/branch to see w
 
 ### Check tests
 
-You can run the tests locally if your environment is built from `requirements-dev.txt`.  Here we've also required e.g., `pytest`.
+You can run the tests locally if your environment has the `test` extra installed (which includes `pytest`).
 
-To run the tests, in the command line on your computer, activate the environment, make sure requirements from `requirements-dev.txt` are installed, and then run `pytest`.
+To run the tests, in the command line on your computer, activate the environment, make sure the `test` (or `dev`) extra is installed, and then run `pytest`.
 
 For me, this looks like
 ```bash
 cd github/amocatlas
 virtualenv venv
 source venv/bin/activate
-pip install -r requirements-dev.txt
+pip install -e ".[dev]"
 pytest
 ```
 

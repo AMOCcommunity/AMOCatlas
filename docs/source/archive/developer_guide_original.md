@@ -338,6 +338,7 @@ You can toggle logging dynamically:
 
 ```python
 from amocatlas import logger
+
 logger.enable_logging()
 logger.disable_logging()
 ```

@@ -42,8 +42,7 @@ To test the installation, you'll want a fresh environment.
 **In a terminal window, at the root of your project** (for me, this is `/a/path/on/your/computer/amocatlas/`), run the following commands in order.
 ```
 virtualenv venv
-source venv/bin/activate && micromamba deactivate
-pip install -r requirements.txt
+source venv/bin/activate
 pip install -e .
 ```
 

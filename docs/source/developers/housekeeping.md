@@ -6,9 +6,9 @@ Quick reference for maintaining AMOCatlas development environment and processes.
 
 ## Dependencies
 
-**Adding packages:**
-- ✅ Runtime needs → add to `requirements.txt`
-- ✅ Development only → add to `requirements-dev.txt` 
+**Adding packages** (dependencies live in `pyproject.toml`):
+- ✅ Runtime needs → add to `[project] dependencies`
+- ✅ Test / docs / lint only → add to the matching extra under `[project.optional-dependencies]` (`test`, `docs`, `dev`)
 - ✅ Update GitHub Actions if CI needs it
 
 **Updating packages:**
@@ -25,8 +25,7 @@ When things get messy:
 rm -rf venv/
 python3 -m venv venv
 source venv/bin/activate
-pip install -r requirements-dev.txt
-pip install -e .
+pip install -e ".[dev]"
 pytest  # Verify everything works
 ```
 
@@ -48,7 +47,7 @@ Before merging any PR:
 ## Documentation
 
 **When adding docs dependencies:**
-- ✅ Add to `requirements-dev.txt`
+- ✅ Add to the `docs` extra under `[project.optional-dependencies]` in `pyproject.toml`
 - ✅ Test build: `cd docs && make clean html`
 - ✅ Verify GitHub Actions docs build passes
 

@@ -7,6 +7,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- New reader for the OVIDE section (`read.ovide()`) (#183)
+- New reader for the SCOTIA overturning array (`read.scotia()`) — the first array served in neutral-density (GAMMA) space (#184)
+- `amocvocab`, a controlled variable vocabulary under `amocatlas/vocabulary/` (short name → `standard_name`-or-null → units → P02/P01 URI → definition), with a JSON schema and a validator (`validate_amocvocab.py`) that checks every CF `standard_name` against the live CF standard-name table and every unit under UDUNITS; a repo-tracked staging draft (`amocvocab_draft.yml`) is included but not shipped in the wheel (#181)
+- New optional metadata field `report_plot_variable` to select the headline variable a per-array report plots (#184)
+
+### Changed
+- README rewritten for a first-time scientific reader (#179)
+- Standardised output now follows the `amocvocab` + OceanSITES convention (see Breaking changes) (#181)
+- Per-array reports regenerated with corrected variable names, and the two report generators consolidated into `scripts/generate_reports.py` (#182)
+- Linting is now ruff-only: `ruff format` replaces black, and the pre-commit/codespell configuration was removed (#182)
+- Documentation autodoc deduplicated (`amocatlas.rst` reduced to an index; docs build warnings cut from ~140 to 4); the legacy `readers` string API was dropped from the API docs, though the code remains (still deprecated) (#182)
+- Dependencies are declared in `pyproject.toml` (`[project] dependencies`, extras `test`/`docs`/`dev`); `requirements.txt`, `requirements-dev.txt` and `environment.yml` removed; install with `pip install -e ".[dev]"`. Docs CI no longer uses conda. A coverage floor of 55% is enforced in CI
+
+### Fixed
+- Every CF `standard_name` used in array metadata verified against the live CF standard-name table; three fabricated names removed; the transport unit canonicalised to lowercase `sverdrup` (#180)
+- Zenodo concept DOI added to the CITATION file and as a README badge (#178)
+
+### Removed
+- `writers.save_AC1_dataset()` and its tests, and the AC1 format reference pages (`docs/source/reference/AC1_*.rst`) (#182)
+
+### Breaking changes
+
+- **#182 — AC1 writer and format docs removed.** `writers.save_AC1_dataset()` no longer exists; the only public writer is `writers.save_dataset(ds, output_file)`. Code that imported or called `save_AC1_dataset` must switch to `save_dataset`. The AC1 format reference pages were deleted.
+- **#181 — standardised output moved to the `amocvocab` + OceanSITES convention.** A script written against 0.4.0 output must update on two fronts:
+  - **Variable names.** OSNAP streamfunctions `STREAMFUNCTION_SIGMA0` / `STREAMFUNCTION_SIGMA0_WEST` / `STREAMFUNCTION_SIGMA0_EAST` are now `PSI_SIGMA0` / `PSI_SIGMA0_WEST` / `PSI_SIGMA0_EAST`; streamfunctions generally standardise to `PSI_Z` / `PSI_SIGMA0` / `PSI_SIGMA2`. SAMBA is reworked to anomalies: `UPPER_TRANSPORT` / `ABYSSAL_TRANSPORT` became `TRANS_UPPER` / `TRANS_ABYSSAL`, and the MOC decomposition is now `MOC_ANOM`, `TRANS_RELATIVE`, `TRANS_REFERENCE`, `TRANS_EKMAN` (with `_WEST` / `_EAST` constituents).
+  - **Attributes.** `long_name` values were rewritten to descriptive lowercase and the original provider label is preserved under a new `source_long_name` attribute; `cell_methods` was added where a variable is a max/mean over a coordinate; and `standard_name` was dropped from derived or anomaly quantities that have no exact CF name (vocabulary "Case C"). A 0.4.0 script that keys on an old variable name, on `source_long_name` being absent, or on every variable carrying a `standard_name`, must be updated.
+
 ## [0.4.0] - 2026-08-13
 
 ### Added

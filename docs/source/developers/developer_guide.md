@@ -27,8 +27,7 @@ cd amocatlas
 # 2. Set up a development environment
 python3 -m venv venv
 source venv/bin/activate            # Windows: venv\Scripts\activate
-pip install -r requirements-dev.txt
-pip install -e .
+pip install -e ".[dev]"
 
 # 3. Branch, change, test
 git switch -c yourname-feature
@@ -93,8 +92,7 @@ git clone https://github.com/AMOCcommunity/amocatlas.git
 cd amocatlas
 python3 -m venv venv
 source venv/bin/activate
-pip install -r requirements-dev.txt   # runtime + dev tools
-pip install -e .                      # editable install
+pip install -e ".[dev]"               # editable install, runtime + dev tools
 pytest -m "not slow"                  # confirm the setup
 ```
 
@@ -117,8 +115,10 @@ This is the most common contribution. To add an array called `newarray`:
 
    ```python
    """Reader for NEWARRAY data."""
+
    import xarray as xr
    from amocatlas.logger import log_info
+
 
    def read_newarray(source: str | None = None, **kwargs) -> list[xr.Dataset]:
        """Read NEWARRAY data and return standardised datasets."""
@@ -190,8 +190,9 @@ fast tests:
 ```python
 from amocatlas import readers
 
+
 def test_load_sample_dataset():
-    ds = readers.load_sample_dataset("rapid")   # raw sample, original variable names
+    ds = readers.load_sample_dataset("rapid")  # raw sample, original variable names
     assert ds is not None
     assert "time" in ds.variables
 ```

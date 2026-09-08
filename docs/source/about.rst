@@ -74,10 +74,9 @@ To install a local, development version for contributing, clone the repository a
 
     git clone https://github.com/AMOCcommunity/amocatlas.git
     cd amocatlas
-    pip install -r requirements-dev.txt
-    pip install -e .
+    pip install -e ".[dev]"
 
-This installs ``amocatlas`` locally. The ``-e`` ensures that any edits you make in the files will be picked up by scripts that import functions from ``amocatlas``. The ``requirements-dev.txt`` includes additional Python packages needed for development, including building documentation, running tests, and code linting.
+This installs ``amocatlas`` locally. The ``-e`` ensures that any edits you make in the files will be picked up by scripts that import functions from ``amocatlas``. The ``[dev]`` extra pulls in the additional Python packages needed for development, including building documentation, running tests, and code linting.
 
 You can run the example Jupyter notebook by launching JupyterLab with ``jupyter-lab`` and navigating to the ``notebooks`` directory, or in VS Code or other Python GUI.
 

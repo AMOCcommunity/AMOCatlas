@@ -227,19 +227,21 @@ def read_41n(
             # Time handling
             try:
                 df = df.apply(
-                    lambda col: col.astype(str)
-                    .str.replace(",", "", regex=False)
-                    .astype(float)
+                    lambda col: (
+                        col.astype(str).str.replace(",", "", regex=False).astype(float)
+                    )
                 )
                 # df['Decimal year'] = df['Decimal year'].astype(str).str.replace(',', '',regex=False).astype(float)
                 df["TIME"] = df["Decimal year"].apply(
-                    lambda x: datetime.datetime(int(x), 1, 1)
-                    + datetime.timedelta(
-                        days=(x - int(x))
-                        * (
-                            datetime.datetime(int(x) + 1, 1, 1)
-                            - datetime.datetime(int(x), 1, 1)
-                        ).days
+                    lambda x: (
+                        datetime.datetime(int(x), 1, 1)
+                        + datetime.timedelta(
+                            days=(x - int(x))
+                            * (
+                                datetime.datetime(int(x) + 1, 1, 1)
+                                - datetime.datetime(int(x), 1, 1)
+                            ).days
+                        )
                     )
                 )
                 df = df.drop(columns=["Decimal year"])

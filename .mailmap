@@ -1,0 +1,4 @@
+# Canonicalise contributor identities so `git shortlog`/`git log` counts are correct.
+# Format: Proper Name <canonical-email> Commit Name <commit-email>
+Isabelle Schmitz <isabelle.sh@gmx.de> Isabelle1299 <isabelle.sh@gmx.de>
+Isabelle Schmitz <isabelle.sh@gmx.de> Isabelle <isabelle.sh@gmx.de>
