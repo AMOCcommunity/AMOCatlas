@@ -1,15 +1,15 @@
 NAC Datasets
 ============
 
-_2_1.nc
--------
+bb6635909m_2_1.nc
+-----------------
 
 Dataset Overview
 ^^^^^^^^^^^^^^^^
 
 - **Project**: Lankhorst, Matthias (2025). North Atlantic Current Time Series from Satellite and Float Observations (1993-2025).
 - **Description**: North Atlantic Current Time Series from Satellite and Float Observations (1993-2025)
-- **Source File**: _2_1.nc
+- **Source File**: bb6635909m_2_1.nc
 - **Data Product**: 6-monthly mean NAC transport time series (1993-2025) estimated from satellite and float observations
 - **License**: CC-BY-4.0
 - **Date Created**: 2025-10-07T00:00:00Z
@@ -198,11 +198,11 @@ The following metadata describes this dataset:
 - **Standard Name Vocabulary**: CF Standard Name Table v92
 - **featureType\***: timeSeries
 - **featureType_vocabulary**: https://cfconventions.org/cf-conventions/v1.6.0/cf-conventions.html#_features_and_feature_types
-- **Source File\***: _2_1.nc
-- **Source Path\***: ~/.amocatlas_data/_2_1.nc
+- **Source File\***: bb6635909m_2_1.nc
+- **Source Path\***: ~/.amocatlas_data/bb6635909m_2_1.nc
 - **Source Url\***: https://library.ucsd.edu/dc/object/bb6635909m/
 - **Date Created**: 2025-10-07T00:00:00Z
-- **Date Modified**: 2026-08-01T00:00:00Z
+- **Date Modified**: 2026-09-01T00:00:00Z
 - **Processing Software**: http://github.com/AMOCcommunity/amocatlas
 - **Processing Version**: v0.4.0
 - **Processing Datasource\***: nac

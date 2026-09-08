@@ -15,7 +15,7 @@ metadata:
   time_coverage_end: '2025-07-02'
 
 files:
-  _2_1.nc:
+  bb6635909m_2_1.nc:
     source_url: https://library.ucsd.edu/dc/object/bb6635909m/
     data_product: "6-monthly mean NAC transport time series (1993-2025) estimated from satellite and float observations"
     variable_mapping:
