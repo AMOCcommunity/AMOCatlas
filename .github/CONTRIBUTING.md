@@ -12,10 +12,9 @@ Please follow these steps to get started:
 2. **Create a new branch** for your work.
 3. **Set up the development environment:**
    - Create a virtual environment
-   - Install dependencies:
+   - Install the package with its development extras:
      ```bash
-     pip install -r requirements.txt
-     pip install -r requirements-dev.txt
+     pip install -e ".[dev]"
      ```
 4. **Make your changes** — remember to write clear commits!
 5. **Run tests and quality checks:**

@@ -89,7 +89,7 @@ Don't worry, if you created a pull request by mistake, you can "close it" on git
 
 **On Github.com (original/upstream repository):** Navigate to the original repository https://github.com/AMOCcommunity/amocatlas and you should see the pull request has come through.  There will be a shaded bar at the top with a button "compare and pull request".  Click this button and on the next page add some useful details for the rest of the contributors to understand what your commit is doing.
 
-Note that the default version of this template includes some tests to be run when you submit a pull request.  The python code for these tests is located in `tests/`.  The Github Actions "workflow" that calls the tests is in `.github/workflows/tests.yml`.  It requires that your `requirements-dev.txt` file includes the package:
+Note that the default version of this template includes some tests to be run when you submit a pull request.  The python code for these tests is located in `tests/`.  The Github Actions "workflow" that calls the tests is in `.github/workflows/tests.yml`.  It installs the project's `test` extra (`pip install -e ".[test]"`), which includes:
 ```
 pytest
 pytest-cov

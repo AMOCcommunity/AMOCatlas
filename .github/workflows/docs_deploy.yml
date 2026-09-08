@@ -19,25 +19,19 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Micromamba
-        uses: mamba-org/setup-micromamba@v3
+      - uses: actions/setup-python@v7
         with:
-          environment-file: environment.yml
-          init-shell: bash
-          condarc: |
-            channels:
-              - conda-forge
-            channel_priority: strict
-          cache-environment: true
+          python-version: "3.12"
 
-      - name: Install package (editable)
-        shell: bash -l {0}
+      - name: Install pandoc
+        run: sudo apt-get update && sudo apt-get install -y pandoc
+
+      - name: Install package with docs extras
         run: |
-          micromamba run -n amocatlas python -m pip install --upgrade pip
-          micromamba run -n amocatlas python -m pip install -e . --no-deps --force-reinstall
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[docs]"
 
       - name: Build documentation
-        shell: bash -l {0}
         run: |
           set -e
           # Copy notebooks without executing. They read live data from remote array
@@ -46,7 +40,7 @@ jobs:
           cp notebooks/demo.ipynb docs/source/demo-output.ipynb
           cp notebooks/amoc_paperfigs.ipynb docs/source/amoc_paperfigs-output.ipynb
           pushd docs
-          micromamba run -n amocatlas make clean html
+          make clean html
           popd
 
       - name: Deploy to GitHub Pages

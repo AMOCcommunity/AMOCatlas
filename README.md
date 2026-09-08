@@ -93,8 +93,7 @@ pip install AMOCatlas
 ```bash
 git clone https://github.com/AMOCcommunity/amocatlas.git
 cd amocatlas
-pip install -r requirements-dev.txt
-pip install -e .
+pip install -e ".[dev]"
 ```
 
 This installs amocatlas locally. The `-e` ensures that any edits you make in the files will be picked up by scripts that import functions from amocatlas.
@@ -106,18 +105,18 @@ The `read` namespace returns a single standardised `xarray` dataset per array, d
 ```python
 from amocatlas import read
 
-ds = read.rapid()              # RAPID transport at 26°N
+ds = read.rapid()  # RAPID transport at 26°N
 print(ds)
 
-osnap = read.osnap()           # OSNAP; uses the latest version by default
+osnap = read.osnap()  # OSNAP; uses the latest version by default
 ```
 
 Common options:
 
 ```python
-read.osnap(version="2025")     # select a version where multiple exist
-read.rapid(all_files=True)     # list of all files for an array, not just the standard one
-read.rapid(raw=True)           # original upstream format, without standardisation
+read.osnap(version="2025")  # select a version where multiple exist
+read.rapid(all_files=True)  # list of all files for an array, not just the standard one
+read.rapid(raw=True)  # original upstream format, without standardisation
 ```
 
 The legacy string-based API and small bundled samples remain available:
@@ -125,15 +124,16 @@ The legacy string-based API and small bundled samples remain available:
 ```python
 from amocatlas import readers
 
-ds = readers.load_sample_dataset("rapid")   # small bundled sample, no download
-datasets = readers.load_dataset("rapid")    # returns a list of datasets
+ds = readers.load_sample_dataset("rapid")  # small bundled sample, no download
+datasets = readers.load_dataset("rapid")  # returns a list of datasets
 ```
 
 **Data location and logs.** Downloads are cached in `~/.amocatlas_data/` and a per-run `*.log` is written to `logs/`. Override the cache per call with `data_dir="/path/to/data"`, or set a default:
 
 ```python
 import amocatlas
-amocatlas.set_data_dir("~/my_data")    # custom location
+
+amocatlas.set_data_dir("~/my_data")  # custom location
 print(amocatlas.get_data_dir())
 ```
 
@@ -249,7 +249,8 @@ You can run the example jupyter notebook by launching jupyterlab with `jupyter-l
 To build the documentation locally you need to install a few extra requirements:
 
 - Install `make` for your computer, e.g. on ubuntu with `sudo apt install make`
-- Install the additional python requirements. Activate the environment you use for working with amocatlas, navigate to the top directory of this repo, then run `pip install -r requirements-dev.txt`
+- Install `pandoc` (nbsphinx renders the notebooks through it), e.g. on ubuntu with `sudo apt install pandoc`, or from conda-forge
+- Install the documentation extras. Activate the environment you use for working with amocatlas, navigate to the top directory of this repo, then run `pip install -e ".[docs]"`
 
 Once you have the extras installed, you can build the docs locally by navigating to the `docs/` directory and running `make clean html`. This command will create a directory called `build/` which contains the html files of the documentation. Open the file `docs/build/html/index.html` in your browser, and you will see the docs with your changes applied.
 

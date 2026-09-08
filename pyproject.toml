@@ -22,14 +22,48 @@ classifiers = [
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
 ]
 dynamic = [
-  "dependencies",
   "version",
+]
+dependencies = [
+  "numpy>=1.23",
+  "pandas>=2.3.3",
+  "xarray>=2025.6.1",
+  "netcdf4>=1.7.4",
+  "scipy>=1.15.3",
+  "pyyaml>=6.0",
+  "requests>=2.25.0",
+  "jinja2>=3.1.6",
+  "matplotlib>=3.10.9",
 ]
 urls.documentation = "https://github.com/AMOCcommunity/AMOCatlas"
 urls.homepage = "https://github.com/AMOCcommunity/AMOCatlas"
 urls.repository = "https://github.com/AMOCcommunity/AMOCatlas"
+
+[project.optional-dependencies]
+test = [
+  "pytest>=8.0",
+  "pytest-cov>=7.1.0",
+  "jsonschema>=4.0",        # validates metadata YAMLs and amocvocab.yml against their schemas
+  "pyudunits2[xml]>=0.1",   # UDUNITS unit parsing/convertibility checks in validate_amocvocab (lazy import; dev/CI only)
+]
+docs = [
+  "sphinx>=8.1.3",
+  "sphinx-rtd-theme>=3.1.0",
+  "myst-parser>=4.0.1",
+  "nbsphinx>=0.9.8",
+  "nbconvert>=7.17.1",
+  "ipython>=8.0",           # provides the "ipython3" Pygments lexer nbsphinx uses for notebook cells
+  "pypandoc>=1.17",         # needs the pandoc binary (apt-get in CI; conda-forge locally)
+]
+dev = [
+  "amocatlas[test,docs]",
+  "ruff>=0.3",
+  "jupyterlab>=4.0",
+  "pygmt>=0.13.0",          # publication figures only; lazy import in plotters, never runtime
+]
 
 [tool.setuptools]
 packages = ["amocatlas", "amocatlas.metadata", "amocatlas.data_sources", "amocatlas.vocabulary"]
@@ -47,9 +81,6 @@ amocatlas = [
 ]
 
 [tool.setuptools.dynamic]
-dependencies = { file = [
-  "requirements.txt",
-] }
 readme = { file = "README.md", content-type = "text/markdown" }
 
 [tool.setuptools_scm]
