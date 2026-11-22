@@ -1,7 +1,7 @@
 [build-system]
 build-backend = "setuptools.build_meta"
 requires = [
-  "setuptools>=45",
+  "setuptools>=77",
   "setuptools-scm[toml]>=8.0",
   "wheel",
 ]
@@ -10,14 +10,14 @@ requires = [
 name = "AMOCatlas"
 description = "Python project to read data from arrays measuring the Atlantic meridional overturning circulation"
 readme = "README.md"
-license = { file = "LICENSE" }
+license = "MIT"
+license-files = ["LICENSE"]
 maintainers = [
   { name = "Eleanor Frajka-Williams", email = "eleanorfrajka@gmail.com" },
   { name = "Isabelle Schmitz", email = "isabelle.schmitz@uni-hamburg.de" },
 ]
 requires-python = ">=3.10"
 classifiers = [
-  "License :: OSI Approved :: MIT License",
   "Programming Language :: Python :: 3 :: Only",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
