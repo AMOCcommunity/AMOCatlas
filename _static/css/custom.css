@@ -1,0 +1,48 @@
+/* Only override white-space to allow cell wrapping */
+.wy-table-responsive table td,
+.wy-table-responsive table th {
+  white-space: normal !important;
+}
+
+/* Optional: reduce default max table width */
+.wy-table-responsive {
+  overflow-x: auto;
+}
+
+/* Makes the main content area wider */
+.wy-nav-content {
+  max-width: 1000px;
+  /* or any other value */
+}
+
+
+/* Override sidebar background */
+.wy-nav-side {
+  background: #23435c;
+  /* your dark brand color */
+}
+
+/* Top-left logo area */
+.wy-side-nav-search {
+  background-color: #23435c;
+  /* same or matching tone */
+}
+
+/* Sidebar section headers */
+.wy-menu-vertical .caption-text {
+  color: #ffffff;
+  /* white text */
+}
+
+/* Highlighted current section */
+.wy-menu-vertical li.current>a {
+  background-color: #406d8c;
+  /* accent color */
+  color: #ffffff;
+}
+
+/* Hover effect for sidebar links */
+.wy-menu-vertical a:hover {
+  color: #ffcc00;
+  /* or another brand accent */
+}
